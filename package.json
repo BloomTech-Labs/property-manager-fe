@@ -5,17 +5,21 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
+    "formik": "^2.0.3",
     "node-sass": "^4.13.0",
+    "reach-router": "0.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-icons": "^3.8.0",
     "react-redux": "^7.1.1",
     "react-scripts": "^3.2.0",
     "react-spring": "^8.0.27",
+    "react-table": "^6.10.3",
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
