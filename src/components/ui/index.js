@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-// Simple Button/Card Animation
+// Simple Button/Card Animation Mixin
 const hoverMixin = `
   box-shadow: 0 3px 6px #333;
   transition: 0.25s;
@@ -21,7 +21,7 @@ export const Button = styled.button`
   cursor: pointer;
   text-align: center;
   margin: 0 auto 1.5rem;
-  border-radius: 3px;
+  border-radius: 2px;
   padding: 0.5rem 0.8rem;
   font-size: 1.5rem;
   color: #333;
@@ -29,4 +29,12 @@ export const Button = styled.button`
   ${hoverMixin}
 `;
 
-export const Card = styled.div``;
+// Card UI Component
+export const Card = styled.div`
+  position: relative;
+  border-radius: 2px;
+  background-color: #fff;
+  margin: 1rem;
+  flex-basis: 14%;
+  ${hoverMixin}
+`;
