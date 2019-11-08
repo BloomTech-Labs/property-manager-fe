@@ -32,6 +32,7 @@ export const Button = styled.button`
   background-color: #fff;
   ${hoverMixin}
 `;
+
 // ------------------------------------------------|
 // DEFINE CARD COMPONENTS =========================|
 // ================================================|
@@ -112,5 +113,73 @@ export const TextInput = styled.input`
   &:focus {
     border-bottom: 1px solid #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
+  }
+`;
+
+// Horizontal Top Navbar
+export const TopNav = styled.div`
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  left: 0px;
+  top: 0px;
+  border-bottom: 2px solid rgba(44, 58, 79, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  a {
+    padding: 14px 14px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #454a4d;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;
+
+// Vertical Side Navbar
+export const SideNav = styled.div`
+  height: 100%;
+  width: 120px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #2d3b4f;
+  border-radius: 0px 15px 15px 0px;
+  display: flex;
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: right;
+  }
+  a {
+    padding: 14px 14px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #dbdbdb;
+    text-align: right;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 `;
