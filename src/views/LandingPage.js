@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div>
       <div>This is the Landing Page</div>
       <LoginForm submit={console.log} />
-      <TrailWord text="wtf" />
+      <TrailWord text="text" />
     </div>
   );
 };

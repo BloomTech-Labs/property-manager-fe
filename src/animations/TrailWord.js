@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const config = { mass: 4, tension: 1500, friction: 100 };
 
 export default function TrailWord({ text }) {
-  const word = text.split('');
+  const word = text.replace(/\s+/g, '').split('');
   const [toggle, setToggle] = useState(true);
   const trail = useTrail(word.length, {
     config,
