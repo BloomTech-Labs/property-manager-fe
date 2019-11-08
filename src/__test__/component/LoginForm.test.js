@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import LoginForm from '../../components/LoginForm';
+import LoginForm from '../../components/LoginForm/Form';
 
 test('should submit the login form', async () => {
   // Arrange
@@ -20,8 +20,8 @@ test('should submit the login form', async () => {
   );
 
   // Use your selectors to select the field nodes needed to fill out the form
-  const emailNode = getByPlaceholderText('email');
-  const passwordNode = getByPlaceholderText('password');
+  const emailNode = getByPlaceholderText('Enter your email address');
+  const passwordNode = getByPlaceholderText('Type your password');
   const formNode = getByTestId('form-element');
 
   // Act
