@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-
 // Simple Button/Card Animation
 const hoverMixin = `
   box-shadow: 0 3px 6px #333;
@@ -63,9 +62,40 @@ export const TopNav = styled.div`
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
   }
 `;
 
 // Vertical Side Navbar
-export const sideNav = styled.div``;
+export const SideNav = styled.div`
+  height: 100%;
+  width: 120px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: #2d3b4f;
+  border-radius: 0px 15px 15px 0px;
+  display: flex;
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: right;
+  }
+  a {
+    padding: 14px 14px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #dbdbdb;
+    text-alight: right;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+`;

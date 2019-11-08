@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
-import HorNav from '../components/navigation';
+import {HorNav} from '../components/navigation';
 
 const LandingPage = () => {
   return (
