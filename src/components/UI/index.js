@@ -129,7 +129,7 @@ export const FormButton = styled.button`
 export const FormFooterContainer = styled.div`
   text-align: center;
   position: absolute;
-  bottom: 5%;
+  bottom: 3%;
   left: 50%;
   transform: translate(-50%);
 `;

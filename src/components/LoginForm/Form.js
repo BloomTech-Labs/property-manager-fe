@@ -54,7 +54,7 @@ export default function LoginForm({ submit }) {
                   border: none;
                   outline: none;
                   border-bottom: 2px solid #2d3b4f;
-                  width: 300px;
+                  width: 100%;
                   font-weight: 700;
                   font-family: 'Roboto', sans-serif;
                   -webkit-text-fill-color: none;
@@ -83,7 +83,7 @@ export default function LoginForm({ submit }) {
                   border: none;
                   outline: none;
                   border-bottom: 2px solid #2d3b4f;
-                  width: 300px;
+                  width: 100%;
                   font-family: 'Roboto', sans-serif;
                   margin-bottom: 0.5rem;
                   ::placeholder {
@@ -94,6 +94,21 @@ export default function LoginForm({ submit }) {
                 name="password"
                 type="password"
               />
+              <Link
+                to="/iamareallyforgetfulperson"
+                css={css`
+                  color: #2d3b4f70;
+                  font-size: 0.75rem;
+                  text-decoration: none;
+                  line-height: 1rem;
+                  font-family: 'Roboto', sans-serif;
+                  font-weight: bold;
+                  align-self: flex-end;
+                  margin-top: -0.3rem;
+                `}
+              >
+                Forgot your password?
+              </Link>
               <FormErrors
                 touched={touched.password}
                 message={errors.password}
