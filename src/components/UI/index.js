@@ -43,16 +43,6 @@ export const Card = styled.div`
   margin: 1rem;
   ${hoverMixin}
 `;
-export const FormCard = styled.div`
-  border: 3px solid #2d3b4f;
-  padding: 2rem;
-  margin: 2rem;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 400px;
-`;
 // ------------------------------------------------|
 // DEFINE FORM COMPONENTS =========================|
 // ================================================|
@@ -72,18 +62,82 @@ export const InputFieldWrapper = styled.div`
     }
   }
 `;
+export const FormCard = styled.div`
+  border: 3px solid #2d3b4f;
+  padding: 2rem;
+  margin: 2rem;
+  background: white;
+  max-width: 350px;
+  height: 500px;
+  border-radius: 10px;
+  position: relative;
+`;
+export const FieldContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const FormHeading = styled.div`
+  color: #007f00;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Baloo', cursive;
+`;
+export const FormLabel = styled.label`
+  color: #66707f;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: bold;
+  font-family: 'Baloo', cursive;
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+`;
 export const FormError = styled.div`
   color: red;
-  font-weight: bold;
-  font-size: 0.75rem;
-  line-height: 1.15rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: center;
+  font-family: 'Baloo', cursive;
 `;
 export const FormSuccess = styled.div`
-  color: green;
-  font-size: 0.75rem;
-  line-height: 1.15rem;
+  color: #007f00;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: center;
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 0;
+`;
+export const FormButton = styled.button`
+  border: none;
+  font-size: 100%;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.5rem;
+  width: 200px;
+  color: white;
+  background-color: #2d3b4f;
+  ${hoverMixin}
+`;
+export const FormFooterContainer = styled.div`
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%);
+`;
+export const FormFooter = styled.h4`
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  color: #66707f85;
 `;
 // Label ------------------------------------------|
 export const Label = styled.label`
@@ -136,4 +190,14 @@ export const TextInput = styled.input`
     border-bottom: 1px solid #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
   }
+`;
+// ------------------------------------------------|
+// Icon Normalization =============================|
+// ================================================|
+export const I = styled.span`
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  vertical-align: sub;
 `;

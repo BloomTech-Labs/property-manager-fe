@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaCheck, FaRegDizzy } from 'react-icons/fa';
-import { FormError, FormSuccess } from '../UI';
+import { MdCheck, MdError } from 'react-icons/md';
+import { FormError, FormSuccess, I } from '../UI';
 
 const Error = ({ touched, message }) => {
   if (!touched) {
@@ -10,13 +10,18 @@ const Error = ({ touched, message }) => {
   if (message) {
     return (
       <FormError>
-        <FaRegDizzy /> {message}
+        <I>
+          <MdError />
+        </I>{' '}
+        {message}
       </FormError>
     );
   }
   return (
     <FormSuccess>
-      <FaCheck />
+      <I>
+        <MdCheck />
+      </I>
     </FormSuccess>
   );
 };
