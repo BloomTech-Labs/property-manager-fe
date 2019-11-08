@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     <div>
       <div>This is the Landing Page</div>
-      <LoginForm />
+      <LoginForm submit={console.log} />
     </div>
   );
 };
