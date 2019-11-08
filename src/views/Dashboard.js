@@ -4,7 +4,7 @@ import { VertNav } from '../components/navigation';
 
 const Dashboard = () => {
   return (
-    <div className = 'dashboard'>
+    <div className="dashboard">
       <VertNav />
       <div>This is the Dashboard</div>
       <LoginForm />
