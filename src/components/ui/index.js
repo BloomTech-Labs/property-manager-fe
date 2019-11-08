@@ -35,13 +35,21 @@ export const Card = styled.div``;
 export const TopNav = styled.div`
   position: relative;
   width: 100%;
-  height: 124px;
+  height: 3rem;
   left: 0px;
   top: 0px;
   border-bottom: 2px solid rgba(44, 58, 79, 0.5);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background: #ffffff;
   text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
   a {
     padding: 14px 14px;
     font-size: 18px;
