@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+
 // Simple Button/Card Animation
 const hoverMixin = `
   box-shadow: 0 3px 6px #333;
@@ -57,6 +58,12 @@ export const TopNav = styled.div`
     color: #454a4d;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
   }
 `;
 

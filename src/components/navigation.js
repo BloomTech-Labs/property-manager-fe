@@ -10,10 +10,10 @@ const HorNav = () => {
         <a href="#home">Home</a>
         <a href="#landlords">Landlords</a>
         <a href="#renters">Renters</a>
-        <img src = {logo} alt = 'logo'></img>
+        <a href ='#home'><img src = {logo} alt = 'logo'></img></a>
         <a href="#features">Features and Pricing</a>
         <a href="#contact">Contact</a>
-        <Avi  width = {25} height = {25} name = 'avatar'/>
+        <a href ='#login'><Avi  width = {25} height = {25} name = 'avatar'/></a>
       </ul>
     </TopNav>
   );
