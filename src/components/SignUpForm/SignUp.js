@@ -2,42 +2,109 @@
 import React from 'react';
 import { withFormik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import { MdAccountCircle, MdEmail, MdLock } from 'react-icons/md';
+import {
+  FormButton,
+  ButtonContainer,
+  InputFieldWrapper,
+  FormHeading,
+  FormCard,
+  FormError,
+  TextInput,
+  Label,
+  I
+} from '../UI';
 
 const SignUpForm = ({ errors, touched }) => {
   return (
-    <div>
+    <FormCard style={{ height: '600px' }}>
+      <FormHeading>Sign Up</FormHeading>
       <Form>
-        <div>
-          <Field type="text" name="firstName" placeholder="First Name" />
-          {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-        </div>
-        <div>
-          <Field type="text" name="lastName" placeholder="Last Name" />
-          {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-        </div>
-        <div>
-          <Field type="email" name="email" placeholder="Email" />
-          {touched.email && errors.email && <p>{errors.email}</p>}
-        </div>
-        <div>
-          <Field type="password" name="password" placeholder="Password" />
-          {touched.password && errors.password && <p>{errors.password}</p>}
-        </div>
-        <div>
+        <InputFieldWrapper>
+          <Label>
+            <I>
+              <MdAccountCircle />
+            </I>{' '}
+            First Name
+          </Label>
           <Field
+            as={TextInput}
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+          />
+          {touched.firstName && errors.firstName && (
+            <FormError>{errors.firstName}</FormError>
+          )}
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <Label>
+            <I>
+              <MdAccountCircle />
+            </I>{' '}
+            Last Name
+          </Label>
+          <Field
+            as={TextInput}
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+          />
+          {touched.lastName && errors.lastName && (
+            <FormError>{errors.lastName}</FormError>
+          )}
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <Label>
+            <I>
+              <MdEmail />
+            </I>{' '}
+            Email
+          </Label>
+          <Field as={TextInput} type="email" name="email" placeholder="Email" />
+          {touched.email && errors.email && (
+            <FormError>{errors.email}</FormError>
+          )}
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <Label>
+            <I>
+              <MdLock />
+            </I>{' '}
+            Password
+          </Label>
+          <Field
+            as={TextInput}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          {touched.password && errors.password && (
+            <FormError>{errors.password}</FormError>
+          )}
+        </InputFieldWrapper>
+        <InputFieldWrapper>
+          <Label>
+            <I>
+              <MdLock />
+            </I>{' '}
+            Confirm Password
+          </Label>
+          <Field
+            as={TextInput}
             type="password"
             name="passwordConfirmation"
             placeholder="Confirm Password"
           />
           {touched.passwordConfirmation && errors.passwordConfirmation && (
-            <p>{errors.passwordConfirmation}</p>
+            <FormError>{errors.passwordConfirmation}</FormError>
           )}
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
+        </InputFieldWrapper>
+        <ButtonContainer>
+          <FormButton type="submit">Submit</FormButton>
+        </ButtonContainer>
       </Form>
-    </div>
+    </FormCard>
   );
 };
 
