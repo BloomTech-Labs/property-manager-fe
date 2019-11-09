@@ -1,12 +1,21 @@
-/*---------------------------------------*/
-/*               Variables               */
-/*---------------------------------------*/
+//---------------------------------------
+//               Variables             
+//---------------------------------------
 
-// Text Imports
+// Imports
 @import url("https://fonts.googleapis.com/css?family=Baloo&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 // Theme
+// Fonts
+$heading-font: 'Baloo',
+Helvetica,
+Arial,
+sans-serif;
+$primary-font: 'Roboto',
+Helvetica,
+Arial,
+sans-serif;
 
 // Disable Highlighting
 @mixin no-select {

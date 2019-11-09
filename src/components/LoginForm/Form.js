@@ -10,12 +10,13 @@ import FormErrors from './FormErrors';
 import {
   FormButton,
   ButtonContainer,
-  FieldContainer,
   FormHeading,
-  FormLabel,
   I,
   FormFooterContainer,
-  FormFooter
+  FormFooter,
+  TextInput,
+  InputFieldWrapper,
+  Label
 } from '../UI';
 
 const validationSchema = Yup.object().shape({
@@ -40,85 +41,61 @@ export default function LoginForm({ submit }) {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
-            <FieldContainer>
-              <FormLabel htmlFor="email">
+            <InputFieldWrapper>
+              <Label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </FormLabel>
+              </Label>
               <Field
-                css={css`
-                  line-height: 2rem;
-                  font-size: 1.5rem;
-                  border: none;
-                  outline: none;
-                  border-bottom: 2px solid #2d3b4f;
-                  width: 100%;
-                  font-weight: 700;
-                  font-family: 'Roboto', sans-serif;
-                  -webkit-text-fill-color: none;
-                  margin-bottom: 0.5rem;
-                  ::placeholder {
-                    color: #66707f;
-                  }
-                `}
+                as={TextInput}
                 placeholder="Enter your email address"
                 name="email"
                 type="email"
               />
               <FormErrors touched={touched.email} message={errors.email} />
-            </FieldContainer>
-            <FieldContainer>
-              <FormLabel htmlFor="Password">
+            </InputFieldWrapper>
+            <InputFieldWrapper>
+              <Label htmlFor="Password">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Password
-              </FormLabel>
+              </Label>
               <Field
-                css={css`
-                  line-height: 2rem;
-                  font-size: 1.5rem;
-                  border: none;
-                  outline: none;
-                  border-bottom: 2px solid #2d3b4f;
-                  width: 100%;
-                  font-family: 'Roboto', sans-serif;
-                  margin-bottom: 0.5rem;
-                  ::placeholder {
-                    color: #66707f;
-                  }
-                `}
+                as={TextInput}
                 placeholder="Type your password"
                 name="password"
                 type="password"
               />
-              <Link
-                to="/iamareallyforgetfulperson"
-                css={css`
-                  color: #2d3b4f70;
-                  font-size: 0.75rem;
-                  text-decoration: none;
-                  line-height: 1rem;
-                  font-family: 'Roboto', sans-serif;
-                  font-weight: bold;
-                  align-self: flex-end;
-                  margin-top: -0.3rem;
-                `}
-              >
-                Forgot your password?
-              </Link>
               <FormErrors
                 touched={touched.password}
                 message={errors.password}
               />
-            </FieldContainer>
+            </InputFieldWrapper>
             <ButtonContainer>
               <FormButton type="submit" disabled={isSubmitting}>
                 Submit
               </FormButton>
             </ButtonContainer>
+            <Link
+              to="/iamareallyforgetfulperson"
+              css={css`
+                color: #2d3b4f70;
+                font-size: 0.85rem;
+                text-decoration: none;
+                line-height: 1rem;
+                font-weight: 400;
+                align-self: flex-end;
+                margin-top: -0.3rem;
+                text-align: center;
+                width: 100%;
+                display: block;
+              `}
+            >
+              Forgot your password?
+            </Link>
           </Form>
         )}
       </Formik>
@@ -128,11 +105,11 @@ export default function LoginForm({ submit }) {
           to="/signup"
           css={css`
             color: #2d3b4f;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-decoration: none;
             line-height: 2rem;
             font-family: 'Roboto', sans-serif;
-            font-weight: bold;
+            font-weight: 400;
           `}
         >
           Sign Up
