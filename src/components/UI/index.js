@@ -16,12 +16,19 @@ const hoverMixin = `
     box-shadow: 0 4px 8px #666;
   }
 `;
+const card = `
+  position: relative;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px #333;
+  background-color: #fff;
+  margin: 1rem;
+`;
 // ------------------------------------------------|
 // DEFINE BUTTON COMPONENTS =======================|
 // ================================================|
 export const Button = styled.button`
   border: none;
-  font-size: 100%;
   cursor: pointer;
   text-align: center;
   margin: 0 auto 1.5rem;
@@ -36,11 +43,10 @@ export const Button = styled.button`
 // ------------------------------------------------|
 // DEFINE CARD COMPONENTS =========================|
 // ================================================|
-export const Card = styled.div`
+export const HoverCard = styled.div`
   position: relative;
   border: none;
   border-radius: 2px;
-  background-color: #fff;
   margin: 1rem;
   ${hoverMixin}
 `;
@@ -49,7 +55,10 @@ export const Card = styled.div`
 // ================================================|
 // Input Field Wrapper ----------------------------|
 export const InputFieldWrapper = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: block;
@@ -59,40 +68,19 @@ export const InputFieldWrapper = styled.div`
   box-sizing: inherit;
   &:focus-within {
     label {
-      color: #26a69a;
+      color: #2d3b4f;
     }
   }
 `;
 export const FormCard = styled.div`
-  border: 3px solid #2d3b4f;
   padding: 2rem;
   margin: 2rem;
-  background: white;
   max-width: 350px;
   height: 500px;
-  border-radius: 10px;
-  position: relative;
+  ${card}
 `;
-export const FieldContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-export const FormHeading = styled.div`
-  color: #007f00;
-  font-size: 3rem;
+export const FormHeading = styled.h2`
   text-align: center;
-  margin-bottom: 0.5rem;
-  font-family: 'Baloo', cursive;
-`;
-export const FormLabel = styled.label`
-  color: #66707f;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: bold;
-  font-family: 'Baloo', cursive;
-  align-self: flex-start;
   margin-bottom: 0.5rem;
 `;
 export const FormError = styled.div`
@@ -100,7 +88,6 @@ export const FormError = styled.div`
   font-size: 1rem;
   line-height: 1.5rem;
   text-align: center;
-  font-family: 'Baloo', cursive;
 `;
 export const FormSuccess = styled.div`
   color: #007f00;
@@ -134,32 +121,21 @@ export const FormFooterContainer = styled.div`
   left: 50%;
   transform: translate(-50%);
 `;
-export const FormFooter = styled.h4`
-  font-size: 1.25rem;
+export const FormFooter = styled.p`
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  font-family: 'Roboto', sans-serif;
-  color: #66707f85;
+  color: #2d3b4f;
 `;
 // Label ------------------------------------------|
 export const Label = styled.label`
   color: #9e9e9e;
-  position: absolute;
-  top: 0;
-  left: 0;
+  font-family: 'Baloo', sans-serif;
   font-size: 1rem;
   cursor: text;
   text-align: initial;
   box-sizing: inherit;
   line-height: 1.6;
   font-weight: normal;
-  &:after {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    opacity: 0;
-  }
 `;
 // Text Input -------------------------------------|
 export const TextInput = styled.input`
@@ -170,26 +146,16 @@ export const TextInput = styled.input`
   border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;
-  height: 3rem;
+  height: 2rem;
   width: 100%;
   margin: 0 0 8px 0;
-  padding: 1rem 0 0 0;
   box-shadow: none;
-  box-sizing: content-box;
-  line-height: 1.15;
-  text-rendering: auto;
   color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
   text-align: start;
   cursor: text;
   &:focus {
-    border-bottom: 1px solid #26a69a;
-    box-shadow: 0 1px 0 0 #26a69a;
+    border-bottom: 1px solid #2d3b4f;
+    box-shadow: 0 1px 0 0 #2d3b4f;
   }
 `;
 // ------------------------------------------------|
