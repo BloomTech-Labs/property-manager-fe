@@ -17,7 +17,7 @@ import {
 
 const SignUpForm = ({ errors, touched }) => {
   return (
-    <FormCard style={{ height: '600px' }}>
+    <FormCard style={{ height: '650px' }}>
       <FormHeading>Sign Up</FormHeading>
       <Form>
         <InputFieldWrapper>
