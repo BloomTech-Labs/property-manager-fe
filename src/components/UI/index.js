@@ -113,7 +113,7 @@ export const FormCard = styled.div`
   padding: 2rem;
   margin: 2rem;
   max-width: 350px;
-  height: 500px;
+  height: auto;
   ${card}
 `;
 // ------------------------------------------------|
@@ -165,10 +165,7 @@ export const FormButton = styled.button`
 // Form Footer Container --------------------------|
 export const FormFooterContainer = styled.div`
   text-align: center;
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translate(-50%);
+  margin-top: 2rem;
 `;
 // ------------------------------------------------|
 // Form Footer ------------------------------------|

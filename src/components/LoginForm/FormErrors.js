@@ -5,7 +5,7 @@ import { FormError, FormSuccess, I } from '../UI';
 
 const Error = ({ touched, message }) => {
   if (!touched) {
-    return <FormError>&nbsp;</FormError>;
+    return null;
   }
   if (message) {
     return (
