@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 // ------------------------------------------------|
 // DEFINE STYLE VARIABLES =========================|
 // ================================================|
+// CSS Hover Animation Effect ---------------------|
 const hoverMixin = `
   box-shadow: 0 3px 6px #333;
   transition: 0.25s;
@@ -16,6 +17,8 @@ const hoverMixin = `
     box-shadow: 0 4px 8px #666;
   }
 `;
+// ------------------------------------------------|
+// Basic Card styling -----------------------------|
 const card = `
   position: relative;
   border: none;
@@ -39,7 +42,6 @@ export const Button = styled.button`
   background-color: #2d3b4f;
   ${hoverMixin}
 `;
-
 // ------------------------------------------------|
 // DEFINE CARD COMPONENTS =========================|
 // ================================================|
@@ -72,60 +74,6 @@ export const InputFieldWrapper = styled.div`
     }
   }
 `;
-export const FormCard = styled.div`
-  padding: 2rem;
-  margin: 2rem;
-  max-width: 350px;
-  height: 500px;
-  ${card}
-`;
-export const FormHeading = styled.h2`
-  text-align: center;
-  margin-bottom: 0.5rem;
-`;
-export const FormError = styled.div`
-  color: red;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  text-align: center;
-`;
-export const FormSuccess = styled.div`
-  color: #007f00;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  text-align: center;
-`;
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 0 0;
-`;
-export const FormButton = styled.button`
-  border: none;
-  font-size: 100%;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 0 1.5rem;
-  border-radius: 2px;
-  padding: 0.5rem 0.8rem;
-  font-size: 1.5rem;
-  width: 200px;
-  color: white;
-  background-color: #2d3b4f;
-  ${hoverMixin}
-`;
-export const FormFooterContainer = styled.div`
-  text-align: center;
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translate(-50%);
-`;
-export const FormFooter = styled.p`
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #2d3b4f;
-`;
 // Label ------------------------------------------|
 export const Label = styled.label`
   color: #9e9e9e;
@@ -137,6 +85,7 @@ export const Label = styled.label`
   line-height: 1.6;
   font-weight: normal;
 `;
+// ------------------------------------------------|
 // Text Input -------------------------------------|
 export const TextInput = styled.input`
   font-size: 16px;
@@ -159,8 +108,79 @@ export const TextInput = styled.input`
   }
 `;
 // ------------------------------------------------|
+// Form Card --------------------------------------|
+export const FormCard = styled.div`
+  padding: 2rem;
+  margin: 2rem;
+  max-width: 350px;
+  height: 500px;
+  ${card}
+`;
+// ------------------------------------------------|
+// Form Heading -----------------------------------|
+export const FormHeading = styled.h2`
+  text-align: center;
+  margin-bottom: 0.5rem;
+`;
+// ------------------------------------------------|
+// Form Error Msg ---------------------------------|
+export const FormError = styled.div`
+  color: red;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+`;
+// ------------------------------------------------|
+// Form Success Msg -------------------------------|
+export const FormSuccess = styled.div`
+  color: #007f00;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+`;
+// ------------------------------------------------|
+// Button Container -------------------------------|
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 0;
+`;
+// ------------------------------------------------|
+// Form Button ------------------------------------|
+export const FormButton = styled.button`
+  border: none;
+  font-size: 100%;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.5rem;
+  width: 200px;
+  color: white;
+  background-color: #2d3b4f;
+  ${hoverMixin}
+`;
+// ------------------------------------------------|
+// Form Footer Container --------------------------|
+export const FormFooterContainer = styled.div`
+  text-align: center;
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%);
+`;
+// ------------------------------------------------|
+// Form Footer ------------------------------------|
+export const FormFooter = styled.p`
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #2d3b4f;
+`;
+// ------------------------------------------------|
 // Icon Normalization =============================|
 // ================================================|
+// Icons ------------------------------------------|
 export const I = styled.span`
   border: none;
   margin: 0;
@@ -168,7 +188,10 @@ export const I = styled.span`
   font-size: 1.25rem;
   vertical-align: sub;
 `;
-// Horizontal Top Navbar
+// ------------------------------------------------|
+// Navigation Components ==========================|
+// ================================================|
+// Horizontal Top Navbar --------------------------|
 export const TopNav = styled.div`
   position: relative;
   width: 100%;
@@ -202,8 +225,8 @@ export const TopNav = styled.div`
     user-select: none;
   }
 `;
-
-// Vertical Side Navbar
+// ------------------------------------------------|
+// Vertical Side Navbar ---------------------------|
 export const SideNav = styled.div`
   height: 100%;
   width: 120px;
@@ -234,3 +257,4 @@ export const SideNav = styled.div`
     user-select: none;
   }
 `;
+// ------------------------------------------------|
