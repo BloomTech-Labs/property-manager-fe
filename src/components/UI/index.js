@@ -241,7 +241,6 @@ export const TopNav = styled.div`
 export const SideNav = styled.div`
   height: 100%;
   width: 120px;
-  position: fixed;
   top: 0;
   left: 0;
   background: #2d3b4f;

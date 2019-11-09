@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <VertNav />
-      <div>This is the Dashboard</div>
+      <h2>Dashboard</h2>
       <LoginForm />
     </div>
   );
