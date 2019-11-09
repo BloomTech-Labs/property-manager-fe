@@ -24,6 +24,16 @@ const SignUpForm = ({ errors, touched }) => {
           {touched.password && errors.password && <p>{errors.password}</p>}
         </div>
         <div>
+          <Field
+            type="password"
+            name="passwordConfirmation"
+            placeholder="Confirm Password"
+          />
+          {touched.passwordConfirmation && errors.passwordConfirmation && (
+            <p>{errors.passwordConfirmation}</p>
+          )}
+        </div>
+        <div>
           <button type="submit">Submit</button>
         </div>
       </Form>
@@ -37,7 +47,8 @@ const FormikSignUpForm = withFormik({
       firstName: firstName || '',
       lastName: lastName || '',
       email: email || '',
-      password: password || ''
+      password: password || '',
+      passwordConfirmation: ''
     };
   },
   validationSchema: Yup.object().shape({
@@ -48,7 +59,11 @@ const FormikSignUpForm = withFormik({
       .required('Email is required'),
     password: Yup.string()
       .min(8, 'Password must be 8 characters or longer')
-      .required('Password is required')
+      .required('Password is required'),
+    passwordConfirmation: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      'Passwords must match'
+    )
   })
 })(SignUpForm);
 
