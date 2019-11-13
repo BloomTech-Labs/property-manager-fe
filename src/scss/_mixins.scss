@@ -1,0 +1,28 @@
+//---------------------------------------
+//                Mixins                 
+//---------------------------------------
+
+// Disable Highlighting
+@mixin no-select {
+  user-select: none;
+}
+
+// Button Normalization
+@mixin reset-btn {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+// Debug
+@mixin db($color) {
+  background: $color !important;
+  background-color: $color !important;
+}
