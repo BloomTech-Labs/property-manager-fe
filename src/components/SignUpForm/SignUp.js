@@ -2,7 +2,7 @@
 import React from 'react';
 import { withFormik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { MdAccountCircle, MdEmail, MdLock } from 'react-icons/md';
+import { MdAccountCircle, MdEmail, MdLock, MdError } from 'react-icons/md';
 import {
   FormButton,
   ButtonContainer,
@@ -17,7 +17,7 @@ import {
 
 const SignUpForm = ({ errors, touched }) => {
   return (
-    <FormCard style={{ height: '650px' }}>
+    <FormCard>
       <FormHeading>Sign Up</FormHeading>
       <Form>
         <InputFieldWrapper>
@@ -31,10 +31,15 @@ const SignUpForm = ({ errors, touched }) => {
             as={TextInput}
             type="text"
             name="firstName"
-            placeholder="First Name"
+            placeholder="Enter your first name"
           />
           {touched.firstName && errors.firstName && (
-            <FormError>{errors.firstName}</FormError>
+            <FormError>
+              <I>
+                <MdError />
+              </I>{' '}
+              {errors.firstName}
+            </FormError>
           )}
         </InputFieldWrapper>
         <InputFieldWrapper>
@@ -48,10 +53,15 @@ const SignUpForm = ({ errors, touched }) => {
             as={TextInput}
             type="text"
             name="lastName"
-            placeholder="Last Name"
+            placeholder="Enter your last name"
           />
           {touched.lastName && errors.lastName && (
-            <FormError>{errors.lastName}</FormError>
+            <FormError>
+              <I>
+                <MdError />
+              </I>{' '}
+              {errors.lastName}
+            </FormError>
           )}
         </InputFieldWrapper>
         <InputFieldWrapper>
@@ -61,9 +71,19 @@ const SignUpForm = ({ errors, touched }) => {
             </I>{' '}
             Email
           </Label>
-          <Field as={TextInput} type="email" name="email" placeholder="Email" />
+          <Field
+            as={TextInput}
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+          />
           {touched.email && errors.email && (
-            <FormError>{errors.email}</FormError>
+            <FormError>
+              <I>
+                <MdError />
+              </I>{' '}
+              {errors.email}
+            </FormError>
           )}
         </InputFieldWrapper>
         <InputFieldWrapper>
@@ -77,10 +97,15 @@ const SignUpForm = ({ errors, touched }) => {
             as={TextInput}
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter your password"
           />
           {touched.password && errors.password && (
-            <FormError>{errors.password}</FormError>
+            <FormError>
+              <I>
+                <MdError />
+              </I>{' '}
+              {errors.password}
+            </FormError>
           )}
         </InputFieldWrapper>
         <InputFieldWrapper>
@@ -94,10 +119,15 @@ const SignUpForm = ({ errors, touched }) => {
             as={TextInput}
             type="password"
             name="passwordConfirmation"
-            placeholder="Confirm Password"
+            placeholder="Reenter your password"
           />
           {touched.passwordConfirmation && errors.passwordConfirmation && (
-            <FormError>{errors.passwordConfirmation}</FormError>
+            <FormError>
+              <I>
+                <MdError />
+              </I>{' '}
+              {errors.passwordConfirmation}
+            </FormError>
           )}
         </InputFieldWrapper>
         <ButtonContainer>
