@@ -7,9 +7,12 @@
 // Variables
 @import './variables';
 
+// Mixins
+@import './mixins';
+
 // Globals
 @import './global';
 
 // Views
-@import './LandingPage';
-@import './Dashboard';
+@import './views/LandingPage';
+@import './views/Dashboard';
