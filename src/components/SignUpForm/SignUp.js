@@ -20,7 +20,7 @@ const SignUpForm = ({ errors, touched }) => {
     <FormCard>
       <FormHeading>Sign Up</FormHeading>
       <Form>
-        <InputFieldWrapper>
+        {/* <InputFieldWrapper>
           <Label>
             <I>
               <MdAccountCircle />
@@ -63,7 +63,7 @@ const SignUpForm = ({ errors, touched }) => {
               {errors.lastName}
             </FormError>
           )}
-        </InputFieldWrapper>
+        </InputFieldWrapper> */}
         <InputFieldWrapper>
           <Label>
             <I>
