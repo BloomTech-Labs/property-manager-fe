@@ -9,8 +9,6 @@ import Contact from './views/Contact';
 const App = () => {
   return (
     <div className="App">
-      <h1 className="test">Ready</h1>
-
       <Router>
         <LandingPage path="/" />
         <Landlord path="/landlord" />

@@ -1,11 +1,15 @@
-/* RESET */
+// Imports
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai|Roboto:300,400,500&display=swap');
+
+// RESET
 @import './reset';
 
-/* Variables */
+// Variables
 @import './variables';
 
-/* Globals */
+// Globals
 @import './global';
 
-/* Views */
+// Views
 @import './LandingPage';
+@import './Dashboard';
