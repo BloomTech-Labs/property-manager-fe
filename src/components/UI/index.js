@@ -19,8 +19,8 @@ const hoverMixin = `
 `;
 // ------------------------------------------------|
 // Basic Card styling -----------------------------|
-const card = `
-  position: relative;
+const card = position => `
+  position: ${position || 'relative'};
   border: none;
   border-radius: 2px;
   box-shadow: 0 3px 6px #333;
@@ -111,10 +111,13 @@ export const TextInput = styled.input`
 // Form Card --------------------------------------|
 export const FormCard = styled.div`
   padding: 2rem;
-  margin: 2rem;
-  max-width: 350px;
+  min-width: 350px;
   height: auto;
-  ${card}
+  z-index: 2;
+  left: 50%;
+  top: 100%;
+  translate: transform(-50%, -50%);
+  ${card('absolute')}
 `;
 // ------------------------------------------------|
 // Form Heading -----------------------------------|

@@ -38,6 +38,6 @@ test('should submit the login form', async () => {
   // Assert
   await wait(() => {
     expect(handleSubmit).toHaveBeenCalledTimes(1);
-    // expect(handleSubmit).toHaveBeenCalledWith(testUser);
+    expect(handleSubmit).toHaveBeenCalledWith(testUser);
   });
 });
