@@ -8,8 +8,6 @@ import Landlord from './views/Landlord';
 import Tenant from './views/Tenant';
 import Features from './views/Features';
 import Contact from './views/Contact';
-import Dashboard from './views/Dashboard';
-import { HorNav } from './components/navigation';
 
 const App = () => {
   return (

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { TopNav, SideNav } from './UI/index';
 import {Link} from '@reach/router'
 import logo from '../assets/img/logo100.png';
-import LoginForm from '../components/LoginForm/LoginForm'
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 
