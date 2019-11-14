@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import LoginForm from '../../components/LoginForm/Form';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 test('should submit the login form', async () => {
   // Arrange
@@ -38,6 +38,6 @@ test('should submit the login form', async () => {
   // Assert
   await wait(() => {
     expect(handleSubmit).toHaveBeenCalledTimes(1);
-    // expect(handleSubmit).toHaveBeenCalledWith(testUser);
+    expect(handleSubmit).toHaveBeenCalledWith(testUser);
   });
 });

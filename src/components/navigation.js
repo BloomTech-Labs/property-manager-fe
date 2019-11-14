@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TopNav, SideNav } from './UI/index';
 import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
+import LoginForm from './LoginForm/LoginForm';
 
 export const HorNav = () => {
+  const [show, setShow] = useState();
+
   return (
     <TopNav>
       <ul>
@@ -15,10 +18,11 @@ export const HorNav = () => {
         </a>
         <a href="#features">Features and Pricing</a>
         <a href="#contact">Contact</a>
-        <a href="/dash">
+        <button type="button" onClick={() => setShow(!show)}>
           <Avi width={25} height={25} name="avatar" />
-        </a>
+        </button>
       </ul>
+      {show ? <LoginForm submit={console.log} /> : null}
     </TopNav>
   );
 };
