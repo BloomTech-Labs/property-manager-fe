@@ -7,8 +7,6 @@ const LandingPage = () => {
   return (
     <div>
       <div>This is the Landing Page</div>
-      <LoginForm submit={console.log} />
-      <TrailWord text="text" />
     </div>
   );
 };

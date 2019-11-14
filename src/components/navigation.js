@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TopNav, SideNav } from './UI/index';
 import {Link} from '@reach/router'
 import logo from '../assets/img/logo100.png';
+import LoginForm from '../components/LoginForm/LoginForm'
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 
 export const HorNav = () => {
+  const [show, setShow] = useState(false)
   return (
     <TopNav>
       <ul>
@@ -16,10 +18,11 @@ export const HorNav = () => {
         </Link>
         <Link to ="/features">Features and Pricing</Link>
         <Link to ="/contact">Contact</Link>
-        <Link to ="/dash">
+        <button type = 'button' onClick = {() => setShow(!show)}>
           <Avi width={25} height={25} name="avatar" />
-        </Link>
+        </button>
       </ul>
+      {show ? <LoginForm submit = {console.log} /> : null}
     </TopNav>
   );
 };
