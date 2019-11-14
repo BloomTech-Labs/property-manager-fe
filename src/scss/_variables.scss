@@ -1,12 +1,22 @@
 //---------------------------------------
-//               Variables             
+//               Variables               
 //---------------------------------------
 
 // Imports
-@import url("https://fonts.googleapis.com/css?family=Baloo&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Baloo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-// Theme
+//---------------------------------------
+//                 Theme                 
+//---------------------------------------
+
+// Colors
+$deep-blue: #2d3b4f;
+$pewter: #66707f;
+$shadow: #555;
+$fern: #76e276;
+$emerald: #007f00;
+
 // Fonts
 $heading-font: 'Baloo',
 Helvetica,
@@ -16,36 +26,3 @@ $primary-font: 'Roboto',
 Helvetica,
 Arial,
 sans-serif;
-
-// Disable Highlighting
-@mixin no-select {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-}
-
-// Button Normalization
-@mixin reset-btn {
-    border: none;
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    font: inherit;
-    color: inherit;
-    vertical-align: baseline;
-    overflow: visible;
-    background: transparent;
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-    -webkit-appearance: inherit;
-    cursor: pointer;
-}
-
-// Debug
-@mixin db($color) {
-    background-color: $color !important;
-    background: $color !important;
-}
