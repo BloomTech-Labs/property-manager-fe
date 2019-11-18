@@ -1,11 +1,13 @@
 import React from 'react';
-import TrailWord from '../animations/TrailWord';
 
 const LandingPage = () => {
   return (
-    <div>
-      <div>This is the Landing Page</div>
-      <TrailWord text="text" />
+    <div className="landingPage">
+      <div className="landingContent">
+        <h2>PropMan</h2>
+        <h1>Property management doesn't have to be hard.</h1>
+        <button>Get Started</button>
+      </div>
     </div>
   );
 };
