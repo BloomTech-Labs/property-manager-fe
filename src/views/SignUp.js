@@ -5,7 +5,7 @@ import { HorNav } from '../components/navigation';
 
 const SignUp = () => {
   return (
-    <div className = 'signUpPage'>
+    <div className="signUpPage">
       <HorNav />
       <div>This is the Registration Page</div>
       <SignUpForm submit={console.log} />

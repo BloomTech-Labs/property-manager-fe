@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from '@reach/router';
-import {HorNav} from './components/navigation'
+import { HorNav } from './components/navigation';
 import LandingPage from './views/LandingPage';
 import Dashboard from './views/Dashboard';
 import SignUp from './views/SignUp';
