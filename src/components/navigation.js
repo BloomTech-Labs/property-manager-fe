@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import { TopNav, SideNav } from './UI/index';
 import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
+import { auth } from '../store/actions';
+
+const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
 export const HorNav = () => {
   const [show, setShow] = useState();
+  const dispatch = useDispatch();
+
+  const login = useCallback(
+    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    [dispatch]
+  );
 
   return (
     <TopNav>
@@ -23,7 +33,7 @@ export const HorNav = () => {
           <Avi width={25} height={25} name="avatar" />
         </button>
       </ul>
-      {show ? <LoginForm submit={console.log} /> : null}
+      {show ? <LoginForm submit={login} /> : null}
     </TopNav>
   );
 };

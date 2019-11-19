@@ -119,6 +119,14 @@ export const FormCard = styled.div`
   translate: transform(-50%, -50%);
   ${card('absolute')}
 `;
+
+export const FormCardAlt = styled.div`
+  padding: 2rem;
+  min-width: 350px;
+  height: auto;
+  z-index: 2;
+  ${card('absolute')}
+`;
 // ------------------------------------------------|
 // Form Heading -----------------------------------|
 export const FormHeading = styled.h2`
