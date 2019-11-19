@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import SignUpForm from '../../components/SignUpForm/SignUp';
 
 test('should submit the login form', async () => {
   // Arrange
@@ -11,17 +11,21 @@ test('should submit the login form', async () => {
   //  Set up a test user object which will contain fields matching form to be tested
   const testUser = {
     email: 'testuser@test.com',
-    password: 'iamtestingthisform'
+    password: 'iamtestingthisform',
+    passwordConfirmation: 'iamtestingthisform'
   };
 
   // Get your selectors and render the component you wish to test, pass in any fake functions or props
   const { getByPlaceholderText, getByTestId } = render(
-    <LoginForm submit={handleSubmit} />
+    <SignUpForm submit={handleSubmit} />
   );
 
   // Use your selectors to select the field nodes needed to fill out the form
   const emailNode = getByPlaceholderText('Enter your email address');
-  const passwordNode = getByPlaceholderText('Type your password');
+  const passwordNode = getByPlaceholderText('Enter your password');
+  const passwordConfirmationNode = getByPlaceholderText(
+    'Re-enter your password'
+  );
   const formNode = getByTestId('form-element');
 
   // Act
@@ -29,6 +33,9 @@ test('should submit the login form', async () => {
   // Set the value of these nodes to the values from your object
   fireEvent.change(emailNode, { target: { value: testUser.email } });
   fireEvent.change(passwordNode, { target: { value: testUser.password } });
+  fireEvent.change(passwordConfirmationNode, {
+    target: { value: testUser.passwordConfirmation }
+  });
 
   // Fire off the event by clicking on the submit button
   fireEvent.submit(formNode);
