@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import SignUpForm from '../components/SignUpForm/SignUp';
-import TrailWord from '../animations/TrailWord';
-import { HorNav } from '../components/navigation';
+import { auth } from '../store/actions';
+
+const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
+  const signupFn = useCallback(
+    ({ email, password }) => dispatch(signup(email, password)),
+    [dispatch]
+  );
+
   return (
     <div className="signUpPage">
-      <HorNav />
       <div>This is the Registration Page</div>
-      <SignUpForm submit={console.log} />
-      <TrailWord text="text" />
+      <SignUpForm submit={signupFn} />
     </div>
   );
 };
