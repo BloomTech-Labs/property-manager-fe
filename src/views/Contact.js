@@ -71,7 +71,7 @@ export default class Contact extends Component {
             </label>
           </div>
           <div className="form-btns">
-            <ButtonAlt>Send</ButtonAlt>
+            <button type="button">Send</button>
           </div>
         </form>
         <div className="contactInfo">
