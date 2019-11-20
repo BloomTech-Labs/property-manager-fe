@@ -12,7 +12,7 @@ const Features = () => {
           ante eu pretium placerat, nunc libero euismod lectus, nec mollis odio
           eros vitae lorem. Nulla sed luctus tellus. Nullam t risus.
         </p>
-        <button>BUTTON</button>
+        <button type="button">BUTTON</button>
       </div>
       <div className="middleFeature">
         <img src={profilePlaceholder} alt="profile" width="100" />
@@ -23,7 +23,7 @@ const Features = () => {
           placerat, nunc libero euismod lectus, nec mex. Aliquam ante velit,
           sagittis nec urna eget, ultrices volutpat risus.
         </p>
-        <button>BUTTON</button>
+        <button type="button">BUTTON</button>
       </div>
       <div className="outerFeature">
         <img src={profilePlaceholder} alt="profile" width="100" />
@@ -33,7 +33,7 @@ const Features = () => {
           et consectetur ex. Aliquam ante velit, sagittis nec urna eget,
           ultrices volutpat risus.
         </p>
-        <button>BUTTON</button>
+        <button type="button">BUTTON</button>
       </div>
     </div>
   );
