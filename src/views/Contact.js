@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
-import { ButtonAlt } from './index';
 
 // icons import
 import emailIcon from '../assets/img/WhiteEmail.png';
