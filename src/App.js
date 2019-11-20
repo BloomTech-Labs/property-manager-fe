@@ -8,22 +8,27 @@ import Landlord from './views/Landlord';
 import Tenant from './views/Tenant';
 import Features from './views/Features';
 import Contact from './views/Contact';
+import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
+
+setDefaultBreakpoints([{ mobile: 480 }, { tablet: 769 }, { desktop: 1025 }]);
 
 const App = () => {
   return (
-    <div className="App">
-      <HorNav />
-      <Router>
-        <LandingPage path="/" />
-        <Dashboard path="/dash" />
-        <SignUp path="/signup" />
-        <Landlord path="/landlord" />
-        <Tenant path="/tenant" />
-        <Features path="/features" />
-        <Contact path="/contact" />
-        <Dashboard path="/dashboard" />
-      </Router>
-    </div>
+    <BreakpointProvider>
+      <div className="App">
+        <HorNav />
+        <Router>
+          <LandingPage path="/" />
+          <Dashboard path="/dash" />
+          <SignUp path="/signup" />
+          <Landlord path="/landlord" />
+          <Tenant path="/tenant" />
+          <Features path="/features" />
+          <Contact path="/contact" />
+          <Dashboard path="/dashboard" />
+        </Router>
+      </div>
+    </BreakpointProvider>
   );
 };
 
