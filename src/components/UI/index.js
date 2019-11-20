@@ -206,8 +206,7 @@ export const TopNav = styled.div`
   height: 3rem;
   left: 0px;
   top: 0px;
-  border-bottom: 2px solid rgba(44, 58, 79, 0.5);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px #333;
   background: #ffffff;
   text-align: center;
   display: flex;
@@ -218,15 +217,22 @@ export const TopNav = styled.div`
     justify-content: center;
     align-items: center;
   }
-  button {
+  .modal-btn {
     border: none;
     background: #ffffff;
+    padding: 0 1.2rem;
+  }
+  .avatar {
+    color: #555;
+    &:hover {
+      color: #2d3b4f;
+    }
   }
   a {
-    padding: 14px 14px;
+    padding: 0 1.2rem;
     font-size: 18px;
     line-height: 28px;
-    color: #454a4d;
+    color: #555;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     -webkit-touch-callout: none;
@@ -235,6 +241,9 @@ export const TopNav = styled.div`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    &:hover {
+      color: #2d3b4f;
+    }
   }
 `;
 // ------------------------------------------------|
