@@ -8,6 +8,7 @@ import Landlord from './views/Landlord';
 import Tenant from './views/Tenant';
 import Features from './views/Features';
 import Contact from './views/Contact';
+import ThankYou from './views/ThankYou';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Features path="/features" />
         <Contact path="/contact" />
         <Dashboard path="/dashboard" />
+        <ThankYou path="/thanks" />
       </Router>
     </div>
   );
