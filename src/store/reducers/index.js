@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   isLoading: true,
+  isLoggedIn: false,
   errorMessage: null
 };
 
@@ -23,7 +24,8 @@ export default function reducer(
     case AUTH_REQUEST_SUCCESS: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        isLoggedIn: true
       };
     }
 

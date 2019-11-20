@@ -218,6 +218,10 @@ export const TopNav = styled.div`
     justify-content: center;
     align-items: center;
   }
+  button {
+    border: none;
+    background: #ffffff;
+  }
   a {
     padding: 14px 14px;
     font-size: 18px;
