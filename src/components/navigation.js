@@ -6,6 +6,7 @@ import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
+import bars from '../assets/img/bars.svg';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
