@@ -1,11 +1,16 @@
 import React from 'react';
-import TrailWord from '../animations/TrailWord';
+import { navigate } from '@reach/router';
 
 const LandingPage = () => {
   return (
-    <div>
-      <div>This is the Landing Page</div>
-      <TrailWord text="text" />
+    <div className="landingPage">
+      <div className="landingContent">
+        <h2>PropMan</h2>
+        <h1>Property management doesn&apos;t have to be hard.</h1>
+        <button type="button" onClick={() => navigate('/signup')}>
+          Get Started
+        </button>
+      </div>
     </div>
   );
 };

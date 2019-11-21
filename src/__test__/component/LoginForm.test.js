@@ -27,9 +27,7 @@ test('should submit the login form', async () => {
   // Act
 
   // Set the value of these nodes to the values from your object
-  // emailNode.value = testUser.email;
   fireEvent.change(emailNode, { target: { value: testUser.email } });
-  // passwordNode.value = testUser.password;
   fireEvent.change(passwordNode, { target: { value: testUser.password } });
 
   // Fire off the event by clicking on the submit button

@@ -2,13 +2,14 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import { navigate } from '@reach/router';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
 import {
   FormButton,
   ButtonContainer,
   InputFieldWrapper,
   FormHeading,
-  FormCard,
+  FormCardAlt,
   FormError,
   TextInput,
   Label,
@@ -37,12 +38,16 @@ const SignUpForm = ({ submit }) => {
         passwordConfirmation: ''
       }}
       validationSchema={validationSchema}
-      onSubmit={values => submit(values)}
+      onSubmit={values =>
+        submit(values)
+          .then(() => navigate('/dashboard'))
+          .catch(err => console.error(err))
+      }
     >
-      {({ handleSubmit, touched, errors }) => (
-        <FormCard>
+      {({ touched, errors }) => (
+        <FormCardAlt>
           <FormHeading>Sign Up</FormHeading>
-          <Form onSubmit={handleSubmit}>
+          <Form data-testid="form-element">
             <InputFieldWrapper>
               <Label>
                 <I>
@@ -98,7 +103,7 @@ const SignUpForm = ({ submit }) => {
                 as={TextInput}
                 type="password"
                 name="passwordConfirmation"
-                placeholder="Reenter your password"
+                placeholder="Re-enter your password"
               />
               {touched.passwordConfirmation && errors.passwordConfirmation && (
                 <FormError>
@@ -113,7 +118,7 @@ const SignUpForm = ({ submit }) => {
               <FormButton type="submit">Submit</FormButton>
             </ButtonContainer>
           </Form>
-        </FormCard>
+        </FormCardAlt>
       )}
     </Formik>
   );

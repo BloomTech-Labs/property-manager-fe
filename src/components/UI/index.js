@@ -107,6 +107,26 @@ export const TextInput = styled.input`
     box-shadow: 0 1px 0 0 #2d3b4f;
   }
 `;
+export const TextAreaInput = styled.input`
+  font-size: 16px;
+  overflow: visible;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 10rem;
+  width: 100%;
+  margin: 0 0 8px 0;
+  box-shadow: none;
+  color: initial;
+  text-align: start;
+  cursor: text;
+  &:focus {
+    border-bottom: 1px solid #2d3b4f;
+    box-shadow: 0 1px 0 0 #2d3b4f;
+  }
+`;
 // ------------------------------------------------|
 // Form Card --------------------------------------|
 export const FormCard = styled.div`
@@ -117,6 +137,14 @@ export const FormCard = styled.div`
   left: 50%;
   top: 100%;
   translate: transform(-50%, -50%);
+  ${card('absolute')}
+`;
+
+export const FormCardAlt = styled.div`
+  padding: 2rem;
+  min-width: 350px;
+  height: auto;
+  z-index: 2;
   ${card('absolute')}
 `;
 // ------------------------------------------------|
@@ -209,6 +237,10 @@ export const TopNav = styled.div`
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+  }
+  button {
+    border: none;
+    background: #ffffff;
   }
   a {
     padding: 14px 14px;
