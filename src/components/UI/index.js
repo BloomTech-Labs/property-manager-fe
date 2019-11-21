@@ -238,7 +238,6 @@ export const TopNav = styled.div`
     align-items: center;
   }
   .modal-btn {
-    border: none;
     background: #ffffff;
     padding: 0 1.2rem;
   }
