@@ -23,7 +23,7 @@ export const HorNav = () => {
 
   return (
     <div className="nav">
-      <Breakpoint desktop up>
+      <Breakpoint desktop only>
         <TopNav>
           <ul>
             <Link to="/">Home</Link>
@@ -41,8 +41,36 @@ export const HorNav = () => {
           {show ? <LoginForm submit={login} /> : null}
         </TopNav>
       </Breakpoint>
-      <Breakpoint tablet only />
-      <Breakpoint mobile down />
+      <Breakpoint tablet only>
+        <TopNav>
+          <ul>
+            <Link to="/landlord">Landlords</Link>
+            <Link to="/tenant">Renters</Link>
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+            <Link to="/features">Features and Pricing</Link>
+            <Link to="/contact">Contact</Link>
+            <button type="button" onClick={() => setShow(!show)}>
+              <Avi width={25} height={25} name="avatar" />
+            </button>
+          </ul>
+          {show ? <LoginForm submit={login} /> : null}
+        </TopNav>
+      </Breakpoint>
+      <Breakpoint mobile only>
+        <TopNav>
+          <ul>
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+            <button type="button" onClick={() => setShow(!show)}>
+              <Avi width={25} height={25} name="avatar" />
+            </button>
+          </ul>
+          {show ? <LoginForm submit={login} /> : null}
+        </TopNav>
+      </Breakpoint>
     </div>
   );
 };
