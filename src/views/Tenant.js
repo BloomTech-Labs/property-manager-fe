@@ -1,7 +1,12 @@
 import React from 'react';
+import WorkorderForm from '../components/WorkorderForm/index';
 
 const Tenant = () => {
-  return <div>Tenant</div>;
+  return (
+    <div>
+      <WorkorderForm />
+    </div>
+  );
 };
 
 export default Tenant;
