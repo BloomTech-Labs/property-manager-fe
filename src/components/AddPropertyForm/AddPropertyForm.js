@@ -91,7 +91,7 @@ export default function AddPropertyForm({ submit }) {
               <Label htmlForm="city">City</Label>
               <Field
                 as={TextInput}
-                placeholder="Apartment, suite, unit, building, floor, etc."
+                placeholder="City"
                 name="city"
                 type="text"
               />
