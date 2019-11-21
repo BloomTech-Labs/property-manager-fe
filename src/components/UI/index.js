@@ -297,4 +297,75 @@ export const SideNav = styled.div`
     user-select: none;
   }
 `;
-// ------------------------------------------------|
+// ================================================|
+// Nav Burger -------------------------------------|
+export const NavBurger = styled.button`
+  position: absolute;
+  top: 10%;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: black;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+`;
+// ================================================|
+// Burger Menu ------------------------------------|
+export const BurgerMenu = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateY(0)' : 'translateY(-100%)'};
+
+  a {
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    font-weight: bold;
+    line-height: 28px;
+    color: #454a4d;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: color 0.3s linear;
+  }
+
+  button {
+    border: none;
+    background: #ffffff;
+  }
+`;
