@@ -1,19 +1,19 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
-import { TopNav, SideNav } from './UI/index';
+import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
 import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
 import { Breakpoint } from 'react-socks';
-import bars from '../assets/img/bars.svg';
+import { bool, func } from 'prop-types';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
 export const HorNav = () => {
   const [show, setShow] = useState();
-  const [isOpen, toggleOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const login = useCallback(
@@ -43,7 +43,7 @@ export const HorNav = () => {
       </Breakpoint>
       <Breakpoint tablet only>
         <TopNav>
-        <ul>
+          <ul>
             <Link to="/landlord">Landlords</Link>
             <Link to="/tenant">Renters</Link>
             <Link to="/">
@@ -60,15 +60,8 @@ export const HorNav = () => {
       </Breakpoint>
       <Breakpoint mobile only>
         <TopNav>
-        <ul>
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
-            <button type="button" onClick={() => setShow(!show)}>
-              <Avi width={25} height={25} name="avatar" />
-            </button>
-          </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          <Burger isOpen={isOpen} setOpen={setOpen} />
+          <BurgerNav isOpen={isOpen} setOpen={setOpen} />
         </TopNav>
       </Breakpoint>
     </div>
@@ -90,4 +83,45 @@ export const VertNav = () => {
       </ul>
     </SideNav>
   );
+};
+
+export const Burger = ({ isOpen, setOpen }) => {
+  return (
+    <NavBurger isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
+      <div />
+      <div />
+      <div />
+    </NavBurger>
+  );
+};
+Burger.propTypes = {
+  open: bool.isRequired,
+  setOpen: func.isRequired
+};
+
+export const BurgerNav = ({ isOpen }) => {
+  const [show, setShow] = useState();
+  const dispatch = useDispatch();
+
+  const login = useCallback(
+    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    [dispatch]
+  );
+
+  return (
+    <BurgerMenu isOpen={isOpen}>
+      <Link to="/">Home</Link>
+      <Link to="/landlord">Landlords</Link>
+      <Link to="/tenant">Renters</Link>
+      <Link to="/features">Features and Pricing</Link>
+      <Link to="/contact">Contact</Link>
+      <button type="button" onClick={() => setShow(!show)}>
+        <Avi width={25} height={25} name="avatar" />
+      </button>
+    </BurgerMenu>
+  );
+};
+
+BurgerNav.propTypes = {
+  isOpen: bool.isRequired
 };
