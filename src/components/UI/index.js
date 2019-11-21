@@ -224,8 +224,6 @@ export const TopNav = styled.div`
   position: relative;
   width: 100%;
   height: 3rem;
-  left: 0px;
-  top: 0px;
   box-shadow: 0 3px 6px #333;
   background: #ffffff;
   text-align: center;
@@ -300,28 +298,34 @@ export const SideNav = styled.div`
 // ================================================|
 // Nav Burger -------------------------------------|
 export const NavBurger = styled.button`
-  position: absolute;
-  top: 10%;
-  right: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 2rem;
-  height: 2rem;
+  height: 100%;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 10;
-
+  align-self: flex-end;
+  margin-right: 1rem;
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    div {
+      background: #2d3b4f;
+    }
   }
 
   div {
     width: 2rem;
     height: 0.25rem;
-    background: black;
+    margin: 0.15rem;
+    background: #555;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
