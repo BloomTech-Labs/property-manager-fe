@@ -9,7 +9,10 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const signupFn = useCallback(
-    ({ email, password }) => dispatch(signup(email, password)),
+    ({ email, password }) =>
+      dispatch(signup(email, password))
+        .then(() => navigate('/dashboard'))
+        .catch(err => console.error(err)),
     [dispatch]
   );
 

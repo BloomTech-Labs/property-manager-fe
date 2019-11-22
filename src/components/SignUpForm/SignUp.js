@@ -38,11 +38,7 @@ const SignUpForm = ({ submit }) => {
         passwordConfirmation: ''
       }}
       validationSchema={validationSchema}
-      onSubmit={values =>
-        submit(values)
-          .then(() => navigate('/dashboard'))
-          .catch(err => console.error(err))
-      }
+      onSubmit={values => submit(values)}
     >
       {({ touched, errors }) => (
         <FormCardAlt>

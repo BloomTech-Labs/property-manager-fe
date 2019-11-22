@@ -15,7 +15,7 @@ test('should submit the add property form', async () => {
       address1: '123 Easy Street',
       address2: 'ww',
       city: 'Prop Town',
-      zip: '12345',
+      zip: 12345,
       state: 'Dakiowa'
     }
   };
@@ -48,7 +48,9 @@ test('should submit the add property form', async () => {
   });
   fireEvent.change(cityNode, { target: { value: testProperty.address.city } });
   fireEvent.change(zipNode, { target: { value: testProperty.address.zip } });
-  fireEvent.change(stateNode, { target: { value: testProperty.address.name } });
+  fireEvent.change(stateNode, {
+    target: { value: testProperty.address.state }
+  });
 
   // Fire off the event by clicking on the submit button
   fireEvent.submit(formNode);

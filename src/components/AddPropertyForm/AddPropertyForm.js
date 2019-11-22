@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 /** @jsx jsx */
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, getIn } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormErrors from '../LoginForm/FormErrors';
@@ -27,14 +27,14 @@ const validationSchema = Yup.object().shape({
     city: Yup.string()
       .max(50, 'City entered was too long')
       .required('Must enter a city'),
-    zip: Yup.number()
+    zip: Yup.string()
       .min(5, 'Must enter 5-digit zip code')
       .max(5, 'Must enter 5-digit zip code')
       .required('Must enter a 5-digit zip code'),
     state: Yup.string()
       .max(50, 'State entered was too long')
       .required('Must enter the state')
-  }).required('Must enter an address')
+  })
 });
 
 export default function AddPropertyForm({ submit }) {
@@ -59,63 +59,72 @@ export default function AddPropertyForm({ submit }) {
                 name="name"
                 type="text"
               />
-              <FormErrors touched={touched.name} message={errors.name} />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlForm="address1">Address Line 1</Label>
+              <Label htmlFor="address.address1">Address Line 1</Label>
               <Field
                 as={TextInput}
                 placeholder="Street address"
-                name="address1"
+                name="address.address1"
                 type="text"
               />
               <FormErrors
-                touched={touched.address1}
-                message={errors.address1}
+                touched={touched.address && touched.address.address1}
+                message={errors.address && errors.address.address1}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlForm="address2">Address Line 2</Label>
+              <Label htmlFor="address.address2">Address Line 2</Label>
               <Field
                 as={TextInput}
                 placeholder="Apartment, suite, unit, building, floor, etc."
-                name="address2"
+                name="address.address2"
                 type="text"
               />
               <FormErrors
-                touched={touched.address2}
-                message={errors.address2}
+                touched={touched.address && touched.address.address2}
+                message={errors.address && errors.address.address2}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlForm="city">City</Label>
+              <Label htmlFor="address.city">City</Label>
               <Field
                 as={TextInput}
                 placeholder="City"
-                name="city"
+                name="address.city"
                 type="text"
               />
-              <FormErrors touched={touched.city} message={errors.city} />
+              <FormErrors
+                touched={touched.address && touched.address.city}
+                message={errors.address && errors.address.city}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlForm="zip">Zip Code</Label>
+              <Label htmlFor="address.zip">Zip Code</Label>
               <Field
                 as={TextInput}
                 placeholder="Enter a 5-digit Zip Code"
-                name="zip"
+                name="address.zip"
                 type="number"
               />
-              <FormErrors touched={touched.zip} message={errors.zip} />
+
+              <FormErrors
+                touched={touched.address && touched.address.zip}
+                message={errors.address && errors.address.zip}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlForm="state">State</Label>
+              <Label htmlFor="address.state">State</Label>
               <Field
                 as={TextInput}
                 placeholder="State"
-                name="state"
+                name="address.state"
                 type="text"
               />
-              <FormErrors touched={touched.state} message={errors.state} />
+              <FormErrors
+                touched={touched.address && touched.address.state}
+                message={errors.address && errors.address.state}
+              />
             </InputFieldWrapper>
             <ButtonContainer>
               <FormButton type="submit" disabled={isSubmitting}>
