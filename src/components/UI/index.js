@@ -325,7 +325,8 @@ export const NavBurger = styled.button`
 
     :nth-child(2) {
       opacity: ${({ isOpen }) => (isOpen ? '0' : '1')};
-      transform: ${({ isOpen }) => (isOpen ? 'translateX(20px)' : 'translateX(0)')};
+      transform: ${({ isOpen }) =>
+        isOpen ? 'translateX(20px)' : 'translateX(0)'};
     }
 
     :nth-child(3) {

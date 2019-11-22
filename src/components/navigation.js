@@ -122,6 +122,7 @@ export const BurgerNav = ({ isOpen }) => {
       <button type="button" onClick={() => setShow(!show)}>
         <Avi width={25} height={25} name="avatar" />
       </button>
+      {show ? <LoginForm submit={login}/> : null}
     </BurgerMenu>
   );
 };
