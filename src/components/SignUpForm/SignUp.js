@@ -2,7 +2,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { navigate } from '@reach/router';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
 import {
   FormButton,

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 /** @jsx jsx */
-import { Formik, Field, Form, getIn } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormErrors from '../LoginForm/FormErrors';
