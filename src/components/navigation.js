@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
@@ -8,12 +8,16 @@ import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
+import { useOnClickOutside } from '../hooks/index';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
 export const HorNav = () => {
   const [show, setShow] = useState();
   const [isOpen, setOpen] = useState(false);
+  const node = useRef();
+
+  useOnClickOutside(node, () => setOpen(false));
   const dispatch = useDispatch();
 
   const login = useCallback(
@@ -59,7 +63,7 @@ export const HorNav = () => {
         </TopNav>
       </Breakpoint>
       <Breakpoint mobile only>
-        <TopNav>
+        <TopNav ref={node}>
           <Burger isOpen={isOpen} setOpen={setOpen} />
           <BurgerNav isOpen={isOpen} setOpen={setOpen} />
         </TopNav>
