@@ -58,7 +58,7 @@ export const HorNav = () => {
           {show ? <LoginForm submit={login} /> : null}
         </TopNav>
       </Breakpoint>
-      <Breakpoint mobile down>
+      <Breakpoint mobile only>
         <TopNav>
           <Burger isOpen={isOpen} setOpen={setOpen} />
           <BurgerNav isOpen={isOpen} setOpen={setOpen} />

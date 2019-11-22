@@ -10,7 +10,7 @@ import Features from './views/Features';
 import Contact from './views/Contact';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 
-setDefaultBreakpoints([{ mobile: 480 }, { tablet: 769 }, { desktop: 1025 }]);
+setDefaultBreakpoints([{ mobile: 400 }, { tablet: 769 }, { desktop: 1025 }]);
 
 const App = () => {
   return (
