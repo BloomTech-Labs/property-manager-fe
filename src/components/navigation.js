@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
@@ -93,6 +93,7 @@ export const VertNav = () => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 export const Burger = ({ isOpen, setOpen }) => {
   return (
     <NavBurger isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
@@ -103,6 +104,7 @@ export const Burger = ({ isOpen, setOpen }) => {
   );
 };
 Burger.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
   open: bool.isRequired,
   setOpen: func.isRequired
 };
@@ -111,6 +113,7 @@ export const BurgerNav = ({ isOpen }) => {
   const [show, setShow] = useState();
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line no-unused-vars
   const login = useCallback(
     ({ email, password }) => dispatch(dispatchLogin(email, password)),
     [dispatch]

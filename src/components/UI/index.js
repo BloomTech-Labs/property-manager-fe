@@ -324,8 +324,7 @@ export const NavBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    margin: 0.15rem;
-    background: #555;
+    background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
