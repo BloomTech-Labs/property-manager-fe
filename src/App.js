@@ -10,7 +10,7 @@ import Tenant from './views/Tenant';
 import Features from './views/Features';
 import Contact from './views/Contact';
 
-setDefaultBreakpoints([{ mobile: 480 }, { tablet: 769 }, { desktop: 1025 }]);
+setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
 const App = () => {
   return (
