@@ -1,13 +1,13 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
+import { Breakpoint } from 'react-socks';
+import { bool, func } from 'prop-types';
 import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
 import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
-import { Breakpoint } from 'react-socks';
-import { bool, func } from 'prop-types';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
@@ -85,6 +85,7 @@ export const VertNav = () => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 export const Burger = ({ isOpen, setOpen }) => {
   return (
     <NavBurger isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
@@ -95,6 +96,7 @@ export const Burger = ({ isOpen, setOpen }) => {
   );
 };
 Burger.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
   open: bool.isRequired,
   setOpen: func.isRequired
 };
@@ -103,6 +105,7 @@ export const BurgerNav = ({ isOpen }) => {
   const [show, setShow] = useState();
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line no-unused-vars
   const login = useCallback(
     ({ email, password }) => dispatch(dispatchLogin(email, password)),
     [dispatch]
