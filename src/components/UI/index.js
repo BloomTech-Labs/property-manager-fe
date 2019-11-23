@@ -132,7 +132,6 @@ export const TextAreaInput = styled.input`
 export const FormCard = styled.div`
   padding: 2rem;
   min-width: 350px;
-  height: auto;
   z-index: 2;
   left: 50%;
   top: 100%;
@@ -245,7 +244,7 @@ export const TopNav = styled.div`
       color: #2d3b4f;
     }
   }
-  a {
+  ul > a {
     padding: 0 1.2rem;
     font-size: 18px;
     line-height: 28px;
