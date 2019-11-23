@@ -312,7 +312,7 @@ export const NavBurger = styled.button`
 
   div {
     width: 2rem;
-    height: .25rem;
+    height: 0.25rem;
     background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
@@ -334,13 +334,14 @@ export const BurgerMenu = styled.nav`
   position: absolute;
   top: 0;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) => isOpen ? 'translateY(0)' : 'translateY(-100%)'};
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateY(0)' : 'translateY(-100%)'};
 
   a {
     text-transform: uppercase;
     padding: 2rem 0;
     font-size: 2rem;
-    letter-spacing: .5rem;
+    letter-spacing: 0.5rem;
     font-weight: bold;
     line-height: 28px;
     color: #454a4d;

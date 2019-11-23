@@ -69,9 +69,9 @@ const WorkorderForm = ({ submit }) => {
             <InputFieldWrapper>
               <Label>Is this the first occurrence?</Label>
               <br />
-              <input type="radio" name="occurrence" value="Yes" checked /> Yes
+              <Field type="radio" name="occurrence" value="Yes" checked /> Yes
               <br />
-              <input type="radio" name="occurrence" value="female" /> No
+              <Field type="radio" name="occurrence" value="No" /> No
               <br />
             </InputFieldWrapper>
             <InputFieldWrapper>
@@ -86,9 +86,9 @@ const WorkorderForm = ({ submit }) => {
             <InputFieldWrapper>
               <Label>Preferred Repair Time</Label>
               <br />
-              <input type="radio" name="RepairTime" value="8am-12pm" /> 8am-12pm
+              <Field type="radio" name="RepairTime" value="8am-12pm" /> 8am-12pm
               <br />
-              <input type="radio" name="RepairTime" value="12pm-4pm" /> 12pm-4pm
+              <Field type="radio" name="RepairTime" value="12pm-4pm" /> 12pm-4pm
               <br />
             </InputFieldWrapper>
             <ButtonContainer>
