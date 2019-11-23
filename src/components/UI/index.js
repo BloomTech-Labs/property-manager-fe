@@ -224,10 +224,7 @@ export const TopNav = styled.div`
   position: relative;
   width: 100%;
   height: 3rem;
-  left: 0px;
-  top: 0px;
-  border-bottom: 2px solid rgba(44, 58, 79, 0.5);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px #333;
   background: #ffffff;
   text-align: center;
   display: flex;
@@ -238,15 +235,21 @@ export const TopNav = styled.div`
     justify-content: center;
     align-items: center;
   }
-  button {
-    border: none;
+  .modal-btn {
     background: #ffffff;
+    padding: 0 1.2rem;
+  }
+  .avatar {
+    color: #555;
+    &:hover {
+      color: #2d3b4f;
+    }
   }
   a {
-    padding: 14px 14px;
+    padding: 0 1.2rem;
     font-size: 18px;
     line-height: 28px;
-    color: #454a4d;
+    color: #555;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     -webkit-touch-callout: none;
@@ -255,6 +258,9 @@ export const TopNav = styled.div`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    &:hover {
+      color: #2d3b4f;
+    }
   }
 `;
 // ------------------------------------------------|
@@ -292,28 +298,34 @@ export const SideNav = styled.div`
 // ================================================|
 // Nav Burger -------------------------------------|
 export const NavBurger = styled.button`
-  position: absolute;
-  top: 10%;
-  right: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 2rem;
-  height: 2rem;
+  height: 100%;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 10;
-
+  align-self: flex-end;
+  margin-right: 1rem;
   &:focus {
     outline: none;
   }
 
+  &:hover {
+    div {
+      background: #2d3b4f;
+    }
+  }
+
   div {
     width: 2rem;
-    height: .25rem;
-    background: black;
+    height: 0.25rem;
+    margin: 0.15rem;
+    background: #555;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -334,13 +346,14 @@ export const BurgerMenu = styled.nav`
   position: absolute;
   top: 0;
   transition: transform 0.3s ease-in-out;
-  transform: ${({ isOpen }) => isOpen ? 'translateY(0)' : 'translateY(-100%)'};
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateY(0)' : 'translateY(-100%)'};
 
   a {
     text-transform: uppercase;
     padding: 2rem 0;
     font-size: 2rem;
-    letter-spacing: .5rem;
+    letter-spacing: 0.5rem;
     font-weight: bold;
     line-height: 28px;
     color: #454a4d;
