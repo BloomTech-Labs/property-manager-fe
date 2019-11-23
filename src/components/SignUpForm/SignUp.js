@@ -2,7 +2,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { navigate } from '@reach/router';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
 import {
   FormButton,
@@ -38,11 +37,7 @@ const SignUpForm = ({ submit }) => {
         passwordConfirmation: ''
       }}
       validationSchema={validationSchema}
-      onSubmit={values =>
-        submit(values)
-          .then(() => navigate('/dashboard'))
-          .catch(err => console.error(err))
-      }
+      onSubmit={values => submit(values)}
     >
       {({ touched, errors }) => (
         <FormCardAlt>

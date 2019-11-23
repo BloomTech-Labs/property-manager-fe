@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router } from '@reach/router';
+import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 import { HorNav } from './components/navigation';
 import LandingPage from './views/LandingPage';
 import Dashboard from './views/Dashboard';
@@ -8,7 +9,6 @@ import Landlord from './views/Landlord';
 import Tenant from './views/Tenant';
 import Features from './views/Features';
 import Contact from './views/Contact';
-import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 
 setDefaultBreakpoints([{ mobile: 400 }, { tablet: 769 }, { desktop: 1025 }]);
 
