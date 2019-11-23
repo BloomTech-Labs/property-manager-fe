@@ -221,8 +221,9 @@ export const I = styled.span`
 // ================================================|
 // Horizontal Top Navbar --------------------------|
 export const TopNav = styled.div`
-  position: relative;
+  position: fixed;
   width: 100%;
+  min-width: 100vw;
   height: 3rem;
   box-shadow: 0 3px 6px #333;
   background: #ffffff;
@@ -308,7 +309,7 @@ export const NavBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  z-index: 15;
   align-self: flex-end;
   margin-right: 1rem;
   &:focus {
@@ -324,6 +325,7 @@ export const NavBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
+    margin: 0.2rem;
     background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
@@ -357,6 +359,7 @@ export const BurgerMenu = styled.nav`
   text-align: center;
   padding: 2rem;
   position: absolute;
+  z-index: 10;
   top: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isOpen }) =>

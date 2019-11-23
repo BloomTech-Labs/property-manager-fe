@@ -8,8 +8,6 @@ import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
-import { Breakpoint } from 'react-socks';
-import { bool, func } from 'prop-types';
 import { useOnClickOutside } from '../hooks/index';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
@@ -75,7 +73,9 @@ export const HorNav = () => {
       <Breakpoint mobile only>
         <TopNav ref={node}>
           <Burger isOpen={isOpen} setOpen={setOpen} />
-          <BurgerNav isOpen={isOpen} setOpen={setOpen} />
+          <div style={{ position: 'relative' }}>
+            <BurgerNav isOpen={isOpen} setOpen={setOpen} />
+          </div>
         </TopNav>
       </Breakpoint>
     </div>
@@ -115,7 +115,7 @@ Burger.propTypes = {
   setOpen: func.isRequired
 };
 
-export const BurgerNav = ({ isOpen }) => {
+export const BurgerNav = ({ isOpen, setOpen }) => {
   const [show, setShow] = useState();
   const dispatch = useDispatch();
 
@@ -127,15 +127,24 @@ export const BurgerNav = ({ isOpen }) => {
 
   return (
     <BurgerMenu isOpen={isOpen}>
-      <Link to="/">Home</Link>
-      <Link to="/landlord">Landlords</Link>
-      <Link to="/tenant">Renters</Link>
-      <Link to="/features">Features and Pricing</Link>
-      <Link to="/contact">Contact</Link>
-      <button type="button" onClick={() => setShow(!show)}>
-        <Avi width={25} height={25} name="avatar" />
-      </button>
-      {show ? <LoginForm submit={login}/> : null}
+      <Link to="/" onClick={() => setOpen(!isOpen)}>
+        Home
+      </Link>
+      <Link to="/landlord" onClick={() => setOpen(!isOpen)}>
+        Landlords
+      </Link>
+      <Link to="/tenant" onClick={() => setOpen(!isOpen)}>
+        Renters
+      </Link>
+      <Link to="/features" onClick={() => setOpen(!isOpen)}>
+        Features and Pricing
+      </Link>
+      <Link to="/contact" onClick={() => setOpen(!isOpen)}>
+        Contact
+      </Link>
+      <Link to="/login" onClick={() => setOpen(!isOpen)}>
+        Login
+      </Link>
     </BurgerMenu>
   );
 };
