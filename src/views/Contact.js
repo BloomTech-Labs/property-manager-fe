@@ -41,55 +41,57 @@ export default class Contact extends Component {
     const { name, email, message } = this.state;
     return (
       <div className="contactPage">
-        <form className="cm-form" onSubmit={this.handleSubmit}>
-          <h1>Contact Me</h1>
-          <div className="form-elements">
-            <label>
-              <div>Your Name: </div>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              <div>Your Email: </div>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              <div>Message: </div>
-              <textarea
-                name="message"
-                value={message}
-                rows="4"
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
-          <div className="form-btns">
-            <button type="button">Send</button>
-          </div>
-        </form>
-        <div className="contactInfo">
-          <h3>ACME, THE HI-FI PROTOTYPING COMPANY</h3>
-          <div className="contactType">
-            <img src={emailIcon} alt="email" width="25px" />
-            <h3>acme.info@2mail.com</h3>
-          </div>
-          <div className="contactType">
-            <img src={phoneIcon} alt="phone" width="25px" />
-            <h3>+0 000-000-0000</h3>
-          </div>
-          <h3 className="followUs">FOLLOW US</h3>
-          <div className="contactIcons">
-            <img src={facebookIcon} alt="fb" width="35px" />
-            <img src={twitterIcon} alt="twitter" width="35px" />
+        <div className="contactStuff">
+          <form className="cm-form" onSubmit={this.handleSubmit}>
+            <h1>Contact Me</h1>
+            <div className="form-elements">
+              <label>
+                <div>Your Name: </div>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                <div>Your Email: </div>
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                <div>Message: </div>
+                <textarea
+                  name="message"
+                  value={message}
+                  rows="4"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <div className="form-btns">
+              <button type="button">Send</button>
+            </div>
+          </form>
+          <div className="contactInfo">
+            <h3>ACME, THE HI-FI PROTOTYPING COMPANY</h3>
+            <div className="contactType">
+              <img src={emailIcon} alt="email" width="25px" />
+              <h3>acme.info@2mail.com</h3>
+            </div>
+            <div className="contactType">
+              <img src={phoneIcon} alt="phone" width="25px" />
+              <h3>+0 000-000-0000</h3>
+            </div>
+            <h3 className="followUs">FOLLOW US</h3>
+            <div className="contactIcons">
+              <img src={facebookIcon} alt="fb" width="35px" />
+              <img src={twitterIcon} alt="twitter" width="35px" />
+            </div>
           </div>
         </div>
       </div>

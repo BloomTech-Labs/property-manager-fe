@@ -1,43 +1,51 @@
 .landingPage {
-    display: flex;
     color: white;
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;   
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
     background-image: linear-gradient(rgba(5, 58, 156, 0.8), rgba(2, 126, 33, 0.9)), url('../../assets/img/home-real-estate-106399.jpg');
-    height: 93.7vh;
+    height: 100vh;
+    width: 100%;
+    min-width: 100vw;
 
-    h2 {
-        font-size: 3em;
+    .landingContent {
+        padding-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 300px;
+        margin: 0 auto;
+        height: calc(100% - 150px);
+
+        .centered {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            text-align: center;
+            border-top: 2px rgba(255, 255, 255, 0.11) solid;
+            color: rgb(224, 255, 230);
+            font-size: 1.8em;
+            margin: 15px 0 25px 0;
+            padding-top: 15px;
+        }
+
+        button {
+            background: none;
+            border: solid rgba(255, 255, 255, 0.815) 2px;
+            border-radius: 2px;
+            font-family: 'Alatsi', sans-serif;
+            color: rgba(255, 255, 255, 0.788);
+            padding: 8px 25px;
+            font-size: 1em;
+        }
     }
 
-    h1 {
-        text-align: center;
-        border-top: 2px rgba(255, 255, 255, 0.11) solid;
-        color: rgb(224, 255, 230);
-        font-size: 1.8em;
-        margin: 15px 0 25px 0;
-        padding-top: 15px;
-
-    }
-
-    button {
-        background: none;
-        border: solid rgba(255, 255, 255, 0.815) 2px;
-        border-radius: 2px;
-        font-family: 'Alatsi', sans-serif;
-        color: rgba(255, 255, 255, 0.788);
-        padding: 8px 25px;
-        font-size: 1em;
-
-    }
 }
-
-.landingContent {
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    align-items: center;
-}
-
