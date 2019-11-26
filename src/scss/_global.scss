@@ -64,3 +64,16 @@ button {
   background: none;
   cursor: pointer;
 }
+
+a {
+  color: #333;
+  text-decoration: none;
+
+  &:hover {
+    color: #2D3B4f;
+  }
+}
+
+form {
+  overflow: visible;
+}
