@@ -144,7 +144,6 @@ export const FormCardAlt = styled.div`
   padding: 2rem;
   min-width: 350px;
   height: auto;
-  z-index: 2;
   ${card('absolute')}
 `;
 // ------------------------------------------------|
