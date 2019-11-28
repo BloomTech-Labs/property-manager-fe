@@ -16,14 +16,14 @@ import {
 } from '../UI';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
+  propertyName: Yup.string()
     .max(255, 'Name entered was too long')
     .required('Must enter a Property Name'),
-  address: Yup.object({
-    address1: Yup.string()
+  propertyAddress: Yup.object({
+    street: Yup.string()
       .max(255, 'Address entered was too long')
       .required('Must enter a street address'),
-    address2: Yup.string().max(255, 'Address entered was too long'),
+    street2: Yup.string().max(255, 'Address entered was too long'),
     city: Yup.string()
       .max(50, 'City entered was too long')
       .required('Must enter a city'),
@@ -33,7 +33,10 @@ const validationSchema = Yup.object().shape({
       .required('Must enter a 5-digit zip code'),
     state: Yup.string()
       .max(50, 'State entered was too long')
-      .required('Must enter the state')
+      .required('Must enter the state'),
+    country: Yup.string()
+      .max(255, 'Country entered was too long')
+      .required('Must enter a country')
   })
 });
 
@@ -44,86 +47,126 @@ export default function AddPropertyForm({ submit }) {
       <Formik
         validationSchema={validationSchema}
         initialValues={{
-          name: '',
-          address: { address1: '', address2: '', city: '', zip: '', state: '' }
+          propertyName: '',
+          propertyAddress: {
+            street: '',
+            street2: '',
+            city: '',
+            zip: '',
+            state: '',
+            country: ''
+          }
         }}
         onSubmit={values => submit(values)}
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <InputFieldWrapper>
-              <Label htmlFor="name">Property Name</Label>
+              <Label htmlFor="propertyName">Property Name</Label>
               <Field
                 as={TextInput}
                 placeholder="Enter a name for your Property"
-                name="name"
+                name="propertyName"
                 type="text"
+              />
+              <FormErrors
+                touched={touched.propertyName}
+                message={errors.propertyName}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlFor="address.address1">Address Line 1</Label>
+              <Label htmlFor="propertyAddress.street">Address Line 1</Label>
               <Field
                 as={TextInput}
                 placeholder="Street address"
-                name="address.address1"
+                name="propertyAddress.street"
                 type="text"
               />
               <FormErrors
-                touched={touched.address && touched.address.address1}
-                message={errors.address && errors.address.address1}
+                touched={
+                  touched.propertyAddress && touched.propertyAddress.street
+                }
+                message={
+                  errors.propertyAddress && errors.propertyAddress.street
+                }
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlFor="address.address2">Address Line 2</Label>
+              <Label htmlFor="propertyAddress.street2">Address Line 2</Label>
               <Field
                 as={TextInput}
                 placeholder="Apartment, suite, unit, building, floor, etc."
-                name="address.address2"
+                name="propertyAddress.street2"
                 type="text"
               />
               <FormErrors
-                touched={touched.address && touched.address.address2}
-                message={errors.address && errors.address.address2}
+                touched={
+                  touched.propertyAddress && touched.propertyAddress.street2
+                }
+                message={
+                  errors.propertyAddress && errors.propertyAddress.street2
+                }
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlFor="address.city">City</Label>
+              <Label htmlFor="propertyAddress.city">City</Label>
               <Field
                 as={TextInput}
                 placeholder="City"
-                name="address.city"
+                name="propertyAddress.city"
                 type="text"
               />
               <FormErrors
-                touched={touched.address && touched.address.city}
-                message={errors.address && errors.address.city}
+                touched={
+                  touched.propertyAddress && touched.propertyAddress.city
+                }
+                message={errors.propertyAddress && errors.propertyAddress.city}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlFor="address.zip">Zip Code</Label>
+              <Label htmlFor="propertyAddress.zip">Zip Code</Label>
               <Field
                 as={TextInput}
                 placeholder="Enter a 5-digit Zip Code"
-                name="address.zip"
+                name="propertyAddress.zip"
                 type="number"
               />
 
               <FormErrors
-                touched={touched.address && touched.address.zip}
-                message={errors.address && errors.address.zip}
+                touched={touched.propertyAddress && touched.propertyAddress.zip}
+                message={errors.propertyAddress && errors.propertyAddress.zip}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label htmlFor="address.state">State</Label>
+              <Label htmlFor="propertyAddress.state">State</Label>
               <Field
                 as={TextInput}
                 placeholder="State"
-                name="address.state"
+                name="propertyAddress.state"
                 type="text"
               />
               <FormErrors
-                touched={touched.address && touched.address.state}
-                message={errors.address && errors.address.state}
+                touched={
+                  touched.propertyAddress && touched.propertyAddress.state
+                }
+                message={errors.propertyAddress && errors.propertyAddress.state}
+              />
+            </InputFieldWrapper>
+            <InputFieldWrapper>
+              <Label htmlFor="propertyAddress.country">Country</Label>
+              <Field
+                as={TextInput}
+                placeholder="Country"
+                name="propertyAddress.country"
+                type="text"
+              />
+              <FormErrors
+                touched={
+                  touched.propertyAddress && touched.propertyAddress.country
+                }
+                message={
+                  errors.propertyAddress && errors.propertyAddress.country
+                }
               />
             </InputFieldWrapper>
             <ButtonContainer>
