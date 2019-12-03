@@ -7,17 +7,7 @@ import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from './FormErrors';
-import {
-  ButtonContainer,
-  FormHeading,
-  I,
-  FormFooterContainer,
-  FormFooter,
-  TextInput,
-  InputFieldWrapper,
-  Label,
-  FormCard
-} from '../UI';
+import { I, FormFooterContainer, FormFooter } from '../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,8 +22,8 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit }) {
   return (
-    <FormCard>
-      <FormHeading>Login</FormHeading>
+    <div className="form-card">
+      <h2 className="form-heading">Login</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ email: '', password: '' }}
@@ -41,30 +31,28 @@ export default function LoginForm({ submit }) {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
-            <InputFieldWrapper>
-              <Label htmlFor="email">
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 placeholder="Enter your email address"
                 name="email"
                 type="email"
               />
               <FormErrors touched={touched.email} message={errors.email} />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="Password">
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="Password">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 placeholder="Type your password"
                 name="password"
                 type="password"
@@ -73,8 +61,8 @@ export default function LoginForm({ submit }) {
                 touched={touched.password}
                 message={errors.password}
               />
-            </InputFieldWrapper>
-            <ButtonContainer>
+            </div>
+            <div className="submit-btn-wrapper">
               <button
                 className="btn btn-animated"
                 type="submit"
@@ -82,8 +70,9 @@ export default function LoginForm({ submit }) {
               >
                 Submit
               </button>
-            </ButtonContainer>
-            <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
+
+              <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
+            </div>
           </Form>
         )}
       </Formik>
@@ -91,6 +80,6 @@ export default function LoginForm({ submit }) {
         <FormFooter>Don&apos;t have an account?</FormFooter>
         <Link to="/signup">Sign Up</Link>
       </FormFooterContainer>
-    </FormCard>
+    </div>
   );
 }
