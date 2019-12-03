@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
 import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
-import logo from '../assets/img/logo100.png';
+import logo from '../assets/img/logo.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
@@ -26,28 +26,40 @@ export const HorNav = () => {
   );
 
   return (
-    <div className="nav">
+    <>
       <Breakpoint desktop only>
-        <TopNav>
+        <nav className="nav-top">
           <ul>
-            <Link to="/">Home</Link>
-            <Link to="/landlord">Landlords</Link>
-            <Link to="/tenant">Renters</Link>
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
-            <Link to="/features">Features and Pricing</Link>
-            <Link to="/contact">Contact</Link>
-            <button
-              className="modal-btn"
-              type="button"
-              onClick={() => setShow(!show)}
-            >
-              <Avi className="avatar" width={25} height={25} name="avatar" />
-            </button>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/landlord">Landlords</Link>
+            </li>
+            <li>
+              <Link to="/tenant">Renters</Link>
+            </li>
+            <li>
+              <img className="nav-logo" src={logo} alt="logo" />
+            </li>
+            <li>
+              <Link to="/features">Features and Pricing</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <button
+                className="modal-btn"
+                type="button"
+                onClick={() => setShow(!show)}
+              >
+                <Avi className="avatar" width={25} height={25} name="avatar" />
+              </button>
+            </li>
           </ul>
           {show ? <LoginForm submit={login} /> : null}
-        </TopNav>
+        </nav>
       </Breakpoint>
       <Breakpoint tablet only>
         <TopNav>
@@ -78,7 +90,7 @@ export const HorNav = () => {
           </div>
         </TopNav>
       </Breakpoint>
-    </div>
+    </>
   );
 };
 

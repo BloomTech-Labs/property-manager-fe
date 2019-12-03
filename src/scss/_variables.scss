@@ -1,11 +1,11 @@
 //---------------------------------------
 //               Variables               
 //---------------------------------------
-
 // Imports
 @import url('https://fonts.googleapis.com/css?family=Baloo&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+
 //---------------------------------------
 //                 Theme                 
 //---------------------------------------
@@ -13,9 +13,13 @@
 // Colors
 $deep-blue: #2d3b4f;
 $pewter: #66707f;
-$shadow: #555;
+$gray: #555;
 $fern: #76e276;
 $emerald: #007f00;
+$shadow: #333;
+$hover-shadow: #777;
+$active-shadow: #666;
+$white: #fff;
 
 // Fonts
 $heading-font: 'Baloo',
@@ -26,3 +30,19 @@ $primary-font: 'Roboto',
 Helvetica,
 Arial,
 sans-serif;
+
+// Box Shadow - hover and active are for transition effects
+$box-shadow: 0 3px 6px $shadow;
+$box-shadow-hover: 0 6px 10px $hover-shadow;
+$box-shadow-active: 0 4px 8px $active-shadow;
+
+// Components
+// Buttons
+$btn-primary: $deep-blue;
+$btn-text-primary: $white;
+
+// Nav
+
+// Text Colors
+$nav-text: $gray;
+$nav-text-hover: $deep-blue;

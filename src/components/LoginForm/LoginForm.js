@@ -8,7 +8,6 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from './FormErrors';
 import {
-  FormButton,
   ButtonContainer,
   FormHeading,
   I,
@@ -76,23 +75,20 @@ export default function LoginForm({ submit }) {
               />
             </InputFieldWrapper>
             <ButtonContainer>
-              <FormButton type="submit" disabled={isSubmitting}>
+              <button
+                className="btn btn-animated"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Submit
-              </FormButton>
+              </button>
             </ButtonContainer>
             <Link
               to="/iamareallyforgetfulperson"
               css={css`
                 color: #2d3b4f70;
                 font-size: 0.85rem;
-                text-decoration: none;
-                line-height: 1rem;
-                font-weight: 400;
-                align-self: flex-end;
-                margin-top: -0.3rem;
                 text-align: center;
-                width: 100%;
-                display: block;
               `}
             >
               Forgot your password?

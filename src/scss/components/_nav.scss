@@ -1,0 +1,48 @@
+.nav-top {
+  box-shadow: $box-shadow;
+  overflow: initial;
+  position: fixed;
+  width: 100%;
+  background: $white;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 5rem;
+
+  .nav-logo {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li {
+    display: flex;
+  }
+
+  li>a {
+    padding: 0 1.2rem;
+    font-size: 18px;
+    line-height: 28px;
+    color: $nav-text;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    user-select: none;
+
+    &:hover {
+      color: $nav-text-hover;
+    }
+  }
+
+  .avatar {
+    color: $nav-text;
+
+    &:hover {
+      color: $nav-text-hover;
+    }
+  }
+}
