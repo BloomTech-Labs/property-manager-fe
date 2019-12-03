@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
-import SignUpForm from '../components/SignUpForm/SignUp';
-import { auth } from '../store/actions';
+import SignUpForm from '../../components/SignUpForm/SignUp';
+import { auth } from '../../store/actions';
 
 const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 

@@ -2,13 +2,13 @@ import React, { useCallback } from 'react';
 
 // UI Components
 import { useDispatch } from 'react-redux';
-import { VertNav } from '../components/navigation';
+import { VertNav } from '../../components/navigation';
 
 // Add Property Form
-import AddPropertyForm from '../components/AddPropertyForm/AddPropertyForm';
+import AddPropertyForm from '../../components/AddPropertyForm/AddPropertyForm';
 
 // Redux imports
-import { createProperty } from '../store/actions';
+import { createProperty } from '../../store/actions';
 
 const dispatchAddProperty = createProperty(
   'https://pt6-propman.herokuapp.com/api/properties'

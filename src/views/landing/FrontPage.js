@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 
-const LandingPage = () => {
+const FrontPage = () => {
   return (
     <div className="landingPage">
       <div className="landingContent">
@@ -17,4 +17,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default FrontPage;

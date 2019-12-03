@@ -4,10 +4,10 @@
 import React, { Component } from 'react';
 
 // icons import
-import emailIcon from '../assets/img/WhiteEmail.png';
-import phoneIcon from '../assets/img/WhitePhone.png';
-import facebookIcon from '../assets/img/WhiteFacebook.png';
-import twitterIcon from '../assets/img/WhiteTwitter.png';
+import emailIcon from '../../assets/img/WhiteEmail.png';
+import phoneIcon from '../../assets/img/WhitePhone.png';
+import facebookIcon from '../../assets/img/WhiteFacebook.png';
+import twitterIcon from '../../assets/img/WhiteTwitter.png';
 
 // ---------- Styles ---------- //
 
