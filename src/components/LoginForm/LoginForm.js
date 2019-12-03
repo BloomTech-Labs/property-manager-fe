@@ -3,7 +3,7 @@
 /** @jsx jsx */
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { css, jsx } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from './FormErrors';
@@ -83,34 +83,13 @@ export default function LoginForm({ submit }) {
                 Submit
               </button>
             </ButtonContainer>
-            <Link
-              to="/iamareallyforgetfulperson"
-              css={css`
-                color: #2d3b4f70;
-                font-size: 0.85rem;
-                text-align: center;
-              `}
-            >
-              Forgot your password?
-            </Link>
+            <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
           </Form>
         )}
       </Formik>
       <FormFooterContainer>
         <FormFooter>Don&apos;t have an account?</FormFooter>
-        <Link
-          to="/signup"
-          css={css`
-            color: #2d3b4f;
-            font-size: 1.2rem;
-            text-decoration: none;
-            line-height: 2rem;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-          `}
-        >
-          Sign Up
-        </Link>
+        <Link to="/signup">Sign Up</Link>
       </FormFooterContainer>
     </FormCard>
   );
