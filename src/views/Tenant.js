@@ -3,7 +3,7 @@ import WorkorderForm from '../components/WorkorderForm/index';
 
 const Tenant = () => {
   return (
-    <div>
+    <div className="renterView">
       <WorkorderForm />
     </div>
   );

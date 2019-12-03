@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Landlord = () => {
-  return <div>Landlord</div>;
+  return <div className="landlordView">Landlord</div>;
 };
 
 export default Landlord;
