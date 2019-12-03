@@ -6,7 +6,6 @@ import {
   ButtonContainer,
   InputFieldWrapper,
   FormHeading,
-  FormCardAlt,
   TextInput,
   Label
 } from '../UI';
@@ -33,7 +32,7 @@ const WorkorderForm = ({ submit }) => {
       onSubmit={values => submit(values)}
     >
       {({ handleSubmit }) => (
-        <FormCardAlt>
+        <div className="form-card">
           <FormHeading>Maintenance Work Request Form</FormHeading>
           <Form onSubmit={handleSubmit}>
             <InputFieldWrapper>
@@ -95,7 +94,7 @@ const WorkorderForm = ({ submit }) => {
               <FormButton type="submit">Submit</FormButton>
             </ButtonContainer>
           </Form>
-        </FormCardAlt>
+        </div>
       )}
     </Formik>
   );

@@ -8,7 +8,6 @@ import {
   ButtonContainer,
   InputFieldWrapper,
   FormHeading,
-  FormCardAlt,
   FormError,
   TextInput,
   Label,
@@ -40,7 +39,7 @@ const SignUpForm = ({ submit }) => {
       onSubmit={values => submit(values)}
     >
       {({ touched, errors }) => (
-        <FormCardAlt>
+        <div className="form-card">
           <FormHeading>Sign Up</FormHeading>
           <Form data-testid="form-element">
             <InputFieldWrapper>
@@ -113,7 +112,7 @@ const SignUpForm = ({ submit }) => {
               <FormButton type="submit">Submit</FormButton>
             </ButtonContainer>
           </Form>
-        </FormCardAlt>
+        </div>
       )}
     </Formik>
   );

@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit }) {
   return (
-    <div className="form-card">
+    <div className="form-card-absolute">
       <h2 className="form-heading">Login</h2>
       <Formik
         validationSchema={validationSchema}

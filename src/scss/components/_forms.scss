@@ -1,12 +1,18 @@
 .form-card {
   @include cardify;
   background: $white;
+  padding: 2rem;
+}
+
+.form-card-absolute {
+  @include cardify;
+  background: $white;
   position: absolute;
   padding: 2rem;
+  min-width: 350px;
   left: 50%;
   top: 100%;
   margin: 1rem;
-  min-width: 350px;
 }
 
 .form-heading {
