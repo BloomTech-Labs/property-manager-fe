@@ -24,9 +24,15 @@
 
   li {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  li>a {
+  .logo-link {
+    display: flex;
+  }
+
+  .nav-link {
     padding: 0 1.2rem;
     font-size: 18px;
     line-height: 28px;

@@ -32,22 +32,34 @@ export const HorNav = () => {
         <nav className="nav-top">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/landlord">Landlords</Link>
+              <Link className="nav-link" to="/landlord">
+                Landlords
+              </Link>
             </li>
             <li>
-              <Link to="/tenant">Renters</Link>
+              <Link className="nav-link" to="/tenant">
+                Renters
+              </Link>
             </li>
             <li>
-              <img className="nav-logo" src={logo} alt="logo" />
+              <Link className="logo-link" to="/">
+                <img className="nav-logo" src={logo} alt="logo" />
+              </Link>
             </li>
             <li>
-              <Link to="/features">Features and Pricing</Link>
+              <Link className="nav-link" to="/features">
+                Features and Pricing
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link className="nav-link" to="/contact">
+                Contact
+              </Link>
             </li>
             <li>
               <button
