@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
@@ -58,7 +59,14 @@ export const HorNav = () => {
               </button>
             </li>
           </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          {show ? (
+            <FocusOn
+              onClickOutside={() => setShow(!show)}
+              onEscapeKey={() => setShow(!show)}
+            >
+              <LoginForm submit={login} />
+            </FocusOn>
+          ) : null}
         </nav>
       </Breakpoint>
       <Breakpoint tablet only>
@@ -128,7 +136,7 @@ Burger.propTypes = {
 };
 
 export const BurgerNav = ({ isOpen, setOpen }) => {
-  const [show, setShow] = useState();
+  // const [show, setShow] = useState();
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
@@ -162,5 +170,6 @@ export const BurgerNav = ({ isOpen, setOpen }) => {
 };
 
 BurgerNav.propTypes = {
-  isOpen: bool.isRequired
+  isOpen: bool.isRequired,
+  setOpen: func.isRequired
 };
