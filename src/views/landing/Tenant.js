@@ -1,12 +1,7 @@
 import React from 'react';
-import WorkorderForm from '../../components/WorkorderForm/index';
 
 const Tenant = () => {
-  return (
-    <div className="renterView">
-      <WorkorderForm />
-    </div>
-  );
+  return <div className="renterView" />;
 };
 
 export default Tenant;

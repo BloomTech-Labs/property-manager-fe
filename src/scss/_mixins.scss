@@ -2,6 +2,21 @@
 //                Mixins                 
 //---------------------------------------
 
+
+// Landing Page Height Mixins
+@mixin landing-bg($url) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-image: $bg-gradient, url($url);
+}
+
+@mixin nav-adjust($padding: $nav-height, $height: $nav-vh-calc) {
+  padding-top: $padding;
+  min-height: $height;
+}
+
 // Button Mixin
 @mixin button($bg: $btn-primary, $color: $btn-text-primary) {
   background-color: $bg;

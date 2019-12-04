@@ -5,10 +5,10 @@ import { HorNav } from '../../components/navigation';
 
 const LandingPage = props => {
   return (
-    <>
+    <div className="landing-container">
       <HorNav />
       {props.children}
-    </>
+    </div>
   );
 };
 

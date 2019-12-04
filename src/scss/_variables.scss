@@ -20,6 +20,7 @@ $shadow: #333;
 $hover-shadow: #777;
 $active-shadow: #666;
 $white: #fff;
+$bg-gradient: linear-gradient(rgba(5, 58, 156, 0.8), rgba(2, 126, 33, 0.9));
 
 // Fonts
 $heading-font: 'Baloo',
@@ -47,3 +48,11 @@ $btn-text-primary: $white;
 // Text Colors
 $nav-text: $gray;
 $nav-text-hover: $deep-blue;
+
+//---------------------------------------
+//              Dimensions               
+//---------------------------------------
+// navbar height
+$nav-height: 80px;
+// calc 100vh height accounting for nav height
+$nav-vh-calc: calc(100vh - #{$nav-height});
