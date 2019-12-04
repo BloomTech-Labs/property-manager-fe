@@ -1,19 +1,19 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { FocusOn } from 'react-focus-on';
 import { Link } from '@reach/router';
+import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
-import { bool, func } from 'prop-types';
-import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
-import logo from '../assets/img/logo100.png';
-import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
-import LoginForm from './LoginForm/LoginForm';
-import { auth } from '../store/actions';
-import { useOnClickOutside } from '../hooks/index';
+import { TopNav } from '../UI/index';
+import { BurgerNav, Burger } from './VerticalNav';
+import logo from '../../assets/img/logo100.png';
+import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
+import { auth } from '../../store/actions';
+import { useOnClickOutside } from '../../hooks/index';
+import AuthFlip from '../Auth/AuthFlip';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
-export const HorNav = () => {
+const HorNav = () => {
   const [show, setShow] = useState();
   const [isOpen, setOpen] = useState(false);
   const node = useRef();
@@ -52,7 +52,7 @@ export const HorNav = () => {
               onClickOutside={() => setShow(!show)}
               onEscapeKey={() => setShow(!show)}
             >
-              <LoginForm submit={login} />
+              <AuthFlip loginSubmit={login} show={show} setShow={setShow} />
             </FocusOn>
           ) : null}
         </TopNav>
@@ -75,7 +75,7 @@ export const HorNav = () => {
               <Avi className="avatar" width={25} height={25} name="avatar" />
             </button>
           </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          {show ? <AuthFlip loginSubmit={login} /> : null}
         </TopNav>
       </Breakpoint>
       <Breakpoint mobile only>
@@ -90,74 +90,4 @@ export const HorNav = () => {
   );
 };
 
-export const VertNav = () => {
-  return (
-    <SideNav>
-      <ul>
-        <Link to="#login">
-          <Avi width={25} height={25} name="avatar" />
-        </Link>
-        <Link to="/">Home</Link>
-        <Link to="/landlord">Landlords</Link>
-        <Link to="/tenant">Renters</Link>
-        <Link to="/features">Features and Pricing</Link>
-        <Link to="/contact">Contact</Link>
-      </ul>
-    </SideNav>
-  );
-};
-
-// eslint-disable-next-line react/prop-types
-export const Burger = ({ isOpen, setOpen }) => {
-  return (
-    <NavBurger isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
-      <div />
-      <div />
-      <div />
-    </NavBurger>
-  );
-};
-Burger.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  open: bool.isRequired,
-  setOpen: func.isRequired
-};
-
-export const BurgerNav = ({ isOpen, setOpen }) => {
-  // const [show, setShow] = useState();
-  const dispatch = useDispatch();
-
-  // eslint-disable-next-line no-unused-vars
-  const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
-    [dispatch]
-  );
-
-  return (
-    <BurgerMenu isOpen={isOpen}>
-      <Link to="/" onClick={() => setOpen(!isOpen)}>
-        Home
-      </Link>
-      <Link to="/landlord" onClick={() => setOpen(!isOpen)}>
-        Landlords
-      </Link>
-      <Link to="/tenant" onClick={() => setOpen(!isOpen)}>
-        Renters
-      </Link>
-      <Link to="/features" onClick={() => setOpen(!isOpen)}>
-        Features and Pricing
-      </Link>
-      <Link to="/contact" onClick={() => setOpen(!isOpen)}>
-        Contact
-      </Link>
-      <Link to="/login" onClick={() => setOpen(!isOpen)}>
-        Login
-      </Link>
-    </BurgerMenu>
-  );
-};
-
-BurgerNav.propTypes = {
-  isOpen: bool.isRequired,
-  setOpen: func.isRequired
-};
+export default HorNav;

@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
-import FormErrors from './FormErrors';
+import FormErrors from '../../../helpers/FormErrors';
 import {
   FormButton,
   ButtonContainer,
@@ -18,7 +18,7 @@ import {
   InputFieldWrapper,
   Label,
   FormCard
-} from '../UI';
+} from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-export default function LoginForm({ submit }) {
+export default function LoginForm({ submit, toggleFlip }) {
   return (
     <FormCard>
       <FormHeading>Login</FormHeading>
@@ -86,7 +86,9 @@ export default function LoginForm({ submit }) {
       </Formik>
       <FormFooterContainer>
         <FormFooter>Don&apos;t have an account?</FormFooter>
-        <Link to="/signup">Sign Up</Link>
+        <button type="button" onClick={() => toggleFlip()}>
+          Sign Up
+        </button>
       </FormFooterContainer>
     </FormCard>
   );

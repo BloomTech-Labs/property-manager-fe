@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { func } from 'prop-types';
 import { navigate } from '@reach/router';
-import SignUpForm from '../components/SignUpForm/SignUp';
+import SignUpForm from '../components/Auth/SignUpForm/SignUp';
 import { auth } from '../store/actions';
 
 const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
-const SignUp = () => {
+const SignUp = ({ toggleFlip }) => {
   const dispatch = useDispatch();
 
   const signupFn = useCallback(
@@ -17,12 +18,11 @@ const SignUp = () => {
     [dispatch]
   );
 
-  return (
-    <div className="signUpPage">
-      <div>This is the Registration Page</div>
-      <SignUpForm submit={signupFn} />
-    </div>
-  );
+  return <SignUpForm submit={signupFn} toggleFlip={toggleFlip} />;
+};
+
+SignUp.propTypes = {
+  toggleFlip: func.isRequired
 };
 
 export default SignUp;

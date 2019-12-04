@@ -52,6 +52,17 @@ export const HoverCard = styled.div`
   margin: 1rem;
   ${hoverMixin}
 `;
+
+export const AuthFlipContainer = styled.div`
+  padding: 2rem;
+  min-width: 350px;
+  z-index: 2;
+  left: 50%;
+  top: 100%;
+  translate: transform(-50%, -50%);
+  ${card('absolute')}
+  will-change: transform, opacity;
+`;
 // ------------------------------------------------|
 // DEFINE FORM COMPONENTS =========================|
 // ================================================|
@@ -130,20 +141,20 @@ export const TextAreaInput = styled.input`
 // ------------------------------------------------|
 // Form Card --------------------------------------|
 export const FormCard = styled.div`
-  padding: 2rem;
+  /* padding: 2rem;
   min-width: 350px;
   z-index: 2;
   left: 50%;
   top: 100%;
   translate: transform(-50%, -50%);
-  ${card('absolute')}
+  ${card('absolute')} */
 `;
 
 export const FormCardAlt = styled.div`
-  padding: 2rem;
+  /* padding: 2rem;
   min-width: 350px;
   height: auto;
-  ${card('absolute')}
+  ${card('absolute')} */
 `;
 // ------------------------------------------------|
 // Form Heading -----------------------------------|

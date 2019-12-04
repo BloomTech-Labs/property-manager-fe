@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import SignUpForm from '../../components/SignUpForm/SignUp';
+import SignUpForm from '../../components/Auth/SignUpForm/SignUp';
 
 test('should submit the login form', async () => {
   // Arrange

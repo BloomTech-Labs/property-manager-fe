@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
-import { HorNav } from './components/navigation';
+import HorNav from './components/Navigation/Navigation';
 import LandingPage from './views/LandingPage';
 import Dashboard from './views/Dashboard';
 import SignUp from './views/SignUp';

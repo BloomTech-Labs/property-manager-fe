@@ -13,7 +13,7 @@ import {
   TextInput,
   Label,
   I
-} from '../UI';
+} from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -28,7 +28,7 @@ const validationSchema = Yup.object().shape({
   )
 });
 
-const SignUpForm = ({ submit }) => {
+const SignUpForm = ({ submit, toggleFlip }) => {
   return (
     <Formik
       initialValues={{
@@ -112,6 +112,9 @@ const SignUpForm = ({ submit }) => {
             <ButtonContainer>
               <FormButton type="submit">Submit</FormButton>
             </ButtonContainer>
+            <button type="button" onClick={() => toggleFlip()}>
+              Have an account?
+            </button>
           </Form>
         </FormCardAlt>
       )}

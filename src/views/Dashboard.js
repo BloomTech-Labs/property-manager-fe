@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 // UI Components
 import { useDispatch } from 'react-redux';
-import { VertNav } from '../components/navigation';
+import { VertNav } from '../components/Navigation/VerticalNav';
 
 // Add Property Form
 import AddPropertyForm from '../components/AddPropertyForm/AddPropertyForm';

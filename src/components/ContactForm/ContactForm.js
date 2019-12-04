@@ -4,7 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { navigate } from '@reach/router';
 import { MdEmail, MdMessage, MdPerson } from 'react-icons/md';
-import FormErrors from '../LoginForm/FormErrors';
+import FormErrors from '../../helpers/FormErrors';
 import {
   FormButton,
   ButtonContainer,
