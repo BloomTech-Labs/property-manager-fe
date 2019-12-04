@@ -1,112 +1,57 @@
-.contactPage {
-    @include landing-bg('../assets/img/assorted-color-wall-paint-house-photo-1370704.jpg') height: $nav-vh-calc;
+.contact-page {
+  @include landing-bg(
+    '../assets/img/assorted-color-wall-paint-house-photo-1370704.jpg'
+  );
+  height: $nav-vh-calc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .contactStuff {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+.contact-content {
+  @include cardify;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 500px;
 
-        form {
-            padding: 25px;
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
-            background-color: rgba(39, 39, 39, 0.212);
+  .contact-form-card {
+    padding: 2rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
 
-            h1 {
-                margin-bottom: 20px;
-                color: rgb(255, 255, 255);
-            }
+  .contactInfo {
+    padding: 2rem;
+    width: 40%;
 
-            input {
-                border-radius: 5px;
-                margin-bottom: 20px;
-                padding: 10px 40px 10px 10px;
-                font-family: $primary-font;
-                border: none;
-                color: rgb(255, 255, 255);
-                letter-spacing: 1px;
-                background-color: rgba(255, 255, 255, 0.212);
-            }
-
-            input::placeholder {
-                color: rgb(255, 255, 255);
-                letter-spacing: 2px;
-            }
-
-            textarea {
-                border-radius: 5px;
-                margin-bottom: 20px;
-                padding: 10px 40px 10px 10px;
-                font-family: $primary-font;
-                border: none;
-                letter-spacing: 1px;
-                color: rgb(255, 255, 255);
-                background-color: rgba(255, 255, 255, 0.212);
-            }
-
-            textarea::placeholder {
-                color: rgb(255, 255, 255);
-                letter-spacing: 2px;
-            }
-
-            button {
-                border-radius: 2px;
-                background-color: rgba(8, 138, 8, 0.658);
-                color: white;
-                font-family: 'Roboto', 'sans-serif';
-                letter-spacing: 3px;
-                width: 30%;
-                padding: 10px;
-                border: none;
-            }
-        }
-
-        .contactInfo {
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: top;
-            padding: 25px;
-            width: 40%;
-            letter-spacing: 1px;
-            border-radius: 10px;
-            height: 360px;
-            // background-color: rgba(39, 39, 39, 0);
-            // z-index: 1;
-
-            h3 {
-                color: rgb(255, 255, 255);
-                font-size: 1em;
-                font-family: 'Roboto', 'sans-serif';
-            }
-
-            .followUs {
-                margin: 25px 0;
-            }
-
-            .contactType {
-                display: flex;
-                margin-top: 15px;
-                align-items: center;
-                font-size: 0.8em;
-
-                img {
-                    margin-right: 25px;
-                    // opacity: 0.8;
-                }
-            }
-
-            .contactIcons {
-                display: flex;
-
-                img {
-                    // opacity: 0.7;
-                    margin-right: 30px;
-                }
-            }
-        }
+    h3 {
+      margin: 1.5rem 0;
     }
+
+    .contactType {
+      display: flex;
+      margin-top: 1rem;
+      align-items: center;
+      font-size: 1.2rem;
+
+      .icon {
+        font-size: 2rem;
+        margin-right: 1.4rem;
+        // opacity: 0.8;
+      }
+    }
+
+    .contactIcons {
+      display: flex;
+
+      .icon {
+        font-size: 2rem;
+        margin-right: 1.5rem;
+      }
+    }
+  }
 }

@@ -13,8 +13,7 @@ import {
   TextInput,
   InputFieldWrapper,
   Label,
-  TextAreaInput,
-  FormCard
+  TextAreaInput
 } from '../UI';
 
 const validationSchema = Yup.object().shape({
@@ -43,7 +42,7 @@ export default function ContactForm() {
   };
 
   return (
-    <FormCard>
+    <div className="form-card">
       <FormHeading>Contact Us</FormHeading>
       <Formik
         validationSchema={validationSchema}
@@ -122,6 +121,6 @@ export default function ContactForm() {
           </Form>
         )}
       </Formik>
-    </FormCard>
+    </div>
   );
 }

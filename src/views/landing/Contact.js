@@ -4,10 +4,8 @@
 import React, { Component } from 'react';
 
 // icons import
-import emailIcon from '../../assets/img/WhiteEmail.png';
-import phoneIcon from '../../assets/img/WhitePhone.png';
-import facebookIcon from '../../assets/img/WhiteFacebook.png';
-import twitterIcon from '../../assets/img/WhiteTwitter.png';
+import { MdEmail, MdPhone } from 'react-icons/md';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
 
 // ---------- Styles ---------- //
 
@@ -40,57 +38,63 @@ export default class Contact extends Component {
   render() {
     const { name, email, message } = this.state;
     return (
-      <div className="contactPage">
-        <div className="contactStuff">
-          <form className="cm-form" onSubmit={this.handleSubmit}>
-            <h1>Contact Me</h1>
-            <div className="form-elements">
-              <label>
-                <div>Your Name: </div>
+      <div className="contact-page">
+        <div className="contact-content">
+          <div className="contact-form-card contact-form">
+            <form onSubmit={this.handleSubmit}>
+              <h2 className="form-heading">Contact Us</h2>
+              <div className="input-wrapper">
+                <label htmlFor="name">Name:</label>
                 <input
+                  placeholder="Enter your name"
                   type="text"
                   name="name"
                   value={name}
                   onChange={this.handleChange}
                 />
-              </label>
-              <label>
-                <div>Your Email: </div>
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="email">Email:</label>
                 <input
+                  placeholder="Enter your email"
                   type="email"
                   name="email"
                   value={email}
                   onChange={this.handleChange}
                 />
-              </label>
-              <label>
-                <div>Message: </div>
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="name">Message:</label>
                 <textarea
+                  placeholder="Enter your message"
+                  type="text"
                   name="message"
                   value={message}
                   rows="4"
                   onChange={this.handleChange}
                 />
-              </label>
-            </div>
-            <div className="form-btns">
-              <button type="button">Send</button>
-            </div>
-          </form>
+              </div>
+              <div className="submit-btn-wrapper">
+                <button className="btn btn-animated" type="submit">
+                  Send
+                </button>
+              </div>
+            </form>
+          </div>
           <div className="contactInfo">
-            <h3>ACME, THE HI-FI PROTOTYPING COMPANY</h3>
+            <h2>PropMan</h2>
             <div className="contactType">
-              <img src={emailIcon} alt="email" width="25px" />
-              <h3>acme.info@2mail.com</h3>
+              <MdEmail className="icon" />
+              <p>acme.info@2mail.com</p>
             </div>
             <div className="contactType">
-              <img src={phoneIcon} alt="phone" width="25px" />
-              <h3>+0 000-000-0000</h3>
+              <MdPhone className="icon" />
+              <p>+0 000-000-0000</p>
             </div>
-            <h3 className="followUs">FOLLOW US</h3>
+            <h3>Follow Us</h3>
             <div className="contactIcons">
-              <img src={facebookIcon} alt="fb" width="35px" />
-              <img src={twitterIcon} alt="twitter" width="35px" />
+              <FaFacebook className="icon" />
+              <FaTwitter className="icon" />
             </div>
           </div>
         </div>
