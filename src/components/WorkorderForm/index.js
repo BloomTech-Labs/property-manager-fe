@@ -1,6 +1,8 @@
-import React from 'react';
-import { Field, Form, Formik } from 'formik';
+/** @jsx jsx */
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import { jsx } from '@emotion/core';
+import FormErrors from '../LoginForm/FormErrors';
 import {
   FormButton,
   ButtonContainer,
@@ -19,25 +21,25 @@ const validationSchema = Yup.object().shape({
 // eslint-disable-next-line react/prop-types
 const WorkorderForm = ({ submit }) => {
   return (
-    <Formik
-      initialValues={{
-        worderType: '',
-        otherorder: '',
-        location: '',
-        otherlocation: '',
-        occurrence: '',
-        maintenanceDetail: '',
-        preferredTime: ''
-      }}
-      validationSchema={validationSchema}
-      onSubmit={values => submit(values)}
-    >
-      {({ handleSubmit }) => (
-        <FormCard>
-          <FormHeading>Maintenance Work Request Form</FormHeading>
-          <Form onSubmit={handleSubmit}>
+    <FormCard>
+      <FormHeading>Maintenance Work Request Form</FormHeading>
+      <Formik
+        initialValues={{
+          worderType: '',
+          otherorder: '',
+          location: '',
+          otherlocation: '',
+          occurrence: '',
+          maintenanceDetail: '',
+          preferredTime: ''
+        }}
+        validationSchema={validationSchema}
+        onSubmit={values => submit(values)}
+      >
+        {({ errors, touched, isSubmitting }) => (
+          <Form data-testid="form-element">
             <InputFieldWrapper>
-              <Label>Work order Type</Label>
+              <Label htmlFor="name">Work order Type</Label>
               <Field name="worderType" as="select">
                 <option value="Plumbing">Plumbing</option>
                 <option value="Electrical">Electrical</option>
@@ -48,8 +50,17 @@ const WorkorderForm = ({ submit }) => {
                 <option value="Other">Other</option>
               </Field>
               <br />
-              <Label>if other</Label>
-              <Field as={TextInput} type="text" name="otherorder" />
+              <Label htmlFor="if other">if other</Label>
+              <Field
+                as={TextInput}
+                type="text"
+                name="otherorder"
+                placeholder="other order type"
+              />
+              <FormErrors
+                touched={touched.aworderType}
+                message={errors.worderType}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <Label>Where is this issue located in the house?</Label>
@@ -64,15 +75,19 @@ const WorkorderForm = ({ submit }) => {
               </Field>
               <br />
               <Label>if other</Label>
-              <Field as={TextInput} type="text" name="otherlocation" />
+              <Field
+                as={TextInput}
+                type="text"
+                name="otherlocation"
+                placeholder="other location"
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <Label>Is this the first occurrence?</Label>
-              <br />
-              <Field type="radio" name="occurrence" value="Yes" checked /> Yes
-              <br />
-              <Field type="radio" name="occurrence" value="No" /> No
-              <br />
+              <Field name="occurrence" as="select">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </Field>
             </InputFieldWrapper>
             <InputFieldWrapper>
               <Label>
@@ -81,23 +96,34 @@ const WorkorderForm = ({ submit }) => {
                 you can.This will help us resolve this issue as quickly as
                 possible.
               </Label>
-              <Field name="message" as="textarea" rows="4" cols="50" />
+              <Field
+                name="message"
+                as="textarea"
+                rows="4"
+                cols="50"
+                placeholder="detail info"
+              />
+              <FormErrors
+                touched={touched.maintenanceDetail}
+                message={errors.maintenanceDetail}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <Label>Preferred Repair Time</Label>
-              <br />
-              <Field type="radio" name="RepairTime" value="8am-12pm" /> 8am-12pm
-              <br />
-              <Field type="radio" name="RepairTime" value="12pm-4pm" /> 12pm-4pm
-              <br />
+              <Field name="RepairTime" as="select">
+                <option value="8am-12pm">8am-12pm</option>
+                <option value="12pm-4pm">12pm-4pm</option>
+              </Field>
             </InputFieldWrapper>
             <ButtonContainer>
-              <FormButton type="submit">Submit</FormButton>
+              <FormButton type="submit" disabled={isSubmitting}>
+                Submit
+              </FormButton>
             </ButtonContainer>
           </Form>
-        </FormCard>
-      )}
-    </Formik>
+        )}
+      </Formik>
+    </FormCard>
   );
 };
 
