@@ -32,43 +32,54 @@
     display: flex;
   }
 
-  .nav-link {
-    padding: 0 1.2rem;
-    font-size: 18px;
-    line-height: 28px;
-    color: $nav-text;
-    text-decoration: none;
-    user-select: none;
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: $fern;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all .3s ease-in-out;
-    }
-
-    &:hover {
-      color: $nav-text-hover;
-
-      &::before {
-        visibility: visible;
-        transform: scaleX(.5);
-      }
-    }
-  }
-
   .avatar {
     color: $nav-text;
 
     &:hover {
       color: $nav-text-hover;
+    }
+  }
+}
+
+// pulled nav-link class out of nested
+// selector to promote reusability and 
+// reduce specificity issues
+.nav-link {
+  padding: 0 1.2rem;
+  font-size: 18px;
+  line-height: 28px;
+  color: $nav-text;
+  text-decoration: none;
+  user-select: none;
+  // position relative for animated underline
+  position: relative;
+
+  // animated underline stuff
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    // underline thickness
+    height: 2px;
+    // underline positioning
+    bottom: 0;
+    left: 0;
+    // underline color
+    background-color: $fern;
+    // hide underline until hover
+    visibility: hidden;
+    // 0 scale until hover
+    transform: scaleX(0);
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    color: $nav-text-hover;
+
+    // animated underline stuff activates on hover
+    &::before {
+      visibility: visible;
+      transform: scaleX(.5);
     }
   }
 }

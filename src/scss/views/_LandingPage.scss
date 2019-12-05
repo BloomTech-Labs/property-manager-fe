@@ -1,51 +1,42 @@
-.landingPage {
-    color: white;
-    background-size: cover;
-    /* <------ */
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: linear-gradient(rgba(5, 58, 156, 0.8), rgba(2, 126, 33, 0.9)), url('../../assets/img/home-real-estate-106399.jpg');
-    height: 100vh;
+// 100vh container for all the marketing pages
+.landing-container {
+    @include nav-adjust();
+    @include landing-bg("../assets/img/home-real-estate-106399.jpg");
+}
+
+.content {
+    height: $nav-vh-calc;
+    display: flex;
     width: 100%;
-    min-width: 100vw;
+    justify-content: center;
+    align-items: center;
+    color: white;
 
-    .landingContent {
-        padding-top: 150px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 300px;
-        margin: 0 auto;
-        height: calc(100% - 150px);
+    .content-wrapper {
+        width: 60%;
+        height: auto;
+        text-align: center;
+    }
+}
 
-        .centered {
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 3em;
-        }
-
-        h2 {
-            text-align: center;
-            border-top: 2px rgba(255, 255, 255, 0.11) solid;
-            color: rgb(224, 255, 230);
-            font-size: 1.8em;
-            margin: 15px 0 25px 0;
-            padding-top: 15px;
-        }
-
-        button {
-            background: none;
-            border: solid rgba(255, 255, 255, 0.815) 2px;
-            border-radius: 2px;
-            font-family: 'Alatsi', sans-serif;
-            color: rgba(255, 255, 255, 0.788);
-            padding: 8px 25px;
-            font-size: 1em;
-        }
+.content-wrapper {
+    h2 {
+        border-top: 2px rgba(255, 255, 255, 0.11) solid;
+        margin: 1rem 0 2rem 0;
+        padding-top: 1rem;
     }
 
+    button {
+        font-family: $primary-font;
+        font-weight: 600;
+        letter-spacing: 2px;
+        border: solid rgba(255, 255, 255, 0.815) 2px;
+        border-radius: 2px;
+        color: rgba(255, 255, 255, 0.788);
+        padding: .5rem 2rem;
+    }
+}
+
+.form-wrapper {
+    width: 500px;
 }

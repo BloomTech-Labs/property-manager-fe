@@ -44,7 +44,7 @@ export default class Contact extends Component {
             <form onSubmit={this.handleSubmit}>
               <h2 className="form-heading">Contact Us</h2>
               <div className="input-wrapper">
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Name</label>
                 <input
                   placeholder="Enter your name"
                   type="text"
@@ -54,7 +54,7 @@ export default class Contact extends Component {
                 />
               </div>
               <div className="input-wrapper">
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                 <input
                   placeholder="Enter your email"
                   type="email"
@@ -64,7 +64,7 @@ export default class Contact extends Component {
                 />
               </div>
               <div className="input-wrapper">
-                <label htmlFor="name">Message:</label>
+                <label htmlFor="name">Message</label>
                 <textarea
                   placeholder="Enter your message"
                   type="text"
