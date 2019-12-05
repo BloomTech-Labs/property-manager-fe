@@ -1,7 +1,7 @@
 import React from 'react';
 import { Skeleton } from '@material-ui/lab';
 import {
-  Card,
+  Paper,
   Grid,
   CardHeader,
   CardContent,
@@ -17,7 +17,7 @@ export default function PropertyList() {
       <h1>List of Properties</h1>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <Card>
+          <Paper elevation={24}>
             <CardHeader
               avatar={<Skeleton variant="circle" width={50} height={50} />}
               title={<Skeleton variant="text" />}
@@ -35,7 +35,7 @@ export default function PropertyList() {
                 </IconButton>
               </CardActions>
             </CardActionArea>
-          </Card>
+          </Paper>
         </Grid>
       </Grid>
     </div>

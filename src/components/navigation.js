@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
-import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
+import { NavBurger, BurgerMenu } from './UI/index';
 import logo from '../assets/img/logo.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
 import LoginForm from './LoginForm/LoginForm';
@@ -82,33 +82,45 @@ export const HorNav = () => {
         </nav>
       </Breakpoint>
       <Breakpoint tablet only>
-        <TopNav>
+        <nav className="nav-top">
           <ul>
-            <Link to="/landlord">Landlords</Link>
-            <Link to="/tenant">Renters</Link>
-            <Link to="/">
-              <img src={logo} alt="logo" />
-            </Link>
-            <Link to="/features">Features and Pricing</Link>
-            <Link to="/contact">Contact</Link>
-            <button
-              className="modal-btn"
-              type="button"
-              onClick={() => setShow(!show)}
-            >
-              <Avi className="avatar" width={25} height={25} name="avatar" />
-            </button>
+            <li>
+              <Link to="/landlord">Landlords</Link>
+            </li>
+            <li>
+              <Link to="/tenant">Renters</Link>
+            </li>
+            <li>
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/features">Features and Pricing</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <button
+                className="modal-btn"
+                type="button"
+                onClick={() => setShow(!show)}
+              >
+                <Avi className="avatar" width={25} height={25} name="avatar" />
+              </button>
+            </li>
           </ul>
           {show ? <LoginForm submit={login} /> : null}
-        </TopNav>
+        </nav>
       </Breakpoint>
       <Breakpoint mobile only>
-        <TopNav ref={node}>
+        <nav className="nav-top" ref={node}>
           <Burger isOpen={isOpen} setOpen={setOpen} />
           <div style={{ position: 'relative' }}>
             <BurgerNav isOpen={isOpen} setOpen={setOpen} />
           </div>
-        </TopNav>
+        </nav>
       </Breakpoint>
     </>
   );
@@ -116,18 +128,25 @@ export const HorNav = () => {
 
 export const VertNav = () => {
   return (
-    <SideNav>
+    <nav className="nav-side">
       <ul>
-        <Link to="#login">
-          <Avi width={25} height={25} name="avatar" />
-        </Link>
-        <Link to="/">Home</Link>
-        <Link to="/landlord">Landlords</Link>
-        <Link to="/tenant">Renters</Link>
-        <Link to="/features">Features and Pricing</Link>
-        <Link to="/contact">Contact</Link>
+        <li>
+          <Link className="profile" to="profile">
+            <Avi width={75} height={75} name="avatar" />
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-link" to="/dashboard">
+            Overview
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-link" to="properties">
+            Properties
+          </Link>
+        </li>
       </ul>
-    </SideNav>
+    </nav>
   );
 };
 
@@ -141,9 +160,9 @@ export const Burger = ({ isOpen, setOpen }) => {
     </NavBurger>
   );
 };
+
 Burger.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  open: bool.isRequired,
+  isOpen: bool.isRequired,
   setOpen: func.isRequired
 };
 

@@ -11,8 +11,7 @@ import {
   FormHeading,
   TextInput,
   InputFieldWrapper,
-  Label,
-  FormCard
+  Label
 } from '../UI';
 
 const validationSchema = Yup.object().shape({
@@ -42,7 +41,7 @@ const validationSchema = Yup.object().shape({
 
 export default function AddPropertyForm({ submit }) {
   return (
-    <FormCard>
+    <div className="form-card">
       <FormHeading>Add Property</FormHeading>
       <Formik
         validationSchema={validationSchema}
@@ -177,6 +176,6 @@ export default function AddPropertyForm({ submit }) {
           </Form>
         )}
       </Formik>
-    </FormCard>
+    </div>
   );
 }

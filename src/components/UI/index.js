@@ -19,14 +19,7 @@ const hoverMixin = `
 `;
 // ------------------------------------------------|
 // Basic Card styling -----------------------------|
-const card = position => `
-  position: ${position || 'relative'};
-  border: none;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px #333;
-  background-color: #fff;
-  margin: 1rem;
-`;
+
 // ------------------------------------------------|
 // DEFINE BUTTON COMPONENTS =======================|
 // ================================================|
@@ -129,22 +122,6 @@ export const TextAreaInput = styled.input`
 `;
 // ------------------------------------------------|
 // Form Card --------------------------------------|
-export const FormCard = styled.div`
-  padding: 2rem;
-  min-width: 350px;
-  z-index: 2;
-  left: 50%;
-  top: 100%;
-  translate: transform(-50%, -50%);
-  ${card('absolute')}
-`;
-
-export const FormCardAlt = styled.div`
-  padding: 2rem;
-  min-width: 350px;
-  height: auto;
-  ${card('absolute')}
-`;
 // ------------------------------------------------|
 // Form Heading -----------------------------------|
 export const FormHeading = styled.h2`
@@ -217,51 +194,7 @@ export const I = styled.span`
 // ------------------------------------------------|
 // Navigation Components ==========================|
 // ================================================|
-// Horizontal Top Navbar --------------------------|
-export const TopNav = styled.div`
-  position: fixed;
-  width: 100%;
-  min-width: 100vw;
-  height: 3rem;
-  box-shadow: 0 3px 6px #333;
-  background: #ffffff;
-  text-align: center;
-  display: flex;
-  flex-flow: column nowrap;
-  ul {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-btn {
-    background: #ffffff;
-    padding: 0 1.2rem;
-  }
-  .avatar {
-    color: #555;
-    &:hover {
-      color: #2d3b4f;
-    }
-  }
-  ul > a {
-    padding: 0 1.2rem;
-    font-size: 18px;
-    line-height: 28px;
-    color: #555;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    &:hover {
-      color: #2d3b4f;
-    }
-  }
-`;
+
 // ------------------------------------------------|
 // Vertical Side Navbar ---------------------------|
 export const SideNav = styled.div`
