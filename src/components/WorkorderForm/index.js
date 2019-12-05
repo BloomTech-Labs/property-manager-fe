@@ -1,14 +1,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  FormButton,
-  ButtonContainer,
-  InputFieldWrapper,
-  FormHeading,
-  TextInput,
-  Label
-} from '../UI';
 
 const validationSchema = Yup.object().shape({
   worderType: Yup.string().required('work order type is required'),
@@ -33,11 +25,11 @@ const WorkorderForm = ({ submit }) => {
     >
       {({ handleSubmit }) => (
         <div className="form-card">
-          <FormHeading>Maintenance Work Request Form</FormHeading>
+          <h2>Maintenance Work Request Form</h2>
           <Form onSubmit={handleSubmit}>
-            <InputFieldWrapper>
-              <Label>Work order Type</Label>
-              <Field name="worderType" as="select">
+            <div className="input-wrapper">
+              <label htmlFor="wOrderType">Work order Type</label>
+              <Field name="wOrderType" as="select">
                 <option value="Plumbing">Plumbing</option>
                 <option value="Electrical">Electrical</option>
                 <option value="Pest Control">Pest Control</option>
@@ -47,11 +39,13 @@ const WorkorderForm = ({ submit }) => {
                 <option value="Other">Other</option>
               </Field>
               <br />
-              <Label>if other</Label>
-              <Field as={TextInput} type="text" name="otherorder" />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>Where is this issue located in the house?</Label>
+              <label htmlFor="otherOrder">if other</label>
+              <Field type="text" name="otherOrder" />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="location">
+                Where is this issue located in the house?
+              </label>
               <Field name="location" as="select">
                 <option value="Main Floor">Main Floor</option>
                 <option value="Basement">Basement</option>
@@ -62,37 +56,39 @@ const WorkorderForm = ({ submit }) => {
                 <option value="Other">Other</option>
               </Field>
               <br />
-              <Label>if other</Label>
-              <Field as={TextInput} type="text" name="otherlocation" />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>Is this the first occurrence?</Label>
+              <label htmlFor="otherLocation">if other</label>
+              <Field type="text" name="otherLocation" />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="occurrence">Is this the first occurrence?</label>
               <br />
               <Field type="radio" name="occurrence" value="Yes" checked /> Yes
               <br />
               <Field type="radio" name="occurrence" value="No" /> No
               <br />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="message">
                 Maintenance Request Details :<br />
                 Please provide us with as much information about the problem as
                 you can.This will help us resolve this issue as quickly as
                 possible.
-              </Label>
+              </label>
               <Field name="message" as="textarea" rows="4" cols="50" />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>Preferred Repair Time</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="RepairTime">Preferred Repair Time</label>
               <br />
               <Field type="radio" name="RepairTime" value="8am-12pm" /> 8am-12pm
               <br />
               <Field type="radio" name="RepairTime" value="12pm-4pm" /> 12pm-4pm
               <br />
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit">Submit</FormButton>
-            </ButtonContainer>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button className="submit-btn-wrapper" type="submit">
+                Submit
+              </button>
+            </div>
           </Form>
         </div>
       )}

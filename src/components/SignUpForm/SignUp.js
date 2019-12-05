@@ -3,16 +3,7 @@ import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
-import {
-  FormButton,
-  ButtonContainer,
-  InputFieldWrapper,
-  FormHeading,
-  FormError,
-  TextInput,
-  Label,
-  I
-} from '../UI';
+import { FormError, I } from '../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -40,17 +31,16 @@ const SignUpForm = ({ submit }) => {
     >
       {({ touched, errors }) => (
         <div className="form-card">
-          <FormHeading>Sign Up</FormHeading>
+          <h2>Sign Up</h2>
           <Form data-testid="form-element">
-            <InputFieldWrapper>
-              <Label>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
@@ -63,16 +53,15 @@ const SignUpForm = ({ submit }) => {
                   {errors.email}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="password"
                 name="password"
                 placeholder="Enter your password"
@@ -85,16 +74,15 @@ const SignUpForm = ({ submit }) => {
                   {errors.password}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Confirm Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Re-enter your password"
@@ -107,10 +95,12 @@ const SignUpForm = ({ submit }) => {
                   {errors.passwordConfirmation}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit">Submit</FormButton>
-            </ButtonContainer>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button className="btn btn-animated" type="submit">
+                Submit
+              </button>
+            </div>
           </Form>
         </div>
       )}

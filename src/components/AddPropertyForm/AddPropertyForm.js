@@ -5,14 +5,6 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormErrors from '../LoginForm/FormErrors';
-import {
-  FormButton,
-  ButtonContainer,
-  FormHeading,
-  TextInput,
-  InputFieldWrapper,
-  Label
-} from '../UI';
 
 const validationSchema = Yup.object().shape({
   propertyName: Yup.string()
@@ -42,7 +34,7 @@ const validationSchema = Yup.object().shape({
 export default function AddPropertyForm({ submit }) {
   return (
     <div className="form-card">
-      <FormHeading>Add Property</FormHeading>
+      <h2>Add Property</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
@@ -60,10 +52,9 @@ export default function AddPropertyForm({ submit }) {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
-            <InputFieldWrapper>
-              <Label htmlFor="propertyName">Property Name</Label>
+            <div className="input-wrapper">
+              <label htmlFor="propertyName">Property Name</label>
               <Field
-                as={TextInput}
                 placeholder="Enter a name for your Property"
                 name="propertyName"
                 type="text"
@@ -72,11 +63,10 @@ export default function AddPropertyForm({ submit }) {
                 touched={touched.propertyName}
                 message={errors.propertyName}
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.street">Address Line 1</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.street">Address Line 1</label>
               <Field
-                as={TextInput}
                 placeholder="Street address"
                 name="propertyAddress.street"
                 type="text"
@@ -89,11 +79,10 @@ export default function AddPropertyForm({ submit }) {
                   errors.propertyAddress && errors.propertyAddress.street
                 }
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.street2">Address Line 2</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.street2">Address Line 2</label>
               <Field
-                as={TextInput}
                 placeholder="Apartment, suite, unit, building, floor, etc."
                 name="propertyAddress.street2"
                 type="text"
@@ -106,11 +95,10 @@ export default function AddPropertyForm({ submit }) {
                   errors.propertyAddress && errors.propertyAddress.street2
                 }
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.city">City</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.city">City</label>
               <Field
-                as={TextInput}
                 placeholder="City"
                 name="propertyAddress.city"
                 type="text"
@@ -121,11 +109,10 @@ export default function AddPropertyForm({ submit }) {
                 }
                 message={errors.propertyAddress && errors.propertyAddress.city}
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.zip">Zip Code</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.zip">Zip Code</label>
               <Field
-                as={TextInput}
                 placeholder="Enter a 5-digit Zip Code"
                 name="propertyAddress.zip"
                 type="number"
@@ -135,11 +122,10 @@ export default function AddPropertyForm({ submit }) {
                 touched={touched.propertyAddress && touched.propertyAddress.zip}
                 message={errors.propertyAddress && errors.propertyAddress.zip}
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.state">State</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.state">State</label>
               <Field
-                as={TextInput}
                 placeholder="State"
                 name="propertyAddress.state"
                 type="text"
@@ -150,11 +136,10 @@ export default function AddPropertyForm({ submit }) {
                 }
                 message={errors.propertyAddress && errors.propertyAddress.state}
               />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="propertyAddress.country">Country</Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="propertyAddress.country">Country</label>
               <Field
-                as={TextInput}
                 placeholder="Country"
                 name="propertyAddress.country"
                 type="text"
@@ -167,12 +152,16 @@ export default function AddPropertyForm({ submit }) {
                   errors.propertyAddress && errors.propertyAddress.country
                 }
               />
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit" disabled={isSubmitting}>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button
+                className="btn btn-animated"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Submit
-              </FormButton>
-            </ButtonContainer>
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
