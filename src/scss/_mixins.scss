@@ -2,7 +2,6 @@
 //                Mixins                 
 //---------------------------------------
 
-
 // Landing Page Height Mixins
 @mixin landing-bg($url) {
   background-size: cover;
@@ -36,6 +35,8 @@
 }
 
 // Animation Mixins
+
+// a sort of button push-in effect
 @mixin animated-shadow {
   box-shadow: $box-shadow;
   transition: .25s;
@@ -48,6 +49,38 @@
   &:active {
     box-shadow: $box-shadow-active;
     transform: translateY(-1px);
+  }
+}
+
+// nav underline animation on hover
+@mixin underline-anim($line-color: $fern) {
+  text-decoration: none;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    // underline thickness
+    height: 2px;
+    // underline positioning
+    bottom: 0;
+    left: 0;
+    // underline color
+    background-color: $line-color;
+    // hide underline until hover
+    visibility: hidden;
+    // 0 scale until hover
+    transform: scaleX(0);
+    // animation timing/easing
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      visibility: visible;
+      transform: scaleX(.5);
+    }
   }
 }
 
