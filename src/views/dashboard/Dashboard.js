@@ -2,6 +2,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
+import { Container } from '@material-ui/core';
+
 // UI Components
 // import { useDispatch } from 'react-redux';
 import { VertNav } from '../../components/navigation';
@@ -27,7 +29,7 @@ const Dashboard = props => {
   return (
     <div className="dashboard">
       <VertNav />
-      {props.children}
+      <Container>{props.children}</Container>
     </div>
   );
 };
