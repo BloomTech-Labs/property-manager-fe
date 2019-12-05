@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+// eslint-disable-next-line import/prefer-default-export
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
     const listener = event => {

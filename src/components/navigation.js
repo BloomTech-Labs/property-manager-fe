@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
@@ -115,8 +115,9 @@ Burger.propTypes = {
   setOpen: func.isRequired
 };
 
+// eslint-disable-next-line react/prop-types
 export const BurgerNav = ({ isOpen, setOpen }) => {
-  const [show, setShow] = useState();
+  // const [show, setShow] = useState();
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
