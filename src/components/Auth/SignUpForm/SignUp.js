@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
+import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
 import {
@@ -120,6 +120,11 @@ const SignUpForm = ({ submit, toggleFlip }) => {
       )}
     </Formik>
   );
+};
+
+SignUpForm.propTypes = {
+  submit: func.isRequired,
+  toggleFlip: func.isRequired
 };
 
 export default SignUpForm;

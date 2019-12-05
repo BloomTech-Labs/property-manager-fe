@@ -148,6 +148,7 @@ export const FormCard = styled.div`
   top: 100%;
   translate: transform(-50%, -50%);
   ${card('absolute')} */
+  transform: rotateY(180deg);
 `;
 
 export const FormCardAlt = styled.div`

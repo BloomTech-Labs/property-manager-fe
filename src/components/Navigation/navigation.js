@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
@@ -12,6 +12,7 @@ import { useOnClickOutside } from '../../hooks/index';
 import AuthFlip from '../Auth/AuthFlip';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
+const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 const HorNav = () => {
   const [show, setShow] = useState();
@@ -23,6 +24,14 @@ const HorNav = () => {
 
   const login = useCallback(
     ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    [dispatch]
+  );
+
+  const signupFn = useCallback(
+    ({ email, password }) =>
+      dispatch(signup(email, password))
+        .then(() => navigate('/dashboard'))
+        .catch(err => console.error(err)),
     [dispatch]
   );
 
@@ -52,7 +61,12 @@ const HorNav = () => {
               onClickOutside={() => setShow(!show)}
               onEscapeKey={() => setShow(!show)}
             >
-              <AuthFlip loginSubmit={login} show={show} setShow={setShow} />
+              <AuthFlip
+                loginSubmit={login}
+                show={show}
+                setShow={setShow}
+                signupFn={signupFn}
+              />
             </FocusOn>
           ) : null}
         </TopNav>
@@ -75,7 +89,7 @@ const HorNav = () => {
               <Avi className="avatar" width={25} height={25} name="avatar" />
             </button>
           </ul>
-          {show ? <AuthFlip loginSubmit={login} /> : null}
+          {/* {show ? <AuthFlip loginSubmit={login} /> : null} */}
         </TopNav>
       </Breakpoint>
       <Breakpoint mobile only>
