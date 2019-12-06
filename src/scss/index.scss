@@ -1,4 +1,11 @@
-// RESET
+// PLEASE NOTE:
+// !!!Do not @import new stylesheets in here!!!
+// Leverage the scaffolding as most of our new
+// sass files will fall under views or components.
+// Please import into your stylesheet's respective
+// folder index files.
+
+// Reset
 @import './reset';
 
 // Variables
@@ -9,12 +16,9 @@
 
 // Globals
 @import './global';
-@import './nav';
+
+// Components
+@import './components';
 
 // Views
-@import './views/LandingPage';
-@import './views/Dashboard';
-@import './views/Features';
-@import './views/Contact';
-@import './views/Landlord';
-@import './views/Renters';
+@import './views';

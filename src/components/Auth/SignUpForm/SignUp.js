@@ -3,17 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
-import {
-  FormButton,
-  ButtonContainer,
-  InputFieldWrapper,
-  FormHeading,
-  FormCardAlt,
-  FormError,
-  TextInput,
-  Label,
-  I
-} from '../../UI';
+import { FormError, I } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -40,18 +30,17 @@ const SignUpForm = ({ submit, toggleFlip }) => {
       onSubmit={values => submit(values)}
     >
       {({ touched, errors }) => (
-        <FormCardAlt>
-          <FormHeading>Sign Up</FormHeading>
+        <div className="form-card">
+          <h2>Sign Up</h2>
           <Form data-testid="form-element">
-            <InputFieldWrapper>
-              <Label>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
@@ -64,16 +53,15 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                   {errors.email}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="password"
                 name="password"
                 placeholder="Enter your password"
@@ -86,16 +74,15 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                   {errors.password}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Confirm Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Re-enter your password"
@@ -108,15 +95,17 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                   {errors.passwordConfirmation}
                 </FormError>
               )}
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit">Submit</FormButton>
-            </ButtonContainer>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button className="btn btn-animated" type="submit">
+                Submit
+              </button>
+            </div>
             <button type="button" onClick={() => toggleFlip()}>
-              Have an account?
+              Have an Account?
             </button>
           </Form>
-        </FormCardAlt>
+        </div>
       )}
     </Formik>
   );
