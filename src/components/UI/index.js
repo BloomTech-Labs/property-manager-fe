@@ -4,19 +4,6 @@ import styled from '@emotion/styled';
 // ------------------------------------------------|
 // DEFINE STYLE VARIABLES =========================|
 // ================================================|
-// CSS Hover Animation Effect ---------------------|
-const hoverMixin = `
-  box-shadow: 0 3px 6px #333;
-  transition: 0.25s;
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px #777;
-  }
-  &:active {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px #666;
-  }
-`;
 // ------------------------------------------------|
 // Basic Card styling -----------------------------|
 const card = position => `
@@ -24,29 +11,17 @@ const card = position => `
   border: none;
   border-radius: 2px;
   box-shadow: 0 3px 6px #333;
-  background-color: #fff;
+  background-color: black;
   margin: 1rem;
 `;
 // ------------------------------------------------|
 // DEFINE BUTTON COMPONENTS =======================|
 // ================================================|
-export const Button = styled.button`
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 auto 1.5rem;
-  border-radius: 2px;
-  padding: 0.5rem 0.8rem;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #2d3b4f;
-  ${hoverMixin}
-`;
+
 // ------------------------------------------------|
 // DEFINE CARD COMPONENTS =========================|
 // ================================================|
 export const AuthFlipContainer = styled.div`
-  padding: 2rem;
   min-width: 350px;
   z-index: 2;
   left: 50%;
@@ -58,90 +33,6 @@ export const AuthFlipContainer = styled.div`
 // ------------------------------------------------|
 // DEFINE FORM COMPONENTS =========================|
 // ================================================|
-// Input Field Wrapper ----------------------------|
-export const InputFieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: block;
-  line-height: 1.6;
-  font-size: 16px;
-  font-weight: normal;
-  box-sizing: inherit;
-  &:focus-within {
-    label {
-      color: #2d3b4f;
-    }
-  }
-`;
-// Label ------------------------------------------|
-export const Label = styled.label`
-  color: #9e9e9e;
-  font-family: 'Baloo', sans-serif;
-  font-size: 1rem;
-  cursor: text;
-  text-align: initial;
-  box-sizing: inherit;
-  line-height: 1.6;
-  font-weight: normal;
-`;
-// ------------------------------------------------|
-// Text Input -------------------------------------|
-export const TextInput = styled.input`
-  font-size: 16px;
-  overflow: visible;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  border-radius: 0;
-  outline: none;
-  height: 2rem;
-  width: 100%;
-  margin: 0 0 8px 0;
-  box-shadow: none;
-  color: initial;
-  text-align: start;
-  cursor: text;
-  &:focus {
-    border-bottom: 1px solid #2d3b4f;
-    box-shadow: 0 1px 0 0 #2d3b4f;
-  }
-`;
-export const TextAreaInput = styled.input`
-  font-size: 16px;
-  overflow: visible;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  border-radius: 0;
-  outline: none;
-  height: 10rem;
-  width: 100%;
-  margin: 0 0 8px 0;
-  box-shadow: none;
-  color: initial;
-  text-align: start;
-  cursor: text;
-  &:focus {
-    border-bottom: 1px solid #2d3b4f;
-    box-shadow: 0 1px 0 0 #2d3b4f;
-  }
-`;
-// ------------------------------------------------|
-// Form Card --------------------------------------|
-export const FormCard = styled.div`
-  /* padding: 2rem;
-  min-width: 350px;
-  z-index: 2;
-  left: 50%;
-  top: 100%;
-  translate: transform(-50%, -50%);
-  ${card('absolute')} */
-
-`;
 
 export const LoginFormCard = styled.div`
   transform: rotateY(180deg);

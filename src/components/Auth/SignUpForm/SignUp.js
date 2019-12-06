@@ -101,6 +101,9 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                 Submit
               </button>
             </div>
+            <button type="button" onClick={() => toggleFlip()}>
+              Have an Account?
+            </button>
           </Form>
         </div>
       )}
