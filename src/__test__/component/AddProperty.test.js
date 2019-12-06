@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import AddPropertyForm from '../../components/AddPropertyForm/AddPropertyForm';
+import AddPropertyForm from '../../components/Properties/AddPropertyForm';
 
 test('should submit the add property form', async () => {
   // Arrange

@@ -1,9 +1,10 @@
 import React from 'react';
+import PropertyList from '../../../components/Properties/PropertyList';
 
 export default function Overview() {
   return (
-    <div>
-      <h1>Front Page of Dashboard</h1>
+    <div className="overview">
+      <PropertyList />
     </div>
   );
 }

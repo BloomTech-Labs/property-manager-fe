@@ -12,7 +12,7 @@ import FrontPage from './views/landing/FrontPage';
 
 // Dashboard imports
 import Dashboard from './views/dashboard/Dashboard';
-import PropertyList from './views/dashboard/properties/PropertyList';
+import Properties from './views/dashboard/properties/Properties';
 import Profile from './views/dashboard/profile/Profile';
 import Overview from './views/dashboard/overview/Overview';
 
@@ -35,7 +35,7 @@ const App = () => {
           <Dashboard path="dashboard">
             <Overview path="/" />
             <Profile path="profile" />
-            <PropertyList path="properties" />
+            <Properties path="properties" />
           </Dashboard>
         </Router>
       </div>
