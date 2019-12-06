@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <div className="form-card reversed">
+    <div className="form-card fade-in reversed">
       <h2>Login</h2>
       <Formik
         validationSchema={validationSchema}

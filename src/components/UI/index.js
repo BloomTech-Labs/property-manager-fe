@@ -24,6 +24,7 @@ export const AuthFlipContainer = styled.div`
   z-index: 2;
   left: 55%;
   top: 100%;
+  background: #fff;
   translate: transform(-50%, -50%);
   ${card('absolute')}
   will-change: transform, opacity;
