@@ -10,9 +10,7 @@ const card = position => `
   position: ${position || 'relative'};
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px #333;
-  background-color: black;
-  margin: 1rem;
+  margin-top: 1rem;
 `;
 // ------------------------------------------------|
 // DEFINE BUTTON COMPONENTS =======================|
@@ -24,7 +22,7 @@ const card = position => `
 export const AuthFlipContainer = styled.div`
   min-width: 350px;
   z-index: 2;
-  left: 50%;
+  left: 55%;
   top: 100%;
   translate: transform(-50%, -50%);
   ${card('absolute')}
