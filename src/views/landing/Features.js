@@ -1,5 +1,5 @@
 import React from 'react';
-import profilePlaceholder from '../assets/img/person-icon-1675.png';
+import profilePlaceholder from '../../assets/img/person-icon-1675.png';
 
 const Features = () => {
   return (

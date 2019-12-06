@@ -1,0 +1,56 @@
+.contact-page {
+  @include landing-bg(
+    '../assets/img/assorted-color-wall-paint-house-photo-1370704.jpg'
+  );
+  height: $nav-vh-calc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-content {
+  @include cardify;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 1rem;
+
+  .contact-form-card {
+    padding: 2rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contactInfo {
+    padding: 2rem;
+    width: 40%;
+
+    h3 {
+      margin: 1.5rem 0;
+    }
+
+    .contactType {
+      display: flex;
+      margin-top: 1rem;
+      align-items: center;
+      font-size: 1.2rem;
+
+      .icon {
+        font-size: 2rem;
+        margin-right: 1.4rem;
+      }
+    }
+
+    .contactIcons {
+      display: flex;
+
+      .icon {
+        font-size: 2rem;
+        margin-right: 1.5rem;
+      }
+    }
+  }
+}

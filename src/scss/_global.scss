@@ -1,11 +1,11 @@
 //---------------------------------------
-//             Global Styles             
+//             Global Styles
 //---------------------------------------
 
 body {
   font-family: $primary-font;
   font-weight: 300;
-  color: #2D3B4f;
+  color: #2d3b4f;
 }
 
 html,
@@ -70,10 +70,14 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: #2D3B4f;
+    color: #2d3b4f;
   }
 }
 
 form {
   overflow: visible;
+}
+
+textarea {
+  resize: none;
 }

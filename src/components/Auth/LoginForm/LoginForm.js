@@ -7,18 +7,7 @@ import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from '../../../helpers/FormErrors';
-import {
-  FormButton,
-  ButtonContainer,
-  FormHeading,
-  I,
-  FormFooterContainer,
-  FormFooter,
-  TextInput,
-  InputFieldWrapper,
-  Label,
-  LoginFormCard
-} from '../../UI';
+import { I, FormFooterContainer, FormFooter } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,8 +22,8 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <LoginFormCard>
-      <FormHeading>Login</FormHeading>
+    <div className="form-card reversed">
+      <h2>Login</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ email: '', password: '' }}
@@ -42,30 +31,28 @@ export default function LoginForm({ submit, toggleFlip }) {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
-            <InputFieldWrapper>
-              <Label htmlFor="email">
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 placeholder="Enter your email address"
                 name="email"
                 type="email"
               />
               <FormErrors touched={touched.email} message={errors.email} />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="Password">
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="Password">
                 <I>
                   <MdLock />
                 </I>{' '}
                 Password
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 placeholder="Type your password"
                 name="password"
                 type="password"
@@ -74,13 +61,18 @@ export default function LoginForm({ submit, toggleFlip }) {
                 touched={touched.password}
                 message={errors.password}
               />
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit" disabled={isSubmitting}>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button
+                className="btn btn-animated"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Submit
-              </FormButton>
-            </ButtonContainer>
-            <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
+              </button>
+
+              <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
+            </div>
           </Form>
         )}
       </Formik>
@@ -90,6 +82,6 @@ export default function LoginForm({ submit, toggleFlip }) {
           Sign Up
         </button>
       </FormFooterContainer>
-    </LoginFormCard>
+    </div>
   );
 }
