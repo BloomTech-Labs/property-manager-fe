@@ -6,7 +6,7 @@ import { Container } from '@material-ui/core';
 
 // UI Components
 // import { useDispatch } from 'react-redux';
-import { VertNav } from '../../components/navigation';
+import { VertNav } from '../../components/Navigation/navigation';
 
 // // Add Property Form
 // import AddPropertyForm from '../../components/AddPropertyForm/AddPropertyForm';

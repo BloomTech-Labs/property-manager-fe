@@ -1,17 +1,19 @@
 import React, { useState, useCallback, useRef } from 'react';
+import { Link, navigate } from '@reach/router';
 import { FocusOn } from 'react-focus-on';
-import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
-import { NavBurger, BurgerMenu } from './UI/index';
-import logo from '../assets/img/logo.png';
-import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
-import LoginForm from './LoginForm/LoginForm';
-import { auth } from '../store/actions';
-import useOnClickOutside from '../hooks/index';
+import { NavBurger, BurgerMenu } from '../UI';
+import logo from '../../assets/img/logo.png';
+import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
+// import LoginForm from 'LoginForm/LoginForm';
+import { auth } from '../../store/actions';
+import useOnClickOutside from '../../hooks/index';
+import AuthFlip from '../Auth/AuthFlip';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
+const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 export const HorNav = () => {
   const [show, setShow] = useState();
@@ -23,6 +25,14 @@ export const HorNav = () => {
 
   const login = useCallback(
     ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    [dispatch]
+  );
+
+  const signupFn = useCallback(
+    ({ email, password }) =>
+      dispatch(signup(email, password))
+        .then(() => navigate('/dashboard'))
+        .catch(err => console.error(err)),
     [dispatch]
   );
 
@@ -76,7 +86,12 @@ export const HorNav = () => {
               onClickOutside={() => setShow(!show)}
               onEscapeKey={() => setShow(!show)}
             >
-              <LoginForm submit={login} />
+              <AuthFlip
+                loginSubmit={login}
+                show={show}
+                setShow={setShow}
+                signupFn={signupFn}
+              />
             </FocusOn>
           ) : null}
         </nav>
@@ -111,7 +126,7 @@ export const HorNav = () => {
               </button>
             </li>
           </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          {/* {show ? <AuthFlip loginSubmit={login} /> : null} */}
         </nav>
       </Breakpoint>
       <Breakpoint mobile only>
@@ -204,3 +219,4 @@ BurgerNav.propTypes = {
   isOpen: bool.isRequired,
   setOpen: func.isRequired
 };
+export default HorNav;

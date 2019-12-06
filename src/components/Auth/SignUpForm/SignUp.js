@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
+import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
-import { FormError, I } from '../UI';
+import { FormError, I } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
   )
 });
 
-const SignUpForm = ({ submit }) => {
+const SignUpForm = ({ submit, toggleFlip }) => {
   return (
     <Formik
       initialValues={{
@@ -106,6 +106,11 @@ const SignUpForm = ({ submit }) => {
       )}
     </Formik>
   );
+};
+
+SignUpForm.propTypes = {
+  submit: func.isRequired,
+  toggleFlip: func.isRequired
 };
 
 export default SignUpForm;

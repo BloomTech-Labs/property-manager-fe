@@ -14,7 +14,7 @@ import {
   DialogActions,
   Container
 } from '@material-ui/core';
-import FormErrors from '../LoginForm/FormErrors';
+import FormErrors from '../../helpers/FormErrors';
 import { I } from '../UI';
 
 const validationSchema = Yup.object().shape({

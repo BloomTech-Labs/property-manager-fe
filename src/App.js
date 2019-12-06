@@ -3,7 +3,6 @@ import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 // Landing imports
 import LandingPage from './views/landing/LandingPage';
-import SignUp from './views/landing/SignUp';
 import Landlord from './views/landing/Landlord';
 import Tenant from './views/landing/Tenant';
 import Features from './views/landing/Features';
@@ -25,7 +24,6 @@ const App = () => {
         <Router>
           <LandingPage path="/">
             <FrontPage path="/" />
-            <SignUp path="signup" />
             <Landlord path="landlord" />
             <Tenant path="tenant" />
             <Features path="features" />

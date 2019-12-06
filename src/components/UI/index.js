@@ -4,6 +4,58 @@ import styled from '@emotion/styled';
 // ------------------------------------------------|
 // DEFINE STYLE VARIABLES =========================|
 // ================================================|
+// CSS Hover Animation Effect ---------------------|
+const hoverMixin = `
+  box-shadow: 0 3px 6px #333;
+  transition: 0.25s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px #777;
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px #666;
+  }
+`;
+// ------------------------------------------------|
+// Basic Card styling -----------------------------|
+const card = position => `
+  position: ${position || 'relative'};
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px #333;
+  background-color: #fff;
+  margin: 1rem;
+`;
+// ------------------------------------------------|
+// DEFINE BUTTON COMPONENTS =======================|
+// ================================================|
+export const Button = styled.button`
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #2d3b4f;
+  ${hoverMixin}
+`;
+// ------------------------------------------------|
+// DEFINE CARD COMPONENTS =========================|
+// ================================================|
+export const AuthFlipContainer = styled.div`
+  padding: 2rem;
+  min-width: 350px;
+  z-index: 2;
+  left: 50%;
+  top: 100%;
+  translate: transform(-50%, -50%);
+  ${card('absolute')}
+  will-change: transform, opacity;
+`;
+
 // ------------------------------------------------|
 // FORM COMPONENTS ================================|
 // Form Error Msg ---------------------------------|
