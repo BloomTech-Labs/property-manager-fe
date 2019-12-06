@@ -33,6 +33,10 @@ export const auth = url => (email, password) => async dispatch => {
 export const ADD_PROPERTY_START = 'ADD_PROPERTY_START';
 export const ADD_PROPERTY_SUCCESS = 'ADD_PROPERTY_SUCCESS';
 export const ADD_PROPERTY_FAIL = 'ADD_PROPERTY_FAIL';
+
+export const GET_ALLPROPERTIES_START = 'GET_ALLPROPERTIES_START';
+export const GET_ALLPROPERTIES_SUCCESS = 'GET_ALLPROPERTIES_SUCCESS';
+export const GET_ALLPROPERTIES_FAIL = 'GET_ALLPROPERTIES_FAIL';
 // ------------------------------------------------|
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
@@ -50,6 +54,22 @@ export const createProperty = url => property => async dispatch => {
     console.error(err);
 
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
+  }
+};
+// ------------------------------------------------|
+export const getAllProperties = url => () => async dispatch => {
+  dispatch({ type: GET_ALLPROPERTIES_START });
+
+  try {
+    const res = await axios.get(url);
+
+    dispatch({
+      type: GET_ALLPROPERTIES_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    console.error(err);
+    dispatch({ type: GET_ALLPROPERTIES_FAIL, payload: { errorMessage: err } });
   }
 };
 // ------------------------------------------------|
