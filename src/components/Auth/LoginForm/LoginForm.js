@@ -7,7 +7,7 @@ import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from '../../../helpers/FormErrors';
-import { I, FormFooterContainer, FormFooter } from '../../UI';
+import { I, FormFooterContainer, FormFooter, LoginFormCard } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,8 +22,8 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <div className="form-card-absolute">
-      <h2 className="form-heading">Login</h2>
+    <LoginFormCard>
+      <h2>Login</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ email: '', password: '' }}
@@ -82,6 +82,6 @@ export default function LoginForm({ submit, toggleFlip }) {
           Sign Up
         </button>
       </FormFooterContainer>
-    </div>
+    </LoginFormCard>
   );
 }
