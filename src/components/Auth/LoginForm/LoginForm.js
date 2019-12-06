@@ -17,7 +17,7 @@ import {
   TextInput,
   InputFieldWrapper,
   Label,
-  FormCard
+  LoginFormCard
 } from '../../UI';
 
 const validationSchema = Yup.object().shape({
@@ -33,7 +33,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <FormCard>
+    <LoginFormCard>
       <FormHeading>Login</FormHeading>
       <Formik
         validationSchema={validationSchema}
@@ -90,6 +90,6 @@ export default function LoginForm({ submit, toggleFlip }) {
           Sign Up
         </button>
       </FormFooterContainer>
-    </FormCard>
+    </LoginFormCard>
   );
 }

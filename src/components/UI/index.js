@@ -148,6 +148,10 @@ export const FormCard = styled.div`
   top: 100%;
   translate: transform(-50%, -50%);
   ${card('absolute')} */
+
+`;
+
+export const LoginFormCard = styled.div`
   transform: rotateY(180deg);
 `;
 
