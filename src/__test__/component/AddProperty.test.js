@@ -10,13 +10,14 @@ test('should submit the add property form', async () => {
 
   //  Set up a test user object which will contain fields matching form to be tested
   const testProperty = {
-    name: 'Cool Place',
-    address: {
-      address1: '123 Easy Street',
-      address2: 'ww',
+    propertyName: 'Cool Place',
+    propertyAddress: {
+      street: '123 Easy Street',
+      street2: 'ww',
       city: 'Prop Town',
       zip: 12345,
-      state: 'Dakiowa'
+      state: 'Dakiowa',
+      country: 'USA'
     }
   };
 
@@ -34,24 +35,31 @@ test('should submit the add property form', async () => {
   const cityNode = getByPlaceholderText('City');
   const zipNode = getByPlaceholderText('Enter a 5-digit Zip Code');
   const stateNode = getByPlaceholderText('State');
+  const countryNode = getByPlaceholderText('Country');
   const formNode = getByTestId('form-element');
 
   // Act
 
   // Set the value of these nodes to the values from your object
-  fireEvent.change(nameNode, { target: { value: testProperty.name } });
+  fireEvent.change(nameNode, { target: { value: testProperty.propertyName } });
   fireEvent.change(address1Node, {
-    target: { value: testProperty.address.address1 }
+    target: { value: testProperty.propertyAddress.street }
   });
   fireEvent.change(address2Node, {
-    target: { value: testProperty.address.address2 }
+    target: { value: testProperty.propertyAddress.street2 }
   });
-  fireEvent.change(cityNode, { target: { value: testProperty.address.city } });
-  fireEvent.change(zipNode, { target: { value: testProperty.address.zip } });
+  fireEvent.change(cityNode, {
+    target: { value: testProperty.propertyAddress.city }
+  });
+  fireEvent.change(zipNode, {
+    target: { value: testProperty.propertyAddress.zip }
+  });
   fireEvent.change(stateNode, {
-    target: { value: testProperty.address.state }
+    target: { value: testProperty.propertyAddress.state }
   });
-
+  fireEvent.change(countryNode, {
+    target: { value: testProperty.propertyAddress.country }
+  });
   // Fire off the event by clicking on the submit button
   fireEvent.submit(formNode);
 
