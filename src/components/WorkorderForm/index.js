@@ -39,7 +39,7 @@ const WorkorderForm = ({ submit }) => {
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <InputFieldWrapper>
-              <Label htmlFor="name">Work order Type</Label>
+              <Label htmlFor="name">Work order Type : </Label>
               <Field name="worderType" as="select">
                 <option value="Plumbing">Plumbing</option>
                 <option value="Electrical">Electrical</option>
@@ -63,7 +63,7 @@ const WorkorderForm = ({ submit }) => {
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label>Where is this issue located in the house?</Label>
+              <Label>Where is this issue located in the house ? </Label>
               <Field name="location" as="select">
                 <option value="Main Floor">Main Floor</option>
                 <option value="Basement">Basement</option>
@@ -83,7 +83,7 @@ const WorkorderForm = ({ submit }) => {
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label>Is this the first occurrence?</Label>
+              <Label>Is this the first occurrence ? </Label>
               <Field name="occurrence" as="select">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -93,8 +93,7 @@ const WorkorderForm = ({ submit }) => {
               <Label>
                 Maintenance Request Details :<br />
                 Please provide us with as much information about the problem as
-                you can.This will help us resolve this issue as quickly as
-                possible.
+                you can.
               </Label>
               <Field
                 name="message"
@@ -109,7 +108,7 @@ const WorkorderForm = ({ submit }) => {
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
-              <Label>Preferred Repair Time</Label>
+              <Label>Preferred Repair Time : </Label>
               <Field name="RepairTime" as="select">
                 <option value="8am-12pm">8am-12pm</option>
                 <option value="12pm-4pm">12pm-4pm</option>
