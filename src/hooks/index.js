@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { useEffect } from 'react';
 
 // eslint-disable-next-line import/prefer-default-export

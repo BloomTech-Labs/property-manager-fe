@@ -1,10 +1,9 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
-import { HorNav } from './components/navigation';
+// import HorNav from './components/Navigation/Navigation';
 import LandingPage from './views/LandingPage';
 import Dashboard from './views/Dashboard';
-import SignUp from './views/SignUp';
 import Landlord from './views/Landlord';
 import Tenant from './views/Tenant';
 import Features from './views/Features';
@@ -16,11 +15,10 @@ const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">
-        <HorNav />
+        {/* <HorNav /> */}
         <Router>
           <LandingPage path="/" />
           <Dashboard path="/dash" />
-          <SignUp path="/signup" />
           <Landlord path="/landlord" />
           <Tenant path="/tenant" />
           <Features path="/features" />

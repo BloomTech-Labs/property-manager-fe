@@ -3,10 +3,10 @@
 /** @jsx jsx */
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { css, jsx } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
-import FormErrors from './FormErrors';
+import FormErrors from '../../../helpers/FormErrors';
 import {
   FormButton,
   ButtonContainer,
@@ -18,7 +18,7 @@ import {
   InputFieldWrapper,
   Label,
   FormCard
-} from '../UI';
+} from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-export default function LoginForm({ submit }) {
+export default function LoginForm({ submit, toggleFlip }) {
   return (
     <FormCard>
       <FormHeading>Login</FormHeading>
@@ -80,41 +80,15 @@ export default function LoginForm({ submit }) {
                 Submit
               </FormButton>
             </ButtonContainer>
-            <Link
-              to="/iamareallyforgetfulperson"
-              css={css`
-                color: #2d3b4f70;
-                font-size: 0.85rem;
-                text-decoration: none;
-                line-height: 1rem;
-                font-weight: 400;
-                align-self: flex-end;
-                margin-top: -0.3rem;
-                text-align: center;
-                width: 100%;
-                display: block;
-              `}
-            >
-              Forgot your password?
-            </Link>
+            <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
           </Form>
         )}
       </Formik>
       <FormFooterContainer>
         <FormFooter>Don&apos;t have an account?</FormFooter>
-        <Link
-          to="/signup"
-          css={css`
-            color: #2d3b4f;
-            font-size: 1.2rem;
-            text-decoration: none;
-            line-height: 2rem;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-          `}
-        >
+        <button type="button" onClick={() => toggleFlip()}>
           Sign Up
-        </Link>
+        </button>
       </FormFooterContainer>
     </FormCard>
   );

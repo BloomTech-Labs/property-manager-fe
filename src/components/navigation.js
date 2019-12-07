@@ -6,9 +6,9 @@ import { bool, func } from 'prop-types';
 import { TopNav, SideNav, NavBurger, BurgerMenu } from './UI/index';
 import logo from '../assets/img/logo100.png';
 import { ReactComponent as Avi } from '../assets/img/user-solid.svg';
-import LoginForm from './LoginForm/LoginForm';
+// import LoginForm from './LoginForm/LoginForm';
 import { auth } from '../store/actions';
-import { useOnClickOutside } from '../hooks/index';
+// import { useOnClickOutside } from '../hooks/index';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 
@@ -17,13 +17,13 @@ export const HorNav = () => {
   const [isOpen, setOpen] = useState(false);
   const node = useRef();
 
-  useOnClickOutside(node, () => setOpen(false));
-  const dispatch = useDispatch();
+  // useOnClickOutside(node, () => setOpen(false));
+  // const dispatch = useDispatch();
 
-  const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
-    [dispatch]
-  );
+  // const login = useCallback(
+  //   ({ email, password }) => dispatch(dispatchLogin(email, password)),
+  //   [dispatch]
+  // );
 
   return (
     <div className="nav">
@@ -46,7 +46,7 @@ export const HorNav = () => {
               <Avi className="avatar" width={25} height={25} name="avatar" />
             </button>
           </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          {/* {show ? <LoginForm submit={login} /> : null} */}
         </TopNav>
       </Breakpoint>
       <Breakpoint tablet only>
@@ -67,7 +67,7 @@ export const HorNav = () => {
               <Avi className="avatar" width={25} height={25} name="avatar" />
             </button>
           </ul>
-          {show ? <LoginForm submit={login} /> : null}
+          {/* {show ? <LoginForm submit={login} /> : null} */}
         </TopNav>
       </Breakpoint>
       <Breakpoint mobile only>

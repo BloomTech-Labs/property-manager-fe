@@ -2,7 +2,7 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
-import FormErrors from '../LoginForm/FormErrors';
+import FormErrors from '../../helpers/FormErrors';
 import {
   FormButton,
   ButtonContainer,

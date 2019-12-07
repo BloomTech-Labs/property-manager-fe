@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import LoginForm from '../../components/Auth/LoginForm/LoginForm';
 
 test('should submit the login form', async () => {
   // Arrange
