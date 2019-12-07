@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-/** @jsx jsx */
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from '../../../helpers/FormErrors';
@@ -22,7 +21,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <div className="form-card reversed">
+    <div className="form-card">
       <h2>Login</h2>
       <Formik
         validationSchema={validationSchema}

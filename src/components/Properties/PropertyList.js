@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Divider, Grid, Paper } from '@material-ui/core';
 
 export default function PropertyList() {
