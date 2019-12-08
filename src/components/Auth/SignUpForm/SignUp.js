@@ -30,7 +30,7 @@ const SignUpForm = ({ submit, toggleFlip }) => {
       onSubmit={values => submit(values)}
     >
       {({ touched, errors }) => (
-        <div className="form-card">
+        <div className="form-card fade-in">
           <h2>Sign Up</h2>
           <Form data-testid="form-element">
             <div className="input-wrapper">
