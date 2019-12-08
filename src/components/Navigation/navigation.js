@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Link, navigate } from '@reach/router';
+// eslint-disable-next-line import/no-unresolved
 import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
@@ -9,7 +10,7 @@ import logo from '../../assets/img/logo.png';
 import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
 // import LoginForm from 'LoginForm/LoginForm';
 import { auth } from '../../store/actions';
-import useOnClickOutside from '../../hooks/index';
+import { useOnClickOutside } from '../../hooks/index';
 import AuthFlip from '../Auth/AuthFlip';
 
 const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
@@ -32,6 +33,7 @@ export const HorNav = () => {
     ({ email, password }) =>
       dispatch(signup(email, password))
         .then(() => navigate('/dashboard'))
+        // eslint-disable-next-line no-console
         .catch(err => console.error(err)),
     [dispatch]
   );
