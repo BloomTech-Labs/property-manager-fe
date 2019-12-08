@@ -14,6 +14,7 @@ import Dashboard from './views/dashboard/Dashboard';
 import Properties from './views/dashboard/properties/Properties';
 import Profile from './views/dashboard/profile/Profile';
 import Overview from './views/dashboard/overview/Overview';
+import GetStarted from './views/landing/GetStarted';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -28,6 +29,7 @@ const App = () => {
             <Tenant path="tenant" />
             <Features path="features" />
             <Contact path="contact" />
+            <GetStarted path="signup" />
           </LandingPage>
 
           <Dashboard path="dashboard">
