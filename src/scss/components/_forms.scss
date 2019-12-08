@@ -1,0 +1,101 @@
+.form-card {
+  @include cardify;
+  background: $white;
+  padding: 2rem;
+}
+
+.form-card-absolute {
+  @include cardify;
+  background: $white;
+  position: absolute;
+  padding: 2rem;
+  min-width: 350px;
+  left: 50%;
+  top: 100%;
+  margin: 1rem;
+}
+
+.form-heading {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0;
+  font-family: $primary-font;
+
+  // Text Input Styles
+  input {
+    font-size: 1rem;
+    border: 0;
+    background: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    height: 2rem;
+    font-family: inherit;
+
+    // Change border color on focus
+    &:focus {
+      border-bottom: 1px solid $deep-blue;
+    }
+  }
+
+  // Text Area Styles
+  textarea {
+    font-size: 1rem;
+    border: 0;
+    background: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    font-family: inherit;
+
+    &::placeholder {
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    &:focus {
+      border-bottom: 1px solid $deep-blue;
+    }
+  }
+
+  // Label styles
+  label {
+    color: #9e9e9e;
+    font-size: 1rem;
+    font-family: $heading-font;
+  }
+
+  &:focus-within {
+    // Change label color on focus
+    label {
+      color: $deep-blue;
+    }
+  }
+}
+
+.submit-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0 0;
+
+  button {
+    display: block;
+    margin-bottom: 1rem;
+    width: 80%;
+  }
+
+  a {
+    color: #9e9e9e;
+    overflow: visible;
+
+    &:hover {
+      color: $deep-blue;
+    }
+  }
+}
