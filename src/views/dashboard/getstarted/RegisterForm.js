@@ -4,9 +4,9 @@ import AbsoluteWrapper from './AbsoluteWrapper';
 const RegisterForm = () => {
   return (
     <AbsoluteWrapper>
-        <div className="registerBox">
-            <h1>test</h1>
-        </div>
+      <div className="registerBox">
+        <h1>test</h1>
+      </div>
     </AbsoluteWrapper>
   );
 };
