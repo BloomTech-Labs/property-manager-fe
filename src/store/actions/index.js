@@ -17,9 +17,7 @@ export const auth = url => (email, password) => async dispatch => {
       password
     });
 
-    console.log(res);
-
-    // TODO: Write to localStorage
+    localStorage.setItem('token', res.data.token);
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
   } catch (err) {
@@ -56,7 +54,7 @@ export const createProperty = url => property => async dispatch => {
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
   }
 };
-// -------------------------------------------------|
+// ------------------------------------------------|
 // GET PROPERTIES ---------------------------------|
 export const getProperties = url => async dispatch => {
   dispatch({ type: GET_PROPERTY_START });

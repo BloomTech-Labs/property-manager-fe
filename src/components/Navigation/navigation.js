@@ -13,7 +13,7 @@ import { auth } from '../../store/actions';
 import { useOnClickOutside } from '../../hooks/index';
 import AuthFlip from '../Auth/AuthFlip';
 
-const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
+const login = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 export const HorNav = () => {
@@ -24,8 +24,12 @@ export const HorNav = () => {
   useOnClickOutside(node, () => setOpen(false));
   const dispatch = useDispatch();
 
-  const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+  const loginFn = useCallback(
+    ({ email, password }) =>
+      dispatch(login(email, password))
+        .then(() => navigate('/dashboard'))
+        // eslint-disable-next-line no-console
+        .catch(err => console.error(err)),
     [dispatch]
   );
 
@@ -89,7 +93,7 @@ export const HorNav = () => {
               onEscapeKey={() => setShow(!show)}
             >
               <AuthFlip
-                loginSubmit={login}
+                loginSubmit={loginFn}
                 show={show}
                 setShow={setShow}
                 signupFn={signupFn}
@@ -189,7 +193,7 @@ export const BurgerNav = ({ isOpen, setOpen }) => {
 
   // eslint-disable-next-line no-unused-vars
   const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    ({ email, password }) => dispatch(login(email, password)),
     [dispatch]
   );
 
