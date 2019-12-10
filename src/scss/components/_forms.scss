@@ -1,5 +1,4 @@
 .auth-flip {
-  min-width: 350px;
   z-index: 2;
   left: 60%;
   top: 8%;
@@ -16,6 +15,9 @@
   @include cardify;
   background: $white;
   padding: 2rem;
+  width: 300px;
+  height: 400px;
+  position: absolute;
 }
 
 .form-card-absolute {
@@ -27,6 +29,11 @@
   left: 50%;
   top: 100%;
   margin: 1rem;
+}
+
+.flip {
+  margin: 0 auto;
+  width: 100%;
 }
 
 .form-heading {
@@ -84,6 +91,7 @@
   }
 
   &:focus-within {
+
     // Change label color on focus
     label {
       color: $deep-blue;

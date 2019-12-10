@@ -21,14 +21,14 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <div className="form-card">
-      <h2>Login</h2>
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={{ email: '', password: '' }}
-        onSubmit={values => submit(values)}
-      >
-        {({ errors, touched, isSubmitting }) => (
+    <Formik
+      validationSchema={validationSchema}
+      initialValues={{ email: '', password: '' }}
+      onSubmit={values => submit(values)}
+    >
+      {({ errors, touched, isSubmitting }) => (
+        <>
+          <h2>Login</h2>
           <Form data-testid="form-element">
             <div className="input-wrapper">
               <label htmlFor="email">
@@ -69,18 +69,17 @@ export default function LoginForm({ submit, toggleFlip }) {
               >
                 Submit
               </button>
-
               <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
             </div>
+            <FormFooterContainer>
+              <FormFooter>Don&apos;t have an account?</FormFooter>
+              <button type="button" onClick={() => toggleFlip()}>
+                Sign Up
+              </button>
+            </FormFooterContainer>
           </Form>
-        )}
-      </Formik>
-      <FormFooterContainer>
-        <FormFooter>Don&apos;t have an account?</FormFooter>
-        <button type="button" onClick={() => toggleFlip()}>
-          Sign Up
-        </button>
-      </FormFooterContainer>
-    </div>
+        </>
+      )}
+    </Formik>
   );
 }

@@ -5,6 +5,7 @@ import { FocusOn } from 'react-focus-on';
 
 export const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);
+
   function toggle() {
     setIsShowing(!isShowing);
   }

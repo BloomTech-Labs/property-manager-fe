@@ -4,8 +4,6 @@ import { func } from 'prop-types';
 import { useTransition, animated as a } from 'react-spring';
 import { AnimatedModal } from '../../hooks/useModal';
 import { AuthFlipForms } from './AuthFlipForms';
-import LoginForm from './LoginForm/LoginForm';
-import SignUpForm from './SignUpForm/SignUp';
 
 export const AuthFlip = ({ loginSubmit, signupFn, close, isShowing }) => {
   const [flipped, setFlip] = useState(false);
@@ -24,13 +22,13 @@ export const AuthFlip = ({ loginSubmit, signupFn, close, isShowing }) => {
     ({ item, key, props }) =>
       item && (
         <AnimatedModal close={close} key={key}>
-          <a.div style={props}>
-            <AuthFlipForms flipped={!flipped}>
-              <LoginForm submit={loginSubmit} toggleFlip={toggle} />
-            </AuthFlipForms>
-            <AuthFlipForms flipped={flipped}>
-              <SignUpForm submit={signupFn} toggleFlip={toggle} />
-            </AuthFlipForms>
+          <a.div style={props} className="auth-flip">
+            <AuthFlipForms
+              flipped={flipped}
+              loginSubmit={loginSubmit}
+              signupFn={signupFn}
+              toggle={toggle}
+            />
           </a.div>
         </AnimatedModal>
       )
@@ -42,3 +40,10 @@ AuthFlip.propTypes = {
   signupFn: func.isRequired,
   close: func.isRequired
 };
+
+/* <AuthFlipForms flipped={!flipped}>
+<LoginForm submit={loginSubmit} toggleFlip={toggle} />
+</AuthFlipForms>
+<AuthFlipForms flipped={flipped}>
+<SignUpForm submit={signupFn} toggleFlip={toggle} />
+</AuthFlipForms> */
