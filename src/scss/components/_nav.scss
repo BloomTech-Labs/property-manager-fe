@@ -92,3 +92,17 @@
     }
   }
 }
+
+/// tablet responsiveness 
+
+@media (max-width: 1027px) {
+  .nav-top {
+    transition: 1s;
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      transition: 1s;
+    }
+  }
+}
