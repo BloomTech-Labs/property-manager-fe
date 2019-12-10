@@ -7,8 +7,12 @@ const UserType = () => {
       <div className="userTypePage">
         <h1>What do you want to register as?</h1>
         <div className="userTypeBox">
-          <button className="userType">Tenant</button>
-          <button className="userType">Landlord</button>
+          <button type="button" className="userType">
+            Tenant
+          </button>
+          <button type="button" className="userType">
+            Landlord
+          </button>
         </div>
       </div>
     </AbsoluteWrapper>

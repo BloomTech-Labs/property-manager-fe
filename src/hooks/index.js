@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { useEffect } from 'react';
 
-const useOnClickOutside = (ref, handler) => {
+// eslint-disable-next-line import/prefer-default-export
+export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
     const listener = event => {
       if (!ref.current || ref.current.contains(event.target)) {
