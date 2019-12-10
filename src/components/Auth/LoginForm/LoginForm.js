@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-/** @jsx jsx */
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { jsx } from '@emotion/core';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
 import FormErrors from '../../../helpers/FormErrors';
@@ -22,14 +21,14 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ submit, toggleFlip }) {
   return (
-    <div className="form-card reversed">
-      <h2>Login</h2>
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={{ email: '', password: '' }}
-        onSubmit={values => submit(values)}
-      >
-        {({ errors, touched, isSubmitting }) => (
+    <Formik
+      validationSchema={validationSchema}
+      initialValues={{ email: '', password: '' }}
+      onSubmit={values => submit(values)}
+    >
+      {({ errors, touched, isSubmitting }) => (
+        <>
+          <h2>Login</h2>
           <Form data-testid="form-element">
             <div className="input-wrapper">
               <label htmlFor="email">
@@ -70,18 +69,17 @@ export default function LoginForm({ submit, toggleFlip }) {
               >
                 Submit
               </button>
-
               <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
             </div>
+            <FormFooterContainer>
+              <FormFooter>Don&apos;t have an account?</FormFooter>
+              <button type="button" onClick={() => toggleFlip()}>
+                Sign Up
+              </button>
+            </FormFooterContainer>
           </Form>
-        )}
-      </Formik>
-      <FormFooterContainer>
-        <FormFooter>Don&apos;t have an account?</FormFooter>
-        <button type="button" onClick={() => toggleFlip()}>
-          Sign Up
-        </button>
-      </FormFooterContainer>
-    </div>
+        </>
+      )}
+    </Formik>
   );
 }
