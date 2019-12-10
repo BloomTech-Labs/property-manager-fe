@@ -28,7 +28,6 @@ export default function authReducer(
         isLoggedIn: true
       };
     }
-
     case AUTH_REQUEST_FAIL: {
       return {
         ...state,

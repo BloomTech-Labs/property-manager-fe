@@ -29,7 +29,7 @@ const Dashboard = props => {
   return (
     <div className="dashboard">
       <VertNav />
-      <Container>{props.children}</Container>
+      <Container className="dashboard-content">{props.children}</Container>
     </div>
   );
 };

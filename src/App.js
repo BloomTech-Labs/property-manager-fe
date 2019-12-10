@@ -15,6 +15,10 @@ import Properties from './views/dashboard/properties/Properties';
 import Profile from './views/dashboard/profile/Profile';
 import Overview from './views/dashboard/overview/Overview';
 
+// Get Started import
+import RegisterForm from './views/dashboard/getstarted/RegisterForm';
+import UserType from './views/dashboard/getstarted/UserType';
+
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
 const App = () => {
@@ -28,6 +32,8 @@ const App = () => {
             <Tenant path="tenant" />
             <Features path="features" />
             <Contact path="contact" />
+            <UserType path="signup" />
+            <RegisterForm path="registerform" />
           </LandingPage>
 
           <Dashboard path="dashboard">

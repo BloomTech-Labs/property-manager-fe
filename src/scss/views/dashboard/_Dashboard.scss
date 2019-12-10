@@ -4,4 +4,9 @@
   color: $deep-blue;
   padding-left: $sidebar-width;
   height: 100vh;
+
+  &-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
