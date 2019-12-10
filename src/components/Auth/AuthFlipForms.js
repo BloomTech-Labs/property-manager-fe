@@ -10,24 +10,24 @@ export const AuthFlipForms = ({ flipped, loginSubmit, signupFn, toggle }) => {
     from: { opacity: 0 },
     enter: {
       opacity: 1,
-      transform: `perspective(600px) rotateY(0deg)`,
+      transform: `perspective(1000px) rotateY(0deg)`,
       delay: 200
     },
     leave: {
       // Instead of changing opacity, every child of the selector can get turned off
       // Or some backface trickery with an intentional delay to smooth the animation
       opacity: 0,
-      transform: `perspective(600px) rotateY(180deg)`
+      transform: `perspective(1000px) rotateY(180deg)`
     }
   });
 
   return flipAnimation.map(({ item, props, key }) => {
     return item ? (
-      <a.div style={props} className="form-card reversed" key={key}>
+      <a.div style={props} className="auth-flip__form reversed" key={key}>
         <SignUpForm submit={signupFn} toggleFlip={toggle} />
       </a.div>
     ) : (
-      <a.div style={props} className="form-card" key={key}>
+      <a.div style={props} className="auth-flip__form" key={key}>
         <LoginForm submit={loginSubmit} toggleFlip={toggle} />
       </a.div>
     );

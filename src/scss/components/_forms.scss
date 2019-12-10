@@ -5,30 +5,20 @@
   position: absolute;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px #333;
-  background-color: black;
   margin: 1rem;
   will-change: transform;
+
+  &__form {
+    @include cardify;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+  }
 }
 
+// better to refactor .form-card class to .card
 .form-card {
   @include cardify;
-  background: $white;
-  padding: 2rem;
-  width: 300px;
-  height: 400px;
-  position: absolute;
-}
-
-.form-card-absolute {
-  @include cardify;
-  background: $white;
-  position: absolute;
-  padding: 2rem;
-  min-width: 350px;
-  left: 50%;
-  top: 100%;
-  margin: 1rem;
 }
 
 .flip {
@@ -91,7 +81,6 @@
   }
 
   &:focus-within {
-
     // Change label color on focus
     label {
       color: $deep-blue;

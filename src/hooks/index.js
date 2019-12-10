@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
 /* eslint-disable import/prefer-default-export */
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const useOnClickOutside = (ref, handler) => {
+export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
     const listener = event => {
       if (!ref.current || ref.current.contains(event.target)) {
@@ -17,4 +19,20 @@ const useOnClickOutside = (ref, handler) => {
   }, [ref, handler]);
 };
 
-export default useOnClickOutside;
+export const useDataFetch = url => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  console.log(url);
+  async function fetchUrl(url) {
+    const res = await fetch(url);
+    const json = await res.json();
+
+    setData(json);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchUrl(url);
+  }, [url]);
+  return [data, loading];
+};

@@ -152,7 +152,7 @@ export default function ContactForm() {
         aria-describedby="alert-dialog-slide-description"
       >
         <Container>
-          <DialogTitle id="alert-dialog-slide-title">
+          <DialogTitle disableTypography id="alert-dialog-slide-title">
             <h5>Form Submitted!</h5>
           </DialogTitle>
           <DialogContent>

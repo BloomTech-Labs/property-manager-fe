@@ -17,9 +17,7 @@ export const auth = url => (email, password) => async dispatch => {
       password
     });
 
-    console.log(res);
-
-    // TODO: Write to localStorage
+    localStorage.setItem('token', res.data.token);
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
   } catch (err) {
@@ -33,7 +31,11 @@ export const auth = url => (email, password) => async dispatch => {
 export const ADD_PROPERTY_START = 'ADD_PROPERTY_START';
 export const ADD_PROPERTY_SUCCESS = 'ADD_PROPERTY_SUCCESS';
 export const ADD_PROPERTY_FAIL = 'ADD_PROPERTY_FAIL';
+export const GET_PROPERTY_START = 'GET_PROPERTY_START';
+export const GET_PROPERTY_SUCCESS = 'GET_PROPERTY_SUCCESS';
+export const GET_PROPERTY_FAIL = 'GET_PROPERTY_FAIL';
 // ------------------------------------------------|
+// CREATE A PROPERTY ------------------------------|
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
   console.log(property);
@@ -50,6 +52,26 @@ export const createProperty = url => property => async dispatch => {
     console.error(err);
 
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
+  }
+};
+// ------------------------------------------------|
+// GET PROPERTIES ---------------------------------|
+export const getProperties = url => async dispatch => {
+  dispatch({ type: GET_PROPERTY_START });
+
+  try {
+    const res = await axios.get(url);
+
+    dispatch({
+      type: GET_PROPERTY_SUCCESS,
+      payload: {
+        properties: res.data
+      }
+    });
+  } catch (err) {
+    console.error(err);
+
+    dispatch({ type: GET_PROPERTY_FAIL, payload: { errMsg: err } });
   }
 };
 // ------------------------------------------------|

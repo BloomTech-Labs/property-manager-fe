@@ -35,8 +35,34 @@
         color: rgba(255, 255, 255, 0.788);
         padding: .5rem 2rem;
     }
+
 }
 
 .form-wrapper {
     width: 500px;
+}
+/// LANDING PAGE MOBILE RESPONSIVENESS
+
+@media (max-width: 400px) {
+    .content-wrapper {
+        h2 {
+            font-size: 1.7em;
+            transition: 1s;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            transition: 1s;
+        }
+    
+        button {
+            font-family: $primary-font;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: solid rgba(255, 255, 255, 0.815) 2px;
+            border-radius: 2px;
+            color: rgba(255, 255, 255, 0.788);
+            padding: .5rem 2rem;
+        }
+    }
 }

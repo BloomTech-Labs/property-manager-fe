@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Link, navigate } from '@reach/router';
+// eslint-disable-next-line import/no-unresolved
+import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
@@ -7,11 +9,11 @@ import { NavBurger, BurgerMenu } from '../UI';
 import logo from '../../assets/img/logo.png';
 import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
 import { auth } from '../../store/actions';
-import useOnClickOutside from '../../hooks/index';
+import { useOnClickOutside } from '../../hooks/index';
 import { AuthFlip } from '../Auth/AuthFlip';
 import { useModal } from '../../hooks/useModal';
 
-const dispatchLogin = auth('https://pt6-propman.herokuapp.com/api/auth/login');
+const login = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 export const HorNav = () => {
@@ -22,8 +24,12 @@ export const HorNav = () => {
   useOnClickOutside(node, () => setOpen(false));
   const dispatch = useDispatch();
 
-  const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+  const loginFn = useCallback(
+    ({ email, password }) =>
+      dispatch(login(email, password))
+        .then(() => navigate('/dashboard'))
+        // eslint-disable-next-line no-console
+        .catch(err => console.error(err)),
     [dispatch]
   );
 
@@ -31,6 +37,7 @@ export const HorNav = () => {
     ({ email, password }) =>
       dispatch(signup(email, password))
         .then(() => navigate('/dashboard'))
+        // eslint-disable-next-line no-console
         .catch(err => console.error(err)),
     [dispatch]
   );
@@ -81,7 +88,7 @@ export const HorNav = () => {
             </li>
           </ul>
           <AuthFlip
-            loginSubmit={login}
+            loginSubmit={loginFn}
             signupFn={signupFn}
             close={close}
             isShowing={isShowing}
@@ -179,7 +186,7 @@ export const BurgerNav = ({ isOpen, setOpen }) => {
 
   // eslint-disable-next-line no-unused-vars
   const login = useCallback(
-    ({ email, password }) => dispatch(dispatchLogin(email, password)),
+    ({ email, password }) => dispatch(login(email, password)),
     [dispatch]
   );
 
