@@ -1,5 +1,5 @@
 //---------------------------------------
-//                Mixins                 
+//                Mixins
 //---------------------------------------
 
 // Landing Page Height Mixins
@@ -23,15 +23,17 @@
   color: $color;
   cursor: pointer;
   font-size: 1.5rem;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   text-align: center;
 }
 
 // Card Mixin
-@mixin cardify($border: 0, $radius: 2px, $shadow: $box-shadow) {
+@mixin cardify($bg: $white, $border: 0, $radius: 2px, $shadow: $box-shadow) {
   border: $border;
   border-radius: $radius;
   box-shadow: $box-shadow;
+  padding: 2rem;
+  background: $bg;
 }
 
 // Animation Mixins
@@ -39,7 +41,7 @@
 // a sort of button push-in effect
 @mixin animated-shadow {
   box-shadow: $box-shadow;
-  transition: .25s;
+  transition: 0.25s;
 
   &:hover {
     box-shadow: $box-shadow-hover;
@@ -73,13 +75,13 @@
     // 0 scale until hover
     transform: scaleX(0);
     // animation timing/easing
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   &:hover {
     &::before {
       visibility: visible;
-      transform: scaleX(.5);
+      transform: scaleX(0.5);
     }
   }
 }

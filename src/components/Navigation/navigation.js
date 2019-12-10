@@ -8,16 +8,16 @@ import { bool, func } from 'prop-types';
 import { NavBurger, BurgerMenu } from '../UI';
 import logo from '../../assets/img/logo.png';
 import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
-// import LoginForm from 'LoginForm/LoginForm';
 import { auth } from '../../store/actions';
 import { useOnClickOutside } from '../../hooks/index';
-import AuthFlip from '../Auth/AuthFlip';
+import { AuthFlip } from '../Auth/AuthFlip';
+import { useModal } from '../../hooks/useModal';
 
 const login = auth('https://pt6-propman.herokuapp.com/api/auth/login');
 const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
 
 export const HorNav = () => {
-  const [show, setShow] = useState();
+  const { isShowing, toggle, close } = useModal();
   const [isOpen, setOpen] = useState(false);
   const node = useRef();
 
@@ -81,25 +81,18 @@ export const HorNav = () => {
               <button
                 className="modal-btn"
                 type="button"
-                onClick={() => setShow(!show)}
+                onClick={() => toggle()}
               >
                 <Avi className="avatar" width={25} height={25} name="avatar" />
               </button>
             </li>
           </ul>
-          {show ? (
-            <FocusOn
-              onClickOutside={() => setShow(!show)}
-              onEscapeKey={() => setShow(!show)}
-            >
-              <AuthFlip
-                loginSubmit={loginFn}
-                show={show}
-                setShow={setShow}
-                signupFn={signupFn}
-              />
-            </FocusOn>
-          ) : null}
+          <AuthFlip
+            loginSubmit={loginFn}
+            signupFn={signupFn}
+            close={close}
+            isShowing={isShowing}
+          />
         </nav>
       </Breakpoint>
       <Breakpoint tablet only>
@@ -126,7 +119,7 @@ export const HorNav = () => {
               <button
                 className="modal-btn"
                 type="button"
-                onClick={() => setShow(!show)}
+                onClick={() => toggle()}
               >
                 <Avi className="avatar" width={25} height={25} name="avatar" />
               </button>
