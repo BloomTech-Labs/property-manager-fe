@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { useEffect } from 'react';
 import { Skeleton } from '@material-ui/lab';
 import {
@@ -38,20 +39,23 @@ export default function PropertyList() {
           properties.map(property => {
             const {
               propertiesId,
+              // eslint-disable-next-line no-unused-vars
               name,
               propertyAddress,
               propertyName
               // propertyStatus
             } = property;
 
-            const {
-              // firstname,
-              // lastname,
-              // middlename,
-              // preferredname,
-              // suffix,
-              // title
-            } = name;
+            {
+              /* const {
+               firstname,
+               lastname,
+               middlename,
+               preferredname,
+               suffix,
+               title
+            } = name; */
+            }
             const {
               city,
               // country,
