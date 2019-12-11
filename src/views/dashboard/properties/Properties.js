@@ -44,14 +44,14 @@ export default function PropertyList() {
               // propertyStatus
             } = property;
 
-            const {
-              // firstname,
-              // lastname,
-              // middlename,
-              // preferredname,
-              // suffix,
-              // title
-            } = name;
+            // const {
+            //   // firstname,
+            //   // lastname,
+            //   // middlename,
+            //   // preferredname,
+            //   // suffix,
+            //   // title
+            // } = name;
             const {
               city,
               // country,

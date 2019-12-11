@@ -19,29 +19,20 @@ import Overview from './views/dashboard/overview/Overview';
 import RegisterForm from './views/dashboard/getstarted/RegisterForm';
 import UserType from './views/dashboard/getstarted/UserType';
 
+import PublicRoutes from './components/Auth/Routes/PublicRoutes';
+import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
+import RouteAuth from './components/Auth/Routes/RouteAuth';
+
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
 const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">
-        <Router>
-          <LandingPage path="/">
-            <FrontPage path="/" />
-            <Landlord path="landlord" />
-            <Tenant path="tenant" />
-            <Features path="features" />
-            <Contact path="contact" />
-            <UserType path="signup" />
-            <RegisterForm path="registerform" />
-          </LandingPage>
-
-          <Dashboard path="dashboard">
-            <Overview path="/" />
-            <Profile path="profile" />
-            <Properties path="properties" />
-          </Dashboard>
-        </Router>
+        <PublicRoutes />
+        <RouteAuth>
+          <ProtectedRoutes />
+        </RouteAuth>
       </div>
     </BreakpointProvider>
   );
