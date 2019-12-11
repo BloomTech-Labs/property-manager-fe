@@ -1,0 +1,10 @@
+.prop-grid {
+  &__container {
+    padding: 2rem;
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 1rem;
+  }
+}

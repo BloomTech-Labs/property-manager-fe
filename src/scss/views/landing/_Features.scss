@@ -1,0 +1,42 @@
+.featuresBlock {
+    @include landing-bg('../assets/img/home-real-estate-106399.jpg') display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $nav-vh-calc;
+    width: 100%;
+    min-width: 100vw;
+
+    p {
+        width: 90%;
+    }
+
+    button {
+        background-color: rgb(8, 138, 8);
+        color: white;
+        font-family: 'Roboto', 'sans-serif';
+        letter-spacing: 3px;
+        width: 60%;
+        padding: 10px;
+        border: none;
+    }
+
+    .outerFeature {
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        background-color: rgba(211, 211, 211, 0.829);
+        width: 225px;
+    }
+
+    .middleFeature {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 425px;
+        background-color: rgba(255, 255, 255, 0.829);
+        width: 250px;
+    }
+}
