@@ -19,6 +19,7 @@ import Overview from './views/dashboard/overview/Overview';
 import RegisterForm from './views/dashboard/getstarted/RegisterForm';
 import UserType from './views/dashboard/getstarted/UserType';
 
+import Routes from './components/Auth/Routes/Routes'
 import PublicRoutes from './components/Auth/Routes/PublicRoutes';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import RouteAuth from './components/Auth/Routes/RouteAuth';
@@ -29,10 +30,7 @@ const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">
-        <PublicRoutes />
-        <RouteAuth>
-          <ProtectedRoutes />
-        </RouteAuth>
+        <Routes />
       </div>
     </BreakpointProvider>
   );

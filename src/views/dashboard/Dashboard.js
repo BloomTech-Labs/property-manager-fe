@@ -18,7 +18,7 @@ import { VertNav } from '../../components/Navigation/navigation';
 //   'https://pt6-propman.herokuapp.com/api/properties'
 // );
 
-const Dashboard = props => {
+function Dashboard (props) {
   // const dispatch = useDispatch(props);
 
   // const handleAddProperty = useCallback(

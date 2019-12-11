@@ -1,14 +1,14 @@
 import React from 'react';
 import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
-import RouteAuth from './RouteAuth';
+import { AuthProvider } from './RouteAuth';
 
 const Routes = () => (
   <div>
     <PublicRoutes />
-    <RouteAuth>
+    <AuthProvider>
       <ProtectedRoutes />
-    </RouteAuth>
+    </AuthProvider>
   </div>
 );
 
