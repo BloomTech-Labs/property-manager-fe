@@ -1,11 +1,16 @@
 import {
   ADD_PROPERTY_FAIL,
   ADD_PROPERTY_START,
-  ADD_PROPERTY_SUCCESS
+  ADD_PROPERTY_SUCCESS,
+  GET_PROPERTY_START,
+  GET_PROPERTY_SUCCESS,
+  GET_PROPERTY_FAIL
 } from '../actions';
 
 const initialState = {
-  isAddingProp: false
+  properties: [],
+  isAddingProp: false,
+  isGettingProperties: false
 };
 
 export default function propReducer(state = initialState, action) {
@@ -33,6 +38,32 @@ export default function propReducer(state = initialState, action) {
         isAddingProp: false
       };
     }
+    // -------------------------------------|
+    // GET_PROPERTIES ----------------------|
+    case GET_PROPERTY_START: {
+      return {
+        ...state,
+        isGettingProperties: true
+      };
+    }
+    case GET_PROPERTY_SUCCESS: {
+      console.log(action.payload);
+
+      return {
+        ...state,
+        isGettingProperties: false,
+        properties: action.payload
+      };
+    }
+    case GET_PROPERTY_FAIL: {
+      console.log(action.payload);
+
+      return {
+        ...state,
+        isGettingProperties: false
+      };
+    }
+    // -------------------------------------|
     default:
       return state;
     // -------------------------------------|

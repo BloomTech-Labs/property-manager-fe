@@ -7,7 +7,6 @@ import React from 'react';
 // icons import
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
-// eslint-disable-next-line import/no-unresolved
 import { Container } from '@material-ui/core';
 import ContactForm from '../../components/ContactForm/ContactForm';
 

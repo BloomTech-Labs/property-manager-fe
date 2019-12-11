@@ -1,21 +1,36 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line import/no-unresolved
-// eslint-disable-next-line no-unused-vars
-import { Route, Switch, __RouterContext, useLocation } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import { useTransition, animated } from 'react-spring';
-// eslint-disable-next-line no-unused-vars
-import SignUpForm from '../../components/Auth/SignUpForm/SignUp';
-// eslint-disable-next-line no-unused-vars
-import UserType from '../dashboard/getstarted/UserType';
-// eslint-disable-next-line no-unused-vars
-import RegisterForm from '../dashboard/getstarted/RegisterForm';
 
 const GetStarted = () => {
   return (
     <div className="getStarted">
-      <h1>test</h1>
+      <form className="signUpPage">
+        <div className="formHeader">
+          <h1>Sign Up</h1>
+          <h3>Are you a Property Owner or Renter?</h3>
+          <select>
+            <option name="owner">Owner</option>
+            <option name="renter">Renter</option>
+          </select>
+        </div>
+        <div className="formline">
+          <input type="text" placeholder="First Name" name="firstname" />
+          <input type="text" placeholder="Last Name" name="lastname" />
+        </div>
+        <div className="formline">
+          <input type="text" placeholder="Address" name="address" />
+          <input type="text" placeholder="City" name="city" />
+          <input type="number" placeholder="Zip Code" name="zipcode" />
+        </div>
+        <div className="formline">
+          <input type="text" name="state" placeholder="State" />
+          <input type="text" name="country" placeholder="Country" />
+        </div>
+        <div className="formline">
+          <input type="text" name="email" placeholder="Email" />
+          <input type="text" name="email2" placeholder="Email Confirmation" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };

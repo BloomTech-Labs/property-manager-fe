@@ -1,18 +1,29 @@
-.form-card {
-  @include cardify;
-  background: $white;
-  padding: 2rem;
+.auth-flip {
+  z-index: 2;
+  left: 60%;
+  top: 8%;
+  position: absolute;
+  border: none;
+  border-radius: 2px;
+  margin: 1rem;
+  will-change: transform;
+
+  &__form {
+    @include cardify;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+  }
 }
 
-.form-card-absolute {
+// better to refactor .form-card class to .card
+.form-card {
   @include cardify;
-  background: $white;
-  position: absolute;
-  padding: 2rem;
-  min-width: 350px;
-  left: 50%;
-  top: 100%;
-  margin: 1rem;
+}
+
+.flip {
+  margin: 0 auto;
+  width: 100%;
 }
 
 .form-heading {
@@ -98,4 +109,8 @@
       color: $deep-blue;
     }
   }
+}
+
+.reversed {
+  transform: rotateY(180deg);
 }
