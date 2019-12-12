@@ -1,18 +1,22 @@
-import React /* { useState, useEffect, useCallback } */ from 'react';
-// import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Divider, Grid, Paper } from '@material-ui/core';
-import { useDataFetch } from '../../hooks';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+// action
+import { getProperties } from '../../store/actions';
 
-const propUrl = 'https://pt6-propman.herokuapp.com/api/properties';
+const propUrl = 'https://pt6-propman-staging.herokuapp.com/api/properties';
 
 export default function PropertyList() {
-  const [data, loading] = useDataFetch(propUrl);
-  console.log(data, loading);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     // setIsLoading(false);
-  //   }, 3000);
-  // });
+  const dispatch = useDispatch();
+
+  const { properties } = useSelector(state => state.propReducer.properties);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getProperties(propUrl));
+    }, 2000);
+  }, [dispatch]);
 
   return (
     <section className="prop-grid">
@@ -29,7 +33,7 @@ export default function PropertyList() {
         alignItems="center"
         spacing={3}
       >
-        {loading ? (
+        {!properties ? (
           <>
             <Grid item>
               <Paper className="prop-grid__item" elevation={5}>
@@ -57,7 +61,7 @@ export default function PropertyList() {
           </>
         ) : (
           <>
-            {data.map(({ propertiesId, propertyName }) => (
+            {properties.map(({ propertiesId, propertyName }) => (
               <Grid item>
                 <Paper>
                   <h2>{propertiesId}</h2>

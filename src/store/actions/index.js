@@ -1,6 +1,7 @@
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
+import axiosAuth from '../../helpers/axiosAuth';
 // ------------------------------------------------|
 // AUTH ACTIONS ===================================|
 // ================================================|
@@ -8,6 +9,7 @@ export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
 export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
 export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
 // ------------------------------------------------|
+// LOGIN / SIGNUP ---------------------------------|
 export const auth = url => (email, password) => async dispatch => {
   dispatch({ type: AUTH_REQUEST_START });
 
@@ -60,7 +62,7 @@ export const getProperties = url => async dispatch => {
   dispatch({ type: GET_PROPERTY_START });
 
   try {
-    const res = await axios.get(url);
+    const res = await axiosAuth().get(url);
 
     dispatch({
       type: GET_PROPERTY_SUCCESS,
