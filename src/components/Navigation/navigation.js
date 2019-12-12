@@ -12,8 +12,10 @@ import { useOnClickOutside } from '../../hooks/index';
 import { AuthFlip } from '../Auth/AuthFlip';
 import { useModal } from '../../hooks/useModal';
 
-const login = auth('https://pt6-propman.herokuapp.com/api/auth/login');
-const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
+const login = auth('https://pt6-propman-staging.herokuapp.com/api/auth/login');
+const signup = auth(
+  'https://pt6-propman-staging.herokuapp.com/api/auth/register'
+);
 
 export const HorNav = () => {
   const { isShowing, toggle, close } = useModal();
@@ -47,7 +49,7 @@ export const HorNav = () => {
         <nav className="nav-top">
           <ul>
             <li>
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/home">
                 Home
               </Link>
             </li>
@@ -62,7 +64,7 @@ export const HorNav = () => {
               </Link>
             </li>
             <li>
-              <Link className="logo-link" to="/">
+              <Link className="logo-link" to="/home">
                 <img className="nav-logo" src={logo} alt="logo" />
               </Link>
             </li>
@@ -104,7 +106,7 @@ export const HorNav = () => {
               <Link to="/tenant">Renters</Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/home">
                 <img src={logo} alt="logo" />
               </Link>
             </li>
@@ -149,7 +151,7 @@ export const VertNav = () => {
           </Link>
         </li>
         <li>
-          <Link className="nav-link" to="">
+          <Link className="nav-link" to="/dashboard">
             Overview
           </Link>
         </li>
@@ -191,7 +193,7 @@ export const BurgerNav = ({ isOpen, setOpen }) => {
 
   return (
     <BurgerMenu isOpen={isOpen}>
-      <Link to="/" onClick={() => setOpen(!isOpen)}>
+      <Link to="/home" onClick={() => setOpen(!isOpen)}>
         Home
       </Link>
       <Link to="/landlord" onClick={() => setOpen(!isOpen)}>

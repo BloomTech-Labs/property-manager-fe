@@ -1,7 +1,6 @@
 import React from 'react';
 import calendarImage from '../../assets/img/maleAvi.png';
 
-
 const Tenant = () => {
   return (
     <div className="renterView">

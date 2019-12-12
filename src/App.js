@@ -9,19 +9,12 @@ import Features from './views/landing/Features';
 import Contact from './views/landing/Contact';
 import FrontPage from './views/landing/FrontPage';
 
-// Dashboard imports
-import Dashboard from './views/dashboard/Dashboard';
-import Properties from './views/dashboard/properties/Properties';
-import Profile from './views/dashboard/profile/Profile';
-import Overview from './views/dashboard/overview/Overview';
-
 // Get Started import
 import GetStarted from './views/landing/GetStarted';
 
-import Routes from './components/Auth/Routes/Routes';
-import PublicRoutes from './components/Auth/Routes/PublicRoutes';
+// Dashboard imports
+
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
-import RouteAuth from './components/Auth/Routes/RouteAuth';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -36,6 +29,7 @@ const App = () => {
             <Tenant path="tenant" />
             <Features path="features" />
             <Contact path="contact" />
+            <GetStarted path="signup" />
           </LandingPage>
           <ProtectedRoutes path="dashboard/*" />
         </Router>

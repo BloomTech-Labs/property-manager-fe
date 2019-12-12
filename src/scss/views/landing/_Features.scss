@@ -1,5 +1,6 @@
 .featuresBlock {
-    @include landing-bg('../assets/img/home-real-estate-106399.jpg') display: flex;
+    @include landing-bg('../assets/img/home-real-estate-106399.jpg');
+    display: flex;
     justify-content: center;
     align-items: center;
     height: $nav-vh-calc;

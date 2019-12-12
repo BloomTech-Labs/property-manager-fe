@@ -22,7 +22,9 @@ export default function PropertyList() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(
-        getProperties('https://pt6-propman.herokuapp.com/api/properties')
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
       );
     }, 2000);
   }, [dispatch]);

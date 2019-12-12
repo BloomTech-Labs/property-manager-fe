@@ -1,54 +1,60 @@
 .landlordView {
   @include landing-bg('../assets/img/home-real-estate-106399.jpg');
-  height: $nav-vh-calc;
-  color: white;
-}
-
-.landlordBlock {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  left: 5%;
-  top: 20%;
-  width: 85%;
+  justify-content: center;
+  align-items: center;
+  height: $nav-vh-calc;
+  width: 100%;
+  min-width: 100vw;
+  color: $white;
 
-  .landlordHeader {
+
+  .landlordBlock {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    left: 5%;
+    top: 20%;
+    width: 85%;
 
-    .headerBlock {
-      width: 50%;
-    }
+    .landlordHeader {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
 
-    img {
-      width: 40%;
-    }
+      .headerBlock {
+        width: 50%;
+      }
 
-    h3 {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 1.5em;
-      line-height: 35px;
-    }
-  }
-
-  .landlordSubs {
-    display: flex;
-    margin-top: 100px;
-
-    .subBlock {
-      margin: 5px;
+      img {
+        width: 40%;
+      }
 
       h3 {
-        font-size: 1.5em;
+        font-size: 2em;
       }
 
       p {
-        font-size: 1.1em;
-        line-height: 25px;;
+        font-size: 1.5em;
+        line-height: 35px;
+      }
+    }
+
+    .landlordSubs {
+      display: flex;
+      margin-top: 100px;
+
+      .subBlock {
+        margin: 5px;
+
+        h3 {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 1.1em;
+          line-height: 25px;
+          ;
+        }
       }
     }
   }
