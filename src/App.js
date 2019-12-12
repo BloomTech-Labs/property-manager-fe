@@ -19,7 +19,7 @@ import Overview from './views/dashboard/overview/Overview';
 import RegisterForm from './views/dashboard/getstarted/RegisterForm';
 import UserType from './views/dashboard/getstarted/UserType';
 
-import Routes from './components/Auth/Routes/Routes'
+import Routes from './components/Auth/Routes/Routes';
 import PublicRoutes from './components/Auth/Routes/PublicRoutes';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import RouteAuth from './components/Auth/Routes/RouteAuth';
@@ -30,7 +30,16 @@ const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">
-        <Routes />
+        <Router>
+          <LandingPage path="/">
+            <FrontPage path="/" />
+            <Landlord path="landlord" />
+            <Tenant path="tenant" />
+            <Features path="features" />
+            <Contact path="contact" />
+          </LandingPage>
+          <ProtectedRoutes path="dashboard/*" />
+        </Router>
       </div>
     </BreakpointProvider>
   );

@@ -1,15 +1,15 @@
 import React from 'react';
+import { Router } from '@reach/router';
 import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
-import { AuthProvider } from './RouteAuth';
+import RouteAuth from './RouteAuth';
 
 const Routes = () => (
-  <div>
-    <PublicRoutes />
-    <AuthProvider>
-      <ProtectedRoutes />
-    </AuthProvider>
-  </div>
+  <Router>
+    <PublicRoutes path="/" />
+
+    <ProtectedRoutes path="/dashboard" />
+  </Router>
 );
 
 export default Routes;

@@ -12,10 +12,10 @@ const PublicRoutes = () => (
   <Router>
     <LandingPage path="/">
       <FrontPage path="/" />
-      <Landlord path="landlord" />
-      <Tenant path="tenant" />
-      <Features path="features" />
-      <Contact path="contact" />
+      <Landlord path="/landlord" />
+      <Tenant path="/tenant" />
+      <Features path="/features" />
+      <Contact path="/contact" />
     </LandingPage>
   </Router>
 );
