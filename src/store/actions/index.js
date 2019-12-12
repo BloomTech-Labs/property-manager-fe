@@ -23,7 +23,6 @@ export const auth = url => (email, password) => async dispatch => {
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
   } catch (err) {
-    console.error(err);
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
 };
@@ -40,7 +39,6 @@ export const GET_PROPERTY_FAIL = 'GET_PROPERTY_FAIL';
 // CREATE A PROPERTY ------------------------------|
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
-  console.log(property);
   try {
     const res = await axios.post(url, { ...property });
 
@@ -51,8 +49,6 @@ export const createProperty = url => property => async dispatch => {
       }
     });
   } catch (err) {
-    console.error(err);
-
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
   }
 };
@@ -71,8 +67,6 @@ export const getProperties = url => async dispatch => {
       }
     });
   } catch (err) {
-    console.error(err);
-
     dispatch({ type: GET_PROPERTY_FAIL, payload: { errMsg: err } });
   }
 };
