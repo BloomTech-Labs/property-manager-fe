@@ -1,54 +1,61 @@
 .renterView {
-  color: white;
+  color: $white;
   @include landing-bg('../assets/img/forRenters.jpg');
-}
-
-
-.renterBlock {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  left: 5%;
-  top: 20%;
-  width: 85%;
+  justify-content: center;
+  align-items: center;
+  height: $nav-vh-calc;
+  width: 100%;
+  max-width: 100vw;
 
-  .renterHeader {
+
+
+  .renterBlock {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    left: 5%;
+    top: 20%;
+    width: 85%;
 
-    .headerBlock {
-      width: 50%;
-    }
+    .renterHeader {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
 
-    img {
-      width: 40%;
-    }
+      .headerBlock {
+        width: 50%;
+      }
 
-    h3 {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 1.5em;
-      line-height: 35px;
-    }
-  }
-
-  .renterSubs {
-    display: flex;
-    margin-top: 100px;
-
-    .subBlock {
-      margin: 5px;
+      img {
+        width: 40%;
+      }
 
       h3 {
-        font-size: 1.5em;
+        font-size: 2em;
       }
 
       p {
-        font-size: 1.1em;
-        line-height: 25px;;
+        font-size: 1.5em;
+        line-height: 35px;
+      }
+    }
+
+    .renterSubs {
+      display: flex;
+      margin-top: 1rem;
+
+      .subBlock {
+        margin: 5px;
+
+        h3 {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 1.1em;
+          line-height: 25px;
+          ;
+        }
       }
     }
   }
