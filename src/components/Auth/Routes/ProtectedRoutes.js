@@ -6,10 +6,18 @@ import Profile from '../../../views/dashboard/profile/Profile';
 import Overview from '../../../views/dashboard/overview/Overview';
 
 function ProtectedRoutes() {
-  const token = localStorage.getItem('token');
+  function getToken() {
+    try {
+      let token = localStorage.getItem('token');
+      return token;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  const token = getToken();
 
   if (!token) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
   return (
     <Router>

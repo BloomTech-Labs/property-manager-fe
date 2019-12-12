@@ -32,7 +32,7 @@ const App = () => {
       <div className="App">
         <Router>
           <LandingPage path="/">
-            <FrontPage path="/" />
+            <FrontPage path="/home" />
             <Landlord path="landlord" />
             <Tenant path="tenant" />
             <Features path="features" />
