@@ -16,8 +16,7 @@ import Profile from './views/dashboard/profile/Profile';
 import Overview from './views/dashboard/overview/Overview';
 
 // Get Started import
-import RegisterForm from './views/dashboard/getstarted/RegisterForm';
-import UserType from './views/dashboard/getstarted/UserType';
+import GetStarted from './views/landing/GetStarted';
 
 import Routes from './components/Auth/Routes/Routes';
 import PublicRoutes from './components/Auth/Routes/PublicRoutes';

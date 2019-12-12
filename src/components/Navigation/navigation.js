@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Link, navigate } from '@reach/router';
 // eslint-disable-next-line import/no-unresolved
-import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
