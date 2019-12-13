@@ -11,8 +11,6 @@ import {
   Divider
 } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import FloatingActions from '../../../components/UI/FloatingActions';
-// redux
 // action
 import { getProperties } from '../../../store/actions';
 
@@ -41,7 +39,14 @@ export default function PropertyList() {
           properties.map(property => {
             console.log(property);
 
-            const { id, name, city, street, status, state, zip } = property;
+            const {
+              id,
+              name,
+              city,
+              street,
+              /* status, */ state,
+              zip
+            } = property;
 
             return (
               <Grid key={id} item xs={12} sm={6} md={4} lg={3}>
@@ -107,7 +112,6 @@ export default function PropertyList() {
           </>
         )}
       </Grid>
-      <FloatingActions />
     </div>
   );
 }

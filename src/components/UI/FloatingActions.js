@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
@@ -29,7 +30,11 @@ const useStyles = makeStyles(theme => ({
 
 // define an array of actions
 const actions = [
-  { icon: <FaBuilding />, name: 'Add Property' },
+  {
+    icon: <FaBuilding />,
+    name: 'Add Property',
+    path: 'dashboard/properties/add'
+  },
   { icon: <FaUserPlus />, name: 'Add Tenant' },
   { icon: <FaHammer />, name: 'Add Work Order' }
 ];
@@ -68,7 +73,11 @@ export default function FloatingActions() {
           key={action.name}
           icon={action.icon}
           tooltipTitle={action.name}
-          onClick={handleClose}
+          onClick={() => {
+            console.log(action.path);
+            navigate(action.path);
+            handleClose();
+          }}
         />
       ))}
     </SpeedDial>

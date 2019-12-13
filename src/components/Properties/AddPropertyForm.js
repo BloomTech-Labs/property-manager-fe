@@ -8,8 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormErrors from '../../helpers/FormErrors';
 import { makeStyles } from '@material-ui/core/styles';
+import FormErrors from '../../helpers/FormErrors';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
