@@ -18,7 +18,7 @@ function ProtectedRoutes() {
   const token = getToken();
 
   if (!token) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/" noThrow />;
   }
   return (
     <Router>
