@@ -49,7 +49,7 @@ export const HorNav = () => {
         <nav className="nav-top">
           <ul>
             <li>
-              <Link className="nav-link" to="/home">
+              <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
@@ -64,7 +64,7 @@ export const HorNav = () => {
               </Link>
             </li>
             <li>
-              <Link className="logo-link" to="/home">
+              <Link className="logo-link" to="/">
                 <img className="nav-logo" src={logo} alt="logo" />
               </Link>
             </li>
@@ -106,7 +106,7 @@ export const HorNav = () => {
               <Link to="/tenant">Renters</Link>
             </li>
             <li>
-              <Link to="/home">
+              <Link to="/">
                 <img src={logo} alt="logo" />
               </Link>
             </li>
@@ -193,7 +193,7 @@ export const BurgerNav = ({ isOpen, setOpen }) => {
 
   return (
     <BurgerMenu isOpen={isOpen}>
-      <Link to="/home" onClick={() => setOpen(!isOpen)}>
+      <Link to="/" onClick={() => setOpen(!isOpen)}>
         Home
       </Link>
       <Link to="/landlord" onClick={() => setOpen(!isOpen)}>

@@ -19,7 +19,7 @@ const App = () => {
       <div className="App">
         <Router>
           <LandingPage path="/">
-            <FrontPage path="/home" />
+            <FrontPage path="/" />
             <Landlord path="landlord" />
             <Tenant path="tenant" />
             <Features path="features" />
