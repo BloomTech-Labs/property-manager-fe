@@ -4,6 +4,7 @@ import Dashboard from '../../../views/dashboard/Dashboard';
 import Properties from '../../../views/dashboard/properties/Properties';
 import Profile from '../../../views/dashboard/profile/Profile';
 import Overview from '../../../views/dashboard/overview/Overview';
+import CreateProperty from '../../../views/dashboard/properties/CreateProperty';
 
 function ProtectedRoutes() {
   function getToken() {
@@ -25,6 +26,7 @@ function ProtectedRoutes() {
         <Overview path="/" />
         <Profile path="profile" />
         <Properties path="properties" />
+        <CreateProperty path="properties/add" />
       </Dashboard>
     </Router>
   );

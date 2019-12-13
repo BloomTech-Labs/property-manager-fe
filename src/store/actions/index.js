@@ -39,8 +39,11 @@ export const GET_PROPERTY_FAIL = 'GET_PROPERTY_FAIL';
 // CREATE A PROPERTY ------------------------------|
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
+
+  console.log(property);
+
   try {
-    const res = await axios.post(url, { ...property });
+    const res = await axiosAuth().post(url, { input: property });
 
     dispatch({
       type: ADD_PROPERTY_SUCCESS,
@@ -49,6 +52,7 @@ export const createProperty = url => property => async dispatch => {
       }
     });
   } catch (err) {
+    console.error(err);
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
   }
 };
