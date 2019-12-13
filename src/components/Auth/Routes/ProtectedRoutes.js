@@ -8,16 +8,16 @@ import Overview from '../../../views/dashboard/overview/Overview';
 function ProtectedRoutes() {
   function getToken() {
     try {
-      let token = localStorage.getItem('token');
+      const token = localStorage.getItem('token');
       return token;
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
   const token = getToken();
 
   if (!token) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/" noThrow />;
   }
   return (
     <Router>

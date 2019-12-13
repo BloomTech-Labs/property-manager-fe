@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { Redirect } from '@reach/router';
+import React from 'react';
 import LandingPage from '../../../views/landing/LandingPage';
 
 // eslint-disable-next-line react/prop-types
@@ -11,7 +10,6 @@ export default function RouteAuth({
   const token = localStorage.getItem('token');
   return token ? <Component /> : <LandingPage />;
 }
-
 
 // const AuthContext = React.createContext();
 // class AuthProvider extends React.Component {
