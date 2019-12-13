@@ -151,7 +151,7 @@ export const VertNav = () => {
           </Link>
         </li>
         <li>
-          <Link className="nav-link" to="/dashboard">
+          <Link className="nav-link" to="dashboard/">
             Overview
           </Link>
         </li>

@@ -25,8 +25,6 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case ADD_PROPERTY_SUCCESS: {
-      console.log(action.payload);
-
       return {
         ...state,
         isAddingProp: false
@@ -47,8 +45,6 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_PROPERTY_SUCCESS: {
-      console.log(action.payload);
-
       return {
         ...state,
         isGettingProperties: false,
@@ -56,8 +52,6 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_PROPERTY_FAIL: {
-      console.log(action.payload);
-
       return {
         ...state,
         isGettingProperties: false

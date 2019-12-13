@@ -18,7 +18,7 @@ import { VertNav } from '../../components/Navigation/navigation';
 //   'https://pt6-propman.herokuapp.com/api/properties'
 // );
 
-function Dashboard (props) {
+function Dashboard(props) {
   // const dispatch = useDispatch(props);
 
   // const handleAddProperty = useCallback(
@@ -32,6 +32,6 @@ function Dashboard (props) {
       <Container className="dashboard-content">{props.children}</Container>
     </div>
   );
-};
+}
 
 export default Dashboard;
