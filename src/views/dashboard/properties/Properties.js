@@ -39,46 +39,23 @@ export default function PropertyList() {
       <Grid container spacing={3}>
         {properties ? (
           properties.map(property => {
-            const {
-              propertiesId,
-              // eslint-disable-next-line no-unused-vars
-              name,
-              propertyAddress,
-              propertyName
-              // propertyStatus
-            } = property;
+            console.log(property);
 
-            // const {
-            //   // firstname,
-            //   // lastname,
-            //   // middlename,
-            //   // preferredname,
-            //   // suffix,
-            //   // title
-            // } = name;
-            const {
-              city,
-              // country,
-              state
-              // street,
-              // street2,
-              // zip
-            } = propertyAddress;
+            const { id, name, city, street, status, state, zip } = property;
 
             return (
-              <Grid key={propertiesId} item xs={12} sm={6} md={4} lg={3}>
+              <Grid key={id} item xs={12} sm={6} md={4} lg={3}>
                 <Paper elevation={5}>
                   <CardHeader
-                    title={
-                      <Typography variant="body1">{propertyName}</Typography>
-                    }
+                    title={<Typography variant="body1">{name}</Typography>}
                   />
 
-                  {propertyAddress.city ? (
+                  {city ? (
                     <CardContent>
-                      <Typography variant="subtitle2">Location:</Typography>
-                      <Typography variant="caption">
-                        {city}, {state}
+                      <Typography variant="body1">Location:</Typography>
+                      <Typography variant="body2">{street}</Typography>
+                      <Typography variant="body2">
+                        {city}, {state}, {zip}
                       </Typography>
                     </CardContent>
                   ) : (

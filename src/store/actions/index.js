@@ -43,7 +43,7 @@ export const createProperty = url => property => async dispatch => {
   console.log(property);
 
   try {
-    const res = await axiosAuth().post(url, { input: property });
+    const res = await axiosAuth().post(url, property);
 
     dispatch({
       type: ADD_PROPERTY_SUCCESS,

@@ -6,7 +6,19 @@ import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 import FormErrors from '../../helpers/FormErrors';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    width: '100%',
+    maxWidth: '600px'
+  }
+}));
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -16,7 +28,6 @@ const validationSchema = Yup.object().shape({
   street: Yup.string()
     .max(255, 'Address entered was too long')
     .required('Must enter a street address'),
-  street2: Yup.string().max(255, 'Address entered was too long'),
   city: Yup.string()
     .max(50, 'City entered was too long')
     .required('Must enter a city'),
@@ -27,12 +38,12 @@ const validationSchema = Yup.object().shape({
   state: Yup.string()
     .max(50, 'State entered was too long')
     .required('Must enter the state'),
-  country: Yup.string()
-    .max(255, 'Country entered was too long')
-    .required('Must enter a country')
+  status: Yup.string().required('Property Status is required!')
 });
 
 export default function AddPropertyForm({ submit }) {
+  const classes = useStyles();
+
   return (
     <div className="form-card">
       <h2>Add Property</h2>
@@ -92,13 +103,14 @@ export default function AddPropertyForm({ submit }) {
               <FormErrors touched={touched.state} message={errors.state} />
             </div>
 
-            <div className="input-wrapper">
-              <label htmlFor="status">Property Status</label>
-              <Field name="status" as="select" placeholder="Property Status">
-                <option value="vacant">Vacant</option>
-                <option value="occupied">Occupied</option>
+            <FormControl className={classes.formControl}>
+              <InputLabel>Property Status</InputLabel>
+              <Field name="status" as={Select}>
+                <MenuItem value="vacant">Vacant</MenuItem>
+                <MenuItem value="occupied">Occupied</MenuItem>
               </Field>
-            </div>
+              <FormErrors touched={touched.status} message={errors.status} />
+            </FormControl>
 
             <div className="submit-btn-wrapper">
               <button
