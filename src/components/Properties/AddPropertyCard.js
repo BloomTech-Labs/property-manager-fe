@@ -8,7 +8,7 @@ import ErrorSVG from '../SVG/ErrorSVG';
 export default function AddPropertyCard(props) {
   const { propertyNum, isLoading, error } = props;
 
-  if (error) {
+  if (error && !isLoading) {
     return (
       <PropertyCard
         icon={<FaExclamationCircle />}
