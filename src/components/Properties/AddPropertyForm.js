@@ -4,155 +4,114 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
 import FormErrors from '../../helpers/FormErrors';
 
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    width: '100%',
+    maxWidth: '600px'
+  }
+}));
+
 const validationSchema = Yup.object().shape({
-  propertyName: Yup.string()
+  name: Yup.string()
     .max(255, 'Name entered was too long')
     .required('Must enter a Property Name'),
-  propertyAddress: Yup.object({
-    street: Yup.string()
-      .max(255, 'Address entered was too long')
-      .required('Must enter a street address'),
-    street2: Yup.string().max(255, 'Address entered was too long'),
-    city: Yup.string()
-      .max(50, 'City entered was too long')
-      .required('Must enter a city'),
-    zip: Yup.string()
-      .min(5, 'Must enter 5-digit zip code')
-      .max(5, 'Must enter 5-digit zip code')
-      .required('Must enter a 5-digit zip code'),
-    state: Yup.string()
-      .max(50, 'State entered was too long')
-      .required('Must enter the state'),
-    country: Yup.string()
-      .max(255, 'Country entered was too long')
-      .required('Must enter a country')
-  })
+
+  street: Yup.string()
+    .max(255, 'Address entered was too long')
+    .required('Must enter a street address'),
+  city: Yup.string()
+    .max(50, 'City entered was too long')
+    .required('Must enter a city'),
+  zip: Yup.string()
+    .min(5, 'Must enter 5-digit zip code')
+    .max(5, 'Must enter 5-digit zip code')
+    .required('Must enter a 5-digit zip code'),
+  state: Yup.string()
+    .max(50, 'State entered was too long')
+    .required('Must enter the state'),
+  status: Yup.string().required('Property Status is required!')
 });
 
 export default function AddPropertyForm({ submit }) {
+  const classes = useStyles();
+
   return (
     <div className="form-card">
       <h2>Add Property</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
-          propertyName: '',
-          propertyAddress: {
-            street: '',
-            street2: '',
-            city: '',
-            zip: '',
-            state: '',
-            country: ''
-          }
+          name: '',
+          street: '',
+          city: '',
+          state: '',
+          zip: '',
+          status: ''
         }}
-        onSubmit={values => submit(values)}
+        onSubmit={values => {
+          // console.log(values);
+          submit(values);
+        }}
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <div className="input-wrapper">
-              <label htmlFor="propertyName">Property Name</label>
+              <label htmlFor="name">Property Name</label>
               <Field
                 placeholder="Enter a name for your Property"
-                name="propertyName"
+                name="name"
                 type="text"
               />
-              <FormErrors
-                touched={touched.propertyName}
-                message={errors.propertyName}
-              />
+              <FormErrors touched={touched.name} message={errors.name} />
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="propertyAddress.street">Address Line 1</label>
-              <Field
-                placeholder="Street address"
-                name="propertyAddress.street"
-                type="text"
-              />
-              <FormErrors
-                touched={
-                  touched.propertyAddress && touched.propertyAddress.street
-                }
-                message={
-                  errors.propertyAddress && errors.propertyAddress.street
-                }
-              />
+              <label htmlFor="street">Street Address</label>
+              <Field placeholder="Street address" name="street" type="text" />
+              <FormErrors touched={touched.street} message={errors.street} />
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="propertyAddress.street2">Address Line 2</label>
-              <Field
-                placeholder="Apartment, suite, unit, building, floor, etc."
-                name="propertyAddress.street2"
-                type="text"
-              />
-              <FormErrors
-                touched={
-                  touched.propertyAddress && touched.propertyAddress.street2
-                }
-                message={
-                  errors.propertyAddress && errors.propertyAddress.street2
-                }
-              />
+              <label htmlFor="city">City</label>
+              <Field placeholder="City" name="city" type="text" />
+              <FormErrors touched={touched.city} message={errors.city} />
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="propertyAddress.city">City</label>
-              <Field
-                placeholder="City"
-                name="propertyAddress.city"
-                type="text"
-              />
-              <FormErrors
-                touched={
-                  touched.propertyAddress && touched.propertyAddress.city
-                }
-                message={errors.propertyAddress && errors.propertyAddress.city}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="propertyAddress.zip">Zip Code</label>
+              <label htmlFor="zip">Zip Code</label>
               <Field
                 placeholder="Enter a 5-digit Zip Code"
-                name="propertyAddress.zip"
+                name="zip"
                 type="number"
               />
 
-              <FormErrors
-                touched={touched.propertyAddress && touched.propertyAddress.zip}
-                message={errors.propertyAddress && errors.propertyAddress.zip}
-              />
+              <FormErrors touched={touched.zip} message={errors.zip} />
             </div>
+
             <div className="input-wrapper">
-              <label htmlFor="propertyAddress.state">State</label>
-              <Field
-                placeholder="State"
-                name="propertyAddress.state"
-                type="text"
-              />
-              <FormErrors
-                touched={
-                  touched.propertyAddress && touched.propertyAddress.state
-                }
-                message={errors.propertyAddress && errors.propertyAddress.state}
-              />
+              <label htmlFor="state">State</label>
+              <Field placeholder="State" name="state" type="text" />
+              <FormErrors touched={touched.state} message={errors.state} />
             </div>
-            <div className="input-wrapper">
-              <label htmlFor="propertyAddress.country">Country</label>
-              <Field
-                placeholder="Country"
-                name="propertyAddress.country"
-                type="text"
-              />
-              <FormErrors
-                touched={
-                  touched.propertyAddress && touched.propertyAddress.country
-                }
-                message={
-                  errors.propertyAddress && errors.propertyAddress.country
-                }
-              />
-            </div>
+
+            <FormControl className={classes.formControl}>
+              <InputLabel>Property Status</InputLabel>
+              <Field name="status" as={Select}>
+                <MenuItem value="vacant">Vacant</MenuItem>
+                <MenuItem value="occupied">Occupied</MenuItem>
+              </Field>
+              <FormErrors touched={touched.status} message={errors.status} />
+            </FormControl>
+
             <div className="submit-btn-wrapper">
               <button
                 className="btn btn-animated"
