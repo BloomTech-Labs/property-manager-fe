@@ -62,7 +62,7 @@ export default function PropertyList() {
         ) : (
           <>
             {properties.map(({ id, name }) => (
-              <Grid item key={id}>
+              <Grid key={id} item>
                 <Paper>
                   <h2>{id}</h2>
                   <p>{name}</p>

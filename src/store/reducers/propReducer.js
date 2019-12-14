@@ -10,7 +10,7 @@ import {
 const initialState = {
   properties: [],
   isAddingProp: false,
-  isGettingProperties: false
+  isGettingProperties: true
 };
 
 export default function propReducer(state = initialState, action) {
@@ -45,10 +45,12 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_PROPERTY_SUCCESS: {
+      // console.log(action.payload);
+
       return {
         ...state,
         isGettingProperties: false,
-        properties: action.payload
+        properties: action.payload.properties
       };
     }
     case GET_PROPERTY_FAIL: {

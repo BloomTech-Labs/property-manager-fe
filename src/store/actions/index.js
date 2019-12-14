@@ -40,8 +40,6 @@ export const GET_PROPERTY_FAIL = 'GET_PROPERTY_FAIL';
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
 
-  console.log(property);
-
   try {
     const res = await axiosAuth().post(url, property);
 

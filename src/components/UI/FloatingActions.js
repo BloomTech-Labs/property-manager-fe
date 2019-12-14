@@ -74,7 +74,6 @@ export default function FloatingActions() {
           icon={action.icon}
           tooltipTitle={action.name}
           onClick={() => {
-            console.log(action.path);
             navigate(action.path);
             handleClose();
           }}

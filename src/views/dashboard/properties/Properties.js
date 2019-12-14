@@ -1,23 +1,21 @@
 /* eslint-disable no-lone-blocks */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // UI
-import { Skeleton } from '@material-ui/lab';
-import {
-  Paper,
-  Grid,
-  CardHeader,
-  CardContent,
-  Typography,
-  Divider
-} from '@material-ui/core';
+import { Grid, Divider } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 // action
+import { FaPen } from 'react-icons/fa';
 import { getProperties } from '../../../store/actions';
+import PropertyCard from '../../../components/Properties/PropertyCard';
+import AddPropertyCard from '../../../components/Properties/AddPropertyCard';
+import Location from '../../../components/SVG/Location';
 
 export default function PropertyList() {
   const dispatch = useDispatch();
 
-  const { properties } = useSelector(state => state.propReducer.properties);
+  const [loading, setLoading] = useState(true);
+
+  const propertyList = useSelector(state => state.propReducer.properties);
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +23,9 @@ export default function PropertyList() {
         getProperties(
           'https://pt6-propman-staging.herokuapp.com/api/properties'
         )
-      );
+      ).then(() => {
+        setLoading(false);
+      });
     }, 2000);
   }, [dispatch]);
 
@@ -34,83 +34,44 @@ export default function PropertyList() {
       <h1>List of Properties</h1>
       <Divider />
       <br />
+
       <Grid container spacing={3}>
-        {properties ? (
-          properties.map(property => {
-            console.log(property);
+        {propertyList.map(property => {
+          const { id, street } = property;
 
-            const {
-              id,
-              name,
-              city,
-              street,
-              /* status, */ state,
-              zip
-            } = property;
+          return (
+            <React.Fragment key={id}>
+              <PropertyCard
+                key={id}
+                svg={<Location />}
+                title={street}
+                icon={<FaPen />}
+              />
+            </React.Fragment>
+          );
+        })}
 
-            return (
-              <Grid key={id} item xs={12} sm={6} md={4} lg={3}>
-                <Paper elevation={5}>
-                  <CardHeader
-                    title={<Typography variant="body1">{name}</Typography>}
-                  />
+        {(() => {
+          if (propertyList.length > 0) {
+            return null;
+          }
+          if (propertyList.length === 0 && loading === false) {
+            return null;
+          }
+          return (
+            <>
+              <PropertyCard />
+              <PropertyCard />
+              <PropertyCard />
+              <PropertyCard />
+            </>
+          );
+        })()}
 
-                  {city ? (
-                    <CardContent>
-                      <Typography variant="body1">Location:</Typography>
-                      <Typography variant="body2">{street}</Typography>
-                      <Typography variant="body2">
-                        {city}, {state}, {zip}
-                      </Typography>
-                    </CardContent>
-                  ) : (
-                    <CardContent>
-                      <Typography variant="caption">
-                        No location info.
-                      </Typography>
-                    </CardContent>
-                  )}
-                </Paper>
-              </Grid>
-            );
-          })
-        ) : (
-          <>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-          </>
-        )}
+        <AddPropertyCard
+          propertyNum={propertyList.length}
+          isGettingProperties={loading}
+        />
       </Grid>
     </div>
   );
