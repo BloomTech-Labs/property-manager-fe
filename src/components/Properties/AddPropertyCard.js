@@ -11,7 +11,7 @@ export default function AddPropertyCard(props) {
   if (error && !isLoading) {
     return (
       <PropertyCard
-        icon={<FaExclamationCircle />}
+        icon={<FaExclamationCircle style={{ color: '#EC5E7B' }} />}
         title="Uh oh! There was an error."
         svg={<ErrorSVG />}
       />
