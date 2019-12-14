@@ -8,12 +8,14 @@ import { FaPen } from 'react-icons/fa';
 import { getProperties } from '../../../store/actions';
 import PropertyCard from '../../../components/Properties/PropertyCard';
 import AddPropertyCard from '../../../components/Properties/AddPropertyCard';
-import Location from '../../../components/SVG/Location';
+import LocationSVG from '../../../components/SVG/LocationSVG';
 
 export default function PropertyList() {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
+
+  const errMsg = useSelector(state => state.propReducer.errMsg);
 
   const propertyList = useSelector(state => state.propReducer.properties);
 
@@ -43,7 +45,7 @@ export default function PropertyList() {
             <React.Fragment key={id}>
               <PropertyCard
                 key={id}
-                svg={<Location />}
+                svg={<LocationSVG />}
                 title={street}
                 icon={<FaPen />}
               />
@@ -70,7 +72,8 @@ export default function PropertyList() {
 
         <AddPropertyCard
           propertyNum={propertyList.length}
-          isGettingProperties={loading}
+          isLoading={loading}
+          error={errMsg}
         />
       </Grid>
     </div>

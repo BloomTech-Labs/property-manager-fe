@@ -33,7 +33,7 @@ const actions = [
   {
     icon: <FaBuilding />,
     name: 'Add Property',
-    path: 'dashboard/properties/add'
+    path: '/dashboard/properties/add'
   },
   { icon: <FaUserPlus />, name: 'Add Tenant' },
   { icon: <FaHammer />, name: 'Add Work Order' }

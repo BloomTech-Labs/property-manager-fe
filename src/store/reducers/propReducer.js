@@ -10,7 +10,8 @@ import {
 const initialState = {
   properties: [],
   isAddingProp: false,
-  isGettingProperties: true
+  isGettingProperties: true,
+  errMsg: null
 };
 
 export default function propReducer(state = initialState, action) {
@@ -41,7 +42,8 @@ export default function propReducer(state = initialState, action) {
     case GET_PROPERTY_START: {
       return {
         ...state,
-        isGettingProperties: true
+        isGettingProperties: true,
+        errMsg: null
       };
     }
     case GET_PROPERTY_SUCCESS: {
@@ -50,13 +52,15 @@ export default function propReducer(state = initialState, action) {
       return {
         ...state,
         isGettingProperties: false,
-        properties: action.payload.properties
+        properties: action.payload.properties,
+        errMsg: null
       };
     }
     case GET_PROPERTY_FAIL: {
       return {
         ...state,
-        isGettingProperties: false
+        isGettingProperties: false,
+        errMsg: action.payload.errMsg
       };
     }
     // -------------------------------------|

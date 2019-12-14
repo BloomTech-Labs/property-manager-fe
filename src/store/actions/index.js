@@ -69,7 +69,7 @@ export const getProperties = url => async dispatch => {
       }
     });
   } catch (err) {
-    dispatch({ type: GET_PROPERTY_FAIL, payload: { errMsg: err } });
+    dispatch({ type: GET_PROPERTY_FAIL, payload: { errMsg: err.message } });
   }
 };
 // ------------------------------------------------|
