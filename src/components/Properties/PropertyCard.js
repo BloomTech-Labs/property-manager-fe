@@ -14,14 +14,8 @@ import Divider from '@material-ui/core/Divider';
 // Defaults
 import { Skeleton } from '@material-ui/lab';
 
-// propTypes
-// import { func, string, object, elementType } from 'prop-types';
-
 // Component Styling
 const useStyles = makeStyles({
-  gridItem: {
-    height: '100%'
-  },
   card: {
     maxWidth: 345
   },
@@ -70,7 +64,7 @@ export default function PropertyCard(props) {
   const { icon, title, svg } = props;
 
   return (
-    <Grid className={classes.gridItem} item xs={12} sm={6} md={4} lg={3}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia className={classes.media}>
