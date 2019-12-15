@@ -7,7 +7,8 @@ import {
   Paper,
   CardHeader,
   CardContent,
-  Typography
+  Typography,
+  Container
 } from '@material-ui/core';
 import ProfileCard from './ProfileCard';
 import PropTable from './PropTable';
@@ -33,9 +34,13 @@ export default function Profile() {
     <div className="profile">
       <h1>User Profile</h1>
       <Divider />
-      <br />
-      <ProfileCard />
-      <PropTable/>
+      <Container>
+        <br />
+        <Grid>
+          <ProfileCard />
+          <PropTable />
+        </Grid>
+      </Container>
     </div>
   );
 }
