@@ -58,7 +58,7 @@ export default function AddPropertyForm({ submit }) {
           status: ''
         }}
         onSubmit={values => {
-          // console.log(values);
+          console.log(values);
           submit(values);
         }}
       >
@@ -105,7 +105,14 @@ export default function AddPropertyForm({ submit }) {
 
             <FormControl className={classes.formControl}>
               <InputLabel>Property Status</InputLabel>
-              <Field name="status" as={Select}>
+              <Field
+                name="status"
+                as={Select}
+                defaultValue="vacant"
+                SelectDisplayProps={{
+                  'data-testid': 'status-select'
+                }}
+              >
                 <MenuItem value="vacant">Vacant</MenuItem>
                 <MenuItem value="occupied">Occupied</MenuItem>
               </Field>
