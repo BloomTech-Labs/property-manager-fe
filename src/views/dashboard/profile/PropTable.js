@@ -8,6 +8,7 @@ import {
   TableRow,
   Paper
 } from '@material-ui/core';
+import TableContainer from '@material-ui/core/TableContainer';
 
 const useStyles = makeStyles({
   table: {
@@ -24,25 +25,27 @@ export default function PropTable(props) {
   //const properties = this.props.propertyList;
 
   return (
-    <Table classname={classes.table} aria-lable="Property Table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Properties</TableCell>
-          <TableCell align="right">Tenants</TableCell>
-          <TableCell align="right">Payments</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map(row => (
-          <TableRow key={row.property}>
-            <TableCell component="th" scope="row">
-              {row.property}
-            </TableCell>
-            <TableCell align="right">{row.tenants}</TableCell>
-            <TableCell align="right">{row.payments}</TableCell>
+    <TableContainer component={Paper}>
+      <Table classname={classes.table} aria-label="Property Table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Properties</TableCell>
+            <TableCell align="right">Tenants</TableCell>
+            <TableCell align="right">Payments</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.property}>
+              <TableCell component="th" scope="row">
+                {row.property}
+              </TableCell>
+              <TableCell align="right">{row.tenants}</TableCell>
+              <TableCell align="right">{row.payments}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
