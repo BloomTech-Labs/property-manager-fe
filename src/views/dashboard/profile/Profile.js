@@ -10,7 +10,7 @@ import {
   Typography
 } from '@material-ui/core';
 import ProfileCard from './ProfileCard';
-import PropertyCard from '../../../components/Properties/PropertyCard';
+import PropTable from './PropTable';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -35,6 +35,7 @@ export default function Profile() {
       <Divider />
       <br />
       <ProfileCard />
+      <PropTable/>
     </div>
   );
 }
