@@ -61,12 +61,27 @@ const useStyles = makeStyles({
 export default function PropertyCard(props) {
   const classes = useStyles();
 
-  const { icon, title, svg } = props;
+  const { icon, title, svg, handleOpen, property } = props;
+
+  // event handler for clicking on the upper CardActionArea
+  const handleClick = () => {
+    // conditional logic to check if handleOpen property exists
+    if (handleOpen) {
+      // We call the handleOpen() function passed down as a prop
+      // and give it the property that was passed down as a prop.
+      //
+      // This gives us access to the property object data that we
+      // can use in the individual property Modal
+      return handleOpen(property);
+    }
+
+    return null;
+  };
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea onClick={handleClick}>
           <CardMedia className={classes.media}>
             {svg || <Skeleton variant="rect" height={140} width="100%" />}
           </CardMedia>
@@ -76,7 +91,6 @@ export default function PropertyCard(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-
         <Divider />
         <CardActionArea>
           <CardActions className={classes.cardAction}>
