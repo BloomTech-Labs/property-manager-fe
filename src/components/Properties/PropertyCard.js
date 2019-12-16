@@ -85,11 +85,7 @@ export default function PropertyCard(props) {
       <Card className={classes.card}>
         <CardActionArea
           onClick={() => {
-            if (upperPath) {
-              navigate(upperPath);
-            } else {
-              navigate(iconPath);
-            }
+            navigate(upperPath);
 
             handleClick();
           }}

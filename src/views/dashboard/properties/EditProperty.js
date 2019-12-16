@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropertyForm from '../../../components/Properties/PropertyForm';
 import PropTypes from 'prop-types';
+import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
 import { editProperty, getProperty } from '../../../store/actions';
 

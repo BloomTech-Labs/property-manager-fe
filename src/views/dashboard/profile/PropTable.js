@@ -20,7 +20,7 @@ function createData(property, tenants, payments) {
 }
 const rows = [createData('123 Ez Street', 2, 2)];
 
-export default function PropTable(props) {
+export default function PropTable() {
   const classes = useStyles();
   // const properties = this.props.propertyList;
 

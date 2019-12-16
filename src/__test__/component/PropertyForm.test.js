@@ -28,7 +28,7 @@ test('should submit the property form', async () => {
   };
 
   // Get your selectors and render the component you wish to test, pass in any fake functions or props
-  const { getByPlaceholderText, getByTestId, getByText } = render(
+  const { getByPlaceholderText, getByTestId } = render(
     <AddPropertyForm submit={handleSubmit} />
   );
 
