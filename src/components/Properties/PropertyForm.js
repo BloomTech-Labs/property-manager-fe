@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
+import { CircularProgress } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
 
 const useStyles = makeStyles(theme => ({
@@ -19,8 +20,6 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '600px'
   }
 }));
-
-// test
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -43,7 +42,12 @@ const validationSchema = Yup.object().shape({
   status: Yup.string().required('Property Status is required!')
 });
 
-export default function AddPropertyForm({ submit, initialValues }) {
+export default function PropertyForm({
+  submit,
+  initialValues,
+  loading,
+  isSubmitting
+}) {
   const classes = useStyles();
 
   // passing in object that contains initial values for the
@@ -56,6 +60,32 @@ export default function AddPropertyForm({ submit, initialValues }) {
     zip = '',
     status = ''
   } = initialValues;
+
+  if (loading || isSubmitting) {
+    return (
+      <div
+        className="form-card"
+        style={{ height: '500px', position: 'relative' }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+          <CircularProgress
+            style={{
+              height: '100px',
+              width: '100px'
+            }}
+            color="secondary"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="form-card">

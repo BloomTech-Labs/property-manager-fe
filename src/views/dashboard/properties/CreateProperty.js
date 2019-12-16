@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { navigate } from '@reach/router';
 import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
 import { createProperty } from '../../../store/actions';
@@ -12,8 +13,11 @@ export default function CreateProperty() {
   const dispatch = useDispatch();
 
   const submitFn = property => {
+    navigate('/dashboard/properties');
     dispatch(addProperty(property));
   };
+
+  const isSubmitting = useSelector(state => state.propReducer.isAddingProp);
 
   const defaultValues = {
     name: '',
@@ -26,7 +30,11 @@ export default function CreateProperty() {
 
   return (
     <div className="properties">
-      <PropertyForm initialValues={defaultValues} submit={submitFn} />
+      <PropertyForm
+        isSubmitting={isSubmitting}
+        initialValues={defaultValues}
+        submit={submitFn}
+      />
     </div>
   );
 }
