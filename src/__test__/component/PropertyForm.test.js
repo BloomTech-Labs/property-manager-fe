@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent, wait, getByText } from '@testing-library/react';
-import AddPropertyForm from '../../components/Properties/AddPropertyForm';
+import { render, fireEvent, wait } from '@testing-library/react';
+import AddPropertyForm from '../../components/Properties/PropertyForm';
 
 jest.mock('@material-ui/core/Select', () => () => {
   return (
@@ -11,7 +11,7 @@ jest.mock('@material-ui/core/Select', () => () => {
   );
 });
 
-test('should submit the add property form', async () => {
+test('should submit the property form', async () => {
   // Arrange
 
   // Set up a fake handle submit function to replace the real handle submit function
@@ -40,7 +40,6 @@ test('should submit the add property form', async () => {
   const zipNode = getByPlaceholderText('Enter a 5-digit Zip Code');
   const statusNode = getByTestId('select');
   const formNode = getByTestId('form-element');
-  console.log(statusNode.value);
   // Act
 
   // Set the value of these nodes to the values from your object
@@ -60,8 +59,6 @@ test('should submit the add property form', async () => {
   fireEvent.change(statusNode, {
     target: { value: testProperty.status }
   });
-
-  console.log(statusNode.value);
 
   // Fire off the event by clicking on the submit button
   fireEvent.submit(formNode);

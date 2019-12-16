@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import PropertyForm from '../../../components/Properties/PropertyForm';
-// Redux
 import { useDispatch, useSelector } from 'react-redux';
+import PropertyForm from '../../../components/Properties/PropertyForm';
+import PropTypes from 'prop-types';
+// Redux
 import { editProperty, getProperty } from '../../../store/actions';
 
-export default function EditProperty(props) {
+export default function EditProperty({ id }) {
   // set the url for the api calls and pass in the
   // url param from props
-  const url = `https://pt6-propman-staging.herokuapp.com/api/properties/${props.id}`;
+  const url = `https://pt6-propman-staging.herokuapp.com/api/properties/${id}`;
 
   // pass the url into the edit action
   const updateProperty = editProperty(url);
@@ -44,3 +45,7 @@ export default function EditProperty(props) {
     </div>
   );
 }
+
+EditProperty.propTypes = {
+  id: PropTypes.string.isRequired
+};

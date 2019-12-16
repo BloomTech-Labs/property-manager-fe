@@ -20,6 +20,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// test
+
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .max(255, 'Name entered was too long')
@@ -70,7 +72,6 @@ export default function AddPropertyForm({ submit, initialValues }) {
           status
         }}
         onSubmit={values => {
-          console.log(values);
           submit(values);
         }}
       >

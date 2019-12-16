@@ -22,7 +22,7 @@ const rows = [createData('123 Ez Street', 2, 2)];
 
 export default function PropTable(props) {
   const classes = useStyles();
-  //const properties = this.props.propertyList;
+  // const properties = this.props.propertyList;
 
   return (
     <TableContainer component={Paper}>
