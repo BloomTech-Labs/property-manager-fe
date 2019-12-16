@@ -1,5 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
+// Router
+import { navigate } from '@reach/router';
 // MUI Imports
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -61,7 +63,7 @@ const useStyles = makeStyles({
 export default function PropertyCard(props) {
   const classes = useStyles();
 
-  const { icon, title, svg, handleOpen, property } = props;
+  const { icon, title, svg, handleOpen, property, upperPath, iconPath } = props;
 
   // event handler for clicking on the upper CardActionArea
   const handleClick = () => {
@@ -81,7 +83,17 @@ export default function PropertyCard(props) {
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea
+          onClick={() => {
+            if (upperPath) {
+              navigate(upperPath);
+            } else {
+              navigate(iconPath);
+            }
+
+            handleClick();
+          }}
+        >
           <CardMedia className={classes.media}>
             {svg || <Skeleton variant="rect" height={140} width="100%" />}
           </CardMedia>
@@ -92,7 +104,11 @@ export default function PropertyCard(props) {
           </CardContent>
         </CardActionArea>
         <Divider />
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            navigate(upperPath);
+          }}
+        >
           <CardActions className={classes.cardAction}>
             {icon || <Skeleton variant="circle" width={28} height={28} />}
           </CardActions>

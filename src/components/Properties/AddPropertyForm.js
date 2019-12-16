@@ -41,22 +41,26 @@ const validationSchema = Yup.object().shape({
   status: Yup.string().required('Property Status is required!')
 });
 
-export default function AddPropertyForm({ submit }) {
+export default function AddPropertyForm({ submit, property }) {
   const classes = useStyles();
 
   return (
     <div className="form-card">
-      <h2>Add Property</h2>
+      <h2>{property ? 'Edit Property' : 'Add Property'}</h2>
       <Formik
         validationSchema={validationSchema}
-        initialValues={{
-          name: '',
-          street: '',
-          city: '',
-          state: '',
-          zip: '',
-          status: ''
-        }}
+        initialValues={
+          property
+            ? { ...property }
+            : {
+                name: '',
+                street: '',
+                city: '',
+                state: '',
+                zip: '',
+                status: ''
+              }
+        }
         onSubmit={values => {
           console.log(values);
           submit(values);
