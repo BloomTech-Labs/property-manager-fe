@@ -16,6 +16,7 @@ import { FaPen, FaHome } from 'react-icons/fa';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Components
+import { navigate } from '@reach/router';
 import MuiModal from '../UI/MuiModal';
 import LocationSVG from '../SVG/LocationSVG';
 
@@ -48,7 +49,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
 
   // Pull out data from the property object passed
   // in from Properties.js component
-  const { city, name, state, status, street, zip } = property;
+  const { id, city, name, state, status, street, zip } = property;
   // TODO: add in functionality to handle the image
   // from the property object and allow SVG default
 
@@ -66,7 +67,10 @@ export default function PropertyDetailsModal({ property, open, close }) {
             <Typography variant="body2">Property Status: {status}</Typography>
           }
           action={
-            <IconButton aria-label="edit">
+            <IconButton
+              onClick={() => navigate(`properties/edit/${id}`)}
+              aria-label="edit"
+            >
               <FaPen />
             </IconButton>
           }
