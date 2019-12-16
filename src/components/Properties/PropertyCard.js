@@ -106,7 +106,7 @@ export default function PropertyCard(props) {
         <Divider />
         <CardActionArea
           onClick={() => {
-            navigate(upperPath);
+            navigate(iconPath);
           }}
         >
           <CardActions className={classes.cardAction}>

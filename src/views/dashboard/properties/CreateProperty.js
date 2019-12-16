@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import AddPropertyForm from '../../../components/Properties/AddPropertyForm';
+import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
 import { createProperty } from '../../../store/actions';
 
@@ -15,9 +15,18 @@ export default function CreateProperty() {
     dispatch(addProperty(property));
   };
 
+  const defaultValues = {
+    name: '',
+    street: '',
+    city: '',
+    state: '',
+    zip: '',
+    status: ''
+  };
+
   return (
     <div className="properties">
-      <AddPropertyForm submit={submitFn} />
+      <PropertyForm initialValues={defaultValues} submit={submitFn} />
     </div>
   );
 }

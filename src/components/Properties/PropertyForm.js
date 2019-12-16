@@ -41,26 +41,34 @@ const validationSchema = Yup.object().shape({
   status: Yup.string().required('Property Status is required!')
 });
 
-export default function AddPropertyForm({ submit, property }) {
+export default function AddPropertyForm({ submit, initialValues }) {
   const classes = useStyles();
+
+  // passing in object that contains initial values for the
+  // form with empty string defaults if prop isn't passed
+  const {
+    name = '',
+    street = '',
+    city = '',
+    state = '',
+    zip = '',
+    status = ''
+  } = initialValues;
 
   return (
     <div className="form-card">
-      <h2>{property ? 'Edit Property' : 'Add Property'}</h2>
+      <h2>{initialValues.name !== '' ? 'Edit Property' : 'Add Property'}</h2>
       <Formik
+        enableReinitialize
         validationSchema={validationSchema}
-        initialValues={
-          property
-            ? { ...property }
-            : {
-                name: '',
-                street: '',
-                city: '',
-                state: '',
-                zip: '',
-                status: ''
-              }
-        }
+        initialValues={{
+          name,
+          street,
+          city,
+          state,
+          zip,
+          status
+        }}
         onSubmit={values => {
           console.log(values);
           submit(values);

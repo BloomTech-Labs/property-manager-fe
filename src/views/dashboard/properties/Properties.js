@@ -91,6 +91,7 @@ export default function PropertyList() {
             <PropertyCard
               property={property || {}}
               handleOpen={handleOpen}
+              iconPath={`/dashboard/properties/edit/${id}`}
               key={id}
               svg={<LocationSVG />}
               title={name}
