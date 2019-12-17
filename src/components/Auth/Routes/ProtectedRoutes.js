@@ -15,7 +15,9 @@ function ProtectedRoutes() {
       const token = localStorage.getItem('token');
       return token;
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
+      return null;
     }
   }
   const token = getToken();

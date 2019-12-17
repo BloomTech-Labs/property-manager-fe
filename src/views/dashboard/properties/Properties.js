@@ -126,7 +126,7 @@ export default function PropertyList() {
           error={errMsg}
         />
         <PropertyDetailsModal
-          property={currentProperty /* pass in the currentProperty */}
+          property={currentProperty}
           open={openDetails}
           close={handleClose}
         />

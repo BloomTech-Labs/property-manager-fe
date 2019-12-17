@@ -59,6 +59,7 @@ export const createProperty = url => property => async dispatch => {
       }
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
     dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
   }
@@ -107,6 +108,7 @@ export const editProperty = url => property => async dispatch => {
   try {
     const res = await axiosAuth().put(url, property);
 
+    // eslint-disable-next-line no-console
     console.log(res.data);
 
     dispatch({

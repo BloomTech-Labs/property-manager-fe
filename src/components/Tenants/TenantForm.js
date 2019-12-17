@@ -1,30 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // Redux
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // Formik
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 // MUI
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // Styling
 import { makeStyles } from '@material-ui/core/styles';
+import { MdSend } from 'react-icons/md';
 
 // Define custom styling for the TenantForm
 const useStyles = makeStyles(theme => ({
   formCard: {
     padding: theme.spacing(4)
   },
+  formTitle: {
+    marginBottom: theme.spacing(2)
+  },
   textField: {
-    width: '46%',
+    width: '500px',
+    maxWidth: '500px',
     margin: theme.spacing(2)
-  }
+  },
+  submitWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    margin: theme.spacing(2)
+  },
+  submit: {}
 }));
 
 const validationSchema = Yup.object().shape({
@@ -37,7 +49,7 @@ const validationSchema = Yup.object().shape({
   residenceId: Yup.string().required('Must include a property!')
 });
 
-export default function TenantForm({ initialValues }) {
+export default function TenantForm({ initialValues, submit }) {
   // bring in custom styling
   const classes = useStyles();
 
@@ -51,11 +63,11 @@ export default function TenantForm({ initialValues }) {
   } = initialValues;
 
   // grab list of properties from state
-  const options = useSelector(state => state.propReducer.properties);
+  // const options = useSelector(state => state.propReducer.properties);
 
   return (
     <Paper className={classes.formCard}>
-      <h2>Add a Tenant</h2>
+      <h2 className={classes.formTitle}>Add a Tenant</h2>
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
@@ -66,9 +78,24 @@ export default function TenantForm({ initialValues }) {
           email,
           residenceId
         }}
+        resetForm
         onSubmit={values => {
-          console.log('Form submitted');
-          // submit(values);
+          // pull out id
+          const { residenceId } = values;
+
+          // format it to number to avoid
+          // Formik/Yup's number quirks
+          const formatValues = {
+            ...values,
+            residenceId: Number(residenceId)
+          };
+
+          return new Promise(resolve => {
+            setTimeout(() => {
+              submit(formatValues);
+              resolve();
+            }, 2000);
+          });
         }}
       >
         {({ errors, touched, isSubmitting }) => (
@@ -86,9 +113,9 @@ export default function TenantForm({ initialValues }) {
                 helperText={
                   errors.firstName
                     ? errors.firstName
-                    : `Please enter first name of tenant`
+                    : `Please enter tenant's first name`
                 }
-                error={!!errors.firstName}
+                error={errors.firstName && true}
               />
               <Field
                 className={classes.textField}
@@ -100,11 +127,9 @@ export default function TenantForm({ initialValues }) {
                 label="Last Name"
                 as={TextField}
                 helperText={
-                  errors.lastName
-                    ? errors.lastName
-                    : 'Please enter last name of tenant'
+                  errors.lastName ? errors.lastName : `Enter tenant's last name`
                 }
-                error={!!errors.lastName}
+                error={errors.lastName && true}
               />
               <Field
                 className={classes.textField}
@@ -116,11 +141,9 @@ export default function TenantForm({ initialValues }) {
                 label="Phone"
                 as={TextField}
                 helperText={
-                  errors.phone
-                    ? errors.phone
-                    : 'Please enter phone number of tenant'
+                  errors.phone ? errors.phone : `Enter tenant's phone`
                 }
-                error={!!errors.phone}
+                error={errors.phone && true}
               />
               <Field
                 className={classes.textField}
@@ -132,22 +155,63 @@ export default function TenantForm({ initialValues }) {
                 label="Email"
                 as={TextField}
                 helperText={
-                  errors.email ? errors.email : 'Please enter email of tenant'
+                  errors.email ? errors.email : `Enter tenant's email`
                 }
-                error={!!errors.email}
+                error={errors.email && true}
               />
               <Field
                 className={classes.textField}
+                size="small"
+                margin="normal"
+                variant="outlined"
                 as={TextField}
                 select
+                name="residenceId"
                 label="Property"
+                helperText={
+                  touched.residenceId && errors.residenceId
+                    ? errors.residenceId
+                    : `Select the tenant's property`
+                }
+                error={touched.residenceId && errors.residenceId && true}
+                required
               >
-                {options.map(option => (
+                <MenuItem value="1">Property 1</MenuItem>
+                <MenuItem value="2">Property 2</MenuItem>
+                <MenuItem value="3">Property 3</MenuItem>
+                <MenuItem value="4">Property 4</MenuItem>
+
+                {/* {options.map(option => (
                   <MenuItem key={option.id} value={option.id}>
                     {option.name}
                   </MenuItem>
-                ))}
+                ))} */}
               </Field>
+              <div className={classes.submitWrapper}>
+                <Button
+                  size="large"
+                  color="primary"
+                  variant="contained"
+                  className={classes.submit}
+                  disabled={isSubmitting}
+                  type="submit"
+                  endIcon={
+                    isSubmitting ? (
+                      <CircularProgress
+                        style={{
+                          height: '22px',
+                          width: '22px',
+                          marginRight: '4px'
+                        }}
+                      />
+                    ) : (
+                      <MdSend />
+                    )
+                  }
+                >
+                  Submit
+                </Button>
+              </div>
             </Grid>
           </Form>
         )}
@@ -155,3 +219,14 @@ export default function TenantForm({ initialValues }) {
     </Paper>
   );
 }
+
+TenantForm.propTypes = {
+  initialValues: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    residenceId: PropTypes.string.isRequired
+  }).isRequired,
+  submit: PropTypes.func.isRequired
+};

@@ -7,7 +7,9 @@ import PropTable from './PropTable';
 
 export default function Profile() {
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const propertyList = useSelector(state => state.propReducer.properties);
 
   useEffect(() => {
