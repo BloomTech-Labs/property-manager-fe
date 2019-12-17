@@ -10,6 +10,7 @@ import {
   TableRow,
   Paper
 } from '@material-ui/core';
+import TableContainer from '@material-ui/core/TableContainer';
 
 const useStyles = makeStyles({
   table: {
@@ -53,8 +54,17 @@ export default function PropTable(props) {
             <TableCell align="right">{street}</TableCell>
         <TableCell align="right">{status}</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.property}>
+              <TableCell component="th" scope="row">
+                {row.property}
+              </TableCell>
+              <TableCell align="right">{row.tenants}</TableCell>
+              <TableCell align="right">{row.payments}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
   );
 }
