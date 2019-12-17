@@ -52,19 +52,10 @@ export default function PropTable(props) {
               {name}
             </TableCell>
             <TableCell align="right">{street}</TableCell>
-        <TableCell align="right">{status}</TableCell>
+            <TableCell align="right">{status}</TableCell>
           </TableRow>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.property}>
-              <TableCell component="th" scope="row">
-                {row.property}
-              </TableCell>
-              <TableCell align="right">{row.tenants}</TableCell>
-              <TableCell align="right">{row.payments}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        ))}
+      </TableBody>
+    </Table>
   );
 }
