@@ -11,7 +11,10 @@ import {
   EDIT_PROPERTY_START,
   EDIT_PROPERTY_SUCCESS,
   EDIT_PROPERTY_FAIL
+  // eslint-disable-next-line import/named
 } from '../actions';
+
+const properties = localStorage.getItem('properties');
 
 const initialState = {
   properties: [],
@@ -19,7 +22,8 @@ const initialState = {
   isAddingProp: false,
   isGettingProperties: true,
   isGettingProperty: false,
-  errMsg: null
+  errMsg: null,
+  ...properties
 };
 
 export default function propReducer(state = initialState, action) {

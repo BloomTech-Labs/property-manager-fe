@@ -72,6 +72,10 @@ export const getProperties = url => async dispatch => {
   try {
     const res = await axiosAuth().get(url);
 
+    if (res.data.length) {
+      localStorage.setItem('properties', res.data);
+    }
+
     dispatch({
       type: GET_PROPERTIES_SUCCESS,
       payload: {
