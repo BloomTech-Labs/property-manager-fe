@@ -85,7 +85,7 @@ export default function ContactForm() {
               resetForm();
               handleOpen();
             })
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
         }}
       >
         {({ errors, touched, isSubmitting }) => (

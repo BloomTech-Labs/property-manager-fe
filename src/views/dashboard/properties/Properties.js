@@ -1,5 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React, { useEffect } from 'react';
+// UI
 import { Skeleton } from '@material-ui/lab';
 import {
   Paper,
@@ -9,8 +10,9 @@ import {
   Typography,
   Divider
 } from '@material-ui/core';
-// redux
 import { useSelector, useDispatch } from 'react-redux';
+import FloatingActions from '../../../components/UI/FloatingActions';
+// redux
 // action
 import { getProperties } from '../../../store/actions';
 
@@ -22,15 +24,15 @@ export default function PropertyList() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(
-        getProperties('https://pt6-propman.herokuapp.com/api/properties')
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
       );
     }, 2000);
   }, [dispatch]);
 
-  console.log(properties);
-
   return (
-    <div>
+    <div className="properties">
       <h1>List of Properties</h1>
       <Divider />
       <br />
@@ -46,16 +48,14 @@ export default function PropertyList() {
               // propertyStatus
             } = property;
 
-            {
-              /* const {
-               firstname,
-               lastname,
-               middlename,
-               preferredname,
-               suffix,
-               title
-            } = name; */
-            }
+            // const {
+            //   // firstname,
+            //   // lastname,
+            //   // middlename,
+            //   // preferredname,
+            //   // suffix,
+            //   // title
+            // } = name;
             const {
               city,
               // country,
@@ -130,6 +130,7 @@ export default function PropertyList() {
           </>
         )}
       </Grid>
+      <FloatingActions />
     </div>
   );
 }
