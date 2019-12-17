@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Divider, Grid, Container } from '@material-ui/core';
 import { getProperties } from '../../../store/actions';
-import {
-  Divider,
-  Grid,
-  Paper,
-  CardHeader,
-  CardContent,
-  Typography,
-  Container
-} from '@material-ui/core';
 import ProfileCard from './ProfileCard';
 import PropTable from './PropTable';
 

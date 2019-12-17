@@ -32,9 +32,18 @@ export const auth = url => (email, password) => async dispatch => {
 export const ADD_PROPERTY_START = 'ADD_PROPERTY_START';
 export const ADD_PROPERTY_SUCCESS = 'ADD_PROPERTY_SUCCESS';
 export const ADD_PROPERTY_FAIL = 'ADD_PROPERTY_FAIL';
+// ------------------------------------------------|
+export const GET_PROPERTIES_START = 'GET_PROPERTIES_START';
+export const GET_PROPERTIES_SUCCESS = 'GET_PROPERTIES_SUCCESS';
+export const GET_PROPERTIES_FAIL = 'GET_PROPERTIES_FAIL';
+// ------------------------------------------------|
 export const GET_PROPERTY_START = 'GET_PROPERTY_START';
 export const GET_PROPERTY_SUCCESS = 'GET_PROPERTY_SUCCESS';
 export const GET_PROPERTY_FAIL = 'GET_PROPERTY_FAIL';
+// ------------------------------------------------|
+export const EDIT_PROPERTY_START = 'EDIT_PROPERTY_START';
+export const EDIT_PROPERTY_SUCCESS = 'EDIT_PROPERTY_SUCCESS';
+export const EDIT_PROPERTY_FAIL = 'EDIT_PROPERTY_FAIL';
 // ------------------------------------------------|
 // CREATE A PROPERTY ------------------------------|
 export const createProperty = url => property => async dispatch => {
@@ -57,6 +66,24 @@ export const createProperty = url => property => async dispatch => {
 // ------------------------------------------------|
 // GET PROPERTIES ---------------------------------|
 export const getProperties = url => async dispatch => {
+  dispatch({ type: GET_PROPERTIES_START });
+
+  try {
+    const res = await axiosAuth().get(url);
+
+    dispatch({
+      type: GET_PROPERTIES_SUCCESS,
+      payload: {
+        properties: res.data
+      }
+    });
+  } catch (err) {
+    dispatch({ type: GET_PROPERTIES_FAIL, payload: { errMsg: err.message } });
+  }
+};
+// ------------------------------------------------|
+// GET PROPERTY -----------------------------------|
+export const getProperty = url => async dispatch => {
   dispatch({ type: GET_PROPERTY_START });
 
   try {
@@ -65,11 +92,31 @@ export const getProperties = url => async dispatch => {
     dispatch({
       type: GET_PROPERTY_SUCCESS,
       payload: {
-        properties: res.data
+        property: res.data
       }
     });
   } catch (err) {
     dispatch({ type: GET_PROPERTY_FAIL, payload: { errMsg: err.message } });
+  }
+};
+// ------------------------------------------------|
+// EDIT PROPERTY ----------------------------------|
+export const editProperty = url => property => async dispatch => {
+  dispatch({ type: EDIT_PROPERTY_START });
+
+  try {
+    const res = await axiosAuth().put(url, property);
+
+    console.log(res.data);
+
+    dispatch({
+      type: EDIT_PROPERTY_SUCCESS,
+      payload: {
+        updated: true
+      }
+    });
+  } catch (err) {
+    dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
   }
 };
 // ------------------------------------------------|

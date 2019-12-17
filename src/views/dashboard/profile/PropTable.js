@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function PropTable(props) {
+export default function PropTable() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
