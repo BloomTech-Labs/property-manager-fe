@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProperties } from '../../../store/actions';
 import {
   makeStyles,
   Table,
@@ -14,32 +16,42 @@ const useStyles = makeStyles({
     minWidth: 650
   }
 });
-function createData(property, tenants, payments) {
-  return { property, tenants, payments };
-}
-const rows = [createData('123 Ez Street', 2, 2)];
 
 export default function PropTable(props) {
   const classes = useStyles();
-  //const properties = this.props.propertyList;
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const propertyList = useSelector(state => state.propReducer.properties);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
+      ).then(() => {
+        setLoading(false);
+      });
+    }, 2000);
+  }, [dispatch]);
 
   return (
-    <Table classname={classes.table} aria-lable="Property Table">
+    <Table className={classes.table} aria-label="Property Table">
       <TableHead>
         <TableRow>
           <TableCell>Properties</TableCell>
-          <TableCell align="right">Tenants</TableCell>
-          <TableCell align="right">Payments</TableCell>
+          <TableCell align="right">Address</TableCell>
+          <TableCell align="right">Status</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map(row => (
-          <TableRow key={row.property}>
+        {propertyList.map(({ id, name, street, status }) => (
+          <TableRow key={id}>
             <TableCell component="th" scope="row">
-              {row.property}
+              {name}
             </TableCell>
-            <TableCell align="right">{row.tenants}</TableCell>
-            <TableCell align="right">{row.payments}</TableCell>
+            <TableCell align="right">{street}</TableCell>
+        <TableCell align="right">{status}</TableCell>
           </TableRow>
         ))}
       </TableBody>
