@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
+import { CircularProgress } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
 
 const useStyles = makeStyles(theme => ({
@@ -41,24 +42,66 @@ const validationSchema = Yup.object().shape({
   status: Yup.string().required('Property Status is required!')
 });
 
-export default function AddPropertyForm({ submit }) {
+export default function PropertyForm({
+  submit,
+  initialValues,
+  loading,
+  isSubmitting
+}) {
   const classes = useStyles();
+
+  // passing in object that contains initial values for the
+  // form with empty string defaults if prop isn't passed
+  const {
+    name = '',
+    street = '',
+    city = '',
+    state = '',
+    zip = '',
+    status = ''
+  } = initialValues;
+
+  if (loading || isSubmitting) {
+    return (
+      <div
+        className="form-card"
+        style={{ height: '500px', position: 'relative' }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+          <CircularProgress
+            style={{
+              height: '100px',
+              width: '100px'
+            }}
+            color="secondary"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="form-card">
-      <h2>Add Property</h2>
+      <h2>{initialValues.name !== '' ? 'Edit Property' : 'Add Property'}</h2>
       <Formik
+        enableReinitialize
         validationSchema={validationSchema}
         initialValues={{
-          name: '',
-          street: '',
-          city: '',
-          state: '',
-          zip: '',
-          status: ''
+          name,
+          street,
+          city,
+          state,
+          zip,
+          status
         }}
         onSubmit={values => {
-          // console.log(values);
           submit(values);
         }}
       >
@@ -105,7 +148,14 @@ export default function AddPropertyForm({ submit }) {
 
             <FormControl className={classes.formControl}>
               <InputLabel>Property Status</InputLabel>
-              <Field name="status" as={Select}>
+              <Field
+                name="status"
+                as={Select}
+                defaultValue="vacant"
+                SelectDisplayProps={{
+                  'data-testid': 'status-select'
+                }}
+              >
                 <MenuItem value="vacant">Vacant</MenuItem>
                 <MenuItem value="occupied">Occupied</MenuItem>
               </Field>

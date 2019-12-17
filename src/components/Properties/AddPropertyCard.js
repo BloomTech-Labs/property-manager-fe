@@ -8,10 +8,12 @@ import ErrorSVG from '../SVG/ErrorSVG';
 export default function AddPropertyCard(props) {
   const { propertyNum, isLoading, error } = props;
 
+  const addPropertyPath = '/dashboard/properties/add';
+
   if (error && !isLoading) {
     return (
       <PropertyCard
-        icon={<FaExclamationCircle />}
+        icon={<FaExclamationCircle style={{ color: '#EC5E7B' }} />}
         title="Uh oh! There was an error."
         svg={<ErrorSVG />}
       />
@@ -21,6 +23,8 @@ export default function AddPropertyCard(props) {
   if (propertyNum === 0 && !isLoading) {
     return (
       <PropertyCard
+        upperPath={addPropertyPath}
+        iconPath={addPropertyPath}
         icon={<FaPlus />}
         title="No properties, add one?"
         svg={<AddHouseSVG />}
@@ -32,6 +36,8 @@ export default function AddPropertyCard(props) {
   }
   return (
     <PropertyCard
+      upperPath={addPropertyPath}
+      iconPath={addPropertyPath}
       icon={<FaPlus />}
       title="Add a New Property?"
       svg={<AddHouseSVG />}
