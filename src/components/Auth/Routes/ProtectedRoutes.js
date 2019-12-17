@@ -7,6 +7,7 @@ import Overview from '../../../views/dashboard/overview/Overview';
 import CreateProperty from '../../../views/dashboard/properties/CreateProperty';
 import Property from '../../../views/dashboard/properties/Property';
 import EditProperty from '../../../views/dashboard/properties/EditProperty';
+import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 
 function ProtectedRoutes() {
   function getToken() {
@@ -31,6 +32,7 @@ function ProtectedRoutes() {
         <Property path="properties/:id" />
         <CreateProperty path="properties/add" />
         <EditProperty path="properties/edit/:id" />
+        <CreateTenant path="tenant/add" />
       </Dashboard>
     </Router>
   );

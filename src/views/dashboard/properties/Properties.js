@@ -26,7 +26,7 @@ export default function PropertyList() {
   // local loading state to render placeholder
   const [loading, setLoading] = useState(true);
 
-  // state for modal
+  // open/close state for modal
   const [openDetails, setOpenDetails] = React.useState(false);
 
   // store individual property from map function in local state
@@ -82,7 +82,7 @@ export default function PropertyList() {
 
       <Grid container spacing={3}>
         {propertyList.map(property => {
-          // map over propertyList from state and render PropertyCard's
+          // map over propertyList from state and render PropertyCards
 
           // pull out the ID (unique from DB) and name
           const { id, name } = property;
