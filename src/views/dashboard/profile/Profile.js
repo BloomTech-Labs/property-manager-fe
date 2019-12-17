@@ -1,38 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import { Divider, Grid, Container } from '@material-ui/core';
-import { getProperties } from '../../../store/actions';
 import ProfileCard from './ProfileCard';
 import PropTable from './PropTable';
+import ProfileImg from '../../../assets/svg/ProfileImg';
 
 export default function Profile() {
-  const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(true);
-  // eslint-disable-next-line no-unused-vars
-  const propertyList = useSelector(state => state.propReducer.properties);
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(
-        getProperties(
-          'https://pt6-propman-staging.herokuapp.com/api/propertieshttps://pt6-propman-staging.herokuapp.com/api/properties'
-        )
-      ).then(() => {
-        setLoading(false);
-      });
-    }, 2000);
-  }, [dispatch]);
-
   return (
     <div className="profile">
       <h1>User Profile</h1>
       <Divider />
       <Container>
         <br />
-        <Grid>
-          <ProfileCard />
-          <PropTable />
+        <Grid container direction="row" spacing={5}>
+          <Grid item sm={3}>
+            <ProfileCard />
+          </Grid>
+          <Grid item md={6}>
+            <ProfileImg />
+          </Grid>
+          <Grid item lg={12}>
+            <PropTable />
+          </Grid>
         </Grid>
       </Container>
     </div>
