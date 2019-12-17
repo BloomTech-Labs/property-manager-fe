@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Link, navigate } from '@reach/router';
 // eslint-disable-next-line import/no-unresolved
-import { FocusOn } from 'react-focus-on';
 import { useDispatch } from 'react-redux';
 import { Breakpoint } from 'react-socks';
 import { bool, func } from 'prop-types';
@@ -13,8 +12,10 @@ import { useOnClickOutside } from '../../hooks/index';
 import { AuthFlip } from '../Auth/AuthFlip';
 import { useModal } from '../../hooks/useModal';
 
-const login = auth('https://pt6-propman.herokuapp.com/api/auth/login');
-const signup = auth('https://pt6-propman.herokuapp.com/api/auth/register');
+const login = auth('https://pt6-propman-staging.herokuapp.com/api/auth/login');
+const signup = auth(
+  'https://pt6-propman-staging.herokuapp.com/api/auth/register'
+);
 
 export const HorNav = () => {
   const { isShowing, toggle, close } = useModal();

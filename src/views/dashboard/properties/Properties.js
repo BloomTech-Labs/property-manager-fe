@@ -1,130 +1,135 @@
-import React, { useEffect } from 'react';
-import { Skeleton } from '@material-ui/lab';
-import {
-  Paper,
-  Grid,
-  CardHeader,
-  CardContent,
-  Typography,
-  Divider
-} from '@material-ui/core';
-// redux
+/* eslint-disable no-lone-blocks */
+// React
+import React, { useEffect, useState } from 'react';
+
+// MUI
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+
+// Edit Icon
+import { FaPen } from 'react-icons/fa';
+
+// Redux
 import { useSelector, useDispatch } from 'react-redux';
-// action
 import { getProperties } from '../../../store/actions';
 
+// Components
+import PropertyCard from '../../../components/Properties/PropertyCard';
+import AddPropertyCard from '../../../components/Properties/AddPropertyCard';
+import LocationSVG from '../../../components/SVG/LocationSVG';
+import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
+
 export default function PropertyList() {
+  // setup dispatch to dispatch get properties action
   const dispatch = useDispatch();
 
-  const { properties } = useSelector(state => state.propReducer.properties);
+  // local loading state to render placeholder
+  const [loading, setLoading] = useState(true);
 
+  // state for modal
+  const [openDetails, setOpenDetails] = React.useState(false);
+
+  // store individual property from map function in local state
+  const [currentProperty, setCurrentProperty] = React.useState({});
+
+  // handle open/close, takes in the individual property
+  // passed up from property card to gain access from the modal
+  const handleOpen = property => {
+    // sets the currentProperty state to the property object passed in
+    setCurrentProperty(property);
+
+    // this sets the open state for the PropertyDetailsModal
+    setOpenDetails(true);
+  };
+
+  const handleClose = () => {
+    // sets currentProperty to empty obj when modal is closed
+    setCurrentProperty({});
+
+    // sets the open state to false to close PropertyDetailsModal
+    setOpenDetails(false);
+  };
+
+  // bring in the errMsg from store to render error card
+  const errMsg = useSelector(state => state.propReducer.errMsg);
+
+  // bring in the list of properties from store
+  const propertyList = useSelector(state => state.propReducer.properties);
+
+  // useEffect for initial get properties dispatch
   useEffect(() => {
+    // set timeout to show place holder cards
     setTimeout(() => {
+      // dispatch the getProperties action
       dispatch(
-        getProperties('https://pt6-propman.herokuapp.com/api/properties')
-      );
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
+      ).then(() => {
+        // if successful we change the loading state to false
+        // placeholder cards will disappear and property cards
+        // will populate
+        setLoading(false);
+      });
     }, 2000);
   }, [dispatch]);
 
-  console.log(properties);
-
   return (
-    <div>
+    <div className="properties">
       <h1>List of Properties</h1>
       <Divider />
       <br />
+
       <Grid container spacing={3}>
-        {properties ? (
-          properties.map(property => {
-            const {
-              propertiesId,
-              name,
-              propertyAddress,
-              propertyName
-              // propertyStatus
-            } = property;
+        {propertyList.map(property => {
+          // map over propertyList from state and render PropertyCard's
 
-            const {
-              // firstname,
-              // lastname,
-              // middlename,
-              // preferredname,
-              // suffix,
-              // title
-            } = name;
-            const {
-              city,
-              // country,
-              state
-              // street,
-              // street2,
-              // zip
-            } = propertyAddress;
+          // pull out the ID (unique from DB) and name
+          const { id, name } = property;
 
-            return (
-              <Grid key={propertiesId} item xs={12} sm={6} md={4} lg={3}>
-                <Paper elevation={5}>
-                  <CardHeader
-                    title={
-                      <Typography variant="body1">{propertyName}</Typography>
-                    }
-                  />
+          return (
+            <PropertyCard
+              property={property || {}}
+              handleOpen={handleOpen}
+              iconPath={`/dashboard/properties/edit/${id}`}
+              key={id}
+              svg={<LocationSVG />}
+              title={name}
+              icon={<FaPen />}
+            />
+          );
+        })}
 
-                  {propertyAddress.city ? (
-                    <CardContent>
-                      <Typography variant="subtitle2">Location:</Typography>
-                      <Typography variant="caption">
-                        {city}, {state}
-                      </Typography>
-                    </CardContent>
-                  ) : (
-                    <CardContent>
-                      <Typography variant="caption">
-                        No location info.
-                      </Typography>
-                    </CardContent>
-                  )}
-                </Paper>
-              </Grid>
-            );
-          })
-        ) : (
-          <>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper elevation={5}>
-                <CardHeader title={<Skeleton variant="text" />} />
-                <CardContent>
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                  <Skeleton variant="text" />
-                </CardContent>
-              </Paper>
-            </Grid>
-          </>
-        )}
+        {(() => {
+          // IIFE for multi-condition rendering
+          if (propertyList.length > 0) {
+            // there are properties - don't display placeholders
+            return null;
+          }
+          if (propertyList.length === 0 && loading === false) {
+            // no properties yet - don't display placeholders
+            return null;
+          }
+          return (
+            // loading is still true display placeholders
+            <>
+              <PropertyCard />
+              <PropertyCard />
+              <PropertyCard />
+              <PropertyCard />
+            </>
+          );
+        })()}
+        <AddPropertyCard
+          propertyNum={propertyList.length}
+          isLoading={loading}
+          error={errMsg}
+        />
+        <PropertyDetailsModal
+          property={currentProperty /* pass in the currentProperty */}
+          open={openDetails}
+          close={handleClose}
+        />
       </Grid>
     </div>
   );

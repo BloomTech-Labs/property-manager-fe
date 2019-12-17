@@ -3,13 +3,13 @@
 import React from 'react';
 import { HorNav } from '../../components/Navigation/navigation';
 
-const LandingPage = props => {
+function LandingPage(props) {
   return (
     <div className="landing-container">
       <HorNav />
       {props.children}
     </div>
   );
-};
+}
 
 export default LandingPage;

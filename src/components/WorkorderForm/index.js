@@ -2,7 +2,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
 
 const validationSchema = Yup.object().shape({

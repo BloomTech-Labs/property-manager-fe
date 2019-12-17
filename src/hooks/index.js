@@ -22,7 +22,6 @@ export const useOnClickOutside = (ref, handler) => {
 export const useDataFetch = url => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(url);
   async function fetchUrl(url) {
     const res = await fetch(url);
     const json = await res.json();
