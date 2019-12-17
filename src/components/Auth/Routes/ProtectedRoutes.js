@@ -4,6 +4,8 @@ import Dashboard from '../../../views/dashboard/Dashboard';
 import Properties from '../../../views/dashboard/properties/Properties';
 import Profile from '../../../views/dashboard/profile/Profile';
 import Overview from '../../../views/dashboard/overview/Overview';
+import CreateProperty from '../../../views/dashboard/properties/CreateProperty';
+import Property from '../../../views/dashboard/properties/Property';
 
 function ProtectedRoutes() {
   // eslint-disable-next-line consistent-return
@@ -27,6 +29,8 @@ function ProtectedRoutes() {
         <Overview path="/" />
         <Profile path="profile" />
         <Properties path="properties" />
+        <Property path="properties/:id" />
+        <CreateProperty path="properties/add" />
       </Dashboard>
     </Router>
   );

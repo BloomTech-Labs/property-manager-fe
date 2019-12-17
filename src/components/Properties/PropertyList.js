@@ -61,11 +61,11 @@ export default function PropertyList() {
           </>
         ) : (
           <>
-            {properties.map(({ propertiesId, propertyName }) => (
-              <Grid item>
+            {properties.map(({ id, name }) => (
+              <Grid key={id} item>
                 <Paper>
-                  <h2>{propertiesId}</h2>
-                  <p>{propertyName}</p>
+                  <h2>{id}</h2>
+                  <p>{name}</p>
                 </Paper>
               </Grid>
             ))}
