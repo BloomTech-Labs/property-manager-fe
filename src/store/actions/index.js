@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
@@ -20,7 +21,7 @@ export const auth = url => (email, password) => async dispatch => {
   dispatch({ type: AUTH_REQUEST_START });
 
   try {
-    const res = await axios.post(url, {
+    const res = await axios.post(`${baseUrl}${url}`, {
       email,
       password
     });
@@ -56,23 +57,25 @@ export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 // ------------------------------------------------|
 // CREATE A PROPERTY ------------------------------|
-export const createProperty = property => async dispatch => {
-  dispatch({ type: ADD_PROPERTY_START });
+export const createProperty = property => {
+  return async dispatch => {
+    dispatch({ type: ADD_PROPERTY_START });
 
-  try {
-    const res = await axiosAuth().post(`${baseUrl}properties`, property);
+    try {
+      const res = await axiosAuth().post(`${baseUrl}/properties`, property);
 
-    dispatch({
-      type: ADD_PROPERTY_SUCCESS,
-      payload: {
-        created: res
-      }
-    });
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error(err);
-    dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
-  }
+      dispatch({
+        type: ADD_PROPERTY_SUCCESS,
+        payload: {
+          created: res
+        }
+      });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err);
+      dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
+    }
+  };
 };
 // ------------------------------------------------|
 // GET PROPERTIES ---------------------------------|
@@ -123,19 +126,10 @@ export const editProperty = (id, property) => {
     dispatch({ type: EDIT_PROPERTY_START });
 
     try {
-      const res = await axiosAuth().put(
-        `${baseUrl}/properties/${id}`,
-        property
-      );
-
-      // eslint-disable-next-line no-console
-      console.log(res.data);
+      await axiosAuth().put(`${baseUrl}/properties/${id}`, property);
 
       dispatch({
-        type: EDIT_PROPERTY_SUCCESS,
-        payload: {
-          updated: true
-        }
+        type: EDIT_PROPERTY_SUCCESS
       });
     } catch (err) {
       dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
@@ -149,9 +143,6 @@ export const addTenant = url => tenant => async dispatch => {
 
   try {
     const res = await axiosAuth().post(url, tenant);
-
-    // eslint-disable-next-line no-console
-    console.log(res.data);
 
     dispatch({
       type: ADD_TENANT_SUCCESS,
@@ -174,6 +165,7 @@ export const getUserInfo = url => async dispatch => {
     const res = await axiosAuth().get(url);
 
     console.log(res.data);
+
     dispatch({
       type: GET_USER_SUCCESS,
       payload: {

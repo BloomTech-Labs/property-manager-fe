@@ -13,10 +13,8 @@ import { useOnClickOutside } from '../../hooks/index';
 import { AuthFlip } from '../Auth/AuthFlip';
 import { useModal } from '../../hooks/useModal';
 
-const login = auth('https://pt6-propman-staging.herokuapp.com/api/auth/login');
-const signup = auth(
-  'https://pt6-propman-staging.herokuapp.com/api/auth/register'
-);
+const login = auth('/auth/login');
+const signup = auth('/auth/register');
 
 export const HorNav = () => {
   const { isShowing, toggle, close } = useModal();
