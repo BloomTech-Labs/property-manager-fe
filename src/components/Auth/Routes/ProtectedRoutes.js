@@ -10,6 +10,7 @@ import EditProperty from '../../../views/dashboard/properties/EditProperty';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 
 function ProtectedRoutes() {
+  // eslint-disable-next-line consistent-return
   function getToken() {
     try {
       const token = localStorage.getItem('token');

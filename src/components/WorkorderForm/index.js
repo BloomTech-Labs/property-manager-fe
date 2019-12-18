@@ -30,7 +30,7 @@ const WorkorderForm = ({ submit }) => {
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <div className="input-wrapper">
-              <label htmlFor="wOrderType">Work order Type : </label>
+              <label htmlFor="wOrderType">Work order Type : </label>{' '}
               <Field name="wOrderType" as="select">
                 <option value="Plumbing">Plumbing</option>
                 <option value="Electrical">Electrical</option>
@@ -41,7 +41,7 @@ const WorkorderForm = ({ submit }) => {
                 <option value="Other">Other</option>
               </Field>
               <br />
-              <label htmlFor="otherOrder">if other</label>
+              <label htmlFor="otherOrder">if other</label>{' '}
               <Field
                 type="text"
                 name="otherOrder"
@@ -55,7 +55,7 @@ const WorkorderForm = ({ submit }) => {
             <div className="input-wrapper">
               <label htmlFor="location">
                 Where is this issue located in the house?
-              </label>
+              </label>{' '}
               <Field name="location" as="select">
                 <option value="Main Floor">Main Floor</option>
                 <option value="Basement">Basement</option>
@@ -66,7 +66,7 @@ const WorkorderForm = ({ submit }) => {
                 <option value="Other">Other</option>
               </Field>
               <br />
-              <label htmlFor="otherLocation">if other</label>
+              <label htmlFor="otherLocation">if other</label>{' '}
               <Field
                 type="text"
                 name="otherLocation"
@@ -87,7 +87,7 @@ const WorkorderForm = ({ submit }) => {
                 Maintenance Request Details :<br />
                 Please provide us with as much information about the problem as
                 you can.
-              </label>
+              </label>{' '}
               <Field
                 name="message"
                 as="textarea"
@@ -101,7 +101,7 @@ const WorkorderForm = ({ submit }) => {
               />
             </div>
             <div className="input-wrapper">
-              <label htmlFor="repairTime">Preferred Repair Time : </label>
+              <label htmlFor="repairTime">Preferred Repair Time: </label>{' '}
               <Field name="repairTime" as="select">
                 <option value="8am-12pm">8am-12pm</option>
                 <option value="12pm-4pm">12pm-4pm</option>
