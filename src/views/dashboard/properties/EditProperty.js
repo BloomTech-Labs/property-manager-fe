@@ -4,24 +4,22 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
-import { editProperty, getProperty } from '../../../store/actions';
+import {
+  editProperty,
+  getProperty,
+  getProperties
+} from '../../../store/actions';
 
 export default function EditProperty({ id }) {
-  // set the url for the api calls and pass in the
-  // url param from props
-  const url = `https://pt6-propman-staging.herokuapp.com/api/properties/${id}`;
-
-  // pass the url into the edit action
-  const updateProperty = editProperty(url);
-
   // setup dispatch to dispatch the action
   const dispatch = useDispatch();
 
   // when form is submitted dispatch edit action
   const submitFn = property => {
-    dispatch(updateProperty(property)).then(() =>
-      navigate('/dashboard/properties')
-    );
+    dispatch(editProperty(id, property)).then(() => {
+      dispatch(getProperties());
+      navigate('/dashboard/properties');
+    });
   };
 
   // grab the property from redux state
@@ -48,8 +46,8 @@ export default function EditProperty({ id }) {
 
   // get the property by id when component mounts
   useEffect(() => {
-    dispatch(getProperty(url));
-  }, [dispatch, url]);
+    dispatch(getProperty(id));
+  }, [dispatch, id]);
 
   return (
     <div className="properties">

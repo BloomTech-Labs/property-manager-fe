@@ -1,6 +1,5 @@
-/* eslint-disable no-lone-blocks */
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // MUI
 import Grid from '@material-ui/core/Grid';
@@ -10,8 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import { FaPen } from 'react-icons/fa';
 
 // Redux
-import { useSelector, useDispatch } from 'react-redux';
-import { getProperties } from '../../../store/actions';
+import { useSelector } from 'react-redux';
 
 // Components
 import PropertyCard from '../../../components/Properties/PropertyCard';
@@ -20,17 +18,11 @@ import LocationSVG from '../../../components/SVG/LocationSVG';
 import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
 
 export default function PropertyList() {
-  // setup dispatch to dispatch get properties action
-  const dispatch = useDispatch();
-
-  // local loading state to render placeholder
-  const [loading, setLoading] = useState(true);
-
-  // state for modal
-  const [openDetails, setOpenDetails] = React.useState(false);
+  // open/close state for modal
+  const [openDetails, setOpenDetails] = useState(false);
 
   // store individual property from map function in local state
-  const [currentProperty, setCurrentProperty] = React.useState({});
+  const [currentProperty, setCurrentProperty] = useState({});
 
   // handle open/close, takes in the individual property
   // passed up from property card to gain access from the modal
@@ -50,29 +42,14 @@ export default function PropertyList() {
     setOpenDetails(false);
   };
 
+  // bring in loading state
+  const loading = useSelector(state => state.propReducer.isGettingProperties);
+
   // bring in the errMsg from store to render error card
   const errMsg = useSelector(state => state.propReducer.errMsg);
 
   // bring in the list of properties from store
   const propertyList = useSelector(state => state.propReducer.properties);
-
-  // useEffect for initial get properties dispatch
-  useEffect(() => {
-    // set timeout to show place holder cards
-    setTimeout(() => {
-      // dispatch the getProperties action
-      dispatch(
-        getProperties(
-          'https://pt6-propman-staging.herokuapp.com/api/properties'
-        )
-      ).then(() => {
-        // if successful we change the loading state to false
-        // placeholder cards will disappear and property cards
-        // will populate
-        setLoading(false);
-      });
-    }, 2000);
-  }, [dispatch]);
 
   return (
     <div className="properties">
@@ -82,7 +59,7 @@ export default function PropertyList() {
 
       <Grid container spacing={3}>
         {propertyList.map(property => {
-          // map over propertyList from state and render PropertyCard's
+          // map over propertyList from state and render PropertyCards
 
           // pull out the ID (unique from DB) and name
           const { id, name } = property;
@@ -126,7 +103,7 @@ export default function PropertyList() {
           error={errMsg}
         />
         <PropertyDetailsModal
-          property={currentProperty /* pass in the currentProperty */}
+          property={currentProperty}
           open={openDetails}
           close={handleClose}
         />

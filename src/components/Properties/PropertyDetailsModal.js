@@ -17,14 +17,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Components
 import { navigate } from '@reach/router';
+import { Button } from '@material-ui/core';
 import MuiModal from '../UI/MuiModal';
 import LocationSVG from '../SVG/LocationSVG';
 
 // Define styling for modal
 const useStyles = makeStyles(theme => ({
   card: {
-    minWidth: 345,
-    maxWidth: 600
+    width: 400
   },
   title: {
     margin: 0,
@@ -36,10 +36,22 @@ const useStyles = makeStyles(theme => ({
   media: {
     padding: theme.spacing(2)
   },
-  content: {
+  address: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    '& h4': {
+      marginRight: theme.spacing(2)
+    }
+  },
+  tenantInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& button': {
+      marginTop: theme.spacing(2)
+    }
   }
 }));
 
@@ -63,9 +75,6 @@ export default function PropertyDetailsModal({ property, open, close }) {
             </Avatar>
           }
           title={<h4 className={classes.title}>{name}</h4>}
-          subheader={
-            <Typography variant="body2">Property Status: {status}</Typography>
-          }
           action={
             <IconButton
               onClick={() => navigate(`properties/edit/${id}`)}
@@ -80,13 +89,25 @@ export default function PropertyDetailsModal({ property, open, close }) {
           <LocationSVG />
         </CardMedia>
         <Divider />
-        <CardContent className={classes.content}>
+        <CardContent className={classes.address}>
+          <h4>Address:</h4>
           <div>
             <Typography variant="subtitle1">{street}</Typography>
             <Typography variant="body1">
               {city}, {state}, {zip}
             </Typography>
           </div>
+        </CardContent>
+        <Divider />
+        <CardContent className={classes.tenantInfo}>
+          <h6 style={{ textAlign: 'center' }}>Status: {status}</h6>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => navigate('tenant/add')}
+          >
+            Add Tenant
+          </Button>
         </CardContent>
       </Card>
     </MuiModal>
