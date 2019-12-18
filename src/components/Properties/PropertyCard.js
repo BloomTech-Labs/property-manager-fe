@@ -1,5 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
+// Router
+import { navigate } from '@reach/router';
 // MUI Imports
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -14,14 +16,8 @@ import Divider from '@material-ui/core/Divider';
 // Defaults
 import { Skeleton } from '@material-ui/lab';
 
-// propTypes
-// import { func, string, object, elementType } from 'prop-types';
-
 // Component Styling
 const useStyles = makeStyles({
-  gridItem: {
-    height: '100%'
-  },
   card: {
     maxWidth: 345
   },
@@ -67,12 +63,33 @@ const useStyles = makeStyles({
 export default function PropertyCard(props) {
   const classes = useStyles();
 
-  const { icon, title, svg } = props;
+  const { icon, title, svg, handleOpen, property, upperPath, iconPath } = props;
+
+  // event handler for clicking on the upper CardActionArea
+  const handleClick = () => {
+    // conditional logic to check if handleOpen property exists
+    if (handleOpen) {
+      // We call the handleOpen() function passed down as a prop
+      // and give it the property that was passed down as a prop.
+      //
+      // This gives us access to the property object data that we
+      // can use in the individual property Modal
+      return handleOpen(property);
+    }
+
+    return null;
+  };
 
   return (
-    <Grid className={classes.gridItem} item xs={12} sm={6} md={4} lg={3}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            navigate(upperPath);
+
+            handleClick();
+          }}
+        >
           <CardMedia className={classes.media}>
             {svg || <Skeleton variant="rect" height={140} width="100%" />}
           </CardMedia>
@@ -82,9 +99,12 @@ export default function PropertyCard(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-
         <Divider />
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            navigate(iconPath);
+          }}
+        >
           <CardActions className={classes.cardAction}>
             {icon || <Skeleton variant="circle" width={28} height={28} />}
           </CardActions>

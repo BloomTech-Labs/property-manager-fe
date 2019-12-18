@@ -2,17 +2,20 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 // UI Components
-import { Container } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import { VertNav } from '../../components/Navigation/navigation';
 import FloatingActions from '../../components/UI/FloatingActions';
+import PropmanTheme from '../../theme/PropmanTheme';
 
 function Dashboard(props) {
   return (
-    <div className="dashboard">
-      <VertNav />
-      <Container className="dashboard-content">{props.children}</Container>
-      <FloatingActions />
-    </div>
+    <PropmanTheme>
+      <div className="dashboard">
+        <VertNav />
+        <Container className="dashboard-content">{props.children}</Container>
+        <FloatingActions />
+      </div>
+    </PropmanTheme>
   );
 }
 
