@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   makeStyles,
   Table,
@@ -8,7 +8,6 @@ import {
   TableHead,
   TableRow
 } from '@material-ui/core';
-import { getProperties } from '../../../store/actions';
 
 const useStyles = makeStyles({
   table: {
@@ -18,22 +17,9 @@ const useStyles = makeStyles({
 
 export default function PropTable() {
   const classes = useStyles();
-  const dispatch = useDispatch();
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
   const propertyList = useSelector(state => state.propReducer.properties);
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(
-        getProperties(
-          'https://pt6-propman-staging.herokuapp.com/api/properties'
-        )
-      ).then(() => {
-        setLoading(false);
-      });
-    }, 2000);
-  }, [dispatch]);
 
   return (
     <Table className={classes.table} aria-label="Property Table">

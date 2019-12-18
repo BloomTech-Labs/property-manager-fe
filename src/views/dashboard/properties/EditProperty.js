@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
-import { editProperty, getProperty } from '../../../store/actions';
+import {
+  editProperty,
+  getProperty,
+  getProperties
+} from '../../../store/actions';
 
 export default function EditProperty({ id }) {
   // set the url for the api calls and pass in the
@@ -19,9 +23,14 @@ export default function EditProperty({ id }) {
 
   // when form is submitted dispatch edit action
   const submitFn = property => {
-    dispatch(updateProperty(property)).then(() =>
-      navigate('/dashboard/properties')
-    );
+    dispatch(updateProperty(property)).then(() => {
+      dispatch(
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
+      );
+      navigate('/dashboard/properties');
+    });
   };
 
   // grab the property from redux state

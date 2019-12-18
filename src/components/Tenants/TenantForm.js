@@ -49,7 +49,7 @@ const validationSchema = Yup.object().shape({
   residenceId: Yup.string().required('Must include a property!')
 });
 
-export default function TenantForm({ initialValues, submit }) {
+export default function TenantForm({ initialValues, submit, properties }) {
   // bring in custom styling
   const classes = useStyles();
 
@@ -62,8 +62,7 @@ export default function TenantForm({ initialValues, submit }) {
     residenceId = ''
   } = initialValues;
 
-  // grab list of properties from state
-  // const options = useSelector(state => state.propReducer.properties);
+  console.log(properties);
 
   return (
     <Paper className={classes.formCard}>
@@ -176,16 +175,11 @@ export default function TenantForm({ initialValues, submit }) {
                 error={touched.residenceId && errors.residenceId && true}
                 required
               >
-                <MenuItem value="1">Property 1</MenuItem>
-                <MenuItem value="2">Property 2</MenuItem>
-                <MenuItem value="3">Property 3</MenuItem>
-                <MenuItem value="4">Property 4</MenuItem>
-
-                {/* {options.map(option => (
-                  <MenuItem key={option.id} value={option.id}>
-                    {option.name}
+                {properties.map(property => (
+                  <MenuItem key={property.id} value={property.id}>
+                    {property.name}
                   </MenuItem>
-                ))} */}
+                ))}
               </Field>
               <div className={classes.submitWrapper}>
                 <Button
@@ -228,5 +222,6 @@ TenantForm.propTypes = {
     email: PropTypes.string.isRequired,
     residenceId: PropTypes.string.isRequired
   }).isRequired,
-  submit: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
+  properties: PropTypes.arrayOf(PropTypes.object).isRequired
 };

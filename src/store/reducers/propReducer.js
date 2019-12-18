@@ -10,9 +10,11 @@ import {
   GET_PROPERTY_FAIL,
   EDIT_PROPERTY_START,
   EDIT_PROPERTY_SUCCESS,
-  EDIT_PROPERTY_FAIL
-  // eslint-disable-next-line import/named
-} from '../actions';
+  EDIT_PROPERTY_FAIL,
+  ADD_TENANT_START,
+  ADD_TENANT_SUCCESS,
+  ADD_TENANT_FAIL
+} from '../actions/index';
 
 const properties = localStorage.getItem('properties');
 
@@ -123,6 +125,29 @@ export default function propReducer(state = initialState, action) {
         isUpdatingProperty: false,
         errMsg: action.payload.errMsg,
         updated: false
+      };
+    }
+    // -------------------------------------|
+    // ADD_TENANT --------------------------|
+    case ADD_TENANT_START: {
+      return {
+        ...state,
+        isAddingTenant: true,
+        errMsg: null
+      };
+    }
+    case ADD_TENANT_SUCCESS: {
+      return {
+        ...state,
+        isAddingTenant: false,
+        errMsg: null
+      };
+    }
+    case ADD_TENANT_FAIL: {
+      return {
+        ...state,
+        isAddingTenant: false,
+        errMsg: action.payload.errMsg
       };
     }
     // -------------------------------------|

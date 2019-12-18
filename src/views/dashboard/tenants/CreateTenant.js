@@ -1,8 +1,11 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import TenantForm from '../../../components/Tenants/TenantForm';
 
 export default function CreateTenant() {
+  const properties = useSelector(state => state.propReducer.properties);
+
   // define initialValues passed into the form
   const initialValues = {
     firstName: '',
@@ -19,7 +22,11 @@ export default function CreateTenant() {
 
   return (
     <Container>
-      <TenantForm submit={handleSubmit} initialValues={initialValues} />
+      <TenantForm
+        submit={handleSubmit}
+        properties={properties}
+        initialValues={initialValues}
+      />
     </Container>
   );
 }

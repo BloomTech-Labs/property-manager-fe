@@ -45,6 +45,10 @@ export const EDIT_PROPERTY_START = 'EDIT_PROPERTY_START';
 export const EDIT_PROPERTY_SUCCESS = 'EDIT_PROPERTY_SUCCESS';
 export const EDIT_PROPERTY_FAIL = 'EDIT_PROPERTY_FAIL';
 // ------------------------------------------------|
+export const ADD_TENANT_START = 'ADD_TENANT_START';
+export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
+export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
+// ------------------------------------------------|
 // CREATE A PROPERTY ------------------------------|
 export const createProperty = url => property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
@@ -123,6 +127,25 @@ export const editProperty = url => property => async dispatch => {
     });
   } catch (err) {
     dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
+  }
+};
+// ------------------------------------------------|
+// ADD TENANT TO PROPERTY -------------------------|
+export const addTenant = url => tenant => async dispatch => {
+  dispatch({ type: ADD_TENANT_START });
+
+  try {
+    const res = await axiosAuth().post(url, tenant);
+
+    // eslint-disable-next-line no-console
+    console.log(res.data);
+
+    dispatch({
+      type: ADD_TENANT_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({ type: ADD_TENANT_FAIL, payload: { errMsg: err.message } });
   }
 };
 // ------------------------------------------------|
