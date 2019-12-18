@@ -156,7 +156,6 @@ export const addTenant = url => tenant => async dispatch => {
 // ================================================|
 
 // define your user actions here
-
 // ------------------------------------------------|
 export const getUserInfo = url => async dispatch => {
   dispatch({ type: GET_USER_START });
