@@ -13,6 +13,7 @@ import {
   CircularProgress
 } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
+import MuiModal from '../UI/MuiModal';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -34,13 +35,15 @@ const validationSchema = Yup.object().shape({
 
 export default function ProfileForm({
   submit,
-  initialValues,
   loading,
-  isSubmitting
+  isSubmitting,
+  open,
+  opened,
+  close
 }) {
   const classes = useStyles();
 
-  const { firstName = '', lastName = '' } = initialValues;
+  const initialValues = { firstName: '', lastName: '' };
 
   if (loading || isSubmitting) {
     return (
@@ -69,57 +72,56 @@ export default function ProfileForm({
   }
 
   return (
-    <div className="form-card">
-      <h2>Update User Info</h2>
-      <Formik
-        enableReinitialize
-        validationSchema={validationSchema}
-        initialValues={{
-          firstName,
-          lastName
-        }}
-        onSubmit={values => {
-          submit(values);
-        }}
-      >
-        {({ errors, touched, isSubmitting }) => (
-          <Form data-testid="form-element">
-            <div className="input-wrapper">
-              <label htmlFor="first-name">First Name</label>
-              <Field
-                placeholder="Update your first name"
-                name="firstName"
-                type="text"
-              />
-              <FormErrors
-                touched={touched.firstName}
-                message={errors.firstName}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="last-name">Last Name</label>
-              <Field
-                placeholder="Update your last name"
-                name="lastName"
-                type="text"
-              />
-              <FormErrors
-                touched={touched.lastName}
-                message={errors.lastName}
-              />
-            </div>
-            <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Submit
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    <MuiModal open={opened} close={close}>
+      <div className="form-card">
+        <h2>Update User Info</h2>
+        <Formik
+          enableReinitialize
+          validationSchema={validationSchema}
+          initialValues={initialValues}
+          onSubmit={values => {
+            submit(values);
+          }}
+        >
+          {({ errors, touched, isSubmitting }) => (
+            <Form data-testid="form-element">
+              <div className="input-wrapper">
+                <label htmlFor="first-name">First Name</label>
+                <Field
+                  placeholder="Update your first name"
+                  name="firstName"
+                  type="text"
+                />
+                <FormErrors
+                  touched={touched.firstName}
+                  message={errors.firstName}
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="last-name">Last Name</label>
+                <Field
+                  placeholder="Update your last name"
+                  name="lastName"
+                  type="text"
+                />
+                <FormErrors
+                  touched={touched.lastName}
+                  message={errors.lastName}
+                />
+              </div>
+              <div className="submit-btn-wrapper">
+                <button
+                  className="btn btn-animated"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Submit
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </MuiModal>
   );
 }
