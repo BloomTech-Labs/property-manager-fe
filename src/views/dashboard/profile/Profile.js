@@ -14,10 +14,10 @@ export default function Profile() {
       <Container>
         <br />
         <Grid container direction="row" spacing={10}>
-          <Grid item sm={3}>
+          <Grid item sm={6}>
             <ProfileCard />
           </Grid>
-          <Grid item md={9} align="right">
+          <Grid item md={6} align="right">
             <ProfileImg />
           </Grid>
           <Grid item lg={12}>
