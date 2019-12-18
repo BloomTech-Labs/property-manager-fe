@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // Redux
-// import { useSelector } from 'react-redux';
 // Formik
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -61,8 +60,6 @@ export default function TenantForm({ initialValues, submit, properties }) {
     email = '',
     residenceId = ''
   } = initialValues;
-
-  console.log(properties);
 
   return (
     <Paper className={classes.formCard}>

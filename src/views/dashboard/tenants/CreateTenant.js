@@ -1,9 +1,16 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import TenantForm from '../../../components/Tenants/TenantForm';
+import { addTenant as action } from '../../../store/actions';
+
+const addTenant = action(
+  'https://pt6-propman-staging.herokuapp.com/api/tenants'
+);
 
 export default function CreateTenant() {
+  const dispatch = useDispatch();
+
   const properties = useSelector(state => state.propReducer.properties);
 
   // define initialValues passed into the form
@@ -16,6 +23,8 @@ export default function CreateTenant() {
   };
 
   const handleSubmit = tenant => {
+    dispatch(addTenant(tenant));
+
     // eslint-disable-next-line no-console
     console.log(tenant);
   };
