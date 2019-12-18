@@ -21,6 +21,7 @@ export default function TrailWord({ text }) {
       onClick={() => setToggle(!toggle)}
       role="button"
       tabIndex={0}
+      // eslint-disable-next-line no-console
       onKeyPress={console.log('We need to get hooks-ahoy')}
     >
       {trail.map(({ x, height, ...rest }, index) => (
