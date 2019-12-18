@@ -8,6 +8,8 @@ import {
   makeStyles,
   Typography
 } from '@material-ui/core';
+import { useModal } from '../../../hooks/useModal';
+import ProfileForm from '../../../components/Profile/ProfileForm';
 
 const useStyles = makeStyles({
   card: {
@@ -28,8 +30,12 @@ export default function ProfileCard() {
         <CardContent>User Type</CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" size="small">
-          Update Profile
+        <Button
+          variant="contained"
+          size="small"
+          onClick={useModal(ProfileForm)}
+        >
+          Update Profile ✏
         </Button>
       </CardActions>
     </Card>

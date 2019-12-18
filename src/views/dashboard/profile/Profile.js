@@ -13,11 +13,11 @@ export default function Profile() {
       <Divider />
       <Container>
         <br />
-        <Grid container direction="row" spacing={5}>
+        <Grid container direction="row" spacing={10}>
           <Grid item sm={3}>
             <ProfileCard />
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={9} align="right">
             <ProfileImg />
           </Grid>
           <Grid item lg={12}>
