@@ -3,6 +3,9 @@
 import axios from 'axios';
 import axiosAuth from '../../helpers/axiosAuth';
 // ------------------------------------------------|
+// BASE URL ---------------------------------------|
+const baseUrl = 'https://pt6-propman-staging.herokuapp.com/api';
+// ------------------------------------------------|
 // AUTH ACTIONS ===================================|
 // ================================================|
 export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
@@ -53,11 +56,11 @@ export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 // ------------------------------------------------|
 // CREATE A PROPERTY ------------------------------|
-export const createProperty = url => property => async dispatch => {
+export const createProperty = property => async dispatch => {
   dispatch({ type: ADD_PROPERTY_START });
 
   try {
-    const res = await axiosAuth().post(url, property);
+    const res = await axiosAuth().post(`${baseUrl}properties`, property);
 
     dispatch({
       type: ADD_PROPERTY_SUCCESS,
@@ -73,11 +76,11 @@ export const createProperty = url => property => async dispatch => {
 };
 // ------------------------------------------------|
 // GET PROPERTIES ---------------------------------|
-export const getProperties = url => async dispatch => {
+export const getProperties = () => async dispatch => {
   dispatch({ type: GET_PROPERTIES_START });
 
   try {
-    const res = await axiosAuth().get(url);
+    const res = await axiosAuth().get(`${baseUrl}/properties`);
 
     if (res.data.length) {
       localStorage.setItem('properties', res.data);
@@ -95,11 +98,13 @@ export const getProperties = url => async dispatch => {
 };
 // ------------------------------------------------|
 // GET PROPERTY -----------------------------------|
-export const getProperty = url => async dispatch => {
+// Takes in the property id to pass in as a url
+// parameter for endpoint
+export const getProperty = id => async dispatch => {
   dispatch({ type: GET_PROPERTY_START });
 
   try {
-    const res = await axiosAuth().get(url);
+    const res = await axiosAuth().get(`${baseUrl}/properties/${id}`);
 
     dispatch({
       type: GET_PROPERTY_SUCCESS,
@@ -113,24 +118,29 @@ export const getProperty = url => async dispatch => {
 };
 // ------------------------------------------------|
 // EDIT PROPERTY ----------------------------------|
-export const editProperty = url => property => async dispatch => {
-  dispatch({ type: EDIT_PROPERTY_START });
+export const editProperty = (id, property) => {
+  return async dispatch => {
+    dispatch({ type: EDIT_PROPERTY_START });
 
-  try {
-    const res = await axiosAuth().put(url, property);
+    try {
+      const res = await axiosAuth().put(
+        `${baseUrl}/properties/${id}`,
+        property
+      );
 
-    // eslint-disable-next-line no-console
-    console.log(res.data);
+      // eslint-disable-next-line no-console
+      console.log(res.data);
 
-    dispatch({
-      type: EDIT_PROPERTY_SUCCESS,
-      payload: {
-        updated: true
-      }
-    });
-  } catch (err) {
-    dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
-  }
+      dispatch({
+        type: EDIT_PROPERTY_SUCCESS,
+        payload: {
+          updated: true
+        }
+      });
+    } catch (err) {
+      dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
+    }
+  };
 };
 // ------------------------------------------------|
 // ADD TENANT TO PROPERTY -------------------------|

@@ -32,9 +32,7 @@ function Dashboard(props) {
   useEffect(() => {
     // set timeout to show place holder cards
     // dispatch the getProperties action
-    dispatch(
-      getProperties('https://pt6-propman-staging.herokuapp.com/api/properties')
-    );
+    dispatch(getProperties());
   }, [dispatch]);
 
   return (

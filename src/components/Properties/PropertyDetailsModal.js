@@ -39,12 +39,19 @@ const useStyles = makeStyles(theme => ({
   address: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    '& h4': {
+      marginRight: theme.spacing(2)
+    }
   },
   tenantInfo: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    '& button': {
+      marginTop: theme.spacing(2)
+    }
   }
 }));
 
@@ -83,6 +90,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
         </CardMedia>
         <Divider />
         <CardContent className={classes.address}>
+          <h4>Address:</h4>
           <div>
             <Typography variant="subtitle1">{street}</Typography>
             <Typography variant="body1">
@@ -91,16 +99,16 @@ export default function PropertyDetailsModal({ property, open, close }) {
           </div>
         </CardContent>
         <Divider />
-        {status === 'vacant' ? (
-          <CardContent className={classes.tenantInfo}>
-            <h6 style={{ textAlign: 'center' }}>VACANT</h6>
-            <Button onClick={() => navigate('tenant/add')}>Add Tenant</Button>
-          </CardContent>
-        ) : (
-          <CardContent className={classes.tenantInfo}>
-            Status is occupied
-          </CardContent>
-        )}
+        <CardContent className={classes.tenantInfo}>
+          <h6 style={{ textAlign: 'center' }}>Status: {status}</h6>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => navigate('tenant/add')}
+          >
+            Add Tenant
+          </Button>
+        </CardContent>
       </Card>
     </MuiModal>
   );
