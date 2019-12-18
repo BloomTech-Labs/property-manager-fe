@@ -9,11 +9,13 @@ import Property from '../../../views/dashboard/properties/Property';
 import EditProperty from '../../../views/dashboard/properties/EditProperty';
 
 function ProtectedRoutes() {
+  // eslint-disable-next-line consistent-return
   function getToken() {
     try {
       const token = localStorage.getItem('token');
       return token;
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
     }
   }
