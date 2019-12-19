@@ -135,6 +135,10 @@ export const editProperty = (id, property) => {
 // ------------------------------------------------|
 // TENANT ACTIONS =================================|
 // ================================================|
+export const GET_TENANTS_START = 'GET_TENANTS_START';
+export const GET_TENANTS_SUCCESS = 'GET_TENANTS_SUCCESS';
+export const GET_TENANTS_FAIL = 'GET_TENANTS_FAIL';
+// ------------------------------------------------|
 export const ADD_TENANT_START = 'ADD_TENANT_START';
 export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
@@ -142,6 +146,21 @@ export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 export const GET_TENANTS_RESIDENCE_START = 'GET_TENANTS_RESIDENCE_START';
 export const GET_TENANTS_RESIDENCE_SUCCESS = 'GET_TENANTS_RESIDENCE_SUCCESS';
 export const GET_TENANTS_RESIDENCE_FAIL = 'GET_TENANTS_RESIDENCE_FAIL';
+// ------------------------------------------------|
+// GET TENANTS ------------------------------------|
+export const getTenants = () => {
+  return async dispatch => {
+    dispatch({ type: GET_TENANTS_START });
+
+    try {
+      const res = await axiosAuth().get(`${baseUrl}/tenants`);
+
+      dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: GET_TENANTS_FAIL, payload: { errMsg: err.message } });
+    }
+  };
+};
 // ------------------------------------------------|
 // ADD TENANT TO PROPERTY -------------------------|
 export const addTenant = url => tenant => async dispatch => {
@@ -186,7 +205,6 @@ export const getTenantsByResidence = residenceId => {
 // ------------------------------------------------|
 // USER ACTIONS ===================================|
 // ================================================|
-
 // define your user actions here
 // ------------------------------------------------|
 export const getUserInfo = url => async dispatch => {
