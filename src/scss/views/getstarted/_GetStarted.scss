@@ -1,14 +1,14 @@
 .signUpPage {
     display: flex;
-    margin: 100px auto;
+    margin: 150px auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    width: 500px;
     padding: 15px 15px 15px 35px;
     border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.281);
-
+    background-color:white;
+    opacity: 0.7;
     .formHeader {
         width: 100%;
         display: flex;
@@ -16,16 +16,6 @@
         align-items: center;
         margin-bottom: 35px;
         font-family: $primary-font;
-
-        h1 {
-            font-size: 2em;
-            color: white;
-        }
-
-        h3 {
-            font-size: 1.4em;
-            color: white;
-        }
 
         select {
             width: 120px;
