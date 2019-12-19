@@ -44,7 +44,7 @@ export default function ProfileForm({
 }) {
   const classes = useStyles();
 
-  const initialValues = { firstName: '', lastName: '', phone: '', email: '' };
+  const initialValues = { firstName: '', lastName: '', phone: ''};
 
   if (loading || isSubmitting) {
     return (

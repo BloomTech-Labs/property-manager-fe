@@ -23,8 +23,8 @@ export default function ProfileCard() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   let defaultUser = {
-    firstName: '',
-    lastName: '',
+    firstName: 'Update Your',
+    lastName: 'Profile, Friend.',
     type: ''
   };
   const currentUser = useSelector(state => state.getUserReducer.user);
