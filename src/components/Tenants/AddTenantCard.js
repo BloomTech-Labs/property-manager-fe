@@ -4,6 +4,7 @@ import ErrorIcon from '@material-ui/icons/Error';
 import TenantCard from './TenantCard';
 import ProfileSVG from '../SVG/ProfileSVG';
 import ErrorSVG from '../SVG/ErrorSVG';
+import AddHouse from '../SVG/AddHouseSVG';
 
 const AddTenantCard = ({ isLoading, tenantNum, error }) => {
   const addTenantPath = '/dashboard/tenants/add';
@@ -27,7 +28,7 @@ const AddTenantCard = ({ isLoading, tenantNum, error }) => {
       upperPath={addTenantPath}
       iconPath={addTenantPath}
       icon={<PersonAddIcon />}
-      svg={<ProfileSVG />}
+      svg={<AddHouse />}
       title="Add a tenant?"
     />
   );

@@ -17,7 +17,14 @@ import { navigate } from '@reach/router';
 // Component Styling
 const useStyles = makeStyles({
   card: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '100%',
     maxWidth: 345
+  },
+  upperArea: {
+    height: '100%'
   },
   media: {
     display: 'flex',
@@ -44,16 +51,38 @@ const useStyles = makeStyles({
   }
 });
 
-const TenantCard = ({ upperPath, iconPath, title, icon, svg }) => {
+const TenantCard = ({
+  upperPath,
+  iconPath,
+  title,
+  icon,
+  svg,
+  property,
+  handleOpen,
+  tenant
+}) => {
   const classes = useStyles();
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    if (handleOpen) {
+      // We call the handleOpen() func passed as prop
+      // and give it the tenant & property that
+      // was passed as props
+      // This gives access to the obj data we can
+      // use in the individual tenant modal
+      return handleOpen(property, tenant);
+    }
+
+    return null;
+  };
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
+    <Grid className={classes.grid} item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
         <CardActionArea
-          onClick={() => {
+          className={classes.upperArea}
+          onClick={e => {
+            e.stopPropagation();
             if (upperPath) {
               navigate(upperPath);
             }
@@ -68,14 +97,16 @@ const TenantCard = ({ upperPath, iconPath, title, icon, svg }) => {
             <Typography gutterBottom variant="h5" component="h2">
               {title || <Skeleton />}
             </Typography>
+            {property && <Typography>Resident of {property.name}</Typography>}
           </CardContent>
         </CardActionArea>
-        <Divider />
+
         <CardActionArea
           onClick={() => {
             navigate(iconPath);
           }}
         >
+          <Divider />
           <CardActions className={classes.cardAction}>
             {icon || <Skeleton variant="circle" width={28} height={28} />}
           </CardActions>

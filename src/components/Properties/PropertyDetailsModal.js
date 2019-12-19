@@ -10,10 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Icons
 import { FaPen, FaHome } from 'react-icons/fa';
-import { makeStyles } from '@material-ui/core/styles';
 
 // Components
 import { navigate } from '@reach/router';
@@ -38,7 +38,13 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#2d3b4f'
   },
   media: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& svg': {
+      height: 140
+    }
   },
   address: {
     display: 'flex',
