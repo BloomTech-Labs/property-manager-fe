@@ -18,8 +18,12 @@ import { makeStyles } from '@material-ui/core/styles';
 // Components
 import { navigate } from '@reach/router';
 import { Button } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import MuiModal from '../UI/MuiModal';
 import LocationSVG from '../SVG/LocationSVG';
+
+// Actions
+import { getTenantsByResidence } from '../../store/actions';
 
 // Define styling for modal
 const useStyles = makeStyles(theme => ({
@@ -59,11 +63,19 @@ export default function PropertyDetailsModal({ property, open, close }) {
   // bring in access to custom styling
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
   // Pull out data from the property object passed
   // in from Properties.js component
   const { id, city, name, state, status, street, zip } = property;
   // TODO: add in functionality to handle the image
   // from the property object and allow SVG default
+
+  React.useEffect(() => {
+    if (id) {
+      dispatch(getTenantsByResidence(id));
+    }
+  }, [dispatch, id]);
 
   return (
     <MuiModal open={open} close={close}>

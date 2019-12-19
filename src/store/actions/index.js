@@ -52,10 +52,6 @@ export const EDIT_PROPERTY_START = 'EDIT_PROPERTY_START';
 export const EDIT_PROPERTY_SUCCESS = 'EDIT_PROPERTY_SUCCESS';
 export const EDIT_PROPERTY_FAIL = 'EDIT_PROPERTY_FAIL';
 // ------------------------------------------------|
-export const ADD_TENANT_START = 'ADD_TENANT_START';
-export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
-export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
-// ------------------------------------------------|
 // CREATE A PROPERTY ------------------------------|
 export const createProperty = property => {
   return async dispatch => {
@@ -137,6 +133,16 @@ export const editProperty = (id, property) => {
   };
 };
 // ------------------------------------------------|
+// TENANT ACTIONS =================================|
+// ================================================|
+export const ADD_TENANT_START = 'ADD_TENANT_START';
+export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
+export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
+// ------------------------------------------------|
+export const GET_TENANTS_RESIDENCE_START = 'GET_TENANTS_RESIDENCE_START';
+export const GET_TENANTS_RESIDENCE_SUCCESS = 'GET_TENANTS_RESIDENCE_SUCCESS';
+export const GET_TENANTS_RESIDENCE_FAIL = 'GET_TENANTS_RESIDENCE_FAIL';
+// ------------------------------------------------|
 // ADD TENANT TO PROPERTY -------------------------|
 export const addTenant = url => tenant => async dispatch => {
   dispatch({ type: ADD_TENANT_START });
@@ -151,6 +157,31 @@ export const addTenant = url => tenant => async dispatch => {
   } catch (err) {
     dispatch({ type: ADD_TENANT_FAIL, payload: { errMsg: err.message } });
   }
+};
+// ------------------------------------------------|
+// GET TENANTS BY RESIDENCE ID --------------------|
+export const getTenantsByResidence = residenceId => {
+  return async dispatch => {
+    dispatch({ type: GET_TENANTS_RESIDENCE_START });
+
+    try {
+      const res = await axiosAuth().get(
+        `${baseUrl}/properties/${residenceId}/tenants`
+      );
+
+      console.log(res);
+
+      dispatch({
+        type: GET_TENANTS_RESIDENCE_SUCCESS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: GET_TENANTS_RESIDENCE_FAIL,
+        payload: { errMsg: err.message }
+      });
+    }
+  };
 };
 // ------------------------------------------------|
 // USER ACTIONS ===================================|

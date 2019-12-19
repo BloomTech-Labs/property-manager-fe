@@ -37,7 +37,7 @@ function ProtectedRoutes() {
         <Property path="properties/:id" />
         <CreateProperty path="properties/add" />
         <EditProperty path="properties/edit/:id" />
-        <CreateTenant path="tenant/add" />
+        <CreateTenant path="tenants/add" />
       </Dashboard>
     </Router>
   );
