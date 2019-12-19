@@ -11,9 +11,6 @@ const baseUrl = 'https://pt6-propman-staging.herokuapp.com/api';
 export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
 export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
 export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAIL = 'GET_USER_FAIL';
 // ------------------------------------------------|
 // LOGIN / SIGNUP ---------------------------------|
 export const auth = url => (email, password) => async dispatch => {
@@ -164,6 +161,12 @@ export const addTenant = url => tenant => async dispatch => {
 // ------------------------------------------------|
 // USER ACTIONS ===================================|
 // ================================================|
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAIL = 'GET_USER_FAIL';
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
 
 // define your user actions here
 // ------------------------------------------------|
@@ -171,7 +174,7 @@ export const getUserInfo = url => async dispatch => {
   dispatch({ type: GET_USER_START });
 
   try {
-    const res = await axiosAuth().get(url);
+    const res = await axiosAuth().get(`${baseUrl}/users/me`);
 
     console.log(res.data);
     dispatch({
@@ -182,5 +185,23 @@ export const getUserInfo = url => async dispatch => {
     });
   } catch (err) {
     dispatch({ type: GET_USER_FAIL, payload: { errMsg: err } });
+  }
+};
+
+export const editUserInfo = user => async dispatch => {
+  dispatch({ type: EDIT_USER_START });
+
+  try {
+    const res = await axiosAuth().put(`${baseUrl}/users/me`, user);
+
+    console.log(res.data);
+    dispatch({
+      type: EDIT_USER_SUCCESS,
+      payload: {
+        user: res.data
+      }
+    });
+  } catch (err) {
+    dispatch({ type: EDIT_USER_FAIL, payload: { errMsg: err } });
   }
 };
