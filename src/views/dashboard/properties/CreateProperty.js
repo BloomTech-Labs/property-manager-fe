@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { navigate } from '@reach/router';
 import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
-import { createProperty } from '../../../store/actions';
+import { createProperty, getProperties } from '../../../store/actions';
 
 const addProperty = createProperty(
   'https://pt6-propman-staging.herokuapp.com/api/properties'
@@ -14,7 +14,13 @@ export default function CreateProperty() {
 
   const submitFn = property => {
     navigate('/dashboard/properties');
-    dispatch(addProperty(property));
+    dispatch(addProperty(property)).then(() => {
+      dispatch(
+        getProperties(
+          'https://pt6-propman-staging.herokuapp.com/api/properties'
+        )
+      );
+    });
   };
 
   const isSubmitting = useSelector(state => state.propReducer.isAddingProp);

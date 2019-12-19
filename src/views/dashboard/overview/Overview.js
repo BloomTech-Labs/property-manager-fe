@@ -1,10 +1,9 @@
 import React from 'react';
-import PropertyList from '../../../components/Properties/PropertyList';
 
 export default function Overview() {
   return (
     <div className="overview">
-      <PropertyList />
+      <h2>Overview modules are coming soon...</h2>
     </div>
   );
 }

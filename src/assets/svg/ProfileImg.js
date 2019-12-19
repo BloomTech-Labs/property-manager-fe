@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-const ProfileImg = props => (
+
+const ProfileImg = () => (
   <svg
     id="af24c1d2-8586-4e6b-81b3-4cf1a6f0777f"
     data-name="Layer 1"
@@ -82,8 +83,8 @@ const ProfileImg = props => (
       r="16.06134"
       fill="none"
       stroke="#d0cde1"
-      stroke-miterlimit="10"
-      stroke-width="2"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <circle cx="753.9076" cy="316.93907" r="16.06134" fill="#d0cde1" />
     <circle cx="282.31137" cy="165.70501" r="23.38258" fill="#2f2e41" />
@@ -180,12 +181,12 @@ const ProfileImg = props => (
       r="16.06134"
       fill="none"
       stroke="#d0cde1"
-      stroke-miterlimit="10"
-      stroke-width="2"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <circle cx="206.83514" cy="316.93605" r="16.06134" fill="#d0cde1" />
     <rect x="11.84535" y="432" width="950" height="2" fill="#3f3d56" />
   </svg>
 );
 
-export default ProfileImg
+export default ProfileImg;

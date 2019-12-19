@@ -22,10 +22,17 @@ $active-shadow: #666;
 $white: #fff;
 $light: #e0d5d5;
 $bg-gradient: linear-gradient(rgba(5, 58, 156, 0.8), rgba(2, 126, 33, 0.9));
+$offwhite: #ececec;
 
 // Fonts
-$heading-font: 'Baloo', Helvetica, Arial, sans-serif;
-$primary-font: 'Roboto', Helvetica, Arial, sans-serif;
+$heading-font: 'Baloo',
+Helvetica,
+Arial,
+sans-serif;
+$primary-font: 'Roboto',
+Helvetica,
+Arial,
+sans-serif;
 
 // Box Shadow - hover and active are for transition effects
 $box-shadow: 0 3px 6px $shadow;

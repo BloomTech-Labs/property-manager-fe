@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import { FaBuilding, FaUserPlus, FaHammer } from 'react-icons/fa';
+import { FaBuilding, FaUserPlus, FaHammer, FaUserCircle } from 'react-icons/fa';
 
 // action menu styles
 const useStyles = makeStyles(theme => ({
@@ -36,7 +36,8 @@ const actions = [
     path: '/dashboard/properties/add'
   },
   { icon: <FaUserPlus />, name: 'Add Tenant' },
-  { icon: <FaHammer />, name: 'Add Work Order' }
+  { icon: <FaHammer />, name: 'Add Work Order' },
+  { icon: <FaUserCircle />, name: 'Update User Profile' }
 ];
 
 // Floating Action Btn Component
