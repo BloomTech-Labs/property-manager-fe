@@ -20,7 +20,6 @@ const SignUp = () => {
 
   return (
     <div className="signUpPage">
-      <div>This is the Registration Page</div>
       <SignUpForm submit={signupFn} />
     </div>
   );
