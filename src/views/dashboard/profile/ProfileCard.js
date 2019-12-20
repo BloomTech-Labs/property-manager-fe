@@ -22,7 +22,7 @@ export default function ProfileCard() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  let defaultUser = {
+  const defaultUser = {
     firstName: 'Update Your',
     lastName: 'Profile, Friend.',
     type: ''
@@ -50,7 +50,7 @@ export default function ProfileCard() {
 
         <CardActionArea>
           <CardContent>
-            {defaultUser.firstName + ' ' + defaultUser.lastName}
+            {`${defaultUser.firstName} ${defaultUser.lastName}`}
           </CardContent>
           <CardContent>{defaultUser.type}</CardContent>
         </CardActionArea>
@@ -76,7 +76,7 @@ export default function ProfileCard() {
 
       <CardActionArea>
         <CardContent>
-          {currentUser.firstName + ' ' + currentUser.lastName}
+          {`${currentUser.firstName} ${currentUser.lastName}`}
         </CardContent>
         <CardContent>{currentUser.type}</CardContent>
       </CardActionArea>

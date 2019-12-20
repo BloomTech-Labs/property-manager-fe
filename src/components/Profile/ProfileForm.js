@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
   lastName: Yup.string()
     .max(255, 'Name entered was too long')
     .required('Must enter a surname'),
-  phone: Yup.string().min(10, 'Must enter at least a 10 digit phone number'),
+  phone: Yup.string().min(10, 'Must enter at least a 10 digit phone number')
 });
 
 export default function ProfileForm({
@@ -44,7 +44,7 @@ export default function ProfileForm({
 }) {
   const classes = useStyles();
 
-  const initialValues = { firstName: '', lastName: '', phone: ''};
+  const initialValues = { firstName: '', lastName: '', phone: '' };
 
   if (loading || isSubmitting) {
     return (

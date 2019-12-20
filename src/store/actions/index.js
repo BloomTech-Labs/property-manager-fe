@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
@@ -6,31 +7,22 @@ import axiosAuth from '../../helpers/axiosAuth';
 // BASE URL ---------------------------------------|
 const baseUrl = 'https://pt6-propman-staging.herokuapp.com/api';
 // ------------------------------------------------|
-// AUTH ACTIONS ===================================|
+// AUTH TYPES =====================================|
 // ================================================|
 export const AUTH_REQUEST_START = 'AUTH_REQUEST_START';
 export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
 export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
 // ------------------------------------------------|
-// LOGIN / SIGNUP ---------------------------------|
-export const auth = url => (email, password) => async dispatch => {
-  dispatch({ type: AUTH_REQUEST_START });
-
-  try {
-    const res = await axios.post(url, {
-      email,
-      password
-    });
-
-    localStorage.setItem('token', res.data.token);
-
-    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
-  } catch (err) {
-    dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
-  }
-};
+// USER TYPES =====================================|
+// ================================================|
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAIL = 'GET_USER_FAIL';
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
 // ------------------------------------------------|
-// PROPERTY ACTIONS ===============================|
+// PROPERTY TYPES =================================|
 // ================================================|
 export const ADD_PROPERTY_START = 'ADD_PROPERTY_START';
 export const ADD_PROPERTY_SUCCESS = 'ADD_PROPERTY_SUCCESS';
@@ -48,28 +40,66 @@ export const EDIT_PROPERTY_START = 'EDIT_PROPERTY_START';
 export const EDIT_PROPERTY_SUCCESS = 'EDIT_PROPERTY_SUCCESS';
 export const EDIT_PROPERTY_FAIL = 'EDIT_PROPERTY_FAIL';
 // ------------------------------------------------|
+// TENANT TYPES ===================================|
+// ================================================|
+export const GET_TENANTS_START = 'GET_TENANTS_START';
+export const GET_TENANTS_SUCCESS = 'GET_TENANTS_SUCCESS';
+export const GET_TENANTS_FAIL = 'GET_TENANTS_FAIL';
+// ------------------------------------------------|
+export const GET_TENANT_ID_START = 'GET_TENANT_ID_START';
+export const GET_TENANT_ID_SUCCESS = 'GET_TENANT_ID_SUCCESS';
+export const GET_TENANT_ID_FAIL = 'GET_TENANT_ID_FAIL';
+// ------------------------------------------------|
 export const ADD_TENANT_START = 'ADD_TENANT_START';
 export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 // ------------------------------------------------|
-// CREATE A PROPERTY ------------------------------|
-export const createProperty = property => async dispatch => {
-  dispatch({ type: ADD_PROPERTY_START });
+export const GET_TENANTS_RESIDENCE_START = 'GET_TENANTS_RESIDENCE_START';
+export const GET_TENANTS_RESIDENCE_SUCCESS = 'GET_TENANTS_RESIDENCE_SUCCESS';
+export const GET_TENANTS_RESIDENCE_FAIL = 'GET_TENANTS_RESIDENCE_FAIL';
+// ------------------------------------------------|
+// AUTH CREATORS ==================================|
+// ================================================|
+// LOGIN / SIGNUP ---------------------------------|
+export const auth = url => (email, password) => async dispatch => {
+  dispatch({ type: AUTH_REQUEST_START });
 
   try {
-    const res = await axiosAuth().post(`${baseUrl}properties`, property);
-
-    dispatch({
-      type: ADD_PROPERTY_SUCCESS,
-      payload: {
-        created: res
-      }
+    const res = await axios.post(`${baseUrl}${url}`, {
+      email,
+      password
     });
+
+    localStorage.setItem('token', res.data.token);
+
+    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error(err);
-    dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
+    dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
+};
+// ------------------------------------------------|
+// PROPERTY CREATORS ==============================|
+// ================================================|
+// CREATE A PROPERTY ------------------------------|
+export const createProperty = property => {
+  return async dispatch => {
+    dispatch({ type: ADD_PROPERTY_START });
+
+    try {
+      const res = await axiosAuth().post(`${baseUrl}/properties`, property);
+
+      dispatch({
+        type: ADD_PROPERTY_SUCCESS,
+        payload: {
+          created: res
+        }
+      });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err);
+      dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
+    }
+  };
 };
 // ------------------------------------------------|
 // GET PROPERTIES ---------------------------------|
@@ -120,22 +150,30 @@ export const editProperty = (id, property) => {
     dispatch({ type: EDIT_PROPERTY_START });
 
     try {
-      const res = await axiosAuth().put(
-        `${baseUrl}/properties/${id}`,
-        property
-      );
-
-      // eslint-disable-next-line no-console
-      console.log(res.data);
+      await axiosAuth().put(`${baseUrl}/properties/${id}`, property);
 
       dispatch({
-        type: EDIT_PROPERTY_SUCCESS,
-        payload: {
-          updated: true
-        }
+        type: EDIT_PROPERTY_SUCCESS
       });
     } catch (err) {
       dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
+    }
+  };
+};
+// ------------------------------------------------|
+// TENANT CREATORS ================================|
+// ================================================|
+// GET TENANTS ------------------------------------|
+export const getTenants = () => {
+  return async dispatch => {
+    dispatch({ type: GET_TENANTS_START });
+
+    try {
+      const res = await axiosAuth().get(`${baseUrl}/tenants`);
+
+      dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: GET_TENANTS_FAIL, payload: { errMsg: err.message } });
     }
   };
 };
@@ -147,9 +185,6 @@ export const addTenant = url => tenant => async dispatch => {
   try {
     const res = await axiosAuth().post(url, tenant);
 
-    // eslint-disable-next-line no-console
-    console.log(res.data);
-
     dispatch({
       type: ADD_TENANT_SUCCESS,
       payload: res.data
@@ -159,15 +194,56 @@ export const addTenant = url => tenant => async dispatch => {
   }
 };
 // ------------------------------------------------|
-// USER ACTIONS ===================================|
-// ================================================|
-export const GET_USER_START = 'GET_USER_START';
-export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-export const GET_USER_FAIL = 'GET_USER_FAIL';
-export const EDIT_USER_START = 'EDIT_USER_START';
-export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
-export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
+// GET TENANTS BY RESIDENCE ID --------------------|
+export const getTenantsByResidence = residenceId => {
+  return async dispatch => {
+    dispatch({ type: GET_TENANTS_RESIDENCE_START });
 
+    try {
+      const res = await axiosAuth().get(
+        `${baseUrl}/properties/${residenceId}/tenants`
+      );
+
+      console.log(res);
+
+      dispatch({
+        type: GET_TENANTS_RESIDENCE_SUCCESS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: GET_TENANTS_RESIDENCE_FAIL,
+        payload: { errMsg: err.message }
+      });
+    }
+  };
+};
+// ------------------------------------------------|
+// GET TENANT BY ID -------------------------------|
+export const getTenantById = id => {
+  return async dispatch => {
+    dispatch({ type: GET_TENANT_ID_START });
+
+    try {
+      const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
+
+      console.log(res);
+
+      dispatch({
+        type: GET_TENANT_ID_SUCCESS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: GET_TENANT_ID_FAIL,
+        payload: { errMsg: err.message }
+      });
+    }
+  };
+};
+// ------------------------------------------------|
+// USER CREATORS ==================================|
+// ================================================|
 // define your user actions here
 // ------------------------------------------------|
 export const getUserInfo = url => async dispatch => {
@@ -177,6 +253,7 @@ export const getUserInfo = url => async dispatch => {
     const res = await axiosAuth().get(`${baseUrl}/users/me`);
 
     console.log(res.data);
+
     dispatch({
       type: GET_USER_SUCCESS,
       payload: {

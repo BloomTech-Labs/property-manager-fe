@@ -84,7 +84,8 @@ export default function PropertyCard(props) {
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
         <CardActionArea
-          onClick={() => {
+          onClick={e => {
+            e.stopPropagation();
             navigate(upperPath);
 
             handleClick();
