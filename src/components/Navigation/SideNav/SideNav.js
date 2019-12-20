@@ -17,7 +17,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import PeopleIcon from '@material-ui/icons/People';
 import { navigate } from '@reach/router';
+import logo from '../../../assets/img/logo-cropped.png';
 
 const drawerWidth = 240;
 
@@ -72,9 +74,16 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar
+  },
+  logo: {
+    height: 40,
+    marginLeft: theme.spacing(2)
+  },
+  list: {
+    paddingTop: 0
   }
 }));
 
@@ -84,11 +93,7 @@ function SideNav() {
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+    setOpen(!open);
   };
 
   return (
@@ -109,7 +114,7 @@ function SideNav() {
           >
             <MenuIcon />
           </IconButton>
-          <h4>PropMan</h4>
+          <h4>Dashboard</h4>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -126,7 +131,8 @@ function SideNav() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <img className={classes.logo} src={logo} alt="PropMan branding" />
+          <IconButton onClick={handleDrawerOpen}>
             {theme.direction === 'rtl' ? (
               <ChevronRightIcon />
             ) : (
@@ -135,24 +141,32 @@ function SideNav() {
           </IconButton>
         </div>
         <Divider />
-        <List>
+        <List className={classes.list}>
           <ListItem button onClick={() => navigate('/dashboard')}>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Overview" />
           </ListItem>
+          <Divider />
+          <ListItem button onClick={() => navigate('/dashboard/profile')}>
+            <ListItemIcon>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+
           <ListItem button onClick={() => navigate('/dashboard/properties')}>
             <ListItemIcon>
               <HomeWorkIcon />
             </ListItemIcon>
             <ListItemText primary="Properties" />
           </ListItem>
-          <ListItem button onClick={() => navigate('/dashboard/profile')}>
+          <ListItem button onClick={() => navigate('/dashboard/tenants')}>
             <ListItemIcon>
-              <AccountCircleIcon />
+              <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary="Profile" />
+            <ListItemText primary="Tenants" />
           </ListItem>
         </List>
       </Drawer>

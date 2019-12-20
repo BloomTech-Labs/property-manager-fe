@@ -22,7 +22,7 @@ export default function ProfileCard() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  let defaultUser = {
+  const defaultUser = {
     firstName: 'Update Your',
     lastName: 'Profile, Friend.',
     type: ''
