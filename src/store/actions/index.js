@@ -18,6 +18,9 @@ export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
 export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAIL = 'GET_USER_FAIL';
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
 // ------------------------------------------------|
 // PROPERTY TYPES =================================|
 // ================================================|
@@ -247,7 +250,7 @@ export const getUserInfo = url => async dispatch => {
   dispatch({ type: GET_USER_START });
 
   try {
-    const res = await axiosAuth().get(url);
+    const res = await axiosAuth().get(`${baseUrl}/users/me`);
 
     console.log(res.data);
 
@@ -259,5 +262,23 @@ export const getUserInfo = url => async dispatch => {
     });
   } catch (err) {
     dispatch({ type: GET_USER_FAIL, payload: { errMsg: err } });
+  }
+};
+
+export const editUserInfo = user => async dispatch => {
+  dispatch({ type: EDIT_USER_START });
+
+  try {
+    const res = await axiosAuth().put(`${baseUrl}/users/me`, user);
+
+    console.log(res.data);
+    dispatch({
+      type: EDIT_USER_SUCCESS,
+      payload: {
+        user: res.data
+      }
+    });
+  } catch (err) {
+    dispatch({ type: EDIT_USER_FAIL, payload: { errMsg: err } });
   }
 };
