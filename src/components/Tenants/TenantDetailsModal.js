@@ -1,6 +1,5 @@
 import React from 'react';
 import { navigate } from '@reach/router';
-import { useDispatch } from 'react-redux';
 
 // MUI
 // Styles
@@ -30,9 +29,6 @@ import ProfileSVG from '../SVG/ProfileSVG';
 
 // Components
 import MuiModal from '../UI/MuiModal';
-
-// Actions
-import { getTenantById } from '../../store/actions';
 
 // Define styling for modal
 const useStyles = makeStyles(theme => ({
@@ -153,7 +149,7 @@ const TenantDetailsModal = ({ open, close, tenant, property }) => {
           <Button
             color="primary"
             variant="contained"
-            onClick={() => navigate(`property/${property.id}`)}
+            onClick={() => navigate(`properties/${property.id}`)}
           >
             View Property
           </Button>

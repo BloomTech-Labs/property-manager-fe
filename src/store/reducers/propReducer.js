@@ -226,6 +226,7 @@ export default function propReducer(state = initialState, action) {
       return {
         ...state,
         isGettingTenant: false,
+        currentTenant: action.payload,
         errMsg: null
       };
     }

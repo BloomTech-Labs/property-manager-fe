@@ -9,6 +9,7 @@ import Property from '../../../views/dashboard/properties/Property';
 import EditProperty from '../../../views/dashboard/properties/EditProperty';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
+import Tenant from '../../../views/dashboard/tenants/Tenant';
 
 function ProtectedRoutes() {
   // eslint-disable-next-line consistent-return
@@ -32,11 +33,14 @@ function ProtectedRoutes() {
       <Dashboard path="/">
         <Overview path="/" />
         <Profile path="profile" />
+
         <Properties path="properties" />
-        <Tenants path="tenants" />
         <Property path="properties/:id" />
         <CreateProperty path="properties/add" />
         <EditProperty path="properties/edit/:id" />
+
+        <Tenants path="tenants" />
+        <Tenant path="tenants/:id" />
         <CreateTenant path="tenants/add" />
       </Dashboard>
     </Router>
