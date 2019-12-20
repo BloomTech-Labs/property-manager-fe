@@ -10,16 +10,20 @@ import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Icons
 import { FaPen, FaHome } from 'react-icons/fa';
-import { makeStyles } from '@material-ui/core/styles';
 
 // Components
 import { navigate } from '@reach/router';
 import { Button } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import MuiModal from '../UI/MuiModal';
 import LocationSVG from '../SVG/LocationSVG';
+
+// Actions
+import { getTenantsByResidence } from '../../store/actions';
 
 // Define styling for modal
 const useStyles = makeStyles(theme => ({
@@ -34,7 +38,13 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#2d3b4f'
   },
   media: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& svg': {
+      height: 140
+    }
   },
   address: {
     display: 'flex',
@@ -59,11 +69,19 @@ export default function PropertyDetailsModal({ property, open, close }) {
   // bring in access to custom styling
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
   // Pull out data from the property object passed
   // in from Properties.js component
   const { id, city, name, state, status, street, zip } = property;
   // TODO: add in functionality to handle the image
   // from the property object and allow SVG default
+
+  React.useEffect(() => {
+    if (id) {
+      dispatch(getTenantsByResidence(id));
+    }
+  }, [dispatch, id]);
 
   return (
     <MuiModal open={open} close={close}>

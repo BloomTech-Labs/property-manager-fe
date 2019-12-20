@@ -6,32 +6,18 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
-import Skeleton from '@material-ui/lab/Skeleton';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Icons
-import PinDropIcon from '@material-ui/icons/PinDrop';
-import PersonIcon from '@material-ui/icons/Person';
-import EditIcon from '@material-ui/icons/Edit';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/PhoneAndroid';
 
 // Components
 import { navigate } from '@reach/router';
-import {
-  Button,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  ListItemSecondaryAction,
-  CardMedia,
-  ListItemIcon
-} from '@material-ui/core';
+import { Button, Grid, CardMedia } from '@material-ui/core';
 import LocationSVG from '../../../components/SVG/LocationSVG';
-import { getProperty, getTenantsByResidence } from '../../../store/actions';
+import { getTenantById } from '../../../store/actions';
 
 // Define styling for modal
 const useStyles = makeStyles(theme => ({
@@ -76,6 +62,20 @@ const useStyles = makeStyles(theme => ({
       marginTop: theme.spacing(2)
     }
   },
+  contactInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& div': {
+      '& div': {
+        display: 'flex',
+        marginTop: theme.spacing(1),
+        '& svg': {
+          marginRight: theme.spacing(2)
+        }
+      }
+    }
+  },
   list: {
     padding: theme.spacing(0, 4)
   },
@@ -90,76 +90,56 @@ const useStyles = makeStyles(theme => ({
   btn: {}
 }));
 
-export default function Property({ id }) {
+export default function Tenant({ id }) {
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
-  const property = useSelector(state => state.propReducer.property);
-  const tenants = useSelector(
-    state => state.propReducer.currentPropertyTenants
-  );
-
-  console.log(tenants);
-
-  const { name, street, city, state, zip } = property;
+  const { currentTenant = {} } = useSelector(state => state.propReducer);
 
   React.useEffect(() => {
-    dispatch(getProperty(id));
-    dispatch(getTenantsByResidence(id));
+    dispatch(getTenantById(id));
   }, [dispatch, id]);
 
   return (
     <Card className={classes.card}>
-      <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
+      <CardHeader
+        title={
+          <h2 className={classes.title}>
+            {currentTenant.firstName} {currentTenant.lastName}
+          </h2>
+        }
+      />
       <CardMedia className={classes.media}>
         <LocationSVG />
       </CardMedia>
       <Divider />
       <Grid justify="center" container>
-        <CardContent className={classes.address}>
-          <PinDropIcon />
+        <CardContent className={classes.contactInfo}>
+          <h5>Contact Info</h5>
           <div>
-            <Typography variant="body1">{street}</Typography>
-            <Typography variant="body1">
-              {city}, {state}, {zip}
-            </Typography>
+            <div>
+              <EmailIcon />
+              <Typography variant="body2">{currentTenant.email}</Typography>
+            </div>
+            <div>
+              <PhoneIcon />
+              <Typography variant="body2">{currentTenant.phone}</Typography>
+            </div>
           </div>
         </CardContent>
       </Grid>
       <Divider />
       <CardContent className={classes.tenantInfo}>
-        <h3 style={{ textAlign: 'center' }}>Tenants:</h3>
-        <div>
-          <List className={classes.list}>
-            {tenants.map(tenant => {
-              return (
-                <React.Fragment key={tenant.id}>
-                  <Divider />
-                  <ListItem
-                    button
-                    className={classes.listItem}
-                    onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
-                  >
-                    <ListItemIcon>
-                      <PersonIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={`${tenant.firstName} ${tenant.lastName}`}
-                    />
-                  </ListItem>
-                </React.Fragment>
-              );
-            })}
-          </List>
-        </div>
         <Button
           className={classes.btn}
           color="primary"
           variant="contained"
-          onClick={() => navigate('/dashboard/tenants/add')}
+          onClick={() =>
+            navigate(`/dashboard/properties/${currentTenant.residenceId}`)
+          }
         >
-          Add Tenant
+          View Property
         </Button>
       </CardContent>
     </Card>

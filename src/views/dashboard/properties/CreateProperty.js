@@ -5,21 +5,13 @@ import PropertyForm from '../../../components/Properties/PropertyForm';
 // Redux
 import { createProperty, getProperties } from '../../../store/actions';
 
-const addProperty = createProperty(
-  'https://pt6-propman-staging.herokuapp.com/api/properties'
-);
-
 export default function CreateProperty() {
   const dispatch = useDispatch();
 
   const submitFn = property => {
-    navigate('/dashboard/properties');
-    dispatch(addProperty(property)).then(() => {
-      dispatch(
-        getProperties(
-          'https://pt6-propman-staging.herokuapp.com/api/properties'
-        )
-      );
+    dispatch(createProperty(property)).then(() => {
+      dispatch(getProperties());
+      navigate('/dashboard/properties');
     });
   };
 
