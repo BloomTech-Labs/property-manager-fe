@@ -41,7 +41,7 @@ export default function ProfileCard() {
     console.log(values);
     dispatch(editUserInfo(values));
   };
-  if (!currentUser) {
+  if (currentUser.firstName == null) {
     return (
       <Card className={classes.card}>
         <CardContent>
@@ -49,9 +49,7 @@ export default function ProfileCard() {
         </CardContent>
 
         <CardActionArea>
-          <CardContent>
-            {defaultUser.firstName + ' ' + defaultUser.lastName}
-          </CardContent>
+          <CardContent>{`${defaultUser.firstName} ${defaultUser.lastName}`}</CardContent>
           <CardContent>{defaultUser.type}</CardContent>
         </CardActionArea>
         <CardActions>
@@ -76,7 +74,7 @@ export default function ProfileCard() {
 
       <CardActionArea>
         <CardContent>
-          {currentUser.firstName + ' ' + currentUser.lastName}
+          {`${currentUser.firstName} ${currentUser.lastName}`}
         </CardContent>
         <CardContent>{currentUser.type}</CardContent>
       </CardActionArea>
