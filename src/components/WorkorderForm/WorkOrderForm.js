@@ -138,8 +138,9 @@ export default function WorkOrderForm({ initialValues, submit }) {
                 }
                 error={errors.urgency && true}
               />
-              <option value="Urgent">Emergency</option>
-              <option value="Not Urgent">Non-Emergency</option>
+              <option value="low">Low</option>
+              <option value="high">Medium</option>
+              <option value="medium">High</option>
               <div className={classes.submitWrapper}>
                 <Button
                   size="large"
