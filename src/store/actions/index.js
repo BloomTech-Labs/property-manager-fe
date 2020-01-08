@@ -309,7 +309,7 @@ export const getWorkOrders = (property) = async dispatch => {
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
       payload: {
-        workOrders: res.data
+        workOrders: res
       }
     })
 
@@ -326,7 +326,7 @@ export const addWorkOrder = (property, workOrder) = async dispatch => {
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {
-        workOrders: res.data
+        workOrders: res
       }
     })
   } catch(err) {
@@ -342,7 +342,7 @@ export const updateWorkOrder = (property, workOrder) = async dispatch => {
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,
       payload: {
-        workOrders: res.data
+        workOrders: res
       }
     })
   } catch(err) {
