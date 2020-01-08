@@ -50,6 +50,10 @@ export const GET_TENANT_ID_START = 'GET_TENANT_ID_START';
 export const GET_TENANT_ID_SUCCESS = 'GET_TENANT_ID_SUCCESS';
 export const GET_TENANT_ID_FAIL = 'GET_TENANT_ID_FAIL';
 // ------------------------------------------------|
+export const EDIT_TENANT_START = 'EDIT_TENANT_START';
+export const EDIT_TENANT_SUCCESS = 'EDIT_TENANT_SUCCESS';
+export const EDIT_TENANT_FAIL = 'EDIT_TENANT_FAIL';
+// ------------------------------------------------|
 export const ADD_TENANT_START = 'ADD_TENANT_START';
 export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
@@ -174,6 +178,43 @@ export const getTenants = () => {
       dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
     } catch (err) {
       dispatch({ type: GET_TENANTS_FAIL, payload: { errMsg: err.message } });
+    }
+  };
+};
+// ------------------------------------------------|
+// GET TENANT -----------------------------------|
+// Takes in the tenant id to pass in as a url
+// parameter for endpoint
+export const getTenant = id => async dispatch => {
+  dispatch({ type: GET_TENANT_ID_START });
+
+  try {
+    const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
+
+    dispatch({
+      type: GET_TENANT_ID_SUCCESS,
+      payload: {
+        property: res.data
+      }
+    });
+  } catch (err) {
+    dispatch({ type: GET_TENANT_ID_FAIL, payload: { errMsg: err.message } });
+  }
+};
+// ------------------------------------------------|
+// EDIT TENANT ----------------------------------|
+export const editTenant = (id, tenant) => {
+  return async dispatch => {
+    dispatch({ type: EDIT_TENANT_START });
+
+    try {
+      await axiosAuth().put(`${baseUrl}/tenants/${id}`, tenant);
+
+      dispatch({
+        type: EDIT_TENANT_SUCCESS
+      });
+    } catch (err) {
+      dispatch({ type: EDIT_TENANT_FAIL, payload: { errMsg: err.message } });
     }
   };
 };
