@@ -301,51 +301,50 @@ export const editUserInfo = user => async dispatch => {
 // WORD ORDER ACTIONS =============================|
 // ================================================|
 // ------------------------------------------------|
-export const getWorkOrders = (property) = async dispatch => {
-  dispatch({type: GET_WORK_ORDERS_START})
+export const getWorkOrders = property => async dispatch => {
+  dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    const res = 'test'
-    console.log(res)
+    const res = 'test';
+    console.log(res);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
       payload: {
         workOrders: res
       }
-    })
-
-  } catch(err) {
-    dispatch({type: GET_WORK_ORDERS_FAIL, payload: {errMsg: err}})
+    });
+  } catch (err) {
+    dispatch({ type: GET_WORK_ORDERS_FAIL, payload: { errMsg: err } });
   }
-}
+};
 // ------------------------------------------------|
-export const addWorkOrder = (property, workOrder) = async dispatch => {
-  dispatch({type: ADD_WORK_ORDER_START})
+export const addWorkOrder = (property, workOrder) => async dispatch => {
+  dispatch({ type: ADD_WORK_ORDER_START });
   try {
-    const res = 'test'
-    console.log(res)
+    const res = 'test';
+    console.log(res);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {
         workOrders: res
       }
-    })
-  } catch(err) {
-    dispatch({type: ADD_WORK_ORDER_FAIL, payload: {errMsg: err}})
+    });
+  } catch (err) {
+    dispatch({ type: ADD_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
-}
+};
 // ------------------------------------------------|
-export const updateWorkOrder = (property, workOrder) = async dispatch => {
-  dispatch({type: UPDATE_WORK_ORDER_START})
+export const updateWorkOrder = workOrder => async dispatch => {
+  dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = 'test'
-    console.log(res)
+    const res = 'test';
+    console.log(res);
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,
       payload: {
         workOrders: res
       }
-    })
-  } catch(err) {
-    dispatch({type: UPDATE_WORK_ORDER_FAIL, payload: {errMsg: err}})
+    });
+  } catch (err) {
+    dispatch({ type: UPDATE_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
-}
+};
