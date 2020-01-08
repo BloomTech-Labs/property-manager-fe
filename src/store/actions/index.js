@@ -18,6 +18,7 @@ export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
 export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAIL = 'GET_USER_FAIL';
+// ------------------------------------------------|
 export const EDIT_USER_START = 'EDIT_USER_START';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
@@ -57,6 +58,20 @@ export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 export const GET_TENANTS_RESIDENCE_START = 'GET_TENANTS_RESIDENCE_START';
 export const GET_TENANTS_RESIDENCE_SUCCESS = 'GET_TENANTS_RESIDENCE_SUCCESS';
 export const GET_TENANTS_RESIDENCE_FAIL = 'GET_TENANTS_RESIDENCE_FAIL';
+// ------------------------------------------------|
+// WORK ORDER TYPES ===============================|
+// ================================================|
+export const GET_WORK_ORDERS_START = 'GET_WORK_ORDERS_START';
+export const GET_WORK_ORDERS_FAIL = 'GET_WORK_ORDERS_FAIL';
+export const GET_WORK_ORDERS_SUCCESS = 'GET_WORK_ORDERS_SUCCESS';
+// ------------------------------------------------|
+export const ADD_WORK_ORDER_START = 'ADD_WORK_ORDER_START';
+export const ADD_WORK_ORDER_FAIL = 'ADD_WORK_ORDER_FAIL';
+export const ADD_WORK_ORDER_SUCCESS = 'ADD_WORK_ORDER_SUCCESS';
+// ------------------------------------------------|
+export const UPDATE_WORK_ORDER_START = 'UPDATE_WORK_ORDER_START';
+export const UPDATE_WORK_ORDER_FAIL = 'UPDATE_WORK_ORDER_FAIL';
+export const UPDATE_WORK_ORDER_SUCCESS = 'UPDATE_WORK_ORDER_SUCCESS';
 // ------------------------------------------------|
 // AUTH CREATORS ==================================|
 // ================================================|
@@ -280,5 +295,56 @@ export const editUserInfo = user => async dispatch => {
     });
   } catch (err) {
     dispatch({ type: EDIT_USER_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+// WORD ORDER ACTIONS =============================|
+// ================================================|
+// ------------------------------------------------|
+export const getWorkOrders = property => async dispatch => {
+  dispatch({ type: GET_WORK_ORDERS_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: GET_WORK_ORDERS_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: GET_WORK_ORDERS_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+export const addWorkOrder = (property, workOrder) => async dispatch => {
+  dispatch({ type: ADD_WORK_ORDER_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: ADD_WORK_ORDER_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: ADD_WORK_ORDER_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+export const updateWorkOrder = workOrder => async dispatch => {
+  dispatch({ type: UPDATE_WORK_ORDER_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: UPDATE_WORK_ORDER_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: UPDATE_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
 };
