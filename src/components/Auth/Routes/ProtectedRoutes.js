@@ -10,6 +10,7 @@ import EditProperty from '../../../views/dashboard/properties/EditProperty';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
+import WorkOrderForm from '../../WorkorderForm/WorkOrderForm';
 
 function ProtectedRoutes() {
   // eslint-disable-next-line consistent-return
@@ -38,7 +39,7 @@ function ProtectedRoutes() {
         <Property path="properties/:id" />
         <CreateProperty path="properties/add" />
         <EditProperty path="properties/edit/:id" />
-
+        <WorkOrderForm path="properties/workOrder" />
         <Tenants path="tenants" />
         <Tenant path="tenants/:id" />
         <CreateTenant path="tenants/add" />

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -44,15 +45,8 @@ const validationSchema = Yup.object().shape({
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
-export default function WorkOrderForm({ initialValues, submit }) {
+export default function WorkOrderForm({ submit }) {
   const classes = useStyles();
-
-  const {
-    title = '',
-    description = '',
-    type = '',
-    urgency = ''
-  } = initialValues;
 
   return (
     <Paper className={classes.formCard}>
@@ -61,10 +55,10 @@ export default function WorkOrderForm({ initialValues, submit }) {
         enableReinitialize
         validationSchema={validationSchema}
         initalValues={{
-          title,
-          description,
-          type,
-          urgency
+          title: '',
+          description: '',
+          type: '',
+          urgency: ''
         }}
         resetForm
         onSubmit={values => {
@@ -76,110 +70,109 @@ export default function WorkOrderForm({ initialValues, submit }) {
           });
         }}
       >
-        {({ errors, touched, isSubmitting }) => (
-          <Form>
-            <Grid container justify="space-evenly">
-              <Field
-                className={classes.textField}
-                size="small"
-                margin="normal"
-                variant="outlined"
-                name="title"
-                type="text"
-                label="Title"
-                as={TextField}
-                helperText={
-                  errors.title
-                    ? errors.title
-                    : 'Please enter a short description of your work order'
-                }
-                error={errors.title && true}
-              />
-              <Field
-                className={classes.textField}
-                size="small"
-                margin="normal"
-                variant="outlined"
-                name="description"
-                type="text"
-                label="Description"
-                as={TextField}
-                helperText={
-                  errors.description
-                    ? errors.description
-                    : 'Please enter some details about your work order'
-                }
-                error={errors.description && true}
-              />
-              <Field
-                name="type"
-                label="Type"
-                as="select"
-                helperText={
-                  errors.type
-                    ? errors.type
-                    : 'Please select the type of problem you have'
-                }
-                error={errors.type && true}
-              />
-              <option value="Plumbing">Plumbing</option>
-              <option value="Electrical">Electrical</option>
-              <option value="Pest Control">Pest Control</option>
-              <option value="Appliances">Appliances</option>
-              <option value="AC">HVAC</option>
-              <Field
-                name="urgency"
-                label="Urgency"
-                as="select"
-                helperText={
-                  errors.urgency
-                    ? errors.urgency
-                    : 'Please select a level of urgency for your problem'
-                }
-                error={errors.urgency && true}
-              />
-              <option value="low">Low</option>
-              <option value="high">Medium</option>
-              <option value="medium">High</option>
-              <div className={classes.submitWrapper}>
-                <Button
-                  size="large"
-                  color="primary"
-                  variant="contained"
-                  className={classes.submit}
-                  disabled={isSubmitting}
-                  type="submit"
-                  endIcon={
-                    isSubmitting ? (
-                      <CircularProgress
-                        style={{
-                          height: '22px',
-                          width: '22px',
-                          marginRight: '4px'
-                        }}
-                      />
-                    ) : (
-                      <MdSend />
-                    )
+        {({ errors, touched, isSubmitting }) => {
+
+          // console.log(errors, touched, isSubmitting);
+          
+          return (
+            <Form>
+              <Grid container justify="space-evenly">
+                <Field
+                  className={classes.textField}
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
+                  name="title"
+                  type="text"
+                  label="Title"
+                  as={TextField}
+                  helpertext={
+                    errors.title
+                      ? errors.title
+                      : `Please enter a short description of your work order`
                   }
+                  error={errors.title && true}
+                />
+                <Field
+                  className={classes.textField}
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
+                  name="description"
+                  type="text"
+                  label="Description"
+                  as={TextField}
+                  helperText={
+                    errors.description
+                      ? errors.description
+                      : 'Please enter some details about your work order'
+                  }
+                  error={errors.description && true}
+                />
+                <Field
+                  name="type"
+                  label="Type"
+                  as={TextField}
+                  select
+                  helperText={
+                    errors.type
+                      ? errors.type
+                      : 'Please select the type of problem you have'
+                  }
+                  error={errors.type && true}
                 >
-                  Submit
-                </Button>
-              </div>
-            </Grid>
-          </Form>
-        )}
+                  <MenuItem value="Plumbing">Plumbing</MenuItem>
+                  <MenuItem value="Electrical">Electrical</MenuItem>
+                  <MenuItem value="Pest Control">Pest Control</MenuItem>
+                  <MenuItem value="Appliances">Appliances</MenuItem>
+                  <MenuItem value="AC">HVAC</MenuItem>
+                </Field>
+                <Field
+                  name="urgency"
+                  label="Urgency"
+                  as={TextField}
+                  select
+                  helperText={
+                    errors.urgency
+                      ? errors.urgency
+                      : 'Please select a level of urgency for your problem'
+                  }
+                  error={errors.urgency && true}
+                >
+                  <MenuItem value="low">Low</MenuItem>
+                  <MenuItem value="high">Medium</MenuItem>
+                  <MenuItem value="medium">High</MenuItem>
+                </Field>
+                <div className={classes.submitWrapper}>
+                  <Button
+                    size="large"
+                    color="primary"
+                    variant="contained"
+                    className={classes.submit}
+                    disabled={isSubmitting}
+                    type="submit"
+                    endIcon={
+                      isSubmitting ? (
+                        <CircularProgress
+                          style={{
+                            height: '22px',
+                            width: '22px',
+                            marginRight: '4px'
+                          }}
+                        />
+                      ) : (
+                        <MdSend />
+                      )
+                    }
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </Grid>
+            </Form>
+          );
+        }}
       </Formik>
     </Paper>
   );
 }
-
-WorkOrderForm.propTypes = {
-  initialValues: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    urgency: PropTypes.string.isRequired
-  }).isRequired,
-  submit: PropTypes.func.isRequired
-};
