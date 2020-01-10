@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import { func } from 'prop-types';
 import * as Yup from 'yup';
-import { MdEmail, MdLock, MdError } from 'react-icons/md';
+import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { FormError, I } from '../../UI';
 import { MenuItem, TextField } from '@material-ui/core';
 
@@ -102,7 +102,7 @@ const SignUpForm = ({ submit, toggleFlip }) => {
             <div className="input-wrapper">
               <label htmlFor="type">
                 <I>
-                  <MdLock />
+                  <MdSupervisorAccount />
                 </I>{' '}
                 User Type
               </label>
