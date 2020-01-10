@@ -95,16 +95,16 @@ export default function LandlordWorkOrderForm({ submit }) {
                   error={errors.title && true}
                 />
                 <Field
-                  name="urgency"
-                  label="Urgency"
+                  name="property"
+                  label="Property"
                   as={TextField}
                   select
                   helperText={
-                    errors.urgency
-                      ? errors.urgency
-                      : 'Please select a level of urgency for your problem'
+                    errors.property
+                      ? errors.property
+                      : 'Please select a property'
                   }
-                  error={errors.urgency && true}
+                  error={errors.property && true}
                 >
                   <MenuItem value="low">Placeholder</MenuItem>
                   <MenuItem value="high">For</MenuItem>
