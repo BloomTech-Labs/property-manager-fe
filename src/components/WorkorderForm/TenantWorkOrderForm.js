@@ -45,7 +45,7 @@ const validationSchema = Yup.object().shape({
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
-export default function WorkOrderForm({ submit }) {
+export default function TenantWorkOrderForm({ submit }) {
   const classes = useStyles();
 
   return (
@@ -71,9 +71,8 @@ export default function WorkOrderForm({ submit }) {
         }}
       >
         {({ errors, touched, isSubmitting }) => {
-
           // console.log(errors, touched, isSubmitting);
-          
+
           return (
             <Form>
               <Grid container justify="space-evenly">
