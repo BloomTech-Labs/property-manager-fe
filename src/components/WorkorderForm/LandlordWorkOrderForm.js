@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
