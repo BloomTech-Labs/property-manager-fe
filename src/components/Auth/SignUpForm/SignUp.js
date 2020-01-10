@@ -4,6 +4,7 @@ import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError } from 'react-icons/md';
 import { FormError, I } from '../../UI';
+import { MenuItem, TextField } from '@material-ui/core';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -15,7 +16,8 @@ const validationSchema = Yup.object().shape({
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), null],
     'Passwords must match'
-  )
+  ),
+  type: Yup.string().required('Please select a user type')
 });
 
 const SignUpForm = ({ submit, toggleFlip }) => {
@@ -24,7 +26,8 @@ const SignUpForm = ({ submit, toggleFlip }) => {
       initialValues={{
         email: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        type: ''
       }}
       validationSchema={validationSchema}
       onSubmit={values => submit(values)}
@@ -93,6 +96,26 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                     <MdError />
                   </I>{' '}
                   {errors.passwordConfirmation}
+                </FormError>
+              )}
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="type">
+                <I>
+                  <MdLock />
+                </I>{' '}
+                User Type
+              </label>
+              <Field name="type" label="Type" as={TextField} select>
+                <MenuItem value="landlord">Landlord</MenuItem>
+                <MenuItem value="tenant">Tenant</MenuItem>
+              </Field>
+              {touched.type && errors.type && (
+                <FormError>
+                  <I>
+                    <MdError />
+                  </I>{' '}
+                  {errors.type}
                 </FormError>
               )}
             </div>
