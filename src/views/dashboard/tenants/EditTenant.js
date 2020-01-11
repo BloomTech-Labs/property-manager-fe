@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import TenantForm from '../../../components/Tenants/TenantForm';
 // Redux
-import { editTenant, getTenant, getTenants } from '../../../store/actions';
+import { editTenant, getTenantById, getTenants } from '../../../store/actions';
 
 export default function EditTenant({ id }) {
   // setup dispatch to dispatch the action
@@ -19,7 +19,9 @@ export default function EditTenant({ id }) {
   };
 
   // grab the tenant from redux state
-  const tenant = useSelector(state => state.propReducer.tenant);
+  const tenant = useSelector(state => state.propReducer.currentTenant);
+
+  const properties = useSelector(state => state.propReducer.properties);
 
   // grab isGettingTenant bool from state
   const isGettingTenant = useSelector(
@@ -39,7 +41,7 @@ export default function EditTenant({ id }) {
 
   // get the tenant by id when component mounts
   useEffect(() => {
-    dispatch(getTenant(id));
+    dispatch(getTenantById(id));
   }, [dispatch, id]);
 
   return (
@@ -49,6 +51,8 @@ export default function EditTenant({ id }) {
         isSubmitting={isSubmitting}
         initialValues={tenantFields}
         submit={submitFn}
+        properties={properties}
+        hasTenant
       />
     </div>
   );

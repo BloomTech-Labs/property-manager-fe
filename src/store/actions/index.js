@@ -200,17 +200,16 @@ export const getTenants = () => {
 // GET TENANT -----------------------------------|
 // Takes in the tenant id to pass in as a url
 // parameter for endpoint
-export const getTenant = id => async dispatch => {
+export const getTenantById = id => async dispatch => {
   dispatch({ type: GET_TENANT_ID_START });
 
   try {
     const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
+    console.log(res.data);
 
     dispatch({
       type: GET_TENANT_ID_SUCCESS,
-      payload: {
-        property: res.data
-      }
+      payload: res.data
     });
   } catch (err) {
     dispatch({ type: GET_TENANT_ID_FAIL, payload: { errMsg: err.message } });
@@ -275,34 +274,11 @@ export const getTenantsByResidence = residenceId => {
   };
 };
 // ------------------------------------------------|
-// GET TENANT BY ID -------------------------------|
-export const getTenantById = id => {
-  return async dispatch => {
-    dispatch({ type: GET_TENANT_ID_START });
-
-    try {
-      const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
-
-      console.log(res);
-
-      dispatch({
-        type: GET_TENANT_ID_SUCCESS,
-        payload: res.data
-      });
-    } catch (err) {
-      dispatch({
-        type: GET_TENANT_ID_FAIL,
-        payload: { errMsg: err.message }
-      });
-    }
-  };
-};
-// ------------------------------------------------|
 // USER CREATORS ==================================|
 // ================================================|
 // define your user actions here
 // ------------------------------------------------|
-export const getUserInfo = url => async dispatch => {
+export const getUserInfo = () => async dispatch => {
   dispatch({ type: GET_USER_START });
 
   try {
@@ -342,6 +318,10 @@ export const editUserInfo = user => async dispatch => {
 // WORD ORDER ACTIONS =============================|
 // ================================================|
 // ------------------------------------------------|
+// TODO: Resolve Unused Variables!
+// Disabled eslint for unused vars, assuming this needs
+// to be adjusted when the endpoint is available.
+// eslint-disable-next-line no-unused-vars
 export const getWorkOrders = property => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
@@ -358,6 +338,7 @@ export const getWorkOrders = property => async dispatch => {
   }
 };
 // ------------------------------------------------|
+// eslint-disable-next-line no-unused-vars
 export const addWorkOrder = (property, workOrder) => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
@@ -374,6 +355,7 @@ export const addWorkOrder = (property, workOrder) => async dispatch => {
   }
 };
 // ------------------------------------------------|
+// eslint-disable-next-line no-unused-vars
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
