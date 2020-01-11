@@ -28,13 +28,12 @@ You can find the deployed project at [PropMan](https://propman.netlify.com).
 
 PropMan is a property management application intended to become a one stop shop for all property management needs. A property manager can manage their properties, tenants and work orders all in one dashboard.
 
-### 4️⃣ Key Features
+### Key Features
 
-- feature one
-- feature two
-- feature three
-- feature four
-- feature five
+- Create and Edit Properties
+- Add Tenants to Properties
+- Edit Tenants
+- Create and Edit Work Orders
 
 ## Tech Stack
 
@@ -179,4 +178,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫*link to your backend readme here*) for details on the backend of our project.
+See [Backend Documentation](https://pt6-propman.herokuapp.com/) for details on the backend of our project.
