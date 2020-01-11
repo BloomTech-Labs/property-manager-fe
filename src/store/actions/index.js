@@ -193,9 +193,7 @@ export const getTenant = id => async dispatch => {
 
     dispatch({
       type: GET_TENANT_ID_SUCCESS,
-      payload: {
-        property: res.data
-      }
+      payload: res.data
     });
   } catch (err) {
     dispatch({ type: GET_TENANT_ID_FAIL, payload: { errMsg: err.message } });
