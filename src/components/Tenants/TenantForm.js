@@ -48,7 +48,7 @@ const validationSchema = Yup.object().shape({
   residenceId: Yup.string().required('Must include a property!')
 });
 
-export default function TenantForm({ initialValues, submit, properties }) {
+export default function TenantForm({ initialValues, submit, properties, hasTenant = false }) {
   // bring in custom styling
   const classes = useStyles();
 
@@ -61,9 +61,16 @@ export default function TenantForm({ initialValues, submit, properties }) {
     residenceId = ''
   } = initialValues;
 
+  let tenantStatus = 'Add a Tenant'
+
+  if(hasTenant) {
+    tenantStatus = 'Update Tenant'
+  }
+
+
   return (
     <Paper className={classes.formCard}>
-      <h2 className={classes.formTitle}>Add a Tenant</h2>
+      <h2 className={classes.formTitle}>{tenantStatus}</h2>
       <Formik
         enableReinitialize
         validationSchema={validationSchema}

@@ -22,6 +22,8 @@ export default function EditTenant({ id }) {
   // grab the tenant from redux state
   const tenant = useSelector(state => state.propReducer.currentTenant);
 
+  const properties = useSelector(state => state.propReducer.properties) 
+
   // grab isGettingTenant bool from state
   const isGettingTenant = useSelector(
     state => state.propReducer.isGettingTenant
@@ -50,6 +52,8 @@ export default function EditTenant({ id }) {
         isSubmitting={isSubmitting}
         initialValues={tenantFields}
         submit={submitFn}
+        properties={properties}
+        hasTenant={true}
       />
     </div>
   );
