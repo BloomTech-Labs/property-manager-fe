@@ -227,6 +227,7 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_TENANT_ID_SUCCESS: {
+
       return {
         ...state,
         isGettingTenant: false,

@@ -7,6 +7,7 @@ import TenantForm from '../../../components/Tenants/TenantForm';
 import { editTenant, getTenant, getTenants } from '../../../store/actions';
 
 export default function EditTenant({ id }) {
+
   // setup dispatch to dispatch the action
   const dispatch = useDispatch();
 
