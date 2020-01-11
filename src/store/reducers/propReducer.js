@@ -35,6 +35,7 @@ const initialState = {
   property: {},
   currentPropertyTenants: [],
   tenants: [],
+  currentTenant: {},
   isGettingTenants: false,
   isGettingTenant: false,
   isAddingProp: false,

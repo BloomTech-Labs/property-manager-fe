@@ -19,7 +19,7 @@ export default function EditTenant({ id }) {
   };
 
   // grab the tenant from redux state
-  const tenant = useSelector(state => state.propReducer.tenant);
+  const tenant = useSelector(state => state.propReducer.currentTenant);
 
   // grab isGettingTenant bool from state
   const isGettingTenant = useSelector(
