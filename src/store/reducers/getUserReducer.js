@@ -8,11 +8,14 @@ import {
 } from '../actions/index';
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  phone: '',
-  type: '',
-  isLoading: true
+  user: {
+    firstName: '',
+    lastName: '',
+    phone: '',
+    type: ''
+  },
+  isLoading: true,
+  errorMessage: ''
 };
 
 export default function getUserReducer(

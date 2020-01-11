@@ -122,7 +122,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
           <Button
             color="primary"
             variant="contained"
-            onClick={() => navigate('tenant/add')}
+            onClick={() => navigate('tenants/add')}
           >
             Add Tenant
           </Button>
