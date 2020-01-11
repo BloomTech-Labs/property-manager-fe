@@ -7,6 +7,7 @@ import Overview from '../../../views/dashboard/overview/Overview';
 import CreateProperty from '../../../views/dashboard/properties/CreateProperty';
 import Property from '../../../views/dashboard/properties/Property';
 import EditProperty from '../../../views/dashboard/properties/EditProperty';
+import EditTenant from '../../../views/dashboard/tenants/EditTenant';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
@@ -42,6 +43,7 @@ function ProtectedRoutes() {
         <Tenants path="tenants" />
         <Tenant path="tenants/:id" />
         <CreateTenant path="tenants/add" />
+        <EditTenant path="tenants/edit/:id" />
       </Dashboard>
     </Router>
   );
