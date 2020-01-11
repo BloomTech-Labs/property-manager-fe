@@ -1,7 +1,7 @@
 .renterView {
   color: $white;
   @include landing-bg('../assets/img/forRenters.jpg');
-  height: $nav-vh-calc;
+  height: auto;
   width: 100%;
   max-width: 100vw;
   
@@ -19,4 +19,19 @@
 
     }
   }
+
+  // mobile responsiveness 
+  @media (max-height: 500px) {
+    .tenant-contents {
+      flex-direction: column;
+
+    .tenant-content {
+      width: 80%;
+      padding: 1%;
+      margin-bottom: 2%;
+    }
+  }    
+  }
 }
+
+
