@@ -185,11 +185,12 @@ export const getTenants = () => {
 // GET TENANT -----------------------------------|
 // Takes in the tenant id to pass in as a url
 // parameter for endpoint
-export const getTenant = id => async dispatch => {
+export const getTenantById = id => async dispatch => {
   dispatch({ type: GET_TENANT_ID_START });
 
   try {
     const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
+    console.log(res.data);
 
     dispatch({
       type: GET_TENANT_ID_SUCCESS,
@@ -252,29 +253,6 @@ export const getTenantsByResidence = residenceId => {
     } catch (err) {
       dispatch({
         type: GET_TENANTS_RESIDENCE_FAIL,
-        payload: { errMsg: err.message }
-      });
-    }
-  };
-};
-// ------------------------------------------------|
-// GET TENANT BY ID -------------------------------|
-export const getTenantById = id => {
-  return async dispatch => {
-    dispatch({ type: GET_TENANT_ID_START });
-
-    try {
-      const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
-
-      console.log(res);
-
-      dispatch({
-        type: GET_TENANT_ID_SUCCESS,
-        payload: res.data
-      });
-    } catch (err) {
-      dispatch({
-        type: GET_TENANT_ID_FAIL,
         payload: { errMsg: err.message }
       });
     }

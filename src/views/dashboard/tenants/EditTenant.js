@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import TenantForm from '../../../components/Tenants/TenantForm';
 // Redux
-import { editTenant, getTenant, getTenants } from '../../../store/actions';
+import { editTenant, getTenantById, getTenants } from '../../../store/actions';
 
 export default function EditTenant({ id }) {
 
@@ -42,7 +42,7 @@ export default function EditTenant({ id }) {
 
   // get the tenant by id when component mounts
   useEffect(() => {
-    dispatch(getTenant(id));
+    dispatch(getTenantById(id));
   }, [dispatch, id]);
 
   return (
