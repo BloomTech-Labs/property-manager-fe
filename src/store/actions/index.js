@@ -18,6 +18,7 @@ export const AUTH_REQUEST_FAIL = 'AUTH_REQUEST_FAIL';
 export const GET_USER_START = 'GET_USER_START';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAIL = 'GET_USER_FAIL';
+// ------------------------------------------------|
 export const EDIT_USER_START = 'EDIT_USER_START';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
@@ -50,6 +51,10 @@ export const GET_TENANT_ID_START = 'GET_TENANT_ID_START';
 export const GET_TENANT_ID_SUCCESS = 'GET_TENANT_ID_SUCCESS';
 export const GET_TENANT_ID_FAIL = 'GET_TENANT_ID_FAIL';
 // ------------------------------------------------|
+export const EDIT_TENANT_START = 'EDIT_TENANT_START';
+export const EDIT_TENANT_SUCCESS = 'EDIT_TENANT_SUCCESS';
+export const EDIT_TENANT_FAIL = 'EDIT_TENANT_FAIL';
+// ------------------------------------------------|
 export const ADD_TENANT_START = 'ADD_TENANT_START';
 export const ADD_TENANT_SUCCESS = 'ADD_TENANT_SUCCESS';
 export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
@@ -57,6 +62,20 @@ export const ADD_TENANT_FAIL = 'ADD_TENANT_FAIL';
 export const GET_TENANTS_RESIDENCE_START = 'GET_TENANTS_RESIDENCE_START';
 export const GET_TENANTS_RESIDENCE_SUCCESS = 'GET_TENANTS_RESIDENCE_SUCCESS';
 export const GET_TENANTS_RESIDENCE_FAIL = 'GET_TENANTS_RESIDENCE_FAIL';
+// ------------------------------------------------|
+// WORK ORDER TYPES ===============================|
+// ================================================|
+export const GET_WORK_ORDERS_START = 'GET_WORK_ORDERS_START';
+export const GET_WORK_ORDERS_FAIL = 'GET_WORK_ORDERS_FAIL';
+export const GET_WORK_ORDERS_SUCCESS = 'GET_WORK_ORDERS_SUCCESS';
+// ------------------------------------------------|
+export const ADD_WORK_ORDER_START = 'ADD_WORK_ORDER_START';
+export const ADD_WORK_ORDER_FAIL = 'ADD_WORK_ORDER_FAIL';
+export const ADD_WORK_ORDER_SUCCESS = 'ADD_WORK_ORDER_SUCCESS';
+// ------------------------------------------------|
+export const UPDATE_WORK_ORDER_START = 'UPDATE_WORK_ORDER_START';
+export const UPDATE_WORK_ORDER_FAIL = 'UPDATE_WORK_ORDER_FAIL';
+export const UPDATE_WORK_ORDER_SUCCESS = 'UPDATE_WORK_ORDER_SUCCESS';
 // ------------------------------------------------|
 // AUTH CREATORS ==================================|
 // ================================================|
@@ -178,6 +197,42 @@ export const getTenants = () => {
   };
 };
 // ------------------------------------------------|
+// GET TENANT -----------------------------------|
+// Takes in the tenant id to pass in as a url
+// parameter for endpoint
+export const getTenantById = id => async dispatch => {
+  dispatch({ type: GET_TENANT_ID_START });
+
+  try {
+    const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
+    console.log(res.data);
+
+    dispatch({
+      type: GET_TENANT_ID_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({ type: GET_TENANT_ID_FAIL, payload: { errMsg: err.message } });
+  }
+};
+// ------------------------------------------------|
+// EDIT TENANT ----------------------------------|
+export const editTenant = (id, tenant) => {
+  return async dispatch => {
+    dispatch({ type: EDIT_TENANT_START });
+
+    try {
+      await axiosAuth().put(`${baseUrl}/tenants/${id}`, tenant);
+
+      dispatch({
+        type: EDIT_TENANT_SUCCESS
+      });
+    } catch (err) {
+      dispatch({ type: EDIT_TENANT_FAIL, payload: { errMsg: err.message } });
+    }
+  };
+};
+// ------------------------------------------------|
 // ADD TENANT TO PROPERTY -------------------------|
 export const addTenant = url => tenant => async dispatch => {
   dispatch({ type: ADD_TENANT_START });
@@ -219,34 +274,11 @@ export const getTenantsByResidence = residenceId => {
   };
 };
 // ------------------------------------------------|
-// GET TENANT BY ID -------------------------------|
-export const getTenantById = id => {
-  return async dispatch => {
-    dispatch({ type: GET_TENANT_ID_START });
-
-    try {
-      const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
-
-      console.log(res);
-
-      dispatch({
-        type: GET_TENANT_ID_SUCCESS,
-        payload: res.data
-      });
-    } catch (err) {
-      dispatch({
-        type: GET_TENANT_ID_FAIL,
-        payload: { errMsg: err.message }
-      });
-    }
-  };
-};
-// ------------------------------------------------|
 // USER CREATORS ==================================|
 // ================================================|
 // define your user actions here
 // ------------------------------------------------|
-export const getUserInfo = url => async dispatch => {
+export const getUserInfo = () => async dispatch => {
   dispatch({ type: GET_USER_START });
 
   try {
@@ -280,5 +312,62 @@ export const editUserInfo = user => async dispatch => {
     });
   } catch (err) {
     dispatch({ type: EDIT_USER_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+// WORD ORDER ACTIONS =============================|
+// ================================================|
+// ------------------------------------------------|
+// TODO: Resolve Unused Variables!
+// Disabled eslint for unused vars, assuming this needs
+// to be adjusted when the endpoint is available.
+// eslint-disable-next-line no-unused-vars
+export const getWorkOrders = property => async dispatch => {
+  dispatch({ type: GET_WORK_ORDERS_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: GET_WORK_ORDERS_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: GET_WORK_ORDERS_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+// eslint-disable-next-line no-unused-vars
+export const addWorkOrder = (property, workOrder) => async dispatch => {
+  dispatch({ type: ADD_WORK_ORDER_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: ADD_WORK_ORDER_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: ADD_WORK_ORDER_FAIL, payload: { errMsg: err } });
+  }
+};
+// ------------------------------------------------|
+// eslint-disable-next-line no-unused-vars
+export const updateWorkOrder = workOrder => async dispatch => {
+  dispatch({ type: UPDATE_WORK_ORDER_START });
+  try {
+    const res = 'test';
+    console.log(res);
+    dispatch({
+      type: UPDATE_WORK_ORDER_SUCCESS,
+      payload: {
+        workOrders: res
+      }
+    });
+  } catch (err) {
+    dispatch({ type: UPDATE_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
 };
