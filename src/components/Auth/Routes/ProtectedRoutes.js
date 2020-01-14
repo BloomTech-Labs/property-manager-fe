@@ -11,6 +11,8 @@ import EditTenant from '../../../views/dashboard/tenants/EditTenant';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
+import TenantWorkOrderForm from '../../WorkorderForm/TenantWorkOrderForm';
+import LandlordWorkOrderForm from '../../WorkorderForm/LandlordWorkOrderForm';
 
 function ProtectedRoutes() {
   // eslint-disable-next-line consistent-return
@@ -39,7 +41,8 @@ function ProtectedRoutes() {
         <Property path="properties/:id" />
         <CreateProperty path="properties/add" />
         <EditProperty path="properties/edit/:id" />
-
+        <TenantWorkOrderForm path="properties/workOrderTenant" />
+        <LandlordWorkOrderForm path="properties/workOrderLandlord" />
         <Tenants path="tenants" />
         <Tenant path="tenants/:id" />
         <CreateTenant path="tenants/add" />

@@ -36,7 +36,11 @@ const actions = [
     path: '/dashboard/properties/add'
   },
   { icon: <FaUserPlus />, name: 'Add Tenant' },
-  { icon: <FaHammer />, name: 'Add Work Order' },
+  {
+    icon: <FaHammer />,
+    name: 'Add Work Order',
+    path: 'dashboard/properties/workOrderLandlord'
+  },
   { icon: <FaUserCircle />, name: 'Update User Profile' }
 ];
 
