@@ -63,7 +63,9 @@ export default function TenantForm({ initialValues, submit, properties }) {
 
   return (
     <Paper className={classes.formCard}>
-      <h2 className={classes.formTitle}>Add a Tenant</h2>
+      <h2 className={classes.formTitle}>
+        {initialValues.firstName !== '' ? 'Edit Tenant' : 'Add Tenant'}
+      </h2>
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
