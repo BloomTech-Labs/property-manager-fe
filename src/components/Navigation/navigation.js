@@ -34,8 +34,8 @@ export const HorNav = () => {
   );
 
   const signupFn = useCallback(
-    ({ email, password }) =>
-      dispatch(signup(email, password))
+    ({ email, password, userType: type }) =>
+      dispatch(signup(email, password, type))
         .then(() => navigate('/dashboard'))
         // eslint-disable-next-line no-console
         .catch(err => console.error(err)),
