@@ -3,8 +3,8 @@ import { Field, Form, Formik } from 'formik';
 import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
-import { FormError, I } from '../../UI';
 import { MenuItem, TextField } from '@material-ui/core';
+import { FormError, I } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
     [Yup.ref('password'), null],
     'Passwords must match'
   ),
-  type: Yup.string().required('Please select a user type')
+  userType: Yup.string().required('Please select a user type')
 });
 
 const SignUpForm = ({ submit, toggleFlip }) => {
@@ -27,7 +27,7 @@ const SignUpForm = ({ submit, toggleFlip }) => {
         email: '',
         password: '',
         passwordConfirmation: '',
-        type: ''
+        userType: ''
       }}
       validationSchema={validationSchema}
       onSubmit={values => submit(values)}
@@ -106,11 +106,11 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                 </I>{' '}
                 User Type
               </label>
-              <Field name="type" label="Type" as={TextField} select>
+              <Field name="userType" label="Type" as={TextField} select>
                 <MenuItem value="landlord">Landlord</MenuItem>
                 <MenuItem value="tenant">Tenant</MenuItem>
               </Field>
-              {touched.type && errors.type && (
+              {touched.userType && errors.userType && (
                 <FormError>
                   <I>
                     <MdError />
