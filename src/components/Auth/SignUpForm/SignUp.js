@@ -3,8 +3,8 @@ import { Field, Form, Formik } from 'formik';
 import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
-import { FormError, I } from '../../UI';
 import { MenuItem, TextField } from '@material-ui/core';
+import { FormError, I } from '../../UI';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()

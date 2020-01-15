@@ -7,7 +7,8 @@ import Landlord from './views/landing/Landlord';
 import Tenant from './views/landing/Tenant';
 import Features from './views/landing/Features';
 import Contact from './views/landing/Contact';
-import FrontPage from './views/landing/FrontPage';
+import Home from './views/landing/Home';
+// import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
@@ -18,7 +19,7 @@ const App = () => {
       <div className="App">
         <Router>
           <LandingPage path="/">
-            <FrontPage path="/" />
+            <Home path="/" />
             <Landlord path="landlord" />
             <Tenant path="tenant" />
             <Features path="features" />
