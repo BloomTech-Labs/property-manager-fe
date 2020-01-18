@@ -4,8 +4,8 @@ function UnderConstructionSVG() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1177.82"
-      height="724.47"
+      width="900"
+      height="500"
       data-name="Layer 1"
       viewBox="0 0 1177.82 724.47"
     >
