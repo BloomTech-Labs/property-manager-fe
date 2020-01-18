@@ -16,25 +16,25 @@ import TenantWorkOrderForm from '../../WorkorderForm/TenantWorkOrderForm';
 import LandlordWorkOrderForm from '../../WorkorderForm/LandlordWorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 
-function ProtectedRoutes() {
+function ProtectedRoutes(props) {
   // eslint-disable-next-line consistent-return
-  function getToken() {
-    try {
-      const token = localStorage.getItem('token');
-      return token;
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
-      return null;
-    }
-  }
-  const token = getToken();
-  console.log(token)
+  // function getToken() {
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     return token;
+  //   } catch (err) {
+  //     // eslint-disable-next-line no-console
+  //     console.error(err);
+  //     return null;
+  //   }
+  // }
+  // const token = getToken();
+  // console.log(token)
 
-  const userType = useSelector(state => state.authReducer.user.type);
-  console.log(userType)
-
-  if (token && userType === 'landlord') {
+  // const userType = useSelector(state => state.authReducer.user.type);
+  // console.log(userType)
+  console.log(props)
+  if (props.token && props.userType === 'landlord') {
     return (
       <Router>
         <Dashboard path="/">
@@ -55,7 +55,7 @@ function ProtectedRoutes() {
       </Router>
     );
   }
-  if (token && userType === 'tenant') {
+  if (props.token && props.userType === 'tenant') {
     return (
       <Router>
         <TenantDashboard path="/">

@@ -90,6 +90,7 @@ export const auth = url => (email, password) => async dispatch => {
     });
 
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('userType', res.data.user.type)
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
