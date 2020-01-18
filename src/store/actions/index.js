@@ -91,7 +91,7 @@ export const auth = url => (email, password) => async dispatch => {
 
     localStorage.setItem('token', res.data.token);
 
-    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
+    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
