@@ -19,7 +19,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "formik": "^2.0.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "reach-router": "0.0.0",
