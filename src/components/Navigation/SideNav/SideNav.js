@@ -20,6 +20,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
 import { navigate } from '@reach/router';
 import logo from '../../../assets/img/logo-cropped.png';
+import Logout from '../../Auth/Logout';
 
 const drawerWidth = 240;
 
@@ -115,6 +116,7 @@ function SideNav() {
             <MenuIcon />
           </IconButton>
           <h4>Dashboard</h4>
+          <Logout />
         </Toolbar>
       </AppBar>
       <Drawer
