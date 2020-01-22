@@ -7,7 +7,8 @@ import {
 const initialState = {
   isLoading: true,
   isLoggedIn: false,
-  errorMessage: null
+  errorMessage: null,
+  user: {}
 };
 
 export default function authReducer(
@@ -25,7 +26,8 @@ export default function authReducer(
       return {
         ...state,
         isLoading: false,
-        isLoggedIn: true
+        isLoggedIn: true,
+        user: action.payload.user
       };
     }
     case AUTH_REQUEST_FAIL: {
