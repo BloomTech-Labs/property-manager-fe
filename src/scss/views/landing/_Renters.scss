@@ -19,8 +19,8 @@
     }
   }
 
-  // mobile responsiveness 
-  @media (max-height: 500px) {
+  //tablet size 
+  @media (max-height: 800px) {
     .tenant-contents {
       flex-direction: column;
 
