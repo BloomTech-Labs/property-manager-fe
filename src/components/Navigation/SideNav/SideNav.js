@@ -18,9 +18,9 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { navigate } from '@reach/router';
 import logo from '../../../assets/img/logo-cropped.png';
-import Logout from '../../Auth/Logout';
 
 const drawerWidth = 240;
 
@@ -93,6 +93,11 @@ function SideNav() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
+  const handleLogout = () => {
+    window.localStorage.removeItem('token');
+    navigate('/');
+  };
+
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
@@ -116,7 +121,6 @@ function SideNav() {
             <MenuIcon />
           </IconButton>
           <h4>Dashboard</h4>
-          <Logout />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -169,6 +173,12 @@ function SideNav() {
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Tenants" />
+          </ListItem>
+          <ListItem button onClick={handleLogout}>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
           </ListItem>
         </List>
       </Drawer>
