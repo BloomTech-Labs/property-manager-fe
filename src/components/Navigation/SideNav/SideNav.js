@@ -84,7 +84,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(2)
   },
   list: {
-    paddingTop: 0
+    display: 'flex',
+    height: '100%',
+    flexDirection: 'column',
+    paddingTop: 0,
+    width: '100%',
+    '& :last-child': {
+      marginTop: 'auto'
+    }
   }
 }));
 
@@ -154,7 +161,9 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText primary="Overview" />
           </ListItem>
+
           <Divider />
+
           <ListItem button onClick={() => navigate('/dashboard/profile')}>
             <ListItemIcon>
               <AccountCircleIcon />
@@ -168,18 +177,23 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText primary="Properties" />
           </ListItem>
+
           <ListItem button onClick={() => navigate('/dashboard/tenants')}>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Tenants" />
           </ListItem>
-          <ListItem button onClick={handleLogout}>
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-          </ListItem>
+
+          <div>
+            <Divider />
+            <ListItem button onClick={handleLogout}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </div>
         </List>
       </Drawer>
     </>
