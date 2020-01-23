@@ -13,3 +13,15 @@
         margin-top: 0;
     }
 }
+
+// LANDING PAGE TABLET RESPONSIVENESS
+
+@media (max-width: 1024px) {
+    .featuresBlock {
+        @include landing-bg('../assets/img/feature.jpg');
+        height: $nav-vh-calc;
+        .featuer-slide-show {
+            display:none;
+        }
+    }
+}

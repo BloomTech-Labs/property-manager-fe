@@ -56,13 +56,18 @@ export default () => {
 
   return (
     <div className="featuresBlock">
-      <Carousel autoPlay showThumbs={false} showStatus={false}>
-        <div className="featuer-slide-show">
+      <Carousel
+        autoPlay
+        showThumbs={false}
+        showStatus={false}
+        className="featuer-slide-show"
+      >
+        <div>
           <img src={ads1} alt="advertisment" />
         </div>
       </Carousel>
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="relative" color="inherit">
           <Tabs
             value={value}
             onChange={handleChange}
