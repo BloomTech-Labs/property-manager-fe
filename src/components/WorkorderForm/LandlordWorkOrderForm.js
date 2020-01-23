@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux'
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -14,6 +15,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { MdSend } from 'react-icons/md';
+
+import {addWorkOrder} from '../../store/actions/index'
 
 const useStyles = makeStyles(theme => ({
   formCard: {
@@ -45,8 +48,14 @@ const validationSchema = Yup.object().shape({
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
-export default function LandlordWorkOrderForm({ submit }) {
+export default function LandlordWorkOrderForm() {
   const classes = useStyles();
+  const dispatch = useDispatch()
+
+  const submit = values => {
+    console.log(values)
+    dispatch(addWorkOrder(values))
+  }
 
   return (
     <Paper className={classes.formCard}>

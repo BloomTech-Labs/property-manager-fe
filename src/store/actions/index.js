@@ -91,7 +91,7 @@ export const auth = url => (email, password, type) => async dispatch => {
     });
 
     localStorage.setItem('token', res.data.token);
-    localStorage.setItem('userType', res.data.user.type)
+    localStorage.setItem('userType', res.data.user.type);
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
@@ -327,7 +327,7 @@ export const editUserInfo = user => async dispatch => {
 export const getWorkOrders = property => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().get(`${baseUrl}/api/workorders`);
     console.log(res);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
@@ -344,7 +344,7 @@ export const getWorkOrders = property => async dispatch => {
 export const addWorkOrder = (property, workOrder) => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().post(`${baseUrl}/api/workorders`, workOrder);
     console.log(res);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
@@ -361,7 +361,7 @@ export const addWorkOrder = (property, workOrder) => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
     console.log(res);
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,

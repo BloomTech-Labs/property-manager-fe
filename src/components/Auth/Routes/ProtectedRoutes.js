@@ -45,7 +45,6 @@ function ProtectedRoutes(props) {
           <Property path="properties/:id" />
           <CreateProperty path="properties/add" />
           <EditProperty path="properties/edit/:id" />
-          <TenantWorkOrderForm path="properties/workOrderTenant" />
           <LandlordWorkOrderForm path="properties/workOrderLandlord" />
           <Tenants path="tenants" />
           <Tenant path="tenants/:id" />
@@ -61,6 +60,7 @@ function ProtectedRoutes(props) {
         <TenantDashboard path="/">
           <Overview path="/" />
           <Profile path="profile" />
+          <TenantWorkOrderForm path="properties/workOrderTenant" />
         </TenantDashboard>
       </Router>
     );

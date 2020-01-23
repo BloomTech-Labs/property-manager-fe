@@ -11,7 +11,12 @@ import { VertNav } from '../../components/Navigation/navigation';
 import SideNav from '../../components/Navigation/SideNav/SideNav';
 import FloatingActions from '../../components/UI/FloatingActions';
 import PropmanTheme from '../../theme/PropmanTheme';
-import { getProperties, getTenants, getUserInfo } from '../../store/actions';
+import {
+  getProperties,
+  getTenants,
+  getUserInfo,
+  getWorkOrders
+} from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +41,7 @@ function Dashboard(props) {
 
     dispatch(getTenants());
     dispatch(getUserInfo());
+    dispatch(getWorkOrders());
   }, [dispatch]);
 
   return (
