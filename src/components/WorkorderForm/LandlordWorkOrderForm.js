@@ -44,7 +44,7 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
   property: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required'),
+  orderType: Yup.string().required('Work order type is required'),
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
@@ -67,7 +67,7 @@ export default function LandlordWorkOrderForm() {
           title: '',
           property: '',
           description: '',
-          type: '',
+          orderType: '',
           urgency: ''
         }}
         resetForm
@@ -135,16 +135,16 @@ export default function LandlordWorkOrderForm() {
                   error={errors.description && true}
                 />
                 <Field
-                  name="type"
-                  label="Type"
+                  name="orderType"
+                  label="Order Type"
                   as={TextField}
                   select
                   helperText={
-                    errors.type
-                      ? errors.type
+                    errors.orderType
+                      ? errors.orderType
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.type && true}
+                  error={errors.orderType && true}
                 >
                   <MenuItem value="Plumbing">Plumbing</MenuItem>
                   <MenuItem value="Electrical">Electrical</MenuItem>
