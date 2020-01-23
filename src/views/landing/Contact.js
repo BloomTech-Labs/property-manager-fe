@@ -5,7 +5,6 @@ import React from 'react';
 
 // contact form
 // icons import
-import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { Container } from '@material-ui/core';
 import ContactForm from '../../components/ContactForm/ContactForm';
@@ -19,12 +18,10 @@ export default function Contact() {
           <div className="contactInfo">
             <h2>PropMan</h2>
             <div className="contactType">
-              <MdEmail className="icon" />
-              <p>acme.info@2mail.com</p>
-            </div>
-            <div className="contactType">
-              <MdPhone className="icon" />
-              <p>+0 000-000-0000</p>
+              <p>
+                Feel free to contact us if you have any questions about PropMan
+                and how it can improve your life as a landlord or tenant.
+              </p>
             </div>
             <h3>Follow Us</h3>
             <div className="contactIcons">
