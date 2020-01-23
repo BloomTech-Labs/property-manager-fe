@@ -78,26 +78,67 @@ export default () => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <h3>Enjoy this amazing web app to mamage your property for free</h3>
+          <h4>Enjoy this amazing web app to mamage your property for free</h4>
           <img src={free} alt="free" />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <h4>The app provides a portal for both Landlord and Tenanent </h4>
+          <p>The app provides a portal for both Landlord and Tenant </p>
+          <p>Property owner/manager can :</p>
+          <lo>
+            <li>Login</li>
+            <li>Create login for Tenants</li>
+            <li>Review work orders and Manage maintenance</li>
+            <li> Advertising their property and collect online payments</li>
+          </lo>
+          <p>Tenant can :</p>
+          <lo>
+            <li>Login</li>
+            <li>Pay online</li>
+            <li>Send work orders and follow-up maintenance</li>
+            <li>Apply and file rental application</li>
+          </lo>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          is coming...
+          <p>Leasing is quite easy with PropMan app.</p>
+          <lo>
+            <li>Online application</li>
+            <li>Background checking</li>
+            <li>File protection and organization</li>
+            <li>Alert on Lease expiration and renewal</li>
+          </lo>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          is coming...
+          <p>Billing and payment with PropMan provides</p>
+          <lo>
+            <li>Online Payment</li>
+            <li>Split payment</li>
+            <li>Easy payment collection</li>
+            <li>Alert payment due date</li>
+          </lo>
         </TabPanel>
         <TabPanel value={value} index={4}>
-          is coming...
+          <p>Task management is the priority of PropMan</p>
+          <lo>
+            <li>Online maintenance request</li>
+            <li>Identify maintenance emergency</li>
+            <li>Convenient time to run maintenance</li>
+            <li>Sort-out maintenance request based on type</li>
+          </lo>
         </TabPanel>
         <TabPanel value={value} index={5}>
-          is coming...
+          <p>Reporting tools</p>
         </TabPanel>
         <TabPanel value={value} index={6}>
-          is coming...
+          <p>
+            Easy communication between Tenants and Landlord provides verywell
+            propery management.
+          </p>
+          <p>Therefore, Propman provides:</p>
+          <lo>
+            <li>live chat</li>
+            <li>email alert</li>
+            <li>Phone text alert</li>
+          </lo>
         </TabPanel>
       </div>
     </div>
