@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core';
 // eslint-disable-next-line no-unused-vars
 import { VertNav } from '../../components/Navigation/navigation';
 import SideNav from '../../components/Navigation/SideNav/SideNav';
-import FloatingActions from '../../components/UI/FloatingActions-Tenant';
+import FloatingActions from '../../components/UI/FloatingActions';
 import PropmanTheme from '../../theme/PropmanTheme';
 import { getUserInfo } from '../../store/actions';
 

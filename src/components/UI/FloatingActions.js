@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // define an array of actions
-const actions = [
+let actions = [];
+const actionsLandlord = [
   {
     icon: <FaBuilding />,
     name: 'Add Property',
@@ -43,9 +44,17 @@ const actions = [
   },
   { icon: <FaUserCircle />, name: 'Update User Profile' }
 ];
+const actionsTenant = [
+  {
+    icon: <FaHammer />,
+    name: 'Add Work Order',
+    path: 'dashboard/properties/workOrderLandlord'
+  },
+  { icon: <FaUserCircle />, name: 'Update User Profile' }
+];
 
 // Floating Action Btn Component
-export default function FloatingActions() {
+export default function FloatingActions(props) {
   // bring in styling
   const classes = useStyles();
 
@@ -61,6 +70,13 @@ export default function FloatingActions() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  // define which set of actions to use
+  if (props.userType === 'landlord') {
+    actions = actionsLandlord;
+  } else if (props.userType === 'tenant') {
+    actions = actionsTenant;
+  }
 
   return (
     <SpeedDial
