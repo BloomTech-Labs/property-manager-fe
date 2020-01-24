@@ -80,18 +80,20 @@ export const UPDATE_WORK_ORDER_SUCCESS = 'UPDATE_WORK_ORDER_SUCCESS';
 // AUTH CREATORS ==================================|
 // ================================================|
 // LOGIN / SIGNUP ---------------------------------|
-export const auth = url => (email, password) => async dispatch => {
+export const auth = url => (email, password, type) => async dispatch => {
   dispatch({ type: AUTH_REQUEST_START });
 
   try {
     const res = await axios.post(`${baseUrl}${url}`, {
       email,
-      password
+      password,
+      type
     });
 
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('userType', res.data.user.type)
 
-    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { token: res } });
+    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }

@@ -3,7 +3,7 @@ import { navigate } from '@reach/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-const FrontPage = () => {
+const Home = () => {
   return (
     <div className="content">
       <div className="content-wrapper">
@@ -30,4 +30,4 @@ const FrontPage = () => {
   );
 };
 
-export default FrontPage;
+export default Home;

@@ -18,6 +18,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { navigate } from '@reach/router';
 import logo from '../../../assets/img/logo-cropped.png';
 
@@ -83,7 +84,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(2)
   },
   list: {
-    paddingTop: 0
+    display: 'flex',
+    height: '100%',
+    flexDirection: 'column',
+    paddingTop: 0,
+    width: '100%',
+    '& :last-child': {
+      marginTop: 'auto'
+    }
   }
 }));
 
@@ -91,6 +99,11 @@ function SideNav() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('token');
+    navigate('/');
+  };
 
   const handleDrawerOpen = () => {
     setOpen(!open);
@@ -148,7 +161,9 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText primary="Overview" />
           </ListItem>
+
           <Divider />
+
           <ListItem button onClick={() => navigate('/dashboard/profile')}>
             <ListItemIcon>
               <AccountCircleIcon />
@@ -162,12 +177,23 @@ function SideNav() {
             </ListItemIcon>
             <ListItemText primary="Properties" />
           </ListItem>
+
           <ListItem button onClick={() => navigate('/dashboard/tenants')}>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Tenants" />
           </ListItem>
+
+          <div>
+            <Divider />
+            <ListItem button onClick={handleLogout}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </div>
         </List>
       </Drawer>
     </>
