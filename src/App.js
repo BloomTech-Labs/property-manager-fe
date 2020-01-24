@@ -29,19 +29,15 @@ const App = () => {
   function getType() {
     try {
       const userType = localStorage.getItem('userType')
-      return userType
+      return userType;
     } catch (err) {
-      console.error(err)
-      return null
+      console.error(err);
+      return null;
     }
   }
   const token = getToken();
-  console.log(token);
+  const userType = getType();
 
-  const userType = getType()
-  console.log(userType)
-
-  console.log(userType);
   return (
     <BreakpointProvider>
       <div className="App">
