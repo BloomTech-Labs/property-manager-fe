@@ -15,12 +15,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import HomeWorkIcon from '@material-ui/icons/HomeWork';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { navigate } from '@reach/router';
 import logo from '../../../assets/img/logo-cropped.png';
+import ListLandlord from './ListLandlord';
+import ListTenant from './ListTenant';
 
 const drawerWidth = 240;
 
@@ -109,182 +108,75 @@ function SideNav(props) {
     setOpen(!open);
   };
 
-  if (props.userType === 'landlord') {
-    return (
-      <>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-            <h4>Dashboard</h4>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
+  return (
+    <>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open
+        })}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+          >
+            <MenuIcon />
+          </IconButton>
+          <h4>Dashboard</h4>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open
+        })}
+        classes={{
+          paper: clsx({
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open
-          })}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open
-            })
-          }}
-        >
-          <div className={classes.toolbar}>
-            <img className={classes.logo} src={logo} alt="PropMan branding" />
-            <IconButton onClick={handleDrawerOpen}>
-              {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
-          </div>
+          })
+        }}
+      >
+        <div className={classes.toolbar}>
+          <img className={classes.logo} src={logo} alt="PropMan branding" />
+          <IconButton onClick={handleDrawerOpen}>
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <List className={classes.list}>
+          <ListItem button onClick={() => navigate('/dashboard')}>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Overview" />
+          </ListItem>
+
           <Divider />
-          <List className={classes.list}>
-            <ListItem button onClick={() => navigate('/dashboard')}>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Overview" />
-            </ListItem>
+          {props.userType === 'landlord' ? <ListLandlord /> : <ListTenant />}
 
+          <div>
             <Divider />
-
-            <ListItem button onClick={() => navigate('/dashboard/profile')}>
+            <ListItem button onClick={handleLogout}>
               <ListItemIcon>
-                <AccountCircleIcon />
+                <ExitToAppIcon />
               </ListItemIcon>
-              <ListItemText primary="Profile" />
+              <ListItemText primary="Logout" />
             </ListItem>
-
-            <ListItem button onClick={() => navigate('/dashboard/properties')}>
-              <ListItemIcon>
-                <HomeWorkIcon />
-              </ListItemIcon>
-              <ListItemText primary="Properties" />
-            </ListItem>
-
-            <ListItem button onClick={() => navigate('/dashboard/tenants')}>
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText primary="Tenants" />
-            </ListItem>
-
-            <div>
-              <Divider />
-              <ListItem button onClick={handleLogout}>
-                <ListItemIcon>
-                  <ExitToAppIcon />
-                </ListItemIcon>
-                <ListItemText primary="Logout" />
-              </ListItem>
-            </div>
-          </List>
-        </Drawer>
-      </>
-    );
-  }
-
-  if (props.userType === 'tenant') {
-    return (
-      <>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-            <h4>Dashboard</h4>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open
-            })
-          }}
-        >
-          <div className={classes.toolbar}>
-            <img className={classes.logo} src={logo} alt="PropMan branding" />
-            <IconButton onClick={handleDrawerOpen}>
-              {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
           </div>
-          <Divider />
-          <List className={classes.list}>
-            <ListItem button onClick={() => navigate('/dashboard')}>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Overview" />
-            </ListItem>
-  
-            <Divider />
-  
-            <ListItem button onClick={() => navigate('/dashboard/profile')}>
-              <ListItemIcon>
-                <AccountCircleIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItem>
-  
-            {/* <ListItem button onClick={() => navigate('/dashboard/workorders')}> -- would be nice to display any active workorders
-              <ListItemIcon>
-                <HomeWorkIcon />
-              </ListItemIcon>
-              <ListItemText primary="WorkOrders" />
-            </ListItem> */}
-  
-            <div>
-              <Divider />
-              <ListItem button onClick={handleLogout}>
-                <ListItemIcon>
-                  <ExitToAppIcon />
-                </ListItemIcon>
-                <ListItemText primary="Logout" />
-              </ListItem>
-            </div>
-          </List>
-        </Drawer>
-      </>
-    );
-  }
+        </List>
+      </Drawer>
+    </>
+  );
 }
 
 export default SideNav;
