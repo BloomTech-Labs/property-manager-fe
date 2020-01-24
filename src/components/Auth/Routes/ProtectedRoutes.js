@@ -33,7 +33,7 @@ function ProtectedRoutes(props) {
 
   // const userType = useSelector(state => state.authReducer.user.type);
   // console.log(userType)
-  console.log(props)
+  // console.log(props)
   if (props.token && props.userType === 'landlord') {
     return (
       <Router>
@@ -58,7 +58,7 @@ function ProtectedRoutes(props) {
   if (props.token && props.userType === 'tenant') {
     return (
       <Router>
-        <TenantDashboard path="/">
+        <TenantDashboard path="/" userType={props.userType}>
           <Overview path="/" />
           <Profile path="profile" />
         </TenantDashboard>
