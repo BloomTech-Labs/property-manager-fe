@@ -27,15 +27,6 @@ const App = () => {
     }
   }
 
-  /*  function getType() {
-    try {
-      const userType = localStorage.getItem('userType');
-      return userType;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  } */
   const token = getToken();
   console.log(token);
 
@@ -45,10 +36,7 @@ const App = () => {
   console.log(userType, 'this is from useSelector');
 
   const dispatch = useDispatch();
-  // useEffect for initial get properties dispatch
   useEffect(() => {
-    // set timeout to show place holder cards
-    // dispatch the getProperties action
     dispatch(getUserInfo());
   }, [dispatch]);
 

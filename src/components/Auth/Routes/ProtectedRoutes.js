@@ -78,7 +78,12 @@ function ProtectedRoutes({ token, userType }) {
       </Router>
     );
   }
-  return <Redirect to="/" noThrow />;
+
+  if (!token) {
+    return <Redirect to="/" noThrow />;
+  }
+
+  return null;
 }
 
 ProtectedRoutes.propTypes = {

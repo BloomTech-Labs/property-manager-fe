@@ -52,6 +52,8 @@ const validationSchema = Yup.object().shape({
 export default function LandlordWorkOrderForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const propertyList = useSelector(state => state.propReducer.properties);
+  console.log(propertyList);
 
   const submit = values => {
     console.log(values);
@@ -64,12 +66,11 @@ export default function LandlordWorkOrderForm() {
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
-        initalValues={{
+        initialValues={{
           title: '',
-          property: '',
+          propertyId: '',
           description: '',
-          orderType: '',
-          urgency: ''
+          type: ''
         }}
         resetForm
         onSubmit={values => {
@@ -81,8 +82,9 @@ export default function LandlordWorkOrderForm() {
           });
         }}
       >
-        {({ errors, isSubmitting }) => {
+        {({ values, errors, isSubmitting }) => {
           // console.log(errors, touched, isSubmitting);
+          console.log(values);
 
           return (
             <Form>
@@ -96,12 +98,6 @@ export default function LandlordWorkOrderForm() {
                   type="text"
                   label="Title"
                   as={TextField}
-                  helpertext={
-                    errors.title
-                      ? errors.title
-                      : `Please enter a short description of your work order`
-                  }
-                  error={errors.title && true}
                 />
                 <Field
                   name="property"
@@ -115,9 +111,11 @@ export default function LandlordWorkOrderForm() {
                   }
                   error={errors.property && true}
                 >
-                  <MenuItem value="low">Placeholder</MenuItem>
-                  <MenuItem value="high">For</MenuItem>
-                  <MenuItem value="medium">Logic</MenuItem>
+                  {propertyList.map(property => (
+                    <MenuItem key={property.id} value={property.id}>
+                      {property.name}
+                    </MenuItem>
+                  ))}
                 </Field>
                 <Field
                   className={classes.textField}
@@ -152,22 +150,6 @@ export default function LandlordWorkOrderForm() {
                   <MenuItem value="Pest Control">Pest Control</MenuItem>
                   <MenuItem value="Appliances">Appliances</MenuItem>
                   <MenuItem value="AC">HVAC</MenuItem>
-                </Field>
-                <Field
-                  name="urgency"
-                  label="Urgency"
-                  as={TextField}
-                  select
-                  helperText={
-                    errors.urgency
-                      ? errors.urgency
-                      : 'Please select a level of urgency for your problem'
-                  }
-                  error={errors.urgency && true}
-                >
-                  <MenuItem value="low">Low</MenuItem>
-                  <MenuItem value="high">Medium</MenuItem>
-                  <MenuItem value="medium">High</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button
