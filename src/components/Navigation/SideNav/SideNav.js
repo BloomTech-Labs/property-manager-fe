@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SideNav() {
+function SideNav(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -109,95 +109,182 @@ function SideNav() {
     setOpen(!open);
   };
 
-  return (
-    <>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
-          <h4>Dashboard</h4>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
+  if (props.userType === 'landlord') {
+    return (
+      <>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+            >
+              <MenuIcon />
+            </IconButton>
+            <h4>Dashboard</h4>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open
-          })
-        }}
-      >
-        <div className={classes.toolbar}>
-          <img className={classes.logo} src={logo} alt="PropMan branding" />
-          <IconButton onClick={handleDrawerOpen}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List className={classes.list}>
-          <ListItem button onClick={() => navigate('/dashboard')}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Overview" />
-          </ListItem>
-
-          <Divider />
-
-          <ListItem button onClick={() => navigate('/dashboard/profile')}>
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-
-          <ListItem button onClick={() => navigate('/dashboard/properties')}>
-            <ListItemIcon>
-              <HomeWorkIcon />
-            </ListItemIcon>
-            <ListItemText primary="Properties" />
-          </ListItem>
-
-          <ListItem button onClick={() => navigate('/dashboard/tenants')}>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tenants" />
-          </ListItem>
-
-          <div>
-            <Divider />
-            <ListItem button onClick={handleLogout}>
-              <ListItemIcon>
-                <ExitToAppIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItem>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open
+            })
+          }}
+        >
+          <div className={classes.toolbar}>
+            <img className={classes.logo} src={logo} alt="PropMan branding" />
+            <IconButton onClick={handleDrawerOpen}>
+              {theme.direction === 'rtl' ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
           </div>
-        </List>
-      </Drawer>
-    </>
-  );
+          <Divider />
+          <List className={classes.list}>
+            <ListItem button onClick={() => navigate('/dashboard')}>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Overview" />
+            </ListItem>
+
+            <Divider />
+
+            <ListItem button onClick={() => navigate('/dashboard/profile')}>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+
+            <ListItem button onClick={() => navigate('/dashboard/properties')}>
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="Properties" />
+            </ListItem>
+
+            <ListItem button onClick={() => navigate('/dashboard/tenants')}>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tenants" />
+            </ListItem>
+
+            <div>
+              <Divider />
+              <ListItem button onClick={handleLogout}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItem>
+            </div>
+          </List>
+        </Drawer>
+      </>
+    );
+  }
+
+  if (props.userType === 'tenant') {
+    return (
+      <>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+            >
+              <MenuIcon />
+            </IconButton>
+            <h4>Dashboard</h4>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open
+            })
+          }}
+        >
+          <div className={classes.toolbar}>
+            <img className={classes.logo} src={logo} alt="PropMan branding" />
+            <IconButton onClick={handleDrawerOpen}>
+              {theme.direction === 'rtl' ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </div>
+          <Divider />
+          <List className={classes.list}>
+            <ListItem button onClick={() => navigate('/dashboard')}>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Overview" />
+            </ListItem>
+  
+            <Divider />
+  
+            <ListItem button onClick={() => navigate('/dashboard/profile')}>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+  
+            {/* <ListItem button onClick={() => navigate('/dashboard/workorders')}> -- would be nice to display any active workorders
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="WorkOrders" />
+            </ListItem> */}
+  
+            <div>
+              <Divider />
+              <ListItem button onClick={handleLogout}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItem>
+            </div>
+          </List>
+        </Drawer>
+      </>
+    );
+  }
 }
 
 export default SideNav;
