@@ -327,12 +327,13 @@ export const editUserInfo = user => async dispatch => {
 export const getWorkOrders = property => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    const res = 'test';
-    console.log(res);
+    // TODO: Resolve 500 Internal Server Error when
+    // requesting list of workorders
+    const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
       payload: {
-        workOrders: res
+        workOrders: res.data
       }
     });
   } catch (err) {

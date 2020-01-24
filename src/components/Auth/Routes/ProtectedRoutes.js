@@ -1,6 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
+import PropTypes from 'prop-types';
+
+// Reach Router
 import { Router, Redirect } from '@reach/router';
+
+// Components
 import Dashboard from '../../../views/dashboard/Dashboard';
 import Properties from '../../../views/dashboard/properties/Properties';
 import Profile from '../../../views/dashboard/profile/Profile';
@@ -15,8 +20,9 @@ import Tenant from '../../../views/dashboard/tenants/Tenant';
 import TenantWorkOrderForm from '../../WorkorderForm/TenantWorkOrderForm';
 import LandlordWorkOrderForm from '../../WorkorderForm/LandlordWorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
+import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 
-function ProtectedRoutes(props) {
+function ProtectedRoutes({ token, userType }) {
   // eslint-disable-next-line consistent-return
   // function getToken() {
   //   try {
@@ -33,8 +39,9 @@ function ProtectedRoutes(props) {
 
   // const userType = useSelector(state => state.authReducer.user.type);
   // console.log(userType)
-  console.log(props);
-  if (props.token && props.userType === 'landlord') {
+
+  // Landlord Routing
+  if (token && userType === 'landlord') {
     return (
       <Router>
         <Dashboard path="/">
@@ -45,17 +52,23 @@ function ProtectedRoutes(props) {
           <Property path="properties/:id" />
           <CreateProperty path="properties/add" />
           <EditProperty path="properties/edit/:id" />
+
           <TenantWorkOrderForm path="properties/workOrderTenant" />
           <LandlordWorkOrderForm path="properties/workOrderLandlord" />
+
           <Tenants path="tenants" />
           <Tenant path="tenants/:id" />
           <CreateTenant path="tenants/add" />
           <EditTenant path="tenants/edit/:id" />
+
+          <WorkOrders path="workorders" />
         </Dashboard>
       </Router>
     );
   }
-  if (props.token && props.userType === 'tenant') {
+
+  // Tenant Routing
+  if (token && userType === 'tenant') {
     return (
       <Router>
         <TenantDashboard path="/">
@@ -67,5 +80,10 @@ function ProtectedRoutes(props) {
   }
   return <Redirect to="/" noThrow />;
 }
+
+ProtectedRoutes.propTypes = {
+  token: PropTypes.string.isRequired,
+  userType: PropTypes.string.isRequired
+};
 
 export default ProtectedRoutes;
