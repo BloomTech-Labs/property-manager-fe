@@ -52,7 +52,6 @@ function ProtectedRoutes({ token, userType }) {
           <Property path="properties/:id" />
           <CreateProperty path="properties/add" />
           <EditProperty path="properties/edit/:id" />
-
           <TenantWorkOrderForm path="properties/workOrderTenant" />
           <LandlordWorkOrderForm path="properties/workOrderLandlord" />
 
@@ -74,6 +73,7 @@ function ProtectedRoutes({ token, userType }) {
         <TenantDashboard path="/">
           <Overview path="/" />
           <Profile path="profile" />
+          <TenantWorkOrderForm path="properties/workOrderTenant" />
         </TenantDashboard>
       </Router>
     );

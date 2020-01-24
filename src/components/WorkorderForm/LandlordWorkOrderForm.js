@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+/* eslint-disable-next-line no-unused-vars */
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -14,6 +16,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { MdSend } from 'react-icons/md';
+
+import { addWorkOrder } from '../../store/actions/index';
 
 const useStyles = makeStyles(theme => ({
   formCard: {
@@ -41,12 +45,18 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
   property: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required'),
+  orderType: Yup.string().required('Work order type is required'),
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
-export default function LandlordWorkOrderForm({ submit }) {
+export default function LandlordWorkOrderForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const submit = values => {
+    console.log(values);
+    dispatch(addWorkOrder(values));
+  };
 
   return (
     <Paper className={classes.formCard}>
@@ -58,7 +68,7 @@ export default function LandlordWorkOrderForm({ submit }) {
           title: '',
           property: '',
           description: '',
-          type: '',
+          orderType: '',
           urgency: ''
         }}
         resetForm
@@ -71,7 +81,7 @@ export default function LandlordWorkOrderForm({ submit }) {
           });
         }}
       >
-        {({ errors, touched, isSubmitting }) => {
+        {({ errors, isSubmitting }) => {
           // console.log(errors, touched, isSubmitting);
 
           return (
@@ -126,16 +136,16 @@ export default function LandlordWorkOrderForm({ submit }) {
                   error={errors.description && true}
                 />
                 <Field
-                  name="type"
-                  label="Type"
+                  name="orderType"
+                  label="Order Type"
                   as={TextField}
                   select
                   helperText={
-                    errors.type
-                      ? errors.type
+                    errors.orderType
+                      ? errors.orderType
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.type && true}
+                  error={errors.orderType && true}
                 >
                   <MenuItem value="Plumbing">Plumbing</MenuItem>
                   <MenuItem value="Electrical">Electrical</MenuItem>

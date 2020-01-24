@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 // Landing imports
@@ -11,6 +11,7 @@ import Contact from './views/landing/Contact';
 import Home from './views/landing/Home';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
+import { getUserInfo } from './store/actions/index';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -26,7 +27,7 @@ const App = () => {
     }
   }
 
-  function getType() {
+  /*  function getType() {
     try {
       const userType = localStorage.getItem('userType');
       return userType;
@@ -34,14 +35,23 @@ const App = () => {
       console.error(err);
       return null;
     }
-  }
+  } */
   const token = getToken();
   console.log(token);
 
-  const userType = getType();
-  console.log(userType);
+  // const userType = getType()
 
-  console.log(userType);
+  const userType = useSelector(state => state.getUserReducer.user.type);
+  console.log(userType, 'this is from useSelector');
+
+  const dispatch = useDispatch();
+  // useEffect for initial get properties dispatch
+  useEffect(() => {
+    // set timeout to show place holder cards
+    // dispatch the getProperties action
+    dispatch(getUserInfo());
+  }, [dispatch]);
+
   return (
     <BreakpointProvider>
       <div className="App">

@@ -345,7 +345,7 @@ export const getWorkOrders = property => async dispatch => {
 export const addWorkOrder = (property, workOrder) => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().post(`${baseUrl}/api/workorders`, workOrder);
     console.log(res);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
@@ -362,7 +362,7 @@ export const addWorkOrder = (property, workOrder) => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
     console.log(res);
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,

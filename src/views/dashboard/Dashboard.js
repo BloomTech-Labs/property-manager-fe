@@ -40,6 +40,7 @@ function Dashboard(props) {
     dispatch(getWorkOrders());
     dispatch(getTenants());
     dispatch(getUserInfo());
+    dispatch(getWorkOrders());
   }, [dispatch]);
 
   return (
