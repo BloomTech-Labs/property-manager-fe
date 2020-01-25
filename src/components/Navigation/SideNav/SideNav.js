@@ -196,10 +196,7 @@ function SideNav() {
             <ListItemText primary="Tenants" />
           </ListItem>
 
-          <ListItem
-            button
-            onClick={() => navigate('/dashboard/properties/workorders')}
-          >
+          <ListItem button onClick={() => navigate('/dashboard/workorders')}>
             <ListItemIcon>
               <BuildIcon />
             </ListItemIcon>

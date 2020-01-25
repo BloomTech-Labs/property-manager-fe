@@ -29,20 +29,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // define an array of actions
-const actions = [
-  {
-    icon: <FaBuilding />,
-    name: 'Add Property',
-    path: '/dashboard/properties/add'
-  },
-  { icon: <FaUserPlus />, name: 'Add Tenant' },
-  {
-    icon: <FaHammer />,
-    name: 'Add Work Order',
-    path: '/dashboard/properties/workorders/add'
-  },
-  { icon: <FaUserCircle />, name: 'Update User Profile' }
-];
+let actions = [];
+
+// Test userType
+const userType = 'landlord';
 
 // Floating Action Btn Component
 export default function FloatingActions() {
@@ -61,6 +51,34 @@ export default function FloatingActions() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  // Setup conditional actions
+  if (userType === 'landlord') {
+    actions = [
+      {
+        icon: <FaBuilding />,
+        name: 'Add Property',
+        path: '/dashboard/properties/add'
+      },
+      { icon: <FaUserPlus />, name: 'Add Tenant' },
+      {
+        icon: <FaHammer />,
+        name: 'Add Work Order',
+        path: '/dashboard/workorders/add'
+      },
+      { icon: <FaUserCircle />, name: 'Update User Profile' }
+    ];
+  }
+
+  if (userType === 'tenant') {
+    actions = [
+      {
+        icon: <FaHammer />,
+        name: 'Add Work Order',
+        path: '/dashboard/workorders/add'
+      }
+    ];
+  }
 
   return (
     <SpeedDial
