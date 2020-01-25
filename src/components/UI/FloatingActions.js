@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { navigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
@@ -31,9 +32,6 @@ const useStyles = makeStyles(theme => ({
 // define an array of actions
 let actions = [];
 
-// Test userType
-const userType = 'landlord';
-
 // Floating Action Btn Component
 export default function FloatingActions() {
   // bring in styling
@@ -41,6 +39,10 @@ export default function FloatingActions() {
 
   // open/close state of the menu
   const [open, setOpen] = React.useState(false);
+
+  // bring in userType from state
+  const { type } = useSelector(state => state.getUserReducer.user);
+  const userType = type;
 
   // open action menu
   const handleOpen = () => {
@@ -53,6 +55,7 @@ export default function FloatingActions() {
   };
 
   // Setup conditional actions
+  // Landlord FAB actions:
   if (userType === 'landlord') {
     actions = [
       {
@@ -70,6 +73,7 @@ export default function FloatingActions() {
     ];
   }
 
+  // Tenant FAB actions:
   if (userType === 'tenant') {
     actions = [
       {
