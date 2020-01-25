@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable-next-line no-unused-vars */
+import { useDispatch } from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -15,6 +16,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { MdSend } from 'react-icons/md';
+
+import { addWorkOrder } from '../../store/actions/index';
 
 const useStyles = makeStyles(theme => ({
   formCard: {
@@ -41,12 +44,17 @@ const useStyles = makeStyles(theme => ({
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
   description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required'),
-  urgency: Yup.string().required('Must select a level of urgency')
+  type: Yup.string().required('Work order type is required')
 });
 
-export default function TenantWorkOrderForm({ submit }) {
+export default function TenantWorkOrderForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const currentDate = new Date();
+
+  const submit = values => {
+    dispatch(addWorkOrder(values));
+  };
 
   return (
     <Paper className={classes.formCard}>
@@ -54,11 +62,11 @@ export default function TenantWorkOrderForm({ submit }) {
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
-        initalValues={{
+        initialValues={{
           title: '',
           description: '',
           type: '',
-          urgency: ''
+          startDate: currentDate
         }}
         resetForm
         onSubmit={values => {
@@ -70,7 +78,7 @@ export default function TenantWorkOrderForm({ submit }) {
           });
         }}
       >
-        {({ errors, touched, isSubmitting }) => {
+        {({ errors, isSubmitting }) => {
           // console.log(errors, touched, isSubmitting);
 
           return (
@@ -85,12 +93,6 @@ export default function TenantWorkOrderForm({ submit }) {
                   type="text"
                   label="Title"
                   as={TextField}
-                  helpertext={
-                    errors.title
-                      ? errors.title
-                      : `Please enter a short description of your work order`
-                  }
-                  error={errors.title && true}
                 />
                 <Field
                   className={classes.textField}
@@ -110,37 +112,21 @@ export default function TenantWorkOrderForm({ submit }) {
                 />
                 <Field
                   name="type"
-                  label="Type"
+                  label="Order Type"
                   as={TextField}
                   select
                   helperText={
-                    errors.type
-                      ? errors.type
+                    errors.orderType
+                      ? errors.orderType
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.type && true}
+                  error={errors.orderType && true}
                 >
-                  <MenuItem value="Plumbing">Plumbing</MenuItem>
-                  <MenuItem value="Electrical">Electrical</MenuItem>
-                  <MenuItem value="Pest Control">Pest Control</MenuItem>
-                  <MenuItem value="Appliances">Appliances</MenuItem>
-                  <MenuItem value="AC">HVAC</MenuItem>
-                </Field>
-                <Field
-                  name="urgency"
-                  label="Urgency"
-                  as={TextField}
-                  select
-                  helperText={
-                    errors.urgency
-                      ? errors.urgency
-                      : 'Please select a level of urgency for your problem'
-                  }
-                  error={errors.urgency && true}
-                >
-                  <MenuItem value="low">Low</MenuItem>
-                  <MenuItem value="high">Medium</MenuItem>
-                  <MenuItem value="medium">High</MenuItem>
+                  <MenuItem value="plumbing">Plumbing</MenuItem>
+                  <MenuItem value="electrical">Electrical</MenuItem>
+                  <MenuItem value="pest control">Pest Control</MenuItem>
+                  <MenuItem value="appliances">Appliances</MenuItem>
+                  <MenuItem value="HVAC">HVAC</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button

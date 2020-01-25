@@ -43,21 +43,18 @@ const useStyles = makeStyles(theme => ({
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
-  property: Yup.string().required('Select a property'),
+  propertyId: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
-  orderType: Yup.string().required('Work order type is required'),
-  urgency: Yup.string().required('Must select a level of urgency')
+  type: Yup.string().required('Work order type is required')
 });
 
 export default function LandlordWorkOrderForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const propertyList = useSelector(state => state.propReducer.properties);
-  console.log(propertyList);
   const currentDate = new Date();
 
   const submit = values => {
-    console.log(values);
     dispatch(addWorkOrder(values));
   };
 
@@ -84,9 +81,8 @@ export default function LandlordWorkOrderForm() {
           });
         }}
       >
-        {({ values, errors, isSubmitting }) => {
+        {({ errors, isSubmitting }) => {
           // console.log(errors, touched, isSubmitting);
-          console.log(values);
 
           return (
             <Form>
@@ -102,7 +98,7 @@ export default function LandlordWorkOrderForm() {
                   as={TextField}
                 />
                 <Field
-                  name="property"
+                  name="propertyId"
                   label="Property"
                   as={TextField}
                   select
@@ -136,7 +132,7 @@ export default function LandlordWorkOrderForm() {
                   error={errors.description && true}
                 />
                 <Field
-                  name="orderType"
+                  name="type"
                   label="Order Type"
                   as={TextField}
                   select
@@ -147,11 +143,11 @@ export default function LandlordWorkOrderForm() {
                   }
                   error={errors.orderType && true}
                 >
-                  <MenuItem value="Plumbing">Plumbing</MenuItem>
-                  <MenuItem value="Electrical">Electrical</MenuItem>
-                  <MenuItem value="Pest Control">Pest Control</MenuItem>
-                  <MenuItem value="Appliances">Appliances</MenuItem>
-                  <MenuItem value="AC">HVAC</MenuItem>
+                  <MenuItem value="plumbing">Plumbing</MenuItem>
+                  <MenuItem value="electrical">Electrical</MenuItem>
+                  <MenuItem value="pest control">Pest Control</MenuItem>
+                  <MenuItem value="appliances">Appliances</MenuItem>
+                  <MenuItem value="HVAC">HVAC</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button
