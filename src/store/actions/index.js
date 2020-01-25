@@ -2,6 +2,7 @@
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
+import { navigate } from '@reach/router';
 import axiosAuth from '../../helpers/axiosAuth';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
@@ -295,6 +296,7 @@ export const getUserInfo = () => async dispatch => {
       }
     });
   } catch (err) {
+    navigate('/');
     dispatch({ type: GET_USER_FAIL, payload: { errMsg: err } });
   }
 };

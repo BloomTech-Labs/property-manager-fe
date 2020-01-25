@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 
 export default function WorkOrders() {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
-  console.log(workOrderList);
-
   return (
-    <div>
-      <div>This is the work order listing page</div>
+    <div className="work-orders">
+      <h2>Work Orders</h2>
+      <WorkOrderTable workOrderList={workOrderList} />
     </div>
   );
 }

@@ -54,6 +54,7 @@ export default function LandlordWorkOrderForm() {
   const dispatch = useDispatch();
   const propertyList = useSelector(state => state.propReducer.properties);
   console.log(propertyList);
+  const currentDate = new Date();
 
   const submit = values => {
     console.log(values);
@@ -70,7 +71,8 @@ export default function LandlordWorkOrderForm() {
           title: '',
           propertyId: '',
           description: '',
-          type: ''
+          type: '',
+          startDate: currentDate
         }}
         resetForm
         onSubmit={values => {

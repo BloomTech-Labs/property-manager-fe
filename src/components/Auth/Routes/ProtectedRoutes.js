@@ -23,23 +23,6 @@ import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 
 function ProtectedRoutes({ token, userType }) {
-  // eslint-disable-next-line consistent-return
-  // function getToken() {
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     return token;
-  //   } catch (err) {
-  //     // eslint-disable-next-line no-console
-  //     console.error(err);
-  //     return null;
-  //   }
-  // }
-  // const token = getToken();
-  // console.log(token)
-
-  // const userType = useSelector(state => state.authReducer.user.type);
-  // console.log(userType)
-
   // Landlord Routing
   if (token && userType === 'landlord') {
     return (
