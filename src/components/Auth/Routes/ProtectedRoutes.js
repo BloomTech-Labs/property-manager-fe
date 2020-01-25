@@ -17,6 +17,7 @@ import EditTenant from '../../../views/dashboard/tenants/EditTenant';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
+import WorkOrderForm from '../../WorkorderForm/WorkOrderForm';
 import TenantWorkOrderForm from '../../WorkorderForm/TenantWorkOrderForm';
 import LandlordWorkOrderForm from '../../WorkorderForm/LandlordWorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
@@ -35,6 +36,7 @@ function ProtectedRoutes({ token, userType }) {
           <Property path="properties/:id" />
           <CreateProperty path="properties/add" />
           <EditProperty path="properties/edit/:id" />
+          <WorkOrderForm path="properties/workorders/add" />
           <TenantWorkOrderForm path="properties/workOrderTenant" />
           <LandlordWorkOrderForm path="properties/workOrderLandlord" />
 
