@@ -30,8 +30,9 @@ const Tenant = () => {
                 PAY RENT BILL
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                Pay your rent from anywhere any time 24/7. You have roommate, no
-                worry our payment system handle split payment.
+                Pay your rent from anywhere any time 24/7. Have roommate? No
+                worries our payment system handles split payments and saves you
+                the headache and your time.
               </Typography>
             </CardContent>
             <CardMedia image={payment} title="payment" style={styles.media} />
@@ -44,8 +45,8 @@ const Tenant = () => {
                 REVIEW STATEMENTS
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                You can review the last 12 months payments. Check the due date
-                of your monthly payment.
+                You can review the last 12 months of payments. Check the due
+                date of your monthly payments.
               </Typography>
             </CardContent>
             <CardMedia
@@ -66,8 +67,8 @@ const Tenant = () => {
               <Typography variant="body2" color="textSecondary" component="p">
                 Whether it’s a burnt-out light bulb, a faulty sink or a flooded
                 bathroom, maintenance problems are inevitable. If you do run
-                into a maintenance problem, Propman made maintenance request
-                quite simple.
+                into a maintenance problem, PropMan made maintenance requests
+                simple, fast, and reliable.
               </Typography>
             </CardContent>
             <CardMedia
@@ -81,12 +82,11 @@ const Tenant = () => {
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                REVIEW AVAILABEL ROOMS
+                REVIEW AVAILABLE ROOMS
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 The tenant portal provides you available rooms and its monthly
-                rent price. As a tenant you have a privilege to be served for
-                any available rooms you are interested before any applicants.
+                rent price.
               </Typography>
             </CardContent>
             <CardMedia image={room} title="rooms" style={styles.media} />

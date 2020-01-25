@@ -1,42 +1,151 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import profilePlaceholder from '../../assets/img/person-icon-1675.png';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import ads1 from '../../assets/img/adds/advertisemnt1.jpg';
+import free from '../../assets/img/free.gif';
 
-const Features = () => {
+function TabPanel(props) {
+  // eslint-disable-next-line react/prop-types
+  const { children, value, index, ...other } = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...other}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </Typography>
+  );
+}
+
+function open(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
+  };
+}
+
+// eslint-disable-next-line no-unused-vars
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    height: 'auto',
+    color: 'white'
+  }
+}));
+
+export default () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(7);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className="featuresBlock">
-      <div className="outerFeature">
-        <img src={profilePlaceholder} alt="profile" width="100" />
-        <h3>Lorem Ipsum</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectepor pharetra. Phasellus gravida,
-          ante eu pretium placerat, nunc libero euismod lectus, nec mollis odio
-          eros vitae lorem. Nulla sed luctus tellus. Nullam t risus.
-        </p>
-        <button type="button">BUTTON</button>
-      </div>
-      <div className="middleFeature">
-        <img src={profilePlaceholder} alt="profile" width="100" />
-        <h3>Lorem Ipsum</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum
-          est non nisi tempor pharetra. Phasellus gravida, ante eu pretium
-          placerat, nunc libero euismod lectus, nec mex. Aliquam ante velit,
-          sagittis nec urna eget, ultrices volutpat risus.
-        </p>
-        <button type="button">BUTTON</button>
-      </div>
-      <div className="outerFeature">
-        <img src={profilePlaceholder} alt="profile" width="100" />
-        <h3>Lorem Ipsum</h3>
-        <p>
-          Lorem ipsum dolor sit ams vitae lorem. Nulla sed luctus tellus. Nullam
-          et consectetur ex. Aliquam ante velit, sagittis nec urna eget,
-          ultrices volutpat risus.
-        </p>
-        <button type="button">BUTTON</button>
+      <Carousel
+        autoPlay
+        showThumbs={false}
+        showStatus={false}
+        className="featuer-slide-show"
+      >
+        <div>
+          <img src={ads1} alt="advertisment" />
+        </div>
+      </Carousel>
+      <div className={classes.root}>
+        <AppBar position="relative" color="inherit">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="simple tabs example"
+          >
+            <Tab label="Pricing" {...open(0)} />
+            <Tab label="Portal" {...open(1)} />
+            <Tab label="Leasing" {...open(2)} />
+            <Tab label="Billing and Payments" {...open(3)} />
+            <Tab label="Task Management" {...open(4)} />
+            <Tab label="Reporting Tool" {...open(5)} />
+            <Tab label="Communication" {...open(6)} />
+          </Tabs>
+        </AppBar>
+        <TabPanel value={value} index={0}>
+          <h4>Enjoy this amazing web app to mamage your property for free</h4>
+          <img src={free} alt="free" />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <p>The app provides a portal for both Landlord and Tenant </p>
+          <p>Property owner/manager can :</p>
+          <lo>
+            <li>Login</li>
+            <li>Create login for Tenants</li>
+            <li>Review work orders and Manage maintenance</li>
+            <li> Advertising their property and collect online payments</li>
+          </lo>
+          <p>Tenant can :</p>
+          <lo>
+            <li>Login</li>
+            <li>Pay online</li>
+            <li>Send work orders and follow-up maintenance</li>
+            <li>Apply and file rental application</li>
+          </lo>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <p>Leasing is quite easy with PropMan app.</p>
+          <lo>
+            <li>Online application</li>
+            <li>Background checking</li>
+            <li>File protection and organization</li>
+            <li>Alert on Lease expiration and renewal</li>
+          </lo>
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <p>Billing and payment with PropMan provides</p>
+          <lo>
+            <li>Online Payment</li>
+            <li>Split payment</li>
+            <li>Easy payment collection</li>
+            <li>Alert payment due date</li>
+          </lo>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <p>Task management is the priority of PropMan</p>
+          <lo>
+            <li>Online maintenance request</li>
+            <li>Identify maintenance emergency</li>
+            <li>Convenient time to run maintenance</li>
+            <li>Sort-out maintenance request based on type</li>
+          </lo>
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          <p>Reporting tools</p>
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          <p>
+            Easy communication between Tenants and Landlord provides verywell
+            propery management.
+          </p>
+          <p>Therefore, Propman provides:</p>
+          <lo>
+            <li>live chat</li>
+            <li>email alert</li>
+            <li>Phone text alert</li>
+          </lo>
+        </TabPanel>
       </div>
     </div>
   );
 };
-
-export default Features;
