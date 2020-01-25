@@ -39,7 +39,7 @@ const actions = [
   {
     icon: <FaHammer />,
     name: 'Add Work Order',
-    path: '/dashboard/properties/workOrderLandlord'
+    path: '/dashboard/properties/workorders/add'
   },
   { icon: <FaUserCircle />, name: 'Update User Profile' }
 ];
