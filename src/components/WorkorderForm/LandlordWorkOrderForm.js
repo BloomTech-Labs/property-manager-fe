@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+/* eslint-disable-next-line no-unused-vars */
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
@@ -14,6 +16,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { MdSend } from 'react-icons/md';
+
+import { addWorkOrder } from '../../store/actions/index';
 
 const useStyles = makeStyles(theme => ({
   formCard: {
@@ -41,12 +45,21 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
   property: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required'),
+  orderType: Yup.string().required('Work order type is required'),
   urgency: Yup.string().required('Must select a level of urgency')
 });
 
-export default function LandlordWorkOrderForm({ submit }) {
+export default function LandlordWorkOrderForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const propertyList = useSelector(state => state.propReducer.properties);
+  console.log(propertyList);
+  const currentDate = new Date();
+
+  const submit = values => {
+    console.log(values);
+    dispatch(addWorkOrder(values));
+  };
 
   return (
     <Paper className={classes.formCard}>
@@ -56,10 +69,10 @@ export default function LandlordWorkOrderForm({ submit }) {
         validationSchema={validationSchema}
         initialValues={{
           title: '',
-          property: '',
+          propertyId: '',
           description: '',
           type: '',
-          urgency: ''
+          startDate: currentDate
         }}
         resetForm
         onSubmit={values => {
@@ -71,8 +84,9 @@ export default function LandlordWorkOrderForm({ submit }) {
           });
         }}
       >
-        {({ errors, touched, isSubmitting }) => {
+        {({ values, errors, isSubmitting }) => {
           // console.log(errors, touched, isSubmitting);
+          console.log(values);
 
           return (
             <Form>
@@ -86,12 +100,6 @@ export default function LandlordWorkOrderForm({ submit }) {
                   type="text"
                   label="Title"
                   as={TextField}
-                  helpertext={
-                    errors.title
-                      ? errors.title
-                      : `Please enter a short description of your work order`
-                  }
-                  error={errors.title && true}
                 />
                 <Field
                   name="property"
@@ -105,9 +113,11 @@ export default function LandlordWorkOrderForm({ submit }) {
                   }
                   error={errors.property && true}
                 >
-                  <MenuItem value="low">Placeholder</MenuItem>
-                  <MenuItem value="high">For</MenuItem>
-                  <MenuItem value="medium">Logic</MenuItem>
+                  {propertyList.map(property => (
+                    <MenuItem key={property.id} value={property.id}>
+                      {property.name}
+                    </MenuItem>
+                  ))}
                 </Field>
                 <Field
                   className={classes.textField}
@@ -126,38 +136,22 @@ export default function LandlordWorkOrderForm({ submit }) {
                   error={errors.description && true}
                 />
                 <Field
-                  name="type"
-                  label="Type"
+                  name="orderType"
+                  label="Order Type"
                   as={TextField}
                   select
                   helperText={
-                    errors.type
-                      ? errors.type
+                    errors.orderType
+                      ? errors.orderType
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.type && true}
+                  error={errors.orderType && true}
                 >
                   <MenuItem value="Plumbing">Plumbing</MenuItem>
                   <MenuItem value="Electrical">Electrical</MenuItem>
                   <MenuItem value="Pest Control">Pest Control</MenuItem>
                   <MenuItem value="Appliances">Appliances</MenuItem>
                   <MenuItem value="AC">HVAC</MenuItem>
-                </Field>
-                <Field
-                  name="urgency"
-                  label="Urgency"
-                  as={TextField}
-                  select
-                  helperText={
-                    errors.urgency
-                      ? errors.urgency
-                      : 'Please select a level of urgency for your problem'
-                  }
-                  error={errors.urgency && true}
-                >
-                  <MenuItem value="low">Low</MenuItem>
-                  <MenuItem value="high">Medium</MenuItem>
-                  <MenuItem value="medium">High</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button

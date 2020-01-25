@@ -1,36 +1,27 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 // MUI
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
-import Skeleton from '@material-ui/lab/Skeleton';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
-
 // Icons
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import PersonIcon from '@material-ui/icons/Person';
-import EditIcon from '@material-ui/icons/Edit';
-
-// Components
+// Router
 import { navigate } from '@reach/router';
-import {
-  Button,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  ListItemSecondaryAction,
-  CardMedia,
-  ListItemIcon
-} from '@material-ui/core';
+// SVG
 import LocationSVG from '../../../components/SVG/LocationSVG';
+// Actions
 import { getProperty, getTenantsByResidence } from '../../../store/actions';
 
 // Define styling for modal

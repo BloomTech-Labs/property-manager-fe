@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 // Landing imports
@@ -11,6 +11,7 @@ import Contact from './views/landing/Contact';
 import Home from './views/landing/Home';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
+import { getUserInfo } from './store/actions/index';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -26,6 +27,7 @@ const App = () => {
     }
   }
 
+<<<<<<< HEAD
   function getType() {
     try {
       const userType = localStorage.getItem('userType')
@@ -37,6 +39,20 @@ const App = () => {
   }
   const token = getToken();
   const userType = getType();
+=======
+  const token = getToken();
+  console.log(token);
+
+  // const userType = getType()
+
+  const userType = useSelector(state => state.getUserReducer.user.type);
+  console.log(userType, 'this is from useSelector');
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
+>>>>>>> cebe74d31018922306650a256dc76608d104d781
 
   return (
     <BreakpointProvider>
