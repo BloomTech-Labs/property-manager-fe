@@ -53,10 +53,6 @@ const validationSchema = Yup.object().shape({
   type: Yup.string().required('Work order type is required')
 });
 
-// TESTING FORM
-const user = {};
-const userType = 'landlord';
-
 const WorkOrderForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -68,6 +64,11 @@ const WorkOrderForm = () => {
     dispatch(addWorkOrder(values));
   };
 
+  // Subscribe to user state
+  const user = useSelector(state => state.getUserReducer.user);
+  const userType = user.type;
+
+  // Bring in property list for the landlord form
   const propertyList = useSelector(state => state.propReducer.properties);
 
   if (user && userType === 'landlord') {
