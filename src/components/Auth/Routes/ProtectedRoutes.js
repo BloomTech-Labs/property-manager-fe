@@ -43,7 +43,7 @@ function ProtectedRoutes({ token, userType }) {
           <CreateTenant path="tenants/add" />
           <EditTenant path="tenants/edit/:id" />
 
-          <WorkOrders path="workorders" />
+          <WorkOrders path="properties/workorders" />
         </Dashboard>
       </Router>
     );

@@ -1,6 +1,10 @@
+// React
 import React from 'react';
+// Style & classnames
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+// MUI Components
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,18 +12,25 @@ import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+
+// MUI Icons
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
+import BuildIcon from '@material-ui/icons/Build';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+// Reach Router
 import { navigate } from '@reach/router';
+
+// Logo
 import logo from '../../../assets/img/logo-cropped.png';
 
 const drawerWidth = 240;
@@ -183,6 +194,16 @@ function SideNav() {
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Tenants" />
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => navigate('/dashboard/properties/workorders')}
+          >
+            <ListItemIcon>
+              <BuildIcon />
+            </ListItemIcon>
+            <ListItemText primary="Work Orders" />
           </ListItem>
 
           <div>
