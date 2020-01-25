@@ -80,28 +80,32 @@ export default function FloatingActions() {
     ];
   }
 
-  return (
-    <SpeedDial
-      ariaLabel="Action menu toggle"
-      className={classes.speedDial}
-      icon={<SpeedDialIcon />}
-      onClose={handleClose}
-      onOpen={handleOpen}
-      direction="up"
-      open={open}
-    >
-      {actions.map(action => (
-        <SpeedDialAction
-          className={classes.icons}
-          key={action.name}
-          icon={action.icon}
-          tooltipTitle={action.name}
-          onClick={() => {
-            navigate(action.path);
-            handleClose();
-          }}
-        />
-      ))}
-    </SpeedDial>
-  );
+  if (actions.length > 0) {
+    return (
+      <SpeedDial
+        ariaLabel="Action menu toggle"
+        className={classes.speedDial}
+        icon={<SpeedDialIcon />}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        direction="up"
+        open={open}
+      >
+        {actions.map(action => (
+          <SpeedDialAction
+            className={classes.icons}
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={() => {
+              navigate(action.path);
+              handleClose();
+            }}
+          />
+        ))}
+      </SpeedDial>
+    );
+  }
+
+  return null;
 }
