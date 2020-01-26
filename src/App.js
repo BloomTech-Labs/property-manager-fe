@@ -28,9 +28,6 @@ const App = () => {
   }
 
   const token = getToken();
-  console.log(token);
-
-  // const userType = getType()
 
   const userType = useSelector(state => state.getUserReducer.user.type);
   console.log(userType, 'this is from useSelector');

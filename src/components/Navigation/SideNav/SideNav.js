@@ -1,5 +1,9 @@
 // React
 import React from 'react';
+
+// Redux
+import { useSelector } from 'react-redux';
+
 // Style & classnames
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -111,6 +115,9 @@ function SideNav() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
+  // Subscribe to user state
+  const userType = useSelector(state => state.getUserReducer.user.type);
+
   const handleLogout = () => {
     window.localStorage.removeItem('token');
     navigate('/');
@@ -182,19 +189,32 @@ function SideNav() {
             <ListItemText primary="Profile" />
           </ListItem>
 
-          <ListItem button onClick={() => navigate('/dashboard/properties')}>
-            <ListItemIcon>
-              <HomeWorkIcon />
-            </ListItemIcon>
-            <ListItemText primary="Properties" />
-          </ListItem>
+          {userType === 'landlord' ? (
+            <ListItem button onClick={() => navigate('/dashboard/properties')}>
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="Properties" />
+            </ListItem>
+          ) : null}
 
-          <ListItem button onClick={() => navigate('/dashboard/tenants')}>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tenants" />
-          </ListItem>
+          {userType === 'tenant' ? (
+            <ListItem button onClick={() => navigate('/dashboard/property')}>
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Property" />
+            </ListItem>
+          ) : null}
+
+          {userType === 'landlord' ? (
+            <ListItem button onClick={() => navigate('/dashboard/tenants')}>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tenants" />
+            </ListItem>
+          ) : null}
 
           <ListItem button onClick={() => navigate('/dashboard/workorders')}>
             <ListItemIcon>
