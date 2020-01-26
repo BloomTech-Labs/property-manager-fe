@@ -54,6 +54,7 @@ function ProtectedRoutes({ token, userType }) {
         <TenantDashboard path="/">
           <Overview path="/" />
           <Profile path="profile" />
+          <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
         </TenantDashboard>
       </Router>

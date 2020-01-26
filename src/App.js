@@ -30,7 +30,6 @@ const App = () => {
   const token = getToken();
 
   const userType = useSelector(state => state.getUserReducer.user.type);
-  console.log(userType, 'this is from useSelector');
 
   const dispatch = useDispatch();
   useEffect(() => {
