@@ -21,6 +21,9 @@ export default function workOrderReducer(
   action = { type: 'Not Valid' }
 ) {
   switch (action.type) {
+    // WORKORDERS ==========================|
+    // =====================================|
+    // GET_WORK_ORDERS ---------------------|
     case GET_WORK_ORDERS_START: {
       return {
         ...state,
@@ -41,6 +44,8 @@ export default function workOrderReducer(
         workOrders: action.payload.workOrders
       };
     }
+    // -------------------------------------|
+    // ADD_WORK_ORDER ----------------------|
     case ADD_WORK_ORDER_START: {
       return {
         ...state,
@@ -61,6 +66,8 @@ export default function workOrderReducer(
         workOrders: action.payload.workOrders
       };
     }
+    // -------------------------------------|
+    // UPDATE_WORK_ORDER -------------------|
     case UPDATE_WORK_ORDER_START: {
       return {
         ...state,
@@ -81,6 +88,7 @@ export default function workOrderReducer(
         workOrders: action.payload.workOrders
       };
     }
+    // -------------------------------------|
     default:
       return state;
   }

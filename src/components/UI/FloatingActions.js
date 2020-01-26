@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { navigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
@@ -29,20 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // define an array of actions
-const actions = [
-  {
-    icon: <FaBuilding />,
-    name: 'Add Property',
-    path: '/dashboard/properties/add'
-  },
-  { icon: <FaUserPlus />, name: 'Add Tenant' },
-  {
-    icon: <FaHammer />,
-    name: 'Add Work Order',
-    path: 'dashboard/properties/workOrderLandlord'
-  },
-  { icon: <FaUserCircle />, name: 'Update User Profile' }
-];
+let actions = [];
 
 // Floating Action Btn Component
 export default function FloatingActions() {
@@ -51,6 +39,10 @@ export default function FloatingActions() {
 
   // open/close state of the menu
   const [open, setOpen] = React.useState(false);
+
+  // bring in userType from state
+  const { type } = useSelector(state => state.getUserReducer.user);
+  const userType = type;
 
   // open action menu
   const handleOpen = () => {
@@ -62,28 +54,62 @@ export default function FloatingActions() {
     setOpen(false);
   };
 
-  return (
-    <SpeedDial
-      ariaLabel="Action menu toggle"
-      className={classes.speedDial}
-      icon={<SpeedDialIcon />}
-      onClose={handleClose}
-      onOpen={handleOpen}
-      direction="up"
-      open={open}
-    >
-      {actions.map(action => (
-        <SpeedDialAction
-          className={classes.icons}
-          key={action.name}
-          icon={action.icon}
-          tooltipTitle={action.name}
-          onClick={() => {
-            navigate(action.path);
-            handleClose();
-          }}
-        />
-      ))}
-    </SpeedDial>
-  );
+  // Setup conditional actions
+  // Landlord FAB actions:
+  if (userType === 'landlord') {
+    actions = [
+      {
+        icon: <FaBuilding />,
+        name: 'Add Property',
+        path: '/dashboard/properties/add'
+      },
+      { icon: <FaUserPlus />, name: 'Add Tenant' },
+      {
+        icon: <FaHammer />,
+        name: 'Add Work Order',
+        path: '/dashboard/workorders/add'
+      },
+      { icon: <FaUserCircle />, name: 'Update User Profile' }
+    ];
+  }
+
+  // Tenant FAB actions:
+  if (userType === 'tenant') {
+    actions = [
+      {
+        icon: <FaHammer />,
+        name: 'Add Work Order',
+        path: '/dashboard/workorders/add'
+      }
+    ];
+  }
+
+  if (actions.length > 0) {
+    return (
+      <SpeedDial
+        ariaLabel="Action menu toggle"
+        className={classes.speedDial}
+        icon={<SpeedDialIcon />}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        direction="up"
+        open={open}
+      >
+        {actions.map(action => (
+          <SpeedDialAction
+            className={classes.icons}
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={() => {
+              navigate(action.path);
+              handleClose();
+            }}
+          />
+        ))}
+      </SpeedDial>
+    );
+  }
+
+  return null;
 }

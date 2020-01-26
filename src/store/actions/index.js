@@ -2,6 +2,7 @@
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
+import { navigate } from '@reach/router';
 import axiosAuth from '../../helpers/axiosAuth';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
@@ -91,7 +92,7 @@ export const auth = url => (email, password, type) => async dispatch => {
     });
 
     localStorage.setItem('token', res.data.token);
-    localStorage.setItem('userType', res.data.user.type)
+    localStorage.setItem('userType', res.data.user.type);
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
@@ -295,6 +296,7 @@ export const getUserInfo = () => async dispatch => {
       }
     });
   } catch (err) {
+    navigate('/');
     dispatch({ type: GET_USER_FAIL, payload: { errMsg: err } });
   }
 };
@@ -327,12 +329,13 @@ export const editUserInfo = user => async dispatch => {
 export const getWorkOrders = property => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    const res = 'test';
-    console.log(res);
+    // TODO: Resolve 500 Internal Server Error when
+    // requesting list of workorders
+    const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
       payload: {
-        workOrders: res
+        workOrders: res.data
       }
     });
   } catch (err) {
@@ -341,15 +344,15 @@ export const getWorkOrders = property => async dispatch => {
 };
 // ------------------------------------------------|
 // eslint-disable-next-line no-unused-vars
-export const addWorkOrder = (property, workOrder) => async dispatch => {
+export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
-    const res = 'test';
-    console.log(res);
+    const res = await axiosAuth().post(`${baseUrl}/workorders`, workOrder);
+    console.log(res.data);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {
-        workOrders: res
+        workOrders: res.data
       }
     });
   } catch (err) {
@@ -361,7 +364,7 @@ export const addWorkOrder = (property, workOrder) => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = 'test';
+    const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
     console.log(res);
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,

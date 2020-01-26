@@ -1,8 +1,12 @@
 import React from 'react';
+// PropTypes
+import PropTypes from 'prop-types';
+// MUI
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ErrorIcon from '@material-ui/icons/Error';
+// Components
 import TenantCard from './TenantCard';
-import ProfileSVG from '../SVG/ProfileSVG';
+// SVGs
 import ErrorSVG from '../SVG/ErrorSVG';
 import AddHouse from '../SVG/AddHouseSVG';
 
@@ -35,3 +39,9 @@ const AddTenantCard = ({ isLoading, tenantNum, error }) => {
 };
 
 export default AddTenantCard;
+
+AddTenantCard.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  tenantNum: PropTypes.number.isRequired,
+  error: PropTypes.bool.isRequired
+};

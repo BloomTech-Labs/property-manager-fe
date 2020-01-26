@@ -4,14 +4,7 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  makeStyles,
-  CircularProgress
-} from '@material-ui/core';
+import { makeStyles, CircularProgress } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
 import MuiModal from '../UI/MuiModal';
 
@@ -42,6 +35,7 @@ export default function ProfileForm({
   opened,
   close
 }) {
+  // eslint-disable-next-line no-unused-vars
   const classes = useStyles();
 
   const initialValues = { firstName: '', lastName: '', phone: '' };
