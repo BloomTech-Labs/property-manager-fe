@@ -11,7 +11,7 @@ import { VertNav } from '../../components/Navigation/navigation';
 import SideNav from '../../components/Navigation/SideNav/SideNav';
 import FloatingActions from '../../components/UI/FloatingActions';
 import PropmanTheme from '../../theme/PropmanTheme';
-import { getProperties } from '../../store/actions';
+import { getProperties, getWorkOrders } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,6 +31,7 @@ function TenantDashboard(props) {
   // useEffect for initial get properties dispatch
   useEffect(() => {
     dispatch(getProperties());
+    dispatch(getWorkOrders());
   }, [dispatch]);
 
   return (

@@ -326,11 +326,9 @@ export const editUserInfo = user => async dispatch => {
 // Disabled eslint for unused vars, assuming this needs
 // to be adjusted when the endpoint is available.
 // eslint-disable-next-line no-unused-vars
-export const getWorkOrders = property => async dispatch => {
+export const getWorkOrders = () => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    // TODO: Resolve 500 Internal Server Error when
-    // requesting list of workorders
     const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
