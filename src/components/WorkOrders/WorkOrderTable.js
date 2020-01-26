@@ -38,7 +38,7 @@ export default function WorkOrderTable({ workOrderList }) {
           </TableHead>
           <TableBody>
             {workOrderList.map(workOrder => (
-              <TableRow key={workOrder.title}>
+              <TableRow key={workOrder.id}>
                 <TableCell component="th" scope="row">
                   {workOrder.title}
                 </TableCell>
