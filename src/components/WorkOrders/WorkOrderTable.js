@@ -37,19 +37,35 @@ export default function WorkOrderTable({ workOrderList }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {workOrderList.map(workOrder => (
-              <TableRow key={workOrder.id}>
-                <TableCell component="th" scope="row">
-                  {workOrder.title}
-                </TableCell>
-                <TableCell align="right">{workOrder.description}</TableCell>
-                <TableCell align="right">{workOrder.type}</TableCell>
-                <TableCell align="right">{workOrder.startDate}</TableCell>
-                <TableCell align="right">{workOrder.endDate}</TableCell>
-                <TableCell align="right">{workOrder.propertyId}</TableCell>
-                <TableCell align="right">{workOrder.createdBy}</TableCell>
-              </TableRow>
-            ))}
+            {workOrderList.map(workOrder => {
+              const {
+                id,
+                title,
+                description,
+                type,
+                startDate,
+                endDate,
+                propertyId,
+                createdBy
+              } = workOrder;
+
+              const formatDate = date => date && new Date(date).toDateString();
+              return (
+                <TableRow key={id}>
+                  <TableCell component="th" scope="row">
+                    {title}
+                  </TableCell>
+                  <TableCell align="right">{description}</TableCell>
+                  <TableCell align="right">{type}</TableCell>
+                  <TableCell align="right">{formatDate(startDate)}</TableCell>
+                  <TableCell align="right">
+                    {endDate ? formatDate(endDate) : 'Not Set'}
+                  </TableCell>
+                  <TableCell align="right">{propertyId}</TableCell>
+                  <TableCell align="right">{createdBy}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
