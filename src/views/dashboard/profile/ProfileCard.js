@@ -38,7 +38,6 @@ export default function ProfileCard() {
   };
 
   const submit = values => {
-    console.log(values);
     dispatch(editUserInfo(values));
   };
   if (currentUser.firstName == null) {

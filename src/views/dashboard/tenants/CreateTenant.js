@@ -30,9 +30,6 @@ export default function CreateTenant() {
         )
       )
     );
-
-    // eslint-disable-next-line no-console
-    console.log(tenant);
   };
 
   return (

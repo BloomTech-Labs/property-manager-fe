@@ -29,10 +29,6 @@ const Tenants = () => {
     // set currentTenant state to the property obj
     setCurrentTenant(tenant);
     setCurrentProperty(property);
-
-    // console.log(currentTenant);
-    // console.log(currentProperty);
-
     setOpenDetails(true);
   };
 

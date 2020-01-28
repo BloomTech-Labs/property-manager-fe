@@ -78,8 +78,6 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_PROPERTIES_SUCCESS: {
-      // console.log(action.payload);
-
       return {
         ...state,
         isGettingProperties: false,
