@@ -126,6 +126,13 @@ export default function PropertyDetailsModal({ property, open, close }) {
           >
             Add Tenant
           </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => navigate(`properties/${id}`)}
+          >
+            View Property
+          </Button>
         </CardContent>
       </Card>
     </MuiModal>
