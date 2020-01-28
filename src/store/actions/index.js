@@ -322,15 +322,10 @@ export const editUserInfo = user => async dispatch => {
 // WORD ORDER ACTIONS =============================|
 // ================================================|
 // ------------------------------------------------|
-// TODO: Resolve Unused Variables!
-// Disabled eslint for unused vars, assuming this needs
-// to be adjusted when the endpoint is available.
 // eslint-disable-next-line no-unused-vars
-export const getWorkOrders = property => async dispatch => {
+export const getWorkOrders = () => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    // TODO: Resolve 500 Internal Server Error when
-    // requesting list of workorders
     const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
@@ -348,7 +343,6 @@ export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
     const res = await axiosAuth().post(`${baseUrl}/workorders`, workOrder);
-    console.log(res.data);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {

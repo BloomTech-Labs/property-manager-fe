@@ -41,12 +41,8 @@ const App = () => {
   const userType = getType();
 =======
   const token = getToken();
-  console.log(token);
-
-  // const userType = getType()
 
   const userType = useSelector(state => state.getUserReducer.user.type);
-  console.log(userType, 'this is from useSelector');
 
   const dispatch = useDispatch();
   useEffect(() => {

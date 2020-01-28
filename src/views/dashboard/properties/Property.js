@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 // MUI
 import Typography from '@material-ui/core/Typography';
@@ -21,6 +22,8 @@ import PersonIcon from '@material-ui/icons/Person';
 import { navigate } from '@reach/router';
 // SVG
 import LocationSVG from '../../../components/SVG/LocationSVG';
+// Components
+import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 // Actions
 import { getProperty, getTenantsByResidence } from '../../../store/actions';
 
@@ -58,7 +61,7 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(2)
     }
   },
-  tenantInfo: {
+  cardContent: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -78,7 +81,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  btn: {}
+  btn: {
+    margin: theme.spacing(2)
+  }
 }));
 
 export default function Property({ id }) {
@@ -91,8 +96,12 @@ export default function Property({ id }) {
     state => state.propReducer.currentPropertyTenants
   );
 
-  console.log(tenants);
+  const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
+  const filterWorkOrders = workOrderList.filter(
+    workOrder => workOrder.propertyId === property.id
+  );
+  console.log(filterWorkOrders);
   const { name, street, city, state, zip } = property;
 
   React.useEffect(() => {
@@ -100,59 +109,82 @@ export default function Property({ id }) {
     dispatch(getTenantsByResidence(id));
   }, [dispatch, id]);
 
-  return (
-    <Card className={classes.card}>
-      <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
-      <CardMedia className={classes.media}>
-        <LocationSVG />
-      </CardMedia>
-      <Divider />
-      <Grid justify="center" container>
-        <CardContent className={classes.address}>
-          <PinDropIcon />
+  if (id) {
+    return (
+      <Card className={classes.card}>
+        <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
+        <CardMedia className={classes.media}>
+          <LocationSVG />
+        </CardMedia>
+        <Divider />
+        <Grid justify="center" container>
+          <CardContent className={classes.address}>
+            <PinDropIcon />
+            <div>
+              <Typography variant="body1">{street}</Typography>
+              <Typography variant="body1">
+                {city}, {state}, {zip}
+              </Typography>
+            </div>
+          </CardContent>
+        </Grid>
+        <Divider />
+        <CardContent className={classes.cardContent}>
+          <h3 style={{ textAlign: 'center' }}>Tenants:</h3>
           <div>
-            <Typography variant="body1">{street}</Typography>
-            <Typography variant="body1">
-              {city}, {state}, {zip}
-            </Typography>
+            {tenants.length === 0 && <h5>No tenants for this property.</h5>}
+            <List className={classes.list}>
+              {tenants.map(tenant => {
+                return (
+                  <React.Fragment key={tenant.id}>
+                    <Divider />
+                    <ListItem
+                      button
+                      className={classes.listItem}
+                      onClick={() =>
+                        navigate(`/dashboard/tenants/${tenant.id}`)
+                      }
+                    >
+                      <ListItemIcon>
+                        <PersonIcon />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={`${tenant.firstName} ${tenant.lastName}`}
+                      />
+                    </ListItem>
+                  </React.Fragment>
+                );
+              })}
+            </List>
           </div>
+          <Button
+            className={classes.btn}
+            color="primary"
+            variant="contained"
+            onClick={() => navigate('/dashboard/tenants/add')}
+          >
+            Add Tenant
+          </Button>
         </CardContent>
-      </Grid>
-      <Divider />
-      <CardContent className={classes.tenantInfo}>
-        <h3 style={{ textAlign: 'center' }}>Tenants:</h3>
-        <div>
-          <List className={classes.list}>
-            {tenants.map(tenant => {
-              return (
-                <React.Fragment key={tenant.id}>
-                  <Divider />
-                  <ListItem
-                    button
-                    className={classes.listItem}
-                    onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
-                  >
-                    <ListItemIcon>
-                      <PersonIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={`${tenant.firstName} ${tenant.lastName}`}
-                    />
-                  </ListItem>
-                </React.Fragment>
-              );
-            })}
-          </List>
-        </div>
-        <Button
-          className={classes.btn}
-          color="primary"
-          variant="contained"
-          onClick={() => navigate('/dashboard/tenants/add')}
-        >
-          Add Tenant
-        </Button>
-      </CardContent>
-    </Card>
-  );
+        <Divider />
+        <CardContent className={classes.cardContent}>
+          <h3 style={{ textAlign: 'center' }}>Work Orders:</h3>
+          <WorkOrderTable workOrderList={filterWorkOrders} />
+          <Button
+            className={classes.btn}
+            color="primary"
+            variant="contained"
+            onClick={() => navigate('/dashboard/workorders/add')}
+          >
+            Add Work Order
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return navigate('/dashboard');
 }
+Property.propTypes = {
+  id: PropTypes.string.isRequired
+};
