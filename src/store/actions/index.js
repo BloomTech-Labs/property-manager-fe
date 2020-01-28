@@ -95,7 +95,6 @@ export const auth = url => (email, password, type) => async dispatch => {
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
-    console.log(err.response.data.message);
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
 };
