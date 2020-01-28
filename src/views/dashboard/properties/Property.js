@@ -101,7 +101,6 @@ export default function Property({ id }) {
   const filterWorkOrders = workOrderList.filter(
     workOrder => workOrder.propertyId === property.id
   );
-  console.log(filterWorkOrders);
   const { name, street, city, state, zip } = property;
 
   React.useEffect(() => {
