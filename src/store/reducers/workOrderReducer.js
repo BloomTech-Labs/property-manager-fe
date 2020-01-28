@@ -89,6 +89,9 @@ export default function workOrderReducer(
       };
     }
     // -------------------------------------|
+    case 'LOGOUT': {
+      return initialState;
+    }
     default:
       return state;
   }
