@@ -104,8 +104,6 @@ const WorkOrderForm = () => {
           }}
         >
           {({ errors, isSubmitting }) => {
-            // console.log(errors, touched, isSubmitting);
-
             return (
               <Form>
                 <Grid container justify="space-evenly">
