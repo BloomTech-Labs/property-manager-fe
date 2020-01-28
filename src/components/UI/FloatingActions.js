@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 let actions = [];
 
 // Floating Action Btn Component
-export default function FloatingActions() {
+export default function FloatingActions(props) {
   // bring in styling
   const classes = useStyles();
 

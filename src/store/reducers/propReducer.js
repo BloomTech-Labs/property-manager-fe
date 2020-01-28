@@ -265,6 +265,9 @@ export default function propReducer(state = initialState, action) {
         errMsg: action.payload.errMsg
       };
     }
+    case 'LOGOUT': {
+      return initialState;
+    }
     default:
       return state;
     // -------------------------------------|
