@@ -27,19 +27,6 @@ const App = () => {
     }
   }
 
-<<<<<<< HEAD
-  function getType() {
-    try {
-      const userType = localStorage.getItem('userType')
-      return userType;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  }
-  const token = getToken();
-  const userType = getType();
-=======
   const token = getToken();
 
   const userType = useSelector(state => state.getUserReducer.user.type);
@@ -48,7 +35,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getUserInfo());
   }, [dispatch]);
->>>>>>> cebe74d31018922306650a256dc76608d104d781
 
   return (
     <BreakpointProvider>
