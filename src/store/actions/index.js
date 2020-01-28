@@ -99,6 +99,7 @@ export const auth = url => (email, password, type) => async dispatch => {
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
 };
+
 // ------------------------------------------------|
 // PROPERTY CREATORS ==============================|
 // ================================================|
