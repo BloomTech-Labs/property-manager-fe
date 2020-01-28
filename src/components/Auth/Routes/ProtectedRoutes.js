@@ -17,8 +17,7 @@ import EditTenant from '../../../views/dashboard/tenants/EditTenant';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
-import TenantWorkOrderForm from '../../WorkorderForm/TenantWorkOrderForm';
-import LandlordWorkOrderForm from '../../WorkorderForm/LandlordWorkOrderForm';
+import WorkOrderForm from '../../WorkOrderForm/WorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 
@@ -35,8 +34,6 @@ function ProtectedRoutes({ token, userType }) {
           <Property path="properties/:id" />
           <CreateProperty path="properties/add" />
           <EditProperty path="properties/edit/:id" />
-          <TenantWorkOrderForm path="properties/workOrderTenant" />
-          <LandlordWorkOrderForm path="properties/workOrderLandlord" />
 
           <Tenants path="tenants" />
           <Tenant path="tenants/:id" />
@@ -44,6 +41,7 @@ function ProtectedRoutes({ token, userType }) {
           <EditTenant path="tenants/edit/:id" />
 
           <WorkOrders path="workorders" />
+          <WorkOrderForm path="workorders/add" />
         </Dashboard>
       </Router>
     );
@@ -56,7 +54,7 @@ function ProtectedRoutes({ token, userType }) {
         <TenantDashboard path="/" userType={props.userType}>
           <Overview path="/" />
           <Profile path="profile" />
-          <TenantWorkOrderForm path="properties/workOrderTenant" />
+          <WorkOrderForm path="workorders/add" />
         </TenantDashboard>
       </Router>
     );
