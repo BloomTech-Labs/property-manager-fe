@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 let actions = [];
 
 // Floating Action Btn Component
-export default function FloatingActions(props) {
+export default function FloatingActions() {
   // bring in styling
   const classes = useStyles();
 
@@ -63,13 +63,21 @@ export default function FloatingActions(props) {
         name: 'Add Property',
         path: '/dashboard/properties/add'
       },
-      { icon: <FaUserPlus />, name: 'Add Tenant' },
+      {
+        icon: <FaUserPlus />,
+        name: 'Add Tenant',
+        path: '/dashboard/tenants/add'
+      },
       {
         icon: <FaHammer />,
         name: 'Add Work Order',
         path: '/dashboard/workorders/add'
       },
-      { icon: <FaUserCircle />, name: 'Update User Profile' }
+      {
+        icon: <FaUserCircle />,
+        name: 'User Profile',
+        path: '/dashboard/profile'
+      }
     ];
   }
 
@@ -80,6 +88,11 @@ export default function FloatingActions(props) {
         icon: <FaHammer />,
         name: 'Add Work Order',
         path: '/dashboard/workorders/add'
+      },
+      {
+        icon: <FaUserCircle />,
+        name: 'User Profile',
+        path: '/dashboard/profile'
       }
     ];
   }
