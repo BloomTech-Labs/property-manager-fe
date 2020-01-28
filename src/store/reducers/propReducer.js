@@ -78,8 +78,6 @@ export default function propReducer(state = initialState, action) {
       };
     }
     case GET_PROPERTIES_SUCCESS: {
-      // console.log(action.payload);
-
       return {
         ...state,
         isGettingProperties: false,
@@ -264,6 +262,9 @@ export default function propReducer(state = initialState, action) {
         isGettingTenant: false,
         errMsg: action.payload.errMsg
       };
+    }
+    case 'LOGOUT': {
+      return initialState;
     }
     default:
       return state;

@@ -1,5 +1,9 @@
 // React
 import React from 'react';
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+
 // Style & classnames
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -32,6 +36,8 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo-cropped.png';
+import ListLandlord from './ListLandlord';
+import ListTenant from './ListTenant';
 
 const drawerWidth = 240;
 
@@ -106,13 +112,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SideNav() {
+function SideNav(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const dispatch = useDispatch();
+
+  // Subscribe to user state
+  const userType = useSelector(state => state.getUserReducer.user.type);
 
   const handleLogout = () => {
-    window.localStorage.removeItem('token');
+    dispatch({ type: 'LOGOUT' });
+    window.localStorage.clear();
     navigate('/');
   };
 
@@ -182,19 +193,32 @@ function SideNav() {
             <ListItemText primary="Profile" />
           </ListItem>
 
-          <ListItem button onClick={() => navigate('/dashboard/properties')}>
-            <ListItemIcon>
-              <HomeWorkIcon />
-            </ListItemIcon>
-            <ListItemText primary="Properties" />
-          </ListItem>
+          {userType === 'landlord' ? (
+            <ListItem button onClick={() => navigate('/dashboard/properties')}>
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="Properties" />
+            </ListItem>
+          ) : null}
 
-          <ListItem button onClick={() => navigate('/dashboard/tenants')}>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tenants" />
-          </ListItem>
+          {userType === 'tenant' ? (
+            <ListItem button onClick={() => navigate('/dashboard/property')}>
+              <ListItemIcon>
+                <HomeWorkIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Property" />
+            </ListItem>
+          ) : null}
+
+          {userType === 'landlord' ? (
+            <ListItem button onClick={() => navigate('/dashboard/tenants')}>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tenants" />
+            </ListItem>
+          ) : null}
 
           <ListItem button onClick={() => navigate('/dashboard/workorders')}>
             <ListItemIcon>

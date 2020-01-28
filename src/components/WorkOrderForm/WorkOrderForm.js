@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { navigate } from '@reach/router';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -20,7 +20,7 @@ import { makeStyles } from '@material-ui/core';
 import { MdSend } from 'react-icons/md';
 
 // Redux Actions
-import { addWorkOrder } from '../../store/actions/index';
+import { addWorkOrder, getWorkOrders } from '../../store/actions/index';
 
 // Styling
 const useStyles = makeStyles(theme => ({
@@ -46,9 +46,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // YUP Validation schema
-const validationSchema = Yup.object().shape({
+const validationSchemaLandlord = Yup.object().shape({
   title: Yup.string().required('Add a short description for your work order'),
   propertyId: Yup.string().required('Select a property'),
+  description: Yup.string().required('Add some details about your work order'),
+  type: Yup.string().required('Work order type is required')
+});
+
+const validationSchemaTenant = Yup.object().shape({
+  title: Yup.string().required('Add a short description for your work order'),
   description: Yup.string().required('Add some details about your work order'),
   type: Yup.string().required('Work order type is required')
 });
@@ -61,7 +67,9 @@ const WorkOrderForm = () => {
 
   // Submit Fn
   const submit = values => {
-    dispatch(addWorkOrder(values));
+    dispatch(addWorkOrder(values)).then(() =>
+      dispatch(getWorkOrders()).then(() => navigate('/dashboard/workorders'))
+    );
   };
 
   // Subscribe to user state
@@ -77,7 +85,7 @@ const WorkOrderForm = () => {
         <h2 className={classes.formTitle}>Create a Work Order</h2>
         <Formik
           enableReinitialize
-          validationSchema={validationSchema}
+          validationSchema={validationSchemaLandlord}
           initialValues={{
             title: '',
             propertyId: '',
@@ -96,8 +104,6 @@ const WorkOrderForm = () => {
           }}
         >
           {({ errors, isSubmitting }) => {
-            // console.log(errors, touched, isSubmitting);
-
             return (
               <Form>
                 <Grid container justify="space-evenly">
@@ -202,7 +208,7 @@ const WorkOrderForm = () => {
         <h2 className={classes.formTitle}>Create a Work Order</h2>
         <Formik
           enableReinitialize
-          validationSchema={validationSchema}
+          validationSchema={validationSchemaTenant}
           initialValues={{
             title: '',
             description: '',
@@ -211,17 +217,10 @@ const WorkOrderForm = () => {
           }}
           resetForm
           onSubmit={values => {
-            return new Promise(resolve => {
-              setTimeout(() => {
-                submit(values);
-                resolve();
-              }, 2000);
-            });
+            submit(values);
           }}
         >
           {({ errors, isSubmitting }) => {
-            // console.log(errors, touched, isSubmitting);
-
             return (
               <Form>
                 <Grid container justify="space-evenly">

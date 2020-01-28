@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // IMPORTS/INITIALIZATION =========================|
 // ================================================|
 import axios from 'axios';
@@ -96,9 +95,11 @@ export const auth = url => (email, password, type) => async dispatch => {
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
+    console.log(err.response.data.message);
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }
 };
+
 // ------------------------------------------------|
 // PROPERTY CREATORS ==============================|
 // ================================================|
@@ -117,8 +118,6 @@ export const createProperty = property => {
         }
       });
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
       dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
     }
   };
@@ -208,8 +207,6 @@ export const getTenantById = id => async dispatch => {
 
   try {
     const res = await axiosAuth().get(`${baseUrl}/tenants/${id}`);
-    console.log(res.data);
-
     dispatch({
       type: GET_TENANT_ID_SUCCESS,
       payload: res.data
@@ -261,9 +258,6 @@ export const getTenantsByResidence = residenceId => {
       const res = await axiosAuth().get(
         `${baseUrl}/properties/${residenceId}/tenants`
       );
-
-      console.log(res);
-
       dispatch({
         type: GET_TENANTS_RESIDENCE_SUCCESS,
         payload: res.data
@@ -286,9 +280,6 @@ export const getUserInfo = () => async dispatch => {
 
   try {
     const res = await axiosAuth().get(`${baseUrl}/users/me`);
-
-    console.log(res.data);
-
     dispatch({
       type: GET_USER_SUCCESS,
       payload: {
@@ -306,8 +297,6 @@ export const editUserInfo = user => async dispatch => {
 
   try {
     const res = await axiosAuth().put(`${baseUrl}/users/me`, user);
-
-    console.log(res.data);
     dispatch({
       type: EDIT_USER_SUCCESS,
       payload: {
@@ -322,15 +311,10 @@ export const editUserInfo = user => async dispatch => {
 // WORD ORDER ACTIONS =============================|
 // ================================================|
 // ------------------------------------------------|
-// TODO: Resolve Unused Variables!
-// Disabled eslint for unused vars, assuming this needs
-// to be adjusted when the endpoint is available.
 // eslint-disable-next-line no-unused-vars
-export const getWorkOrders = property => async dispatch => {
+export const getWorkOrders = () => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    // TODO: Resolve 500 Internal Server Error when
-    // requesting list of workorders
     const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
@@ -348,7 +332,6 @@ export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
     const res = await axiosAuth().post(`${baseUrl}/workorders`, workOrder);
-    console.log(res.data);
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {
@@ -365,7 +348,6 @@ export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
     const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
-    console.log(res);
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,
       payload: {

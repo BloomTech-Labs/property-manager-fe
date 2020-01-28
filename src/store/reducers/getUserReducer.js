@@ -60,6 +60,9 @@ export default function getUserReducer(
         errorMessage: action.payload.errMsg
       };
     }
+    case 'LOGOUT': {
+      return initialState;
+    }
     default:
       return state;
   }

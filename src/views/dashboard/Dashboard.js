@@ -37,7 +37,6 @@ function Dashboard(props) {
     // set timeout to show place holder cards
     // dispatch the getProperties action
     dispatch(getProperties());
-    dispatch(getWorkOrders());
     dispatch(getTenants());
     dispatch(getUserInfo());
     dispatch(getWorkOrders());

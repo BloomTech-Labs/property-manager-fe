@@ -8,7 +8,7 @@ import { NavBurger, BurgerMenu } from '../UI';
 import logo from '../../assets/img/logo.png';
 import { ReactComponent as Avi } from '../../assets/img/user-solid.svg';
 // import LoginForm from 'LoginForm/LoginForm';
-import { auth } from '../../store/actions';
+import { auth, getUserInfo } from '../../store/actions';
 import { useOnClickOutside } from '../../hooks/index';
 import { AuthFlip } from '../Auth/AuthFlip';
 import { useModal } from '../../hooks/useModal';
@@ -27,7 +27,7 @@ export const HorNav = () => {
   const loginFn = useCallback(
     ({ email, password }) =>
       dispatch(login(email, password))
-        .then(() => navigate('/dashboard'))
+        .then(() => dispatch(getUserInfo()).then(() => navigate('/dashboard')))
         // eslint-disable-next-line no-console
         .catch(err => console.error(err)),
     [dispatch]
@@ -36,7 +36,7 @@ export const HorNav = () => {
   const signupFn = useCallback(
     ({ email, password, userType: type }) =>
       dispatch(signup(email, password, type))
-        .then(() => navigate('/dashboard'))
+        .then(() => dispatch(getUserInfo()).then(() => navigate('/dashboard')))
         // eslint-disable-next-line no-console
         .catch(err => console.error(err)),
     [dispatch]

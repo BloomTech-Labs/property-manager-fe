@@ -63,13 +63,21 @@ export default function FloatingActions() {
         name: 'Add Property',
         path: '/dashboard/properties/add'
       },
-      { icon: <FaUserPlus />, name: 'Add Tenant' },
+      {
+        icon: <FaUserPlus />,
+        name: 'Add Tenant',
+        path: '/dashboard/tenants/add'
+      },
       {
         icon: <FaHammer />,
         name: 'Add Work Order',
         path: '/dashboard/workorders/add'
       },
-      { icon: <FaUserCircle />, name: 'Update User Profile' }
+      {
+        icon: <FaUserCircle />,
+        name: 'User Profile',
+        path: '/dashboard/profile'
+      }
     ];
   }
 
@@ -80,6 +88,11 @@ export default function FloatingActions() {
         icon: <FaHammer />,
         name: 'Add Work Order',
         path: '/dashboard/workorders/add'
+      },
+      {
+        icon: <FaUserCircle />,
+        name: 'User Profile',
+        path: '/dashboard/profile'
       }
     ];
   }
