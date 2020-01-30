@@ -129,8 +129,10 @@ export const getProperties = () => async dispatch => {
   try {
     const res = await axiosAuth().get(`${baseUrl}/properties`);
 
+    const localProperties = JSON.stringify(res.data);
+
     if (res.data.length) {
-      localStorage.setItem('properties', res.data);
+      localStorage.setItem('properties', localProperties);
     }
 
     dispatch({
