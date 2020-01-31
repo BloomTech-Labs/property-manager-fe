@@ -38,7 +38,12 @@
     .front-page-adv {
         text-align: left;
         margin-bottom: 15px;
-        color:#34ebc0
+        color:#34ebc0;
+
+        svg {
+            width: 30px;
+            padding-right: 8px;
+        }
     }
 
 }
