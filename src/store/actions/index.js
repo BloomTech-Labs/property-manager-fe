@@ -228,7 +228,7 @@ export const getTenants = () => {
   };
 };
 // ------------------------------------------------|
-// GET TENANT -----------------------------------|
+// GET TENANT -------------------------------------|
 // Takes in the tenant id to pass in as a url
 // parameter for endpoint
 export const getTenantById = id => async dispatch => {
@@ -245,7 +245,7 @@ export const getTenantById = id => async dispatch => {
   }
 };
 // ------------------------------------------------|
-// EDIT TENANT ----------------------------------|
+// EDIT TENANT ------------------------------------|
 export const editTenant = (id, tenant) => {
   return async dispatch => {
     dispatch({ type: EDIT_TENANT_START });
