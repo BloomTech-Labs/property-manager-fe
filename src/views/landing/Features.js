@@ -89,46 +89,46 @@ export default () => {
         <TabPanel value={value} index={1}>
           <p>The app provides a portal for both Landlord and Tenant </p>
           <p>Property owner/manager can :</p>
-          <lo>
+          <ol>
             <li>Login</li>
             <li>Create login for Tenants</li>
             <li>Review work orders and Manage maintenance</li>
             <li> Advertising their property and collect online payments</li>
-          </lo>
+          </ol>
           <p>Tenant can :</p>
-          <lo>
+          <ol>
             <li>Login</li>
             <li>Pay online</li>
             <li>Send work orders and follow-up maintenance</li>
             <li>Apply and file rental application</li>
-          </lo>
+          </ol>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <p>Leasing is quite easy with PropMan app.</p>
-          <lo>
+          <ol>
             <li>Online application</li>
             <li>Background checking</li>
             <li>File protection and organization</li>
             <li>Alert on Lease expiration and renewal</li>
-          </lo>
+          </ol>
         </TabPanel>
         <TabPanel value={value} index={3}>
           <p>Billing and payment with PropMan provides</p>
-          <lo>
+          <ol>
             <li>Online Payment</li>
             <li>Split payment</li>
             <li>Easy payment collection</li>
             <li>Alert payment due date</li>
-          </lo>
+          </ol>
         </TabPanel>
         <TabPanel value={value} index={4}>
           <p>Task management is the priority of PropMan</p>
-          <lo>
+          <ol>
             <li>Online maintenance request</li>
             <li>Identify maintenance emergency</li>
             <li>Convenient time to run maintenance</li>
             <li>Sort-out maintenance request based on type</li>
-          </lo>
+          </ol>
         </TabPanel>
         <TabPanel value={value} index={5}>
           <p>Reporting tools</p>
@@ -139,11 +139,11 @@ export default () => {
             propery management.
           </p>
           <p>Therefore, Propman provides:</p>
-          <lo>
+          <ol>
             <li>live chat</li>
             <li>email alert</li>
             <li>Phone text alert</li>
-          </lo>
+          </ol>
         </TabPanel>
       </div>
     </div>
