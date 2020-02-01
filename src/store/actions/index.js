@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { navigate } from '@reach/router';
 import axiosAuth from '../../helpers/axiosAuth';
+import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
 const baseUrl = 'https://pt6-propman-staging.herokuapp.com/api';
@@ -93,9 +94,25 @@ export const auth = url => (email, password, type) => async dispatch => {
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('userType', res.data.user.type);
 
+    // show success toast
+    dispatch(showSuccessToast(`Success! Welcome to PropMan!`));
+
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
-    dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
+    // pull out error message
+    const errMsg = err.response.data.error;
+
+    // show error toast
+    if (errMsg !== undefined) {
+      dispatch(showErrorToast(`Error: ${errMsg}`));
+    } else {
+      dispatch(showErrorToast('Uh oh! Something went wrong.'));
+    }
+
+    dispatch({
+      type: AUTH_REQUEST_FAIL,
+      payload: errMsg !== undefined ? errMsg : err
+    });
   }
 };
 
@@ -110,6 +127,9 @@ export const createProperty = property => {
     try {
       const res = await axiosAuth().post(`${baseUrl}/properties`, property);
 
+      // show success toast
+      dispatch(showSuccessToast(`Property created!`));
+      // dispatch success
       dispatch({
         type: ADD_PROPERTY_SUCCESS,
         payload: {
@@ -117,6 +137,9 @@ export const createProperty = property => {
         }
       });
     } catch (err) {
+      // show error toast
+      dispatch(showErrorToast('Uh oh! Something went wrong'));
+      // dispatch fail
       dispatch({ type: ADD_PROPERTY_FAIL, payload: { errorMessage: err } });
     }
   };
@@ -174,10 +197,15 @@ export const editProperty = (id, property) => {
     try {
       await axiosAuth().put(`${baseUrl}/properties/${id}`, property);
 
+      // show success toast
+      dispatch(showSuccessToast(`Property updated!`));
+
       dispatch({
         type: EDIT_PROPERTY_SUCCESS
       });
     } catch (err) {
+      // show error toast
+      dispatch(showErrorToast('Uh oh! Something went wrong'));
       dispatch({ type: EDIT_PROPERTY_FAIL, payload: { errMsg: err.message } });
     }
   };
@@ -225,10 +253,16 @@ export const editTenant = (id, tenant) => {
     try {
       await axiosAuth().put(`${baseUrl}/tenants/${id}`, tenant);
 
+      // show success toast
+      dispatch(showSuccessToast('Tenant updated!'));
+
       dispatch({
         type: EDIT_TENANT_SUCCESS
       });
     } catch (err) {
+      // show error toast
+      dispatch(showErrorToast('Uh oh! Something went wrong'));
+
       dispatch({ type: EDIT_TENANT_FAIL, payload: { errMsg: err.message } });
     }
   };
@@ -241,11 +275,17 @@ export const addTenant = url => tenant => async dispatch => {
   try {
     const res = await axiosAuth().post(url, tenant);
 
+    // show success toast
+    dispatch(showSuccessToast('Tenant added to property!'));
+
     dispatch({
       type: ADD_TENANT_SUCCESS,
       payload: res.data
     });
   } catch (err) {
+    // show error toast
+    dispatch(showErrorToast('Uh oh! Something went wrong'));
+
     dispatch({ type: ADD_TENANT_FAIL, payload: { errMsg: err.message } });
   }
 };
@@ -298,6 +338,10 @@ export const editUserInfo = user => async dispatch => {
 
   try {
     const res = await axiosAuth().put(`${baseUrl}/users/me`, user);
+
+    // show success toast
+    dispatch(showSuccessToast('Profile updated!'));
+
     dispatch({
       type: EDIT_USER_SUCCESS,
       payload: {
@@ -305,6 +349,9 @@ export const editUserInfo = user => async dispatch => {
       }
     });
   } catch (err) {
+    // show error toast
+    dispatch(showErrorToast('Uh oh! Something went wrong'));
+
     dispatch({ type: EDIT_USER_FAIL, payload: { errMsg: err } });
   }
 };
@@ -333,6 +380,10 @@ export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
     const res = await axiosAuth().post(`${baseUrl}/workorders`, workOrder);
+
+    // show success toast
+    dispatch(showSuccessToast('Work Order created!'));
+
     dispatch({
       type: ADD_WORK_ORDER_SUCCESS,
       payload: {
@@ -340,6 +391,9 @@ export const addWorkOrder = workOrder => async dispatch => {
       }
     });
   } catch (err) {
+    // show error toast
+    dispatch(showErrorToast('Uh oh! Something went wrong'));
+
     dispatch({ type: ADD_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
 };
@@ -349,6 +403,10 @@ export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
     const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
+
+    // show success toast
+    dispatch(showSuccessToast('Work Order updated!'));
+
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,
       payload: {
@@ -356,6 +414,9 @@ export const updateWorkOrder = workOrder => async dispatch => {
       }
     });
   } catch (err) {
+    // show error toast
+    dispatch(showErrorToast('Uh oh! Something went wrong'));
+
     dispatch({ type: UPDATE_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
 };

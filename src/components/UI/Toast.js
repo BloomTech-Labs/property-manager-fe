@@ -1,21 +1,28 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { clearToast } from '../../store/actions/toastActions';
 
-const Toast = ({ severity, message, setOpenToast, openToast }) => {
+const Toast = () => {
+  const dispatch = useDispatch();
+
+  const { openToast, toastMessage, toastSeverity } = useSelector(
+    state => state.uiReducer
+  );
+
   function handleClose() {
-    setOpenToast(false);
+    dispatch(clearToast());
   }
 
   return (
     <Snackbar
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       open={openToast}
-      message={message}
-      autoHideDuration={4000}
+      autoHideDuration={3500}
       onClose={handleClose}
     >
-      <Alert severity={severity}>{message}</Alert>
+      <Alert severity={toastSeverity}>{toastMessage}</Alert>
     </Snackbar>
   );
 };

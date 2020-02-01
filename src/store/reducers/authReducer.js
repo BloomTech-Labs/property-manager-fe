@@ -34,7 +34,7 @@ export default function authReducer(
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload.errorMessage
+        errorMessage: action.payload
       };
     }
     case 'LOGOUT': {
