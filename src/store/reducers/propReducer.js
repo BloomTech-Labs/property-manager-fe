@@ -28,8 +28,6 @@ import {
   EDIT_TENANT_FAIL
 } from '../actions/index';
 
-const properties = localStorage.getItem('properties');
-
 const initialState = {
   properties: [],
   property: {},
@@ -41,8 +39,7 @@ const initialState = {
   isAddingProp: false,
   isGettingProperties: true,
   isGettingProperty: false,
-  errMsg: null,
-  ...properties
+  errMsg: null
 };
 
 export default function propReducer(state = initialState, action) {
