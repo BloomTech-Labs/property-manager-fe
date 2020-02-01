@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Style & classnames
 import clsx from 'clsx';
@@ -36,6 +36,10 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo-cropped.png';
+// eslint-disable-next-line no-unused-vars
+import ListLandlord from './ListLandlord';
+// eslint-disable-next-line no-unused-vars
+import ListTenant from './ListTenant';
 
 const drawerWidth = 240;
 
@@ -114,12 +118,14 @@ function SideNav() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const dispatch = useDispatch();
 
   // Subscribe to user state
   const userType = useSelector(state => state.getUserReducer.user.type);
 
   const handleLogout = () => {
-    window.localStorage.removeItem('token');
+    dispatch({ type: 'LOGOUT' });
+    window.localStorage.clear();
     navigate('/');
   };
 

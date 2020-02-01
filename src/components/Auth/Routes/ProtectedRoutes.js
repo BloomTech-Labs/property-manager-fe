@@ -52,7 +52,7 @@ function ProtectedRoutes({ token, userType }) {
   if (token && userType === 'tenant') {
     return (
       <Router>
-        <TenantDashboard path="/">
+        <TenantDashboard path="/" userType={userType}>
           <Overview path="/" />
           <Profile path="profile" />
           <TenantProperty path="property" />

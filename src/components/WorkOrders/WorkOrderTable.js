@@ -31,7 +31,6 @@ export default function WorkOrderTable({ workOrderList }) {
               <TableCell align="right">Description</TableCell>
               <TableCell align="right">Type</TableCell>
               <TableCell align="right">Start&nbsp;Date</TableCell>
-              <TableCell align="right">End&nbsp;Date</TableCell>
               <TableCell align="right">Property</TableCell>
               <TableCell align="right">Submitted&nbsp;By</TableCell>
             </TableRow>
@@ -44,7 +43,6 @@ export default function WorkOrderTable({ workOrderList }) {
                 description,
                 type,
                 startDate,
-                endDate,
                 propertyId,
                 createdBy
               } = workOrder;
@@ -58,9 +56,6 @@ export default function WorkOrderTable({ workOrderList }) {
                   <TableCell align="right">{description}</TableCell>
                   <TableCell align="right">{type}</TableCell>
                   <TableCell align="right">{formatDate(startDate)}</TableCell>
-                  <TableCell align="right">
-                    {endDate ? formatDate(endDate) : 'Not Set'}
-                  </TableCell>
                   <TableCell align="right">{propertyId}</TableCell>
                   <TableCell align="right">{createdBy}</TableCell>
                 </TableRow>

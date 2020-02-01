@@ -41,7 +41,7 @@ function TenantDashboard(props) {
         <main className={classes.content}>
           <Container className="dashboard-content">{props.children}</Container>
         </main>
-        <FloatingActions />
+        <FloatingActions userType={props.userType} />
       </div>
     </PropmanTheme>
   );
