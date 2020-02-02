@@ -90,6 +90,7 @@ const useStyles = makeStyles(theme => ({
   btn: {}
 }));
 
+// eslint-disable-next-line react/prop-types
 export default function Tenant({ id }) {
   const classes = useStyles();
 
