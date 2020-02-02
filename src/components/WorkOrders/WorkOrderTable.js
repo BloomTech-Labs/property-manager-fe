@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 });
 
 export default function WorkOrderTable({ workOrderList }) {
+  console.log('my work order', workOrderList);
   const classes = useStyles();
   if (workOrderList.length) {
     return (
