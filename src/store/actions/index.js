@@ -95,6 +95,7 @@ export const auth = url => (email, password, type) => async dispatch => {
 
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err.response.data.message);
     dispatch({ type: AUTH_REQUEST_FAIL, payload: { errorMessage: err } });
   }

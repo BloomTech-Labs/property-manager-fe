@@ -36,7 +36,9 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo-cropped.png';
+// eslint-disable-next-line no-unused-vars
 import ListLandlord from './ListLandlord';
+// eslint-disable-next-line no-unused-vars
 import ListTenant from './ListTenant';
 
 const drawerWidth = 240;
@@ -112,7 +114,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SideNav(props) {
+function SideNav() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
