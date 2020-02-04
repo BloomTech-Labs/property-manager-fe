@@ -12,6 +12,7 @@ import Home from './views/landing/Home';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
+import Toast from './components/UI/Toast';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -53,6 +54,7 @@ const App = () => {
             userType={userType}
           />
         </Router>
+        <Toast />
       </div>
     </BreakpointProvider>
   );
