@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -20,6 +21,10 @@ const useStyles = makeStyles({
 });
 
 export default function WorkOrderTable({ workOrderList }) {
+  const properties = useSelector(state => state.propReducer.properties);
+
+  const tenants = useSelector(state => state.propReducer.tenants);
+
   const classes = useStyles();
   if (workOrderList.length) {
     return (
@@ -32,7 +37,7 @@ export default function WorkOrderTable({ workOrderList }) {
               <TableCell align="right">Type</TableCell>
               <TableCell align="right">Start&nbsp;Date</TableCell>
               <TableCell align="right">Property</TableCell>
-              <TableCell align="right">Submitted&nbsp;By</TableCell>
+              <TableCell align="right">Created&nbsp;By</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -47,6 +52,15 @@ export default function WorkOrderTable({ workOrderList }) {
                 createdBy
               } = workOrder;
 
+              // Filter to select the property associated
+              // with the work order
+              const property = properties.filter(
+                property => property.id === propertyId
+              );
+
+              // Filter to select whether tenant or landlord created work order
+              const tenant = tenants.filter(tenant => tenant.id === createdBy);
+
               const formatDate = date => date && new Date(date).toDateString();
               return (
                 <TableRow key={id}>
@@ -56,8 +70,10 @@ export default function WorkOrderTable({ workOrderList }) {
                   <TableCell align="right">{description}</TableCell>
                   <TableCell align="right">{type}</TableCell>
                   <TableCell align="right">{formatDate(startDate)}</TableCell>
-                  <TableCell align="right">{propertyId}</TableCell>
-                  <TableCell align="right">{createdBy}</TableCell>
+                  <TableCell align="right">{property[0].name}</TableCell>
+                  <TableCell align="right">
+                    {tenant.length ? tenant[0].type : 'landlord'}
+                  </TableCell>
                 </TableRow>
               );
             })}
