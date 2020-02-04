@@ -48,7 +48,6 @@ const Tenants = () => {
       <Grid container spacing={3}>
         {tenantList.map(tenant => {
           // map over tenantList from state and render TenantCards
-
           // pull out tenant info
           const { id, firstName, lastName, residenceId } = tenant;
 

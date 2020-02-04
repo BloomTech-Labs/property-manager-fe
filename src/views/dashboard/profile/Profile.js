@@ -7,7 +7,7 @@ import ProfileImg from '../../../assets/svg/ProfileImg';
 export default function Profile() {
   return (
     <div className="profile">
-      <h1>User Profile</h1>
+      <h1>Profile</h1>
       <Divider />
       <Container>
         <br />
