@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpa, faComments, faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   return (
@@ -12,13 +12,15 @@ const Home = () => {
         <div className="front-page-adv">
           <div>
             <h4>
-              <FontAwesomeIcon icon={faSpinner} spin /> Easy Communication{' '}
+              <FontAwesomeIcon icon={faComments} /> Easy Communication
             </h4>
+            <br />
             <h4>
-              <FontAwesomeIcon icon={faSpinner} spin /> Easy Management
+              <FontAwesomeIcon icon={faTasks} /> Easy Management
             </h4>
+            <br />
             <h4>
-              <FontAwesomeIcon icon={faSpinner} spin /> Peace of mind
+              <FontAwesomeIcon icon={faSpa} /> Peace of mind
             </h4>
           </div>
         </div>
