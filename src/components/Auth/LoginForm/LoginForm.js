@@ -3,8 +3,8 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { MdEmail, MdLock } from 'react-icons/md';
 import { Link } from '@reach/router';
+import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
 
