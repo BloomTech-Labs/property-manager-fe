@@ -278,6 +278,8 @@ export const addTenant = url => tenant => async dispatch => {
     // show success toast
     dispatch(showSuccessToast('Tenant added to property!'));
 
+    dispatch(getProperties());
+
     dispatch({
       type: ADD_TENANT_SUCCESS,
       payload: res.data
