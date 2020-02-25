@@ -1,0 +1,13 @@
+.dashboard {
+  display: flex;
+  flex-flow: row nowrap;
+  color: $deep-blue;
+  padding-left: $sidebar-width;
+  height: 100vh;
+  background: $offwhite;
+
+  &-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

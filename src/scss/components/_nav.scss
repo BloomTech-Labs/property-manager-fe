@@ -1,0 +1,108 @@
+.nav-top {
+  box-shadow: $box-shadow;
+  overflow: initial;
+  position: fixed;
+  width: 100%;
+  background: $white;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 5rem;
+  z-index: 2;
+  top: 0;
+
+  .nav-logo {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-link {
+    display: flex;
+  }
+
+  .avatar {
+    color: $nav-text;
+
+    &:hover {
+      color: $nav-text-hover;
+    }
+  }
+}
+
+// pulled nav-link class out of nested
+// selector to promote reusability and
+// reduce specificity issues
+.nav-link {
+  @include underline-anim;
+  padding: 0 1.2rem;
+  font-size: 18px;
+  line-height: 28px;
+  color: $nav-text;
+  user-select: none;
+
+  &:hover {
+    color: $nav-text-hover;
+  }
+}
+
+.nav-side {
+  box-shadow: $box-shadow-2;
+  display: flex;
+  background: $deep-blue;
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 5px 5px 0;
+
+  ul {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  li {
+    display: flex;
+  }
+
+  .nav-link,
+  .profile {
+    padding: 0.5rem 0;
+    line-height: normal;
+    color: $light;
+    font-size: 1rem;
+
+    &:hover {
+      color: $fern;
+    }
+  }
+}
+
+/// tablet responsiveness 
+
+@media (max-width: 1027px) {
+  .nav-top {
+    transition: 1s;
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      transition: 1s;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+// Basic Card Component
+.card {
+  @include cardify;
+  display: block;
+}
+
+.btn {
+  @include button;
+}
+
+.btn-animated {
+  @include animated-shadow;
+}

@@ -1,11 +1,11 @@
 //---------------------------------------
-//             Global Styles             
+//             Global Styles
 //---------------------------------------
 
 body {
   font-family: $primary-font;
   font-weight: 300;
-  color: #2D3B4f;
+  color: #2d3b4f;
 }
 
 html,
@@ -63,4 +63,21 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+
+  &:hover {
+    color: #2d3b4f;
+  }
+}
+
+form {
+  overflow: visible;
+}
+
+textarea {
+  resize: none;
 }

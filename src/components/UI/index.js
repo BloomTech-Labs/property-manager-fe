@@ -4,156 +4,41 @@ import styled from '@emotion/styled';
 // ------------------------------------------------|
 // DEFINE STYLE VARIABLES =========================|
 // ================================================|
-// CSS Hover Animation Effect ---------------------|
-const hoverMixin = `
-  box-shadow: 0 3px 6px #333;
-  transition: 0.25s;
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px #777;
-  }
-  &:active {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px #666;
-  }
-`;
 // ------------------------------------------------|
 // Basic Card styling -----------------------------|
 const card = position => `
   position: ${position || 'relative'};
   border: none;
   border-radius: 2px;
-  box-shadow: 0 3px 6px #333;
-  background-color: #fff;
-  margin: 1rem;
+  margin-top: 1rem;
 `;
 // ------------------------------------------------|
 // DEFINE BUTTON COMPONENTS =======================|
 // ================================================|
-export const Button = styled.button`
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 auto 1.5rem;
-  border-radius: 2px;
-  padding: 0.5rem 0.8rem;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #2d3b4f;
-  ${hoverMixin}
-`;
+
 // ------------------------------------------------|
 // DEFINE CARD COMPONENTS =========================|
 // ================================================|
-export const HoverCard = styled.div`
-  position: relative;
-  border: none;
-  border-radius: 2px;
-  margin: 1rem;
-  ${hoverMixin}
+export const AuthFlipContainer = styled.div`
+  min-width: 350px;
+  z-index: 2;
+  left: 55%;
+  top: 100%;
+  background: #fff;
+  translate: transform(-50%, -50%);
+  ${card('absolute')}
+  will-change: transform, opacity;
 `;
 // ------------------------------------------------|
 // DEFINE FORM COMPONENTS =========================|
 // ================================================|
-// Input Field Wrapper ----------------------------|
-export const InputFieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: block;
-  line-height: 1.6;
-  font-size: 16px;
-  font-weight: normal;
-  box-sizing: inherit;
-  &:focus-within {
-    label {
-      color: #2d3b4f;
-    }
-  }
-`;
-// Label ------------------------------------------|
-export const Label = styled.label`
-  color: #9e9e9e;
-  font-family: 'Baloo', sans-serif;
-  font-size: 1rem;
-  cursor: text;
-  text-align: initial;
-  box-sizing: inherit;
-  line-height: 1.6;
-  font-weight: normal;
-`;
-// ------------------------------------------------|
-// Text Input -------------------------------------|
-export const TextInput = styled.input`
-  font-size: 16px;
-  overflow: visible;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  border-radius: 0;
-  outline: none;
-  height: 2rem;
-  width: 100%;
-  margin: 0 0 8px 0;
-  box-shadow: none;
-  color: initial;
-  text-align: start;
-  cursor: text;
-  &:focus {
-    border-bottom: 1px solid #2d3b4f;
-    box-shadow: 0 1px 0 0 #2d3b4f;
-  }
-`;
-export const TextAreaInput = styled.input`
-  font-size: 16px;
-  overflow: visible;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  border-radius: 0;
-  outline: none;
-  height: 10rem;
-  width: 100%;
-  margin: 0 0 8px 0;
-  box-shadow: none;
-  color: initial;
-  text-align: start;
-  cursor: text;
-  &:focus {
-    border-bottom: 1px solid #2d3b4f;
-    box-shadow: 0 1px 0 0 #2d3b4f;
-  }
-`;
-// ------------------------------------------------|
-// Form Card --------------------------------------|
-export const FormCard = styled.div`
-  padding: 2rem;
-  min-width: 350px;
-  height: auto;
-  z-index: 2;
-  left: 50%;
-  top: 100%;
-  translate: transform(-50%, -50%);
-  ${card('absolute')}
+
+export const LoginFormCard = styled.div`
+  transform: rotateY(180deg);
 `;
 
-export const FormCardAlt = styled.div`
-  padding: 2rem;
-  min-width: 350px;
-  height: auto;
-  z-index: 2;
-  ${card('absolute')}
-`;
 // ------------------------------------------------|
-// Form Heading -----------------------------------|
-export const FormHeading = styled.h2`
-  text-align: center;
-  margin-bottom: 0.5rem;
-`;
-// ------------------------------------------------|
+// FORM COMPONENTS ================================|
 // Form Error Msg ---------------------------------|
 export const FormError = styled.div`
   color: red;
@@ -168,29 +53,6 @@ export const FormSuccess = styled.div`
   font-size: 1rem;
   line-height: 1.5rem;
   text-align: center;
-`;
-// ------------------------------------------------|
-// Button Container -------------------------------|
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 0 0;
-`;
-// ------------------------------------------------|
-// Form Button ------------------------------------|
-export const FormButton = styled.button`
-  border: none;
-  font-size: 100%;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 0 1.5rem;
-  border-radius: 2px;
-  padding: 0.5rem 0.8rem;
-  font-size: 1.5rem;
-  width: 200px;
-  color: white;
-  background-color: #2d3b4f;
-  ${hoverMixin}
 `;
 // ------------------------------------------------|
 // Form Footer Container --------------------------|
@@ -219,50 +81,7 @@ export const I = styled.span`
 // ------------------------------------------------|
 // Navigation Components ==========================|
 // ================================================|
-// Horizontal Top Navbar --------------------------|
-export const TopNav = styled.div`
-  position: relative;
-  width: 100%;
-  height: 3rem;
-  box-shadow: 0 3px 6px #333;
-  background: #ffffff;
-  text-align: center;
-  display: flex;
-  flex-flow: column nowrap;
-  ul {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-btn {
-    background: #ffffff;
-    padding: 0 1.2rem;
-  }
-  .avatar {
-    color: #555;
-    &:hover {
-      color: #2d3b4f;
-    }
-  }
-  a {
-    padding: 0 1.2rem;
-    font-size: 18px;
-    line-height: 28px;
-    color: #555;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    &:hover {
-      color: #2d3b4f;
-    }
-  }
-`;
+
 // ------------------------------------------------|
 // Vertical Side Navbar ---------------------------|
 export const SideNav = styled.div`
@@ -308,7 +127,7 @@ export const NavBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  z-index: 15;
   align-self: flex-end;
   margin-right: 1rem;
   &:focus {
@@ -324,11 +143,26 @@ export const NavBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
+    margin: 0.2rem;
     background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
+
+    :first-child {
+      transform: ${({ isOpen }) => (isOpen ? 'rotate(45deg)' : 'rotate(0)')};
+    }
+
+    :nth-child(2) {
+      opacity: ${({ isOpen }) => (isOpen ? '0' : '1')};
+      transform: ${({ isOpen }) =>
+        isOpen ? 'translateX(20px)' : 'translateX(0)'};
+    }
+
+    :nth-child(3) {
+      transform: ${({ isOpen }) => (isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
   }
 `;
 // ================================================|
@@ -343,6 +177,7 @@ export const BurgerMenu = styled.nav`
   text-align: center;
   padding: 2rem;
   position: absolute;
+  z-index: 10;
   top: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isOpen }) =>

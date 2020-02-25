@@ -1,0 +1,58 @@
+.signUpPage {
+    display: flex;
+    margin: 150px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    padding: 15px 15px 15px 35px;
+    border-radius: 5px;
+    background-color:white;
+    opacity: 0.7;
+    .formHeader {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+        font-family: $primary-font;
+
+        select {
+            width: 120px;
+            margin-left: -60px;
+            margin-right: 20px;
+            border: none;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            border-radius: 5px;
+            font-family: $primary-font;
+            font-weight: bold;
+        }
+    }
+
+    .formline {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 35px;
+
+        input {
+            width: 100%;
+            border-radius: 3px;
+            border: solid 1px rgba(128, 128, 128, 0.616);
+            padding: 10px;
+            margin-right: 35px;
+        }
+    }
+
+    button {
+        background-color: rgba(0, 0, 0, 0.582);
+        padding: 10px 35px;
+        border-radius: 3px;
+        color: white;
+        font-family: $primary-font;
+        letter-spacing: 2px;
+        
+    }
+}
+

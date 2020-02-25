@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { navigate } from '@reach/router';
 import { MdEmail, MdMessage, MdPerson } from 'react-icons/md';
-import FormErrors from '../LoginForm/FormErrors';
 import {
-  FormButton,
-  ButtonContainer,
-  FormHeading,
-  I,
-  TextInput,
-  InputFieldWrapper,
-  Label,
-  TextAreaInput,
-  FormCard
-} from '../UI';
+  Button,
+  Slide,
+  Dialog,
+  DialogTitle,
+  Typography,
+  DialogContent,
+  DialogActions,
+  Container
+} from '@material-ui/core';
+import FormErrors from '../../helpers/FormErrors';
+import { I } from '../UI';
+import ThankYou from '../../assets/svg/ThankYou';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,7 +33,24 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Message')
 });
 
+// modal animation
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function ContactForm() {
+  // modal logic
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // form logic
   const encode = data => {
     return Object.keys(data)
       .map(
@@ -43,8 +61,8 @@ export default function ContactForm() {
   };
 
   return (
-    <FormCard>
-      <FormHeading>Contact Us</FormHeading>
+    <div className="contact-form-card">
+      <h2>Contact Us</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
@@ -54,7 +72,7 @@ export default function ContactForm() {
           'bot-field': '',
           'form-name': 'contact'
         }}
-        onSubmit={values => {
+        onSubmit={(values, { resetForm }) => {
           fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -62,66 +80,94 @@ export default function ContactForm() {
               'form-name': 'contact',
               ...values
             })
-          }).then(() => navigate('/thanks'));
+          })
+            .then(() => {
+              resetForm();
+              handleOpen();
+            })
+            // eslint-disable-next-line no-console
+            .catch(err => console.error(err));
         }}
       >
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <Field type="hidden" name="bot-field" />
             <Field type="hidden" name="contact" />
-            <InputFieldWrapper>
-              <Label htmlFor="name">
+            <div className="input-wrapper">
+              <label htmlFor="name">
                 <I>
                   <MdPerson />
                 </I>{' '}
                 Name
-              </Label>
-              <Field
-                as={TextInput}
-                placeholder="Enter your name"
-                name="name"
-                type="text"
-              />
+              </label>
+              <Field placeholder="Enter your name" name="name" type="text" />
               <FormErrors touched={touched.name} message={errors.name} />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="email">
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="email">
                 <I>
                   <MdEmail />
                 </I>{' '}
                 Email
-              </Label>
+              </label>
               <Field
-                as={TextInput}
                 placeholder="Enter your email address"
                 name="email"
                 type="email"
               />
               <FormErrors touched={touched.email} message={errors.email} />
-            </InputFieldWrapper>
-            <InputFieldWrapper>
-              <Label htmlFor="message">
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="message">
                 <I>
                   <MdMessage />
                 </I>{' '}
                 Message
-              </Label>
+              </label>
               <Field
-                as={TextAreaInput}
+                as="textarea"
+                rows="4"
                 placeholder="Enter your message"
                 name="message"
-                type="textarea"
+                type="text"
               />
               <FormErrors touched={touched.message} message={errors.message} />
-            </InputFieldWrapper>
-            <ButtonContainer>
-              <FormButton type="submit" disabled={isSubmitting}>
+            </div>
+            <div className="submit-btn-wrapper">
+              <button
+                className="btn btn-animated"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Submit
-              </FormButton>
-            </ButtonContainer>
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
-    </FormCard>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <Container>
+          <DialogTitle disableTypography id="alert-dialog-slide-title">
+            <h5>Form Submitted!</h5>
+          </DialogTitle>
+          <ThankYou viewBox="0 0 1035 627" width={500} />
+          <DialogContent>
+            <Typography align="center">Thank you for your feedback!</Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={handleClose} color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </Container>
+      </Dialog>
+    </div>
   );
 }
