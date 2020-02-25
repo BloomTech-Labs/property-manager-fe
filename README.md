@@ -18,6 +18,11 @@ You can find the deployed project at [PropMan](https://propman.netlify.com).
 [![Netlify Status](https://api.netlify.com/api/v1/badges/83bda242-4235-4808-9210-bb1de95fce6a/deploy-status)](https://propman.netlify.com/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
+## Code Climate Coverage
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/13baf4470c5774f866a4/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/property-manager-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/13baf4470c5774f866a4/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/property-manager-fe/test_coverage)
+
 ## Project Overview
 
 [Trello Board](https://trello.com/b/mKfgx81y/property-manager)
