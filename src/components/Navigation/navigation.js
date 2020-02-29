@@ -40,12 +40,10 @@ export const HorNav = () => {
   return (
     <>
       <nav className="nav-top">
+        <Link className="logo-link" to="/">
+          <img className="nav-logo" src={logo} alt="logo" />
+        </Link>
         <ul>
-          <li>
-            <Link className="logo-link" to="/">
-              <img className="nav-logo" src={logo} alt="logo" />
-            </Link>
-          </li>
           <li>
             {/* TODO: link to features section */}
             <Link className="nav-link" to="/features">
@@ -61,7 +59,7 @@ export const HorNav = () => {
           </li>
           <li>
             <button className="nav-link" type="button" onClick={() => toggle()}>
-              Sign up
+              Login/Sign Up
             </button>
           </li>
         </ul>
