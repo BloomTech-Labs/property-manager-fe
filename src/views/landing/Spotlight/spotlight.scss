@@ -1,0 +1,83 @@
+.spotlightWrapper {
+  height: 100vh;
+}
+
+.spotHeadingWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 2% auto;
+  padding: 2%;
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
+  @media (max-width: 500px) {
+    flex-flow: column nowrap;
+  }
+
+  .spotHeaderImage {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+
+    @media (max-width: 1000px) {
+      width: 40%
+    }
+
+    @media (max-width: 500px) {
+      width: 60%
+    }
+  }
+
+  .spotHeading {
+    width: 50%;
+    color: #2E3C50;
+    font-family: Lato;
+    font-size: 3rem;
+    line-height: 53px;
+    margin-left: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      line-height: 38px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 1.6rem;
+      line-height: 27px;
+    }
+  }
+}
+
+.spotlightCards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  
+  .spotlightCard {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    align-items: center;
+    padding: 1%;
+    max-width: 200px;
+    width: 100%;
+    min-height: 250px;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+
+    .spotCardContent {
+      margin: 20px auto;
+    }
+  }
+}
