@@ -1,7 +1,6 @@
 // 100vh container for all the marketing pages
 .landing-container {
     @include nav-adjust();
-    @include landing-bg("../assets/img/home-real-estate-106399.jpg");
 }
 
 .content {
