@@ -1,5 +1,4 @@
 .featuresBlock {
-    @include landing-bg('../assets/img/home-real-estate-106399.jpg');
     height: auto;
     width: 100%;
     min-width: 100vw;
@@ -18,7 +17,6 @@
 
 @media (max-width: 1024px) {
     .featuresBlock {
-        @include landing-bg('../assets/img/feature.jpg');
         height: $nav-vh-calc;
         .featuer-slide-show {
             display:none;
