@@ -15,25 +15,25 @@ const FeatureTable = () => {
         </thead>
         <tbody className="featureTableBodyWrapper">
           <tr className="tableRow">
-            <td>Track Work Orders</td>
+            <td>Track work orders</td>
             <td>✔</td>
             <td>✔</td>
             <td>✔</td>
           </tr>
           <tr className="tableRow">
-            <td>Accept Payments</td>
+            <td>Accept payments</td>
             <td />
             <td>✔</td>
             <td>✔</td>
           </tr>
           <tr className="tableRow">
-            <td>Document Uploading</td>
+            <td>Document uploading</td>
             <td />
             <td>✔</td>
             <td>✔</td>
           </tr>
           <tr className="tableRow">
-            <td>Messaging Services</td>
+            <td>Messaging services</td>
             <td />
             <td />
             <td>✔</td>
