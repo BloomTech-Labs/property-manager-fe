@@ -1,0 +1,16 @@
+.footerWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: #6159E5;
+  min-height: 100px;
+  height: 100%;
+
+  .footerLink, .footerHeader {
+    font-family: Lato;
+    font-size: 1rem;
+    color: #FFFFFF;
+    padding: 50px;
+  }
+}
