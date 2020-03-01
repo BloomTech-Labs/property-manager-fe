@@ -7,6 +7,7 @@ import LandingPage from './views/landing/LandingPage';
 import Features from './views/landing/Features/Features';
 import Contact from './views/landing/Contact';
 import Home from './views/landing/Home';
+import Footer from './views/landing/Footer/Footer';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
@@ -51,6 +52,7 @@ const App = () => {
           />
         </Router>
         <Toast />
+        <Footer />
       </div>
     </BreakpointProvider>
   );
