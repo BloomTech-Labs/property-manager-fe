@@ -1,7 +1,12 @@
 .spotlightWrapper {
-  height: 100vh;
-  width: 80%;
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
 }
 
 .spotHeadingWrapper {
@@ -10,14 +15,10 @@
   align-items: center;
   width: 100%;
   margin: 2% auto;
-  padding: 2%;
 
   @media (max-width: 768px) {
-    width: 95%;
-  }
-
-  @media (max-width: 500px) {
     flex-flow: column nowrap;
+    width: 100%;
   }
 
   .spotHeaderImage {
@@ -27,7 +28,11 @@
     z-index: 2;
 
     @media (max-width: 1000px) {
-      width: 40%
+      width: 60%
+    }
+
+    @media (max-width: 768px) {
+      margin: 0 auto;
     }
 
     @media (max-width: 500px) {
@@ -42,9 +47,17 @@
     font-size: 3rem;
     line-height: 53px;
 
+    @media (max-width: 1000px) {
+      font-size: 2rem;
+      line-height: 38px;
+      text-align: center;
+    }
+
     @media (max-width: 768px) {
       font-size: 2rem;
       line-height: 38px;
+      width: 70%;
+      margin: 10px 0;
     }
 
     @media (max-width: 500px) {
@@ -59,9 +72,21 @@
 
 .spotlightCards {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 900px) {
+    flex-flow: row wrap;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 660px) {
+    width: 100%;
+    margin: 0 auto;
+    flex-flow: column nowrap;
+  }
   
   .spotlightCard {
     display: flex;
@@ -77,6 +102,7 @@
     border: none;
     border-radius: 10px;
     box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
+    margin: 20px 0;
 
     .spotCardImages {
       padding: 10px;
@@ -97,7 +123,12 @@
 .btnWrapper {
   display: flex;
   justify-content: flex-end;
-  margin: 70px;
+  margin: 70px 0 70px 70px;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+    margin: 70px auto;
+  }
 
   .spotBtn {
     width: 290px;
