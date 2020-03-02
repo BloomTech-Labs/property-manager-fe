@@ -4,7 +4,7 @@ const SpotlightButton = () => {
   return (
     <div className="btnWrapper">
       <button className="spotBtn" type="submit">
-        Sign Up
+        Sign up
       </button>
     </div>
   );
