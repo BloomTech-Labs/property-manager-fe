@@ -2,12 +2,17 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { HorNav } from '../../components/Navigation/navigation';
+import Spotlight from './Spotlight/Spotlight';
+import Features from './Features/Features';
 
-function LandingPage(props) {
+function LandingPage() {
   return (
     <div className="landing-container">
-      <HorNav />
-      {props.children}
+      <div className="landing-background2">
+        <HorNav />
+        <Spotlight />
+        <Features />
+      </div>
     </div>
   );
 }

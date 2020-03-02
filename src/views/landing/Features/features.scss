@@ -1,0 +1,122 @@
+.featureHeadingWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 2% auto;
+  padding: 2%;
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
+  @media (max-width: 500px) {
+    flex-flow: column nowrap;
+  }
+
+  .featureImage {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media (max-width: 1000px) {
+      width: 40%
+    }
+
+    @media (max-width: 500px) {
+      width: 60%
+    }
+  }
+
+  .featureHeading {
+    width: 50%;
+    color: #2E3C50;
+    font-family: Lato;
+    font-size: 3rem;
+    line-height: 53px;
+    margin-left: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      line-height: 38px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 1.6rem;
+      line-height: 27px;
+    }
+  }
+}
+
+.featureTableWrapper {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  margin: 0 auto;
+  color: #2E3C50;
+  font-family: Lato;
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
+  .featureTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+
+    .featureTiersWrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      font-weight: 900;
+      font-size: 2rem;
+      line-height: 100px;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        line-height: 50px;
+      }
+
+      .featureTiers {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+      }
+    }
+
+    .featureTableBodyWrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      font-family: Lato;
+      font-size: 1rem;
+      line-height: 19px;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: .8rem;
+      }
+
+      .tableRow {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        line-height: 30px;
+      }
+    }
+  }
+}
+
+td, th {
+  width: 100%;
+  text-align: center;
+}
