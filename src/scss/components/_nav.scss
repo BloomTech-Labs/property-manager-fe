@@ -1,27 +1,28 @@
 .nav-top {
-  box-shadow: $box-shadow;
   overflow: initial;
   position: fixed;
   width: 100%;
-  background: $white;
+  padding: 0 50px;
   display: flex;
-  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
   height: 5rem;
   z-index: 2;
   top: 0;
 
   .nav-logo {
-    width: 80%;
+    height: 60px;
     margin: 0 auto;
   }
 
   ul {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 30%;
   }
-
+  
   li {
     display: flex;
     justify-content: center;
@@ -30,14 +31,6 @@
 
   .logo-link {
     display: flex;
-  }
-
-  .avatar {
-    color: $nav-text;
-
-    &:hover {
-      color: $nav-text-hover;
-    }
   }
 }
 
@@ -49,7 +42,7 @@
   padding: 0 1.2rem;
   font-size: 18px;
   line-height: 28px;
-  color: $nav-text;
+  color: $shadow;
   user-select: none;
 
   &:hover {

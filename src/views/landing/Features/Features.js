@@ -8,8 +8,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ads1 from '../../assets/img/adds/advertisemnt1.jpg';
-import free from '../../assets/img/free.gif';
+import ads1 from '../../../assets/img/adds/advertisemnt1.jpg';
+import free from '../../../assets/img/free.gif';
 
 function TabPanel(props) {
   // eslint-disable-next-line react/prop-types
