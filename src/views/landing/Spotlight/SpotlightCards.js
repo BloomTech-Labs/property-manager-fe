@@ -7,6 +7,7 @@ const SpotlightCard = () => {
       {images.map(({ src, alt, key, description }) => (
         <div key={key} className="spotlightCard">
           <img className="spotCardImages" src={src} alt={alt} />
+          <hr className="spotDivider" />
           <h5 className="spotCardContent">{description}</h5>
         </div>
       ))}
