@@ -76,14 +76,23 @@
   align-items: center;
   width: 100%;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     flex-flow: row wrap;
+    justify-content: space-evenly;
     width: 70%;
     margin: 0 auto;
   }
 
-  @media (max-width: 660px) {
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 650px) {
     width: 100%;
+  }
+
+  @media (max-width: 500px) {
     margin: 0 auto;
     flex-flow: column nowrap;
   }
@@ -91,13 +100,12 @@
   .spotlightCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     background: #ffffff;
     align-items: center;
     padding: 1%;
-    max-width: 200px;
+    max-width: 225px;
     width: 100%;
-    min-height: 250px;
+    min-height: 300px;
     height: 100%;
     border: none;
     border-radius: 10px;
@@ -105,15 +113,26 @@
     margin: 20px 0;
 
     .spotCardImages {
-      padding: 10px;
-      max-width: 125px;
+      padding: 5px;
+      max-width: 175px;
+      height: 150px;
+      margin: auto;
       width: 100%;
     }
 
+    .spotDivider {
+      margin: 10px auto 0;
+      width: 30%;
+      border-top: 2px solid #6C63FF;
+    }
+
     .spotCardContent {
-      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      margin: auto;
       width: 100%;
       font-size: 1rem;
+      height: 100px;
       font-weight: 400;
       padding: 10px;
     }
@@ -125,7 +144,7 @@
   justify-content: flex-end;
   margin: 70px 0 70px 70px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     justify-content: center;
     margin: 70px auto;
   }
@@ -144,5 +163,9 @@
     text-align: center;
     cursor: pointer;
     z-index: 2;
+    
+    &:hover {
+      background: #eeedff;
+    }
   }
 }

@@ -43,8 +43,8 @@ const App = () => {
           <LandingPage path="/">
             <Home path="/" />
             <Features path="features" />
-            <Contact path="contact" />
           </LandingPage>
+          <Contact path="/contact" />
           <ProtectedRoutes
             path="dashboard/*"
             token={token}
