@@ -8,11 +8,9 @@ import Features from './Features/Features';
 function LandingPage() {
   return (
     <div className="landing-container">
-      <div className="landing-background2">
-        <HorNav />
-        <Spotlight />
-        <Features />
-      </div>
+      <HorNav />
+      <Spotlight />
+      <Features />
     </div>
   );
 }
