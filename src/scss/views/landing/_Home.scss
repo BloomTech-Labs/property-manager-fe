@@ -1,7 +1,6 @@
 // 100vh container for all the marketing pages
 .landing-container {
     @include nav-adjust();
-    @include landing-bg("../assets/img/home-real-estate-106399.jpg");
 }
 
 .content {
@@ -10,7 +9,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
 
     .content-wrapper {
         width: 60%;
@@ -33,6 +32,7 @@
         border: solid rgba(255, 255, 255, 0.815) 2px;
         border-radius: 2px;
         color: rgba(255, 255, 255, 0.788);
+        background-color: rgba(249,168,38, 1);
         padding: .5rem 2rem;
     }
     .front-page-adv {
@@ -74,5 +74,31 @@
             color: rgba(255, 255, 255, 0.788);
             padding: .5rem 2rem;
         }
+    }
+}
+
+.header {
+    display: flex;
+    
+    h4, button {
+        margin-top: 2rem;
+    }
+
+    .header-image {
+        width: 95%;
+    }
+    
+    .left {
+        width: 95%;
+        padding: 1rem;
+        border-right: 2px solid rgba(196, 196, 196, 1);
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 90%;
+        padding: 3rem;
     }
 }
