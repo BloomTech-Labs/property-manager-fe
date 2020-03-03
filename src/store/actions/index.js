@@ -6,7 +6,7 @@ import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
-const baseUrl = 'http://localhost:1234/api';
+const baseUrl = process.env.NODE_URL;
 // ------------------------------------------------|
 // AUTH TYPES =====================================|
 // ================================================|
@@ -285,6 +285,8 @@ export const addTenant = url => tenant => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log('Tenant error', err);
     // show error toast
     dispatch(showErrorToast('Uh oh! Something went wrong'));
 
