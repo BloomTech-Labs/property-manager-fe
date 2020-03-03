@@ -59,7 +59,7 @@ export const HorNav = () => {
           </li>
           <li>
             <button className="nav-link" type="button" onClick={() => toggle()}>
-              Login/Sign Up
+              Login
             </button>
           </li>
         </ul>

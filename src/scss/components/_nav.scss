@@ -10,9 +10,15 @@
   z-index: 2;
   top: 0;
 
+  @media (max-width: 550px) {
+    padding: 0 0 0 1.2rem;
+  }
+
   .nav-logo {
-    height: 60px;
+    height: 100%;
+    width: auto;
     margin: 0 auto;
+    flex: 1;
   }
 
   ul {
@@ -21,6 +27,14 @@
     justify-content: space-between;
     align-items: center;
     width: 30%;
+
+    @media (max-width: 1366px) {
+      width: 40%;
+    }
+
+    @media (max-width: 900px) {
+      width: auto;
+    }
   }
   
   li {
@@ -31,6 +45,12 @@
 
   .logo-link {
     display: flex;
+    height: 40px;
+    width: auto;
+
+    @media (max-width: 550px) {
+      height: 30px;
+    }
   }
 }
 
@@ -47,6 +67,10 @@
 
   &:hover {
     color: $nav-text-hover;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 16px;
   }
 }
 
@@ -82,20 +106,6 @@
 
     &:hover {
       color: $fern;
-    }
-  }
-}
-
-/// tablet responsiveness 
-
-@media (max-width: 1027px) {
-  .nav-top {
-    transition: 1s;
-
-    ul {
-      display: flex;
-      justify-content: space-evenly;
-      transition: 1s;
     }
   }
 }
