@@ -9,23 +9,32 @@ const Header = () => {
     <div className="header">
       <div className="left">
         <img className="header-image" src={headerImage} alt="housing" />
-        <h4>Property Management doesn't have to be hard</h4>
+        <h4 className="left-text">
+          Property Management doesn't have to be hard.
+        </h4>
       </div>
       <div className="right">
-        <h4>
-          <FontAwesomeIcon icon={faComments} /> Easy Communication
-        </h4>
-        <br />
-        <h4>
-          <FontAwesomeIcon icon={faTasks} /> Easy Management
-        </h4>
-        <br />
-        <h4>
-          <FontAwesomeIcon icon={faSpa} /> Peace of mind
-        </h4>
-        <button type="button" onClick={() => navigate('/signup')}>
-          Get Started
-        </button>
+        <div>
+          <h4>
+            <FontAwesomeIcon className="icon" icon={faComments} /> Easy
+            Communication
+          </h4>
+          <br />
+          <h4>
+            <FontAwesomeIcon className="icon" icon={faTasks} /> Easy Management
+          </h4>
+          <br />
+          <h4>
+            <FontAwesomeIcon className="icon" icon={faSpa} /> Peace of mind
+          </h4>
+          <button
+            className="header-button"
+            type="button"
+            onClick={() => navigate('/signup')}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
     </div>
   );
