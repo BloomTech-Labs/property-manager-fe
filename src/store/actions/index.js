@@ -6,7 +6,7 @@ import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
-const baseUrl = process.env.NODE_URL;
+const baseUrl = process.env.REACT_APP_URL;
 // ------------------------------------------------|
 // AUTH TYPES =====================================|
 // ================================================|
