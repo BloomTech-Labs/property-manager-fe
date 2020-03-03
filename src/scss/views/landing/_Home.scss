@@ -102,3 +102,11 @@
         padding: 3rem;
     }
 }
+
+  @include nav-adjust();
+  background: url('../../../assets/svg/landing-light-purple.svg') no-repeat, url('../../../assets/svg/landing-dark-purple.svg') no-repeat;
+  background-position: center, center;
+  background-size: 100%;
+  width: 100%;
+  z-index: -2;
+}
