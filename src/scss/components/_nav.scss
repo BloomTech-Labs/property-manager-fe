@@ -1,27 +1,42 @@
 .nav-top {
-  box-shadow: $box-shadow;
   overflow: initial;
   position: fixed;
   width: 100%;
-  background: $white;
+  padding: 0 50px;
   display: flex;
-  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
   height: 5rem;
   z-index: 2;
   top: 0;
 
+  @media (max-width: 550px) {
+    padding: 0 0 0 1.2rem;
+  }
+
   .nav-logo {
-    width: 80%;
+    height: 100%;
+    width: auto;
     margin: 0 auto;
+    flex: 1;
   }
 
   ul {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-  }
+    width: 30%;
 
+    @media (max-width: 1366px) {
+      width: 40%;
+    }
+
+    @media (max-width: 900px) {
+      width: auto;
+    }
+  }
+  
   li {
     display: flex;
     justify-content: center;
@@ -30,13 +45,11 @@
 
   .logo-link {
     display: flex;
-  }
+    height: 40px;
+    width: auto;
 
-  .avatar {
-    color: $nav-text;
-
-    &:hover {
-      color: $nav-text-hover;
+    @media (max-width: 550px) {
+      height: 30px;
     }
   }
 }
@@ -49,11 +62,15 @@
   padding: 0 1.2rem;
   font-size: 18px;
   line-height: 28px;
-  color: $nav-text;
+  color: $shadow;
   user-select: none;
 
   &:hover {
     color: $nav-text-hover;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 16px;
   }
 }
 
@@ -89,20 +106,6 @@
 
     &:hover {
       color: $fern;
-    }
-  }
-}
-
-/// tablet responsiveness 
-
-@media (max-width: 1027px) {
-  .nav-top {
-    transition: 1s;
-
-    ul {
-      display: flex;
-      justify-content: space-evenly;
-      transition: 1s;
     }
   }
 }

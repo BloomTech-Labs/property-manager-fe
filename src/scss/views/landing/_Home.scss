@@ -1,7 +1,62 @@
 // 100vh container for all the marketing pages
 .landing-container {
     @include nav-adjust();
-    @include landing-bg("../assets/img/home-real-estate-106399.jpg");
+    background: url('../../../assets/svg/landing-light-purple.svg') no-repeat, url('../../../assets/svg/landing-dark-purple.svg') no-repeat;
+    background-position: center, center;
+    background-size: 100%;
+    width: 100%;
+    z-index: -2;
+
+    .header {
+        max-width: 1200px;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 2.5rem;
+        margin: 1.5rem auto 2.5rem auto;
+        
+        h4, button {
+            margin-top: 2.5rem;
+        }
+    
+        .header-image {
+            width: 94%;
+        }
+        
+        .left {
+            width: 100%;
+            padding-right: 5rem;
+            border-right: 3px solid rgba(196, 196, 196, .3);
+        }
+
+        .left-text {
+            font-size: 2.6rem;
+        }
+    
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            width: 100%;
+
+            .icon {
+                margin-right: 2rem;
+            }
+    
+            .header-button {
+                background-color: rgba(249,168,38, 1);
+                height: 50px;
+                width: 100%;
+                font-size: 1.2rem;
+                color: white;
+                border-radius: 6px;
+                box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+    
 }
 
 .content {
@@ -10,7 +65,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
 
     .content-wrapper {
         width: 60%;
@@ -33,6 +88,7 @@
         border: solid rgba(255, 255, 255, 0.815) 2px;
         border-radius: 2px;
         color: rgba(255, 255, 255, 0.788);
+        background-color: rgba(249,168,38, 1);
         padding: .5rem 2rem;
     }
     .front-page-adv {
@@ -76,3 +132,4 @@
         }
     }
 }
+
