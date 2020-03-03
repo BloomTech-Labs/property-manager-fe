@@ -4,11 +4,10 @@ import { Router } from '@reach/router';
 import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
 // Landing imports
 import LandingPage from './views/landing/LandingPage';
-import Landlord from './views/landing/Landlord';
-import Tenant from './views/landing/Tenant';
-import Features from './views/landing/Features';
+import Features from './views/landing/Features/Features';
 import Contact from './views/landing/Contact';
 import Home from './views/landing/Home';
+import Footer from './views/landing/Footer/Footer';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
@@ -43,11 +42,9 @@ const App = () => {
         <Router>
           <LandingPage path="/">
             <Home path="/" />
-            <Landlord path="landlord" />
-            <Tenant path="tenant" />
             <Features path="features" />
-            <Contact path="contact" />
           </LandingPage>
+          <Contact path="/contact" />
           <ProtectedRoutes
             path="dashboard/*"
             token={token}
@@ -55,6 +52,7 @@ const App = () => {
           />
         </Router>
         <Toast />
+        <Footer />
       </div>
     </BreakpointProvider>
   );
