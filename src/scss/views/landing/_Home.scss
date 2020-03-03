@@ -1,5 +1,108 @@
 // 100vh container for all the marketing pages
 .landing-container {
+    @include nav-adjust();
+}
+
+.content {
+    height: $nav-vh-calc;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: black;
+
+    .content-wrapper {
+        width: 60%;
+        height: auto;
+        text-align: center;
+    }
+}
+
+.content-wrapper {
+    h2 {
+        border-top: 2px rgba(255, 255, 255, 0.11) solid;
+        margin: 1rem 0 2rem 0;
+        padding-top: 1rem;
+    }
+
+    button {
+        font-family: $primary-font;
+        font-weight: 600;
+        letter-spacing: 2px;
+        border: solid rgba(255, 255, 255, 0.815) 2px;
+        border-radius: 2px;
+        color: rgba(255, 255, 255, 0.788);
+        background-color: rgba(249,168,38, 1);
+        padding: .5rem 2rem;
+    }
+    .front-page-adv {
+        text-align: left;
+        margin-bottom: 15px;
+        color:#34ebc0;
+
+        svg {
+            width: 30px;
+            padding-right: 8px;
+        }
+    }
+
+}
+
+.form-wrapper {
+    width: 500px;
+}
+/// LANDING PAGE MOBILE RESPONSIVENESS
+
+@media (max-width: 400px) {
+    .content-wrapper {
+        h2 {
+            font-size: 1.7em;
+            transition: 1s;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            transition: 1s;
+        }
+    
+        button {
+            font-family: $primary-font;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: solid rgba(255, 255, 255, 0.815) 2px;
+            border-radius: 2px;
+            color: rgba(255, 255, 255, 0.788);
+            padding: .5rem 2rem;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    
+    h4, button {
+        margin-top: 2rem;
+    }
+
+    .header-image {
+        width: 95%;
+    }
+    
+    .left {
+        width: 95%;
+        padding: 1rem;
+        border-right: 2px solid rgba(196, 196, 196, 1);
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 90%;
+        padding: 3rem;
+    }
+}
+
   @include nav-adjust();
   background: url('../../../assets/svg/landing-light-purple.svg') no-repeat, url('../../../assets/svg/landing-dark-purple.svg') no-repeat;
   background-position: center, center;
