@@ -1,42 +1,27 @@
 .nav-top {
+  box-shadow: $box-shadow;
   overflow: initial;
   position: fixed;
   width: 100%;
-  padding: 0 50px;
+  background: $white;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-flow: column nowrap;
   height: 5rem;
   z-index: 2;
   top: 0;
 
-  @media (max-width: 550px) {
-    padding: 0 0 0 1.2rem;
-  }
-
   .nav-logo {
-    height: 100%;
-    width: auto;
+    width: 80%;
     margin: 0 auto;
-    flex: 1;
   }
 
   ul {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 30%;
-
-    @media (max-width: 1366px) {
-      width: 40%;
-    }
-
-    @media (max-width: 900px) {
-      width: auto;
-    }
   }
-  
+
   li {
     display: flex;
     justify-content: center;
@@ -45,11 +30,13 @@
 
   .logo-link {
     display: flex;
-    height: 40px;
-    width: auto;
+  }
 
-    @media (max-width: 550px) {
-      height: 30px;
+  .avatar {
+    color: $nav-text;
+
+    &:hover {
+      color: $nav-text-hover;
     }
   }
 }
@@ -62,15 +49,11 @@
   padding: 0 1.2rem;
   font-size: 18px;
   line-height: 28px;
-  color: $shadow;
+  color: $nav-text;
   user-select: none;
 
   &:hover {
     color: $nav-text-hover;
-  }
-
-  @media (max-width: 550px) {
-    font-size: 16px;
   }
 }
 
@@ -106,6 +89,20 @@
 
     &:hover {
       color: $fern;
+    }
+  }
+}
+
+/// tablet responsiveness 
+
+@media (max-width: 1027px) {
+  .nav-top {
+    transition: 1s;
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      transition: 1s;
     }
   }
 }

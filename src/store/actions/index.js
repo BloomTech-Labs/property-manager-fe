@@ -6,7 +6,7 @@ import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
-const baseUrl = 'http://localhost:1234/api';
+const baseUrl = 'https://pt6-propman-staging.herokuapp.com/api';
 // ------------------------------------------------|
 // AUTH TYPES =====================================|
 // ================================================|

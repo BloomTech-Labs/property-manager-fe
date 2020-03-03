@@ -36,7 +36,7 @@ export const AuthFlipForms = ({ flipped, loginSubmit, signupFn, toggle }) => {
 
 AuthFlipForms.propTypes = {
   flipped: bool.isRequired,
-  loginSubmit: func || func.isRequired,
-  signupFn: func || func.isRequired,
+  loginSubmit: func.isRequired,
+  signupFn: func.isRequired,
   toggle: func.isRequired
 };

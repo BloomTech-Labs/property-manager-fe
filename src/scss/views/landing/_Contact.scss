@@ -1,4 +1,5 @@
 .contact-page {
+  @include landing-bg('../assets/img/assorted-color.jpg');
   height: $nav-vh-calc;
   display: flex;
   justify-content: center;
