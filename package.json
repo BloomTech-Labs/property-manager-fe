@@ -90,7 +90,7 @@
       "**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
-      "!**/__tests__/**",
+      "!**/__test__/**",
       "!**/*.spec.{js,jsx}"
     ]
   }
