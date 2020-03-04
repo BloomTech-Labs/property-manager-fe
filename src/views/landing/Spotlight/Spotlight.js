@@ -5,7 +5,7 @@ import SpotlightButton from './SpotlightButton';
 
 const Spotlight = () => {
   return (
-    <div className="spotlightWrapper">
+    <div className="spotlightWrapper" id="spotlight">
       <SpotlightHeading />
       <SpotlightCards />
       <SpotlightButton />
