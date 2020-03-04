@@ -4,9 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import TenantForm from '../../../components/Tenants/TenantForm';
 import { addTenant as action, getTenants } from '../../../store/actions';
 
-const addTenant = action(
-  'https://pt6-propman-staging.herokuapp.com/api/tenants'
-);
+const addTenant = action('http://localhost:1234/api/tenants');
 
 export default function CreateTenant() {
   const dispatch = useDispatch();

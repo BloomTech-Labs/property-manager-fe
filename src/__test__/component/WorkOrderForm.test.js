@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import WorkOrderForm from '../../components/WorkorderForm';
+import WorkOrderForm from '../../components/WorkOrderForm/WorkOrderForm';
 
 test('should submit the maintenance request', async () => {
   // Set up a fake handle submit function to replace the real handle submit function

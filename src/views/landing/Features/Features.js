@@ -4,10 +4,10 @@ import FeatureTable from './FeatureTable';
 
 const Features = () => {
   return (
-    <>
+    <div id="pricing">
       <FeatureHeading />
       <FeatureTable />
-    </>
+    </div>
   );
 };
 

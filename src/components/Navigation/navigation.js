@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, navigate } from '@reach/router';
 // eslint-disable-next-line import/no-unresolved
 import { useDispatch } from 'react-redux';
@@ -37,25 +37,30 @@ export const HorNav = () => {
     [dispatch]
   );
 
+  const [navClass, setNavClass] = useState('nav-top');
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setNavClass(`${navClass} nav-white-bg`);
+    });
+  }, [navClass]);
+
   return (
     <>
-      <nav className="nav-top">
+      <nav className={navClass}>
         <Link className="logo-link" to="/">
           <img className="nav-logo" src={logo} alt="logo" />
         </Link>
         <ul>
           <li>
-            {/* TODO: link to features section */}
-            <Link className="nav-link" to="/features">
+            <a href="#spotlight" className="nav-link" alt="Features">
               Features
-              {/* and Pricing */}
-            </Link>
+            </a>
           </li>
           <li>
-            {/* TODO: link to pricing section */}
-            <Link className="nav-link" to="/pricing">
+            <a href="#pricing" className="nav-link" alt="Pricing">
               Pricing
-            </Link>
+            </a>
           </li>
           <li>
             <button className="nav-link" type="button" onClick={() => toggle()}>
