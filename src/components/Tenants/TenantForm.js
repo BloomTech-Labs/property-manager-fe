@@ -12,31 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 // Styling
-import { makeStyles } from '@material-ui/core/styles';
 import { MdSend } from 'react-icons/md';
-
-// Define custom styling for the TenantForm
-const useStyles = makeStyles(theme => ({
-  formCard: {
-    padding: theme.spacing(4)
-  },
-  formTitle: {
-    marginBottom: theme.spacing(2)
-  },
-  textField: {
-    width: '500px',
-    maxWidth: '500px',
-    margin: theme.spacing(2)
-  },
-  submitWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    margin: theme.spacing(2)
-  },
-  submit: {}
-}));
+import { formStyles } from '../../helpers/utils';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().max(50, 'First Name entered was too long'),
@@ -50,7 +27,7 @@ const validationSchema = Yup.object().shape({
 
 export default function TenantForm({ initialValues, submit, properties }) {
   // bring in custom styling
-  const classes = useStyles();
+  const classes = formStyles();
 
   // bring in initialValues and set defaults
   const {
