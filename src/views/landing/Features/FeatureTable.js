@@ -1,5 +1,4 @@
 import React from 'react';
-import features from './FeatureList';
 import './features.scss';
 
 const FeatureTable = () => {
@@ -15,14 +14,30 @@ const FeatureTable = () => {
           </tr>
         </thead>
         <tbody className="featureTableBodyWrapper">
-          {features.map(({ feature, free, middle, premium }) => (
-            <tr key={feature} className="tableRow">
-              <td className="featureName">{feature}</td>
-              <td>{free === true ? '✔' : ''}</td>
-              <td>{middle === true ? '✔' : ''}</td>
-              <td>{premium === true ? '✔' : ''}</td>
-            </tr>
-          ))}
+          <tr className="tableRow">
+            <td>Track work orders</td>
+            <td>✔</td>
+            <td>✔</td>
+            <td>✔</td>
+          </tr>
+          <tr className="tableRow">
+            <td>Accept payments</td>
+            <td />
+            <td>✔</td>
+            <td>✔</td>
+          </tr>
+          <tr className="tableRow">
+            <td>Document uploading</td>
+            <td />
+            <td>✔</td>
+            <td>✔</td>
+          </tr>
+          <tr className="tableRow">
+            <td>Messaging services</td>
+            <td />
+            <td />
+            <td>✔</td>
+          </tr>
         </tbody>
       </table>
     </div>
