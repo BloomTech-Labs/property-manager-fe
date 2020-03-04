@@ -1,16 +1,16 @@
 import React from 'react';
-import { useModal } from '../../../hooks/useModal';
-import { AuthFlip } from '../../../components/Auth/AuthFlip';
+import { navigate } from '@reach/router';
 
 const SpotlightButton = () => {
-  const { isShowing, close, toggle } = useModal();
-
   return (
     <div className="btnWrapper">
-      <button className="spotBtn" type="submit" onClick={() => toggle()}>
+      <button
+        className="spotBtn"
+        type="submit"
+        onClick={() => navigate('/signup')}
+      >
         Sign up
       </button>
-      <AuthFlip close={close} isShowing={isShowing} />
     </div>
   );
 };
