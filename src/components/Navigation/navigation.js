@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Link, navigate } from '@reach/router';
 // eslint-disable-next-line import/no-unresolved
 import { useDispatch } from 'react-redux';
@@ -37,17 +37,9 @@ export const HorNav = () => {
     [dispatch]
   );
 
-  const [navClass, setNavClass] = useState('nav-top');
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setNavClass(`${navClass} nav-white-bg`);
-    });
-  }, [navClass]);
-
   return (
     <>
-      <nav className={navClass}>
+      <nav className="nav-top">
         <Link className="logo-link" to="/">
           <img className="nav-logo" src={logo} alt="logo" />
         </Link>
