@@ -134,11 +134,7 @@ export default function ContactForm() {
               <FormErrors touched={touched.message} message={errors.message} />
             </div>
             <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <button className="btn" type="submit" disabled={isSubmitting}>
                 Submit
               </button>
             </div>
