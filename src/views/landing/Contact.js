@@ -13,7 +13,7 @@ export default function Contact() {
         <div className="contact-content">
           <ContactForm />
           <div className="contactInfo">
-            <h2>PropMan</h2>
+            <h2>Freehold</h2>
             <div className="contactType">
               <p>
                 Feel free to contact us if you have any questions about PropMan
