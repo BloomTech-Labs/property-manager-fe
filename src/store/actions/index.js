@@ -100,19 +100,19 @@ export const auth = url => (email, password, type) => async dispatch => {
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
     // pull out error message
-    const errMsg = err.response.data.error;
+    console.log(err);
 
     // show error toast
-    if (errMsg !== undefined) {
-      dispatch(showErrorToast(`Error: ${errMsg}`));
-    } else {
-      dispatch(showErrorToast('Uh oh! Something went wrong.'));
-    }
+    // if (errMsg !== undefined) {
+    //   dispatch(showErrorToast(`Error: ${errMsg}`));
+    // } else {
+    //   dispatch(showErrorToast('Uh oh! Something went wrong.'));
+    // }
 
-    dispatch({
-      type: AUTH_REQUEST_FAIL,
-      payload: errMsg !== undefined ? errMsg : err
-    });
+    // dispatch({
+    //   type: AUTH_REQUEST_FAIL,
+    //   payload: errMsg !== undefined ? errMsg : err
+    // });
   }
 };
 

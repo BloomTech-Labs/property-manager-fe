@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { navigate } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
-import { func } from 'prop-types';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
 import { FormError, I } from '../../UI';
+import { auth, getUserInfo } from '../../../store/actions';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -20,7 +22,20 @@ const validationSchema = Yup.object().shape({
   userType: Yup.string().required('Please select a user type')
 });
 
-const SignUpForm = ({ submit, toggleFlip }) => {
+const signup = auth('/auth/register');
+
+const SignUpForm = () => {
+  const dispatch = useDispatch();
+
+  const signupFn = useCallback(
+    ({ email, password, userType: type }) =>
+      dispatch(signup(email, password, type))
+        .then(() => dispatch(getUserInfo()).then(() => navigate('/dashboard')))
+        // eslint-disable-next-line no-console
+        .catch(err => console.error(err)),
+    [dispatch]
+  );
+
   return (
     <Formik
       initialValues={{
@@ -30,7 +45,7 @@ const SignUpForm = ({ submit, toggleFlip }) => {
         userType: ''
       }}
       validationSchema={validationSchema}
-      onSubmit={values => submit(values)}
+      onSubmit={values => signupFn(values)}
     >
       {({ touched, errors }) => (
         <div>
@@ -124,7 +139,7 @@ const SignUpForm = ({ submit, toggleFlip }) => {
                 Submit
               </button>
             </div>
-            <button type="button" onClick={() => toggleFlip()} className="flip">
+            <button type="button" className="flip">
               Have an Account?
             </button>
           </Form>
@@ -132,11 +147,6 @@ const SignUpForm = ({ submit, toggleFlip }) => {
       )}
     </Formik>
   );
-};
-
-SignUpForm.propTypes = {
-  submit: func.isRequired,
-  toggleFlip: func.isRequired
 };
 
 export default SignUpForm;

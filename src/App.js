@@ -12,6 +12,7 @@ import Footer from './views/landing/Footer/Footer';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
 import Toast from './components/UI/Toast';
+import OnBoarding from './views/onBoarding/onBoarding';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -45,6 +46,7 @@ const App = () => {
             <Features path="features" />
           </LandingPage>
           <Contact path="/contact" />
+          <OnBoarding path="/onboarding" />
           <ProtectedRoutes
             path="dashboard/*"
             token={token}

@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useCallback } from 'react';
+import { navigate, Link } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { Link } from '@reach/router';
 import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
+import { auth, getUserInfo } from '../../../store/actions';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,12 +21,29 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-export default function LoginForm({ submit, toggleFlip }) {
+const login = auth('/auth/login');
+
+export default function LoginForm() {
+  const dispatch = useDispatch();
+
+  const loginFn = useCallback(
+    ({ email, password }) =>
+      dispatch(login(email, password))
+        .then(() => {
+          dispatch(getUserInfo()).then(() => {
+            navigate('/dashboard');
+          });
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.error(err)),
+    [dispatch]
+  );
+
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={{ email: '', password: '' }}
-      onSubmit={values => submit(values)}
+      onSubmit={() => loginFn()}
     >
       {({ errors, touched, isSubmitting }) => (
         <>
@@ -73,9 +92,7 @@ export default function LoginForm({ submit, toggleFlip }) {
             </div>
             <FormFooterContainer>
               <FormFooter>Don&apos;t have an account?</FormFooter>
-              <button type="button" onClick={() => toggleFlip()}>
-                Sign Up
-              </button>
+              <button type="button">Sign Up</button>
             </FormFooterContainer>
           </Form>
         </>
