@@ -1,137 +1,123 @@
 // 100vh container for all the marketing pages
 .landing-container {
-    @include nav-adjust();
-    background: url('../../../assets/svg/landing-light-purple.svg') no-repeat, url('../../../assets/svg/landing-dark-purple.svg') no-repeat;
-    background-position: center, center;
-    background-size: 100%;
+  background: url('../../../assets/svg/landing-light-purple.svg') 25% 25%
+      no-repeat,
+    url('../../../assets/svg/landing-dark-purple.svg') 30% 30% no-repeat;
+  background-size: 100%;
+  z-index: -2;
+  width: 100%;
+
+  @media (max-width: 1000px) {
+    background: url('../../../assets/svg/landing-light-purple.svg') 10% 10%
+    no-repeat, url('../../../assets/svg/landing-dark-purple.svg') 15% 15% no-repeat;
+    background-size: 175%;
+  }
+
+  .landing-content {
+    max-width: 1200px;
     width: 100%;
-    z-index: -2;
+    margin: 0 auto;
 
     .header {
-        max-width: 1200px;
-        width: 100%;
-        height: 90vh;
+      width: 100%;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      margin: 0.5rem auto 0.5rem auto;
+        
+      @media (max-width: 1200px) {
+        padding: 5%;
+      }
+
+      @media (max-width: 1000px) {
+        height: 100%;
+        margin: 10% auto;
+      }
+
+      @media (max-width: 825px) {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        padding: 2.5rem;
-        margin: .5rem auto 2.5rem auto;
-        
-        h4, button {
-            margin-top: 2.5rem;
+        justify-content: center;
+      }
+
+      @media (max-width: 600px) {
+        margin: 20% auto;
+      }
+
+      h4 {
+        margin-top: 2.5rem;
+
+        @media (max-width: 600px) {
+          margin-top: 2.1rem;
         }
-    
-        .header-image {
-            width: 100%;
-            height: 250px;
-        }
-        
-        .left {
-            width: 100%;
-            padding-right: 5rem;
-            border-right: 3px solid rgba(196, 196, 196, .3);
+      }
+
+      .header-image {
+        width: 100%;
+      }
+
+      .left {
+        width: 100%;
+        padding-right: 7rem;
+        border-right: 3px solid rgba(196, 196, 196, 0.3);
+
+        @media (max-width: 1000px) {
+          padding-right: 2rem;
         }
 
-        .left-text {
-            font-size: 2.8rem;
+        @media (max-width: 825px) {
+          display: flex; 
+          flex-direction: column;
+          align-itmes: center;
+          width: 90%;
+          margin: 0 auto;
+          padding: 0 0 2rem 0;
+          border-right: none;
+          border-bottom: 3px solid rgba(196, 196, 196, 0.3);
         }
-    
-        .right {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            width: 75%;
-            padding-left: 3rem;
+      } 
 
-            .icon {
-                margin-right: 2rem;
-            }
-    
-            .header-button {
-                background-color: rgba(249,168,38, 1);
-                height: 50px;
-                width: 100%;
-                font-size: 1.2rem;
-                color: white;
-                border-radius: 6px;
-                box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
-            }
-        }
-    }
-    
-}
-
-.content {
-    height: $nav-vh-calc;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    color: black;
-
-    .content-wrapper {
-        width: 60%;
-        height: auto;
+      .left-text {
+        width: 100%;
+        font-size: 2.8rem;
+        color: #2e3c50;
+        line-height: 53px;
         text-align: center;
-    }
-}
 
-.content-wrapper {
-    h2 {
-        border-top: 2px rgba(255, 255, 255, 0.11) solid;
-        margin: 1rem 0 2rem 0;
-        padding-top: 1rem;
-    }
+        @media (max-width: 625px) {
+          font-size: 2.4rem;
+          line-height: 45px;
+        }
+      }
 
-    button {
-        font-family: $primary-font;
-        font-weight: 600;
-        letter-spacing: 2px;
-        border: solid rgba(255, 255, 255, 0.815) 2px;
-        border-radius: 2px;
-        color: rgba(255, 255, 255, 0.788);
-        background-color: rgba(249,168,38, 1);
-        padding: .5rem 2rem;
-    }
-    .front-page-adv {
+      .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         text-align: left;
-        margin-bottom: 15px;
-        color:#34ebc0;
+        width: 75%;
 
-        svg {
-            width: 30px;
-            padding-right: 8px;
+        @media (max-width: 825px) {
+          align-items: center;
+          width: 100%;
         }
+
+        .icon {
+          margin-right: 2rem;
+        }
+
+        .header-button {
+          background-color: rgba(249, 168, 38, 1);
+          height: 50px;
+          width: 100%;
+          font-size: 1.2rem;
+          color: white;
+          border-radius: 6px;
+          margin-top: 2.5rem;
+          box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.25);
+        }
+      }
     }
-
+  }
 }
-
-.form-wrapper {
-    width: 500px;
-}
-/// LANDING PAGE MOBILE RESPONSIVENESS
-
-@media (max-width: 400px) {
-    .content-wrapper {
-        h2 {
-            font-size: 1.7em;
-            transition: 1s;
-        }
-
-        h1 {
-            font-size: 2.2em;
-            transition: 1s;
-        }
-    
-        button {
-            font-family: $primary-font;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border: solid rgba(255, 255, 255, 0.815) 2px;
-            border-radius: 2px;
-            color: rgba(255, 255, 255, 0.788);
-            padding: .5rem 2rem;
-        }
-    }
-}
-
