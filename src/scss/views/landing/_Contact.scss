@@ -43,6 +43,13 @@
     .contactIcons {
       display: flex;
 
+      .icon-link {
+        
+        hover: {
+          cursor: pointer
+        }
+      }
+
       .icon {
         font-size: 2rem;
         margin-right: 1.5rem;
