@@ -9,7 +9,6 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
 import { auth, getUserInfo } from '../../../store/actions';
-import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -93,7 +92,13 @@ export default function LoginForm() {
             </div>
             <FormFooterContainer>
               <FormFooter>Don&apos;t have an account?</FormFooter>
-              <Link to="/signup">Sign Up</Link>
+              <button
+                type="button"
+                className="flip"
+                onClick={() => navigate('/signup')}
+              >
+                Sign Up
+              </button>
             </FormFooterContainer>
           </Form>
         </div>

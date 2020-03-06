@@ -7,7 +7,6 @@ import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
 import { FormError, I } from '../../UI';
 import { auth, getUserInfo } from '../../../store/actions';
-import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
