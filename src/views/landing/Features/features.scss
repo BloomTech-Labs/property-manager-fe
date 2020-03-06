@@ -3,7 +3,6 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
   width: 100%;
   margin: 2% auto;
   padding: 2%;
@@ -112,6 +111,10 @@
         justify-content: center;
         width: 100%;
         line-height: 30px;
+        
+        .featureName {
+          text-align: right;
+        }
       }
     }
   }

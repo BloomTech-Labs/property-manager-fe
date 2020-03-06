@@ -30,4 +30,5 @@ yarn-error.log*
 /git-secrets
 
 *.swp
+.env
 .idea

@@ -11,17 +11,14 @@ export const HorNav = () => {
         </Link>
         <ul>
           <li>
-            {/* TODO: link to features section */}
-            <Link className="nav-link" to="/features">
+            <a href="#spotlight" className="nav-link" alt="Features">
               Features
-              {/* and Pricing */}
-            </Link>
+            </a>
           </li>
           <li>
-            {/* TODO: link to pricing section */}
-            <Link className="nav-link" to="/pricing">
+            <a href="#pricing" className="nav-link" alt="Pricing">
               Pricing
-            </Link>
+            </a>
           </li>
           <Link className="nav-link" to="/login">
             Login

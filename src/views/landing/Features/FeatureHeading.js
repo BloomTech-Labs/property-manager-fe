@@ -10,7 +10,7 @@ const FeatureHeading = () => {
         src={FeatureImage}
         alt="Orange computer and phone"
       />
-      <h1 className="featureHeading">Which PropMan is right for me?</h1>
+      <h1 className="featureHeading">Which Freehold is right for me?</h1>
     </div>
   );
 };

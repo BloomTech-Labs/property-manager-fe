@@ -14,36 +14,13 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from '@material-ui/core';
+import { MdSend } from 'react-icons/md';
+import { formStyles } from '../../helpers/utils';
 
 // Icons
-import { MdSend } from 'react-icons/md';
 
 // Redux Actions
 import { addWorkOrder, getWorkOrders } from '../../store/actions/index';
-
-// Styling
-const useStyles = makeStyles(theme => ({
-  formCard: {
-    padding: theme.spacing(4)
-  },
-  formTitle: {
-    marginBottom: theme.spacing(2)
-  },
-  textField: {
-    width: '500px',
-    maxWidth: '500px',
-    margin: theme.spacing(2)
-  },
-  submitWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    margin: theme.spacing(2)
-  },
-  submit: {}
-}));
 
 // YUP Validation schema
 const validationSchemaLandlord = Yup.object().shape({
@@ -60,7 +37,7 @@ const validationSchemaTenant = Yup.object().shape({
 });
 
 const WorkOrderForm = () => {
-  const classes = useStyles();
+  const classes = formStyles();
   const dispatch = useDispatch();
 
   const currentDate = new Date();

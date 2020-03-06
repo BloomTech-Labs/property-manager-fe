@@ -100,7 +100,7 @@ export default function ContactForm() {
                 </I>{' '}
                 Name
               </label>
-              <Field placeholder="Enter your name" name="name" type="text" />
+              <Field placeholder="Enter your name *" name="name" type="text" />
               <FormErrors touched={touched.name} message={errors.name} />
             </div>
             <div className="input-wrapper">
@@ -111,7 +111,7 @@ export default function ContactForm() {
                 Email
               </label>
               <Field
-                placeholder="Enter your email address"
+                placeholder="Enter your email address *"
                 name="email"
                 type="email"
               />
@@ -127,18 +127,14 @@ export default function ContactForm() {
               <Field
                 as="textarea"
                 rows="4"
-                placeholder="Enter your message"
+                placeholder="Enter your message *"
                 name="message"
                 type="text"
               />
               <FormErrors touched={touched.message} message={errors.message} />
             </div>
             <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <button className="btn" type="submit" disabled={isSubmitting}>
                 Submit
               </button>
             </div>
