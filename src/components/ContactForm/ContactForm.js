@@ -62,7 +62,7 @@ export default function ContactForm() {
 
   return (
     <div className="contact-form-card">
-      <h2>Contact Us</h2>
+      <h2 className="desktop">Contact Us</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
