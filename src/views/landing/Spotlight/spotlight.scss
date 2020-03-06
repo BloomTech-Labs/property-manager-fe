@@ -115,6 +115,11 @@
     border-radius: 10px;
     box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
     margin: 20px 0;
+    transition: all .3s ease;
+
+    &:hover {
+      transform: scale(1.05) rotate(-1deg);
+    }
 
     .spotCardImages {
       padding: 5px;
@@ -160,15 +165,17 @@
     font-size: 1.2rem;
     font-weight: 500;
     box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
-    border: none;
+    border: 1px solid #6C63FF;
     border-radius: 6px;
     background: #ffffff;
     color: #6C63FF;
     text-align: center;
     cursor: pointer;
+    transition: all .3s ease;
     
     &:hover {
-      background: #eeedff;
+      background: #6C63FF;
+      color: #fff;
     }
   }
 }

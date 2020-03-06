@@ -140,7 +140,15 @@
   width: 100%;
   font-size: 1.2rem;
   color: white;
+  border: 1px solid transparent;
   border-radius: 6px;
   margin-top: 2.5rem;
   box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.landing-container .landing-content .header .right .header-button:hover {
+  background: #fff;
+  color: #f9a826;
+  border: 1px solid #f9a826;
 }
