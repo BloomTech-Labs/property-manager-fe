@@ -9,6 +9,7 @@ import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
 import { auth, getUserInfo } from '../../../store/actions';
+import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -46,7 +47,7 @@ export default function LoginForm() {
       onSubmit={() => loginFn()}
     >
       {({ errors, touched, isSubmitting }) => (
-        <>
+        <div className="form-wrapper">
           <h2>Login</h2>
           <Form data-testid="form-element">
             <div className="input-wrapper">
@@ -92,10 +93,10 @@ export default function LoginForm() {
             </div>
             <FormFooterContainer>
               <FormFooter>Don&apos;t have an account?</FormFooter>
-              <button type="button">Sign Up</button>
+              <Link to="/signup">Sign Up</Link>
             </FormFooterContainer>
           </Form>
-        </>
+        </div>
       )}
     </Formik>
   );

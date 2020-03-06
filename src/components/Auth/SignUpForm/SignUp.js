@@ -7,6 +7,7 @@ import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
 import { FormError, I } from '../../UI';
 import { auth, getUserInfo } from '../../../store/actions';
+import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -48,7 +49,7 @@ const SignUpForm = () => {
       onSubmit={values => signupFn(values)}
     >
       {({ touched, errors }) => (
-        <div>
+        <div className="form-wrapper">
           <h2>Sign Up</h2>
           <Form data-testid="form-element">
             <div className="input-wrapper">
@@ -139,7 +140,11 @@ const SignUpForm = () => {
                 Submit
               </button>
             </div>
-            <button type="button" className="flip">
+            <button
+              type="button"
+              className="flip"
+              onClick={() => navigate('/login')}
+            >
               Have an Account?
             </button>
           </Form>

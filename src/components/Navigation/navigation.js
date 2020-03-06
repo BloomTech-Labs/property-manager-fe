@@ -23,7 +23,7 @@ export const HorNav = () => {
               Pricing
             </Link>
           </li>
-          <Link className="nav-link" to="/onboarding">
+          <Link className="nav-link" to="/login">
             Login
           </Link>
         </ul>
