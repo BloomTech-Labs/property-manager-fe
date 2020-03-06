@@ -38,6 +38,11 @@
   padding: 0.5rem 0;
   font-family: $primary-font;
 
+  @media (max-width: 600px) {
+    width: 21rem;
+    margin-left: -5rem;
+  }
+
   // Text Input Styles
   input {
     font-size: 1rem;
