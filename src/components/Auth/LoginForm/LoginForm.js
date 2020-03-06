@@ -48,7 +48,7 @@ export default function LoginForm() {
       {({ errors, touched, isSubmitting }) => (
         <div className="form-wrapper">
           <h2>Login</h2>
-          <Form data-testid="form-element">
+          <Form className="form-element" data-testid="form-element">
             <div className="input-wrapper">
               <label htmlFor="email">
                 <I>
