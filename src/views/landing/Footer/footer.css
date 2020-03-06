@@ -1,0 +1,32 @@
+.footerWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  background: #6159e5;
+  height: 100%;
+}
+
+.footerWrapper .footerLink,
+.footerWrapper .footerHeader {
+  font-family: Lato;
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 50px;
+  width: 300px;
+}
+
+.footerWrapper .footerLogo {
+  height: 100%;
+  width: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerWrapper .footerLogo img {
+  height: 50%;
+  width: auto;
+}
