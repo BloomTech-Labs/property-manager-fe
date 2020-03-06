@@ -7,7 +7,7 @@ import './scss/index.scss';
 import store from './store';
 
 Sentry.init({
-  dsn: 'https://91785aae1f5c49a29b8d16a078e35508@sentry.io/1825288'
+  dsn: process.env.REACT_APP_SENTRY
 });
 
 ReactDOM.render(
