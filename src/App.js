@@ -13,7 +13,8 @@ import { HorNav } from './components/Navigation/navigation';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
 import Toast from './components/UI/Toast';
-import OnBoarding from './views/onBoarding/onBoarding';
+import Login from './views/onBoarding/login';
+import SignUp from './views/onBoarding/signup';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -48,7 +49,8 @@ const App = () => {
             <Features path="features" />
           </LandingPage>
           <Contact path="/contact" />
-          <OnBoarding path="/onboarding" />
+          <Login path="/login" />
+          <SignUp path="/signup" />
           <ProtectedRoutes
             path="dashboard/*"
             token={token}

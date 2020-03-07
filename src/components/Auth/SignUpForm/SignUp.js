@@ -47,10 +47,11 @@ const SignUpForm = () => {
       validationSchema={validationSchema}
       onSubmit={values => signupFn(values)}
     >
+      
       {({ touched, errors, values }) => (
         <div>
           <h2>Sign Up</h2>
-          <Form data-testid="form-element">
+          <Form className="form-element" data-testid="form-element">
             <div className="input-wrapper">
               <label htmlFor="email">
                 <I>
@@ -142,7 +143,11 @@ const SignUpForm = () => {
                 Submit
               </button>
             </div>
-            <button type="button" className="flip">
+            <button
+              type="button"
+              className="flip"
+              onClick={() => navigate('/login')}
+            >
               Have an Account?
             </button>
           </Form>

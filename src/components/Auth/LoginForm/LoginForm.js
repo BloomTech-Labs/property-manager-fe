@@ -45,10 +45,11 @@ export default function LoginForm() {
       initialValues={{ email: '', password: '' }}
       onSubmit={values => loginFn(values)}
     >
+
       {({ errors, touched, isSubmitting, values }) => (
         <>
           <h2>Login</h2>
-          <Form data-testid="form-element">
+          <Form className="form-element" data-testid="form-element">
             <div className="input-wrapper">
               <label htmlFor="email">
                 <I>
@@ -94,10 +95,16 @@ export default function LoginForm() {
             </div>
             <FormFooterContainer>
               <FormFooter>Don&apos;t have an account?</FormFooter>
-              <button type="button">Sign Up</button>
+              <button
+                type="button"
+                className="flip"
+                onClick={() => navigate('/signup')}
+              >
+                Sign Up
+              </button>
             </FormFooterContainer>
           </Form>
-        </>
+        </div>
       )}
     </Formik>
   );
