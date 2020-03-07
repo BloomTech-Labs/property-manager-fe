@@ -6,10 +6,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 50px;
   z-index: 1000;
   background: $white;
   top: 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,.1);
 
   @media (max-width: 550px) {
     padding: 0 0 0 1.2rem;
@@ -46,12 +47,8 @@
 
   .logo-link {
     display: flex;
-    height: 40px;
+    height: 30px;
     width: auto;
-
-    @media (max-width: 550px) {
-      height: 30px;
-    }
   }
 }
 

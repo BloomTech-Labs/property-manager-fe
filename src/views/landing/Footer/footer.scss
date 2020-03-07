@@ -1,7 +1,7 @@
 .footerWrapper {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   background: #6159E5;
   height: 100%;
@@ -11,5 +11,21 @@
     font-size: 1rem;
     color: #FFFFFF;
     padding: 50px;
+    width: 300px;
+  }
+
+  .footerLogo {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 50%;
+      width: auto;
+    }
   }
 }

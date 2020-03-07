@@ -43,10 +43,11 @@ export default function LoginForm() {
     <Formik
       validationSchema={validationSchema}
       initialValues={{ email: '', password: '' }}
-      onSubmit={() => loginFn()}
+      onSubmit={values => loginFn(values)}
     >
-      {({ errors, touched, isSubmitting }) => (
-        <div className="form-wrapper">
+
+      {({ errors, touched, isSubmitting, values }) => (
+        <>
           <h2>Login</h2>
           <Form className="form-element" data-testid="form-element">
             <div className="input-wrapper">
@@ -60,6 +61,7 @@ export default function LoginForm() {
                 placeholder="Enter your email address"
                 name="email"
                 type="email"
+                value={values.email}
               />
               <FormErrors touched={touched.email} message={errors.email} />
             </div>
@@ -74,6 +76,7 @@ export default function LoginForm() {
                 placeholder="Type your password"
                 name="password"
                 type="password"
+                value={values.password}
               />
               <FormErrors
                 touched={touched.password}
