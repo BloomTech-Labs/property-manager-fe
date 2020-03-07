@@ -1,27 +1,9 @@
-.auth-flip {
-  z-index: 2;
-  left: 60%;
-  top: 8%;
-  position: absolute;
-  border: none;
-  border-radius: 2px;
-  margin: 1rem;
-  will-change: transform;
-
-  &__form {
-    @include cardify;
-    position: absolute;
-    width: 300px;
-    height: 475px;
-  }
-}
-
 // better to refactor .form-card class to .card
 .form-card {
   @include cardify;
 }
 
-.flip {
+.form-element {
   margin: 0 auto;
   width: 100%;
 }
@@ -29,6 +11,7 @@
 .form-heading {
   text-align: center;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .input-wrapper {
@@ -38,9 +21,9 @@
   padding: 0.5rem 0;
   font-family: $primary-font;
 
-  @media (max-width: 600px) {
-    width: 21rem;
-    margin-left: -5rem;
+  @media (max-width: 640px) {
+    width: 100%;
+    margin: 0 auto;
   }
 
   // Text Input Styles
@@ -100,10 +83,14 @@
   align-items: center;
   padding: 1rem 0 0;
 
+  &:hover {
+    color: black;
+  }
+
   button {
     display: block;
     margin-bottom: 1rem;
-    width: 80%;
+    width: 10rem;
   }
 
   a {

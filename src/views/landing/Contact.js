@@ -13,14 +13,14 @@ export default function Contact() {
         <div className="contact-content">
           <ContactForm />
           <div className="contactInfo">
-            <h2 className="desktop">Freehold</h2>
-            <div className="contactType desktop">
+            <h2 className="desktop-contact">Freehold</h2>
+            <div className="contactType desktop-contact">
               <p>
-                Feel free to contact us if you have any questions about PropMan
+                Feel free to contact us if you have any questions about Freehold
                 and how it can improve your life as a landlord or tenant.
               </p>
             </div>
-            <h3 className="desktop">Follow Us</h3>
+            <h3 className="desktop-contact">Follow Us</h3>
             <div className="contactIcons">
               <a
                 className="icon-link"
