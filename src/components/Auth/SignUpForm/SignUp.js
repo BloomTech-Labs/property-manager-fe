@@ -47,7 +47,7 @@ const SignUpForm = () => {
       validationSchema={validationSchema}
       onSubmit={values => signupFn(values)}
     >
-      {({ touched, errors }) => (
+      {({ touched, errors, values }) => (
         <div>
           <h2>Sign Up</h2>
           <Form data-testid="form-element">
@@ -62,6 +62,7 @@ const SignUpForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
+                value={values.email}
               />
               {touched.email && errors.email && (
                 <FormError>
@@ -83,6 +84,7 @@ const SignUpForm = () => {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
+                value={values.password}
               />
               {touched.password && errors.password && (
                 <FormError>
@@ -104,6 +106,7 @@ const SignUpForm = () => {
                 type="password"
                 name="passwordConfirmation"
                 placeholder="Re-enter your password"
+                value={values.passwordConfirmation}
               />
               {touched.passwordConfirmation && errors.passwordConfirmation && (
                 <FormError>
