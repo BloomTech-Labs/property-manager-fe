@@ -29,6 +29,7 @@
 .form-heading {
   text-align: center;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .input-wrapper {
@@ -38,9 +39,9 @@
   padding: 0.5rem 0;
   font-family: $primary-font;
 
-  @media (max-width: 600px) {
-    width: 21rem;
-    margin-left: -5rem;
+  @media (max-width: 640px) {
+    width: 100%;
+    margin: 0 auto;
   }
 
   // Text Input Styles
@@ -100,10 +101,17 @@
   align-items: center;
   padding: 1rem 0 0;
 
+  @media (max-width: 375px) and (max-height: 600px) {
+  }
+
+  &:hover {
+    color: black;
+  }
+
   button {
     display: block;
     margin-bottom: 1rem;
-    width: 80%;
+    width: 10rem;
   }
 
   a {

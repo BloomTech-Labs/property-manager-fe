@@ -62,7 +62,7 @@ export default function ContactForm() {
 
   return (
     <div className="contact-form-card">
-      <h2 className="desktop">Contact Us</h2>
+      <h2 className="desktop-form">Contact Us</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
@@ -134,7 +134,11 @@ export default function ContactForm() {
               <FormErrors touched={touched.message} message={errors.message} />
             </div>
             <div className="submit-btn-wrapper">
-              <button className="btn" type="submit" disabled={isSubmitting}>
+              <button
+                className="btn button"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Submit
               </button>
             </div>
