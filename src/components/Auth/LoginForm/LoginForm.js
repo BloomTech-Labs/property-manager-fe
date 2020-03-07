@@ -45,7 +45,6 @@ export default function LoginForm() {
       initialValues={{ email: '', password: '' }}
       onSubmit={values => loginFn(values)}
     >
-
       {({ errors, touched, isSubmitting, values }) => (
         <>
           <h2>Login</h2>
@@ -104,7 +103,7 @@ export default function LoginForm() {
               </button>
             </FormFooterContainer>
           </Form>
-        </div>
+        </>
       )}
     </Formik>
   );
