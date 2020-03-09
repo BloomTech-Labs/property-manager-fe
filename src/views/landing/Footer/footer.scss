@@ -1,17 +1,21 @@
 .footerWrapper {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  background: #6159E5;
+  background: linear-gradient(30deg, #6159E5, rgb(94, 89, 192));
   height: 100%;
+  padding: 20px 150px;
 
-  .footerLink, .footerHeader {
+  .footerLink, .footerCopyright {
     font-family: Lato;
     font-size: 1rem;
     color: #FFFFFF;
-    padding: 50px;
     width: 300px;
+  }
+
+  .footerLink {
+    text-align: right;
   }
 
   .footerLogo {
@@ -24,8 +28,9 @@
     justify-content: center;
 
     img {
-      height: 50%;
+      height: 30px;
       width: auto;
+      box-shadow: 0 9px 10px rgba(0,0,0,.2);
     }
   }
 }
