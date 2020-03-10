@@ -9,11 +9,15 @@ const Features = () => {
 
   return (
     <div className="footerWrapper">
-      <h3 className="footerCopyright">&copy; Copyright Freehold {getYear()}</h3>
-      <div className="footerLogo">
-        <Link to="/">
-          <img src={footerLogo} alt="Freehold logo" />
-        </Link>
+      <div className="footerCopyWrapper">
+        <div className="footerLogo">
+          <Link to="/">
+            <img src={footerLogo} alt="Freehold logo" />
+          </Link>
+          <h3 className="footerCopyright">
+            &copy; Copyright Freehold {getYear()}
+          </h3>
+        </div>
       </div>
       <Link className="footerLink" to="/contact">
         Contact Us

@@ -11,12 +11,12 @@ export const HorNav = () => {
         </Link>
         <ul>
           <li>
-            <a href="#spotlight" className="nav-link" alt="Features">
+            <a href="/#spotlight" className="nav-link" alt="Features">
               Features
             </a>
           </li>
           <li>
-            <a href="#pricing" className="nav-link" alt="Pricing">
+            <a href="/#pricing" className="nav-link" alt="Pricing">
               Pricing
             </a>
           </li>
