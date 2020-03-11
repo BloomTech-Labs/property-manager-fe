@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 import footerLogo from '../../../assets/img/footerLogo.png';
 import './footer.scss';
 
-const Features = () => {
+const Footer = () => {
   // Get the current year
   const getYear = () => new Date(Date.now()).getFullYear().toString();
 
@@ -26,4 +26,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default Footer;
