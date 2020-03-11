@@ -1,0 +1,25 @@
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.form-wrapper {
+    background-color: #f3f2ff;
+    border: 4px solid #8c87f5;
+    margin-top: 20vh;
+    margin-bottom: 7vh;
+    min-width: 33vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3%;
+    
+    .form-element {
+        padding: 1.2rem;
+    }
+
+    h2 {
+        padding-top: .8rem;
+        min-height: 11vh;
+        font-size: 2.3rem;
+    }
+}

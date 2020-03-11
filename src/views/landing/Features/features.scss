@@ -3,7 +3,6 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
   width: 100%;
   margin: 2% auto;
   padding: 2%;
@@ -57,7 +56,7 @@
   display: flex;
   width: 70%;
   flex-direction: column;
-  margin: 0 auto 30px;
+  margin: 0 auto 150px;
   color: #2E3C50;
   font-family: Lato;
 
@@ -112,7 +111,7 @@
         justify-content: center;
         width: 100%;
         line-height: 30px;
-
+        
         .featureName {
           text-align: right;
         }

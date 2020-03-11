@@ -6,6 +6,8 @@ body {
   font-family: $primary-font;
   font-weight: 300;
   color: #2d3b4f;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -80,4 +82,8 @@ form {
 
 textarea {
   resize: none;
+}
+
+#root {
+  min-height: 100vh;
 }

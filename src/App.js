@@ -8,10 +8,13 @@ import Features from './views/landing/Features/Features';
 import Contact from './views/landing/Contact';
 import Home from './views/landing/Home';
 import Footer from './views/landing/Footer/Footer';
+import { HorNav } from './components/Navigation/navigation';
 // import GetStarted from './views/SignUp';
 import ProtectedRoutes from './components/Auth/Routes/ProtectedRoutes';
 import { getUserInfo } from './store/actions/index';
 import Toast from './components/UI/Toast';
+import Login from './views/onBoarding/login';
+import SignUp from './views/onBoarding/signup';
 
 setDefaultBreakpoints([{ mobile: 250 }, { tablet: 769 }, { desktop: 1025 }]);
 
@@ -39,12 +42,15 @@ const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">
+        <HorNav />
         <Router>
           <LandingPage path="/">
             <Home path="/" />
             <Features path="features" />
           </LandingPage>
           <Contact path="/contact" />
+          <Login path="/login" />
+          <SignUp path="/signup" />
           <ProtectedRoutes
             path="dashboard/*"
             token={token}

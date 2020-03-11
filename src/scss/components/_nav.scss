@@ -2,13 +2,19 @@
   overflow: initial;
   position: fixed;
   width: 100%;
-  padding: 0 50px;
+  padding: 0 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
-  z-index: 2;
+  height: 50px;
+  z-index: 1000;
+  background: $white;
   top: 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,.1);
+
+  @media (max-width: 800px) {
+    padding: 10px 50px;
+  }
 
   @media (max-width: 550px) {
     padding: 0 0 0 1.2rem;
@@ -45,12 +51,8 @@
 
   .logo-link {
     display: flex;
-    height: 40px;
+    height: 30px;
     width: auto;
-
-    @media (max-width: 550px) {
-      height: 30px;
-    }
   }
 }
 
@@ -105,7 +107,7 @@
     font-size: 1rem;
 
     &:hover {
-      color: $fern;
+      color: $purp;
     }
   }
 }

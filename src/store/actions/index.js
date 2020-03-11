@@ -6,7 +6,7 @@ import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
-const baseUrl = 'http://localhost:1234/api';
+const baseUrl = process.env.REACT_APP_URL;
 // ------------------------------------------------|
 // AUTH TYPES =====================================|
 // ================================================|
@@ -100,19 +100,19 @@ export const auth = url => (email, password, type) => async dispatch => {
     dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
   } catch (err) {
     // pull out error message
-    const errMsg = err.response.data.error;
+    console.log(err);
 
     // show error toast
-    if (errMsg !== undefined) {
-      dispatch(showErrorToast(`Error: ${errMsg}`));
-    } else {
-      dispatch(showErrorToast('Uh oh! Something went wrong.'));
-    }
+    // if (errMsg !== undefined) {
+    //   dispatch(showErrorToast(`Error: ${errMsg}`));
+    // } else {
+    //   dispatch(showErrorToast('Uh oh! Something went wrong.'));
+    // }
 
-    dispatch({
-      type: AUTH_REQUEST_FAIL,
-      payload: errMsg !== undefined ? errMsg : err
-    });
+    // dispatch({
+    //   type: AUTH_REQUEST_FAIL,
+    //   payload: errMsg !== undefined ? errMsg : err
+    // });
   }
 };
 
@@ -285,6 +285,8 @@ export const addTenant = url => tenant => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log('Tenant error', err);
     // show error toast
     dispatch(showErrorToast('Uh oh! Something went wrong'));
 

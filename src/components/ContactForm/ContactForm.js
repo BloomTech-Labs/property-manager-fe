@@ -62,7 +62,7 @@ export default function ContactForm() {
 
   return (
     <div className="contact-form-card">
-      <h2>Contact Us</h2>
+      <h2 className="desktop-form">Contact Us</h2>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
@@ -100,7 +100,7 @@ export default function ContactForm() {
                 </I>{' '}
                 Name
               </label>
-              <Field placeholder="Enter your name" name="name" type="text" />
+              <Field placeholder="Enter your name *" name="name" type="text" />
               <FormErrors touched={touched.name} message={errors.name} />
             </div>
             <div className="input-wrapper">
@@ -111,7 +111,7 @@ export default function ContactForm() {
                 Email
               </label>
               <Field
-                placeholder="Enter your email address"
+                placeholder="Enter your email address *"
                 name="email"
                 type="email"
               />
@@ -127,7 +127,7 @@ export default function ContactForm() {
               <Field
                 as="textarea"
                 rows="4"
-                placeholder="Enter your message"
+                placeholder="Enter your message *"
                 name="message"
                 type="text"
               />
@@ -135,7 +135,7 @@ export default function ContactForm() {
             </div>
             <div className="submit-btn-wrapper">
               <button
-                className="btn btn-animated"
+                className="btn button"
                 type="submit"
                 disabled={isSubmitting}
               >

@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useCallback } from 'react';
+import { navigate, Link } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { Link } from '@reach/router';
 import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
+import { auth, getUserInfo } from '../../../store/actions';
+import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,66 +22,93 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-export default function LoginForm({ submit, toggleFlip }) {
+const login = auth('/auth/login');
+
+export default function LoginForm() {
+  const dispatch = useDispatch();
+
+  const loginFn = useCallback(
+    ({ email, password }) =>
+      dispatch(login(email, password))
+        .then(() => {
+          dispatch(getUserInfo()).then(() => {
+            navigate('/dashboard');
+          });
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.error(err)),
+    [dispatch]
+  );
+
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={{ email: '', password: '' }}
-      onSubmit={values => submit(values)}
+      onSubmit={values => loginFn(values)}
     >
-      {({ errors, touched, isSubmitting }) => (
-        <>
-          <h2>Login</h2>
-          <Form data-testid="form-element">
-            <div className="input-wrapper">
-              <label htmlFor="email">
-                <I>
-                  <MdEmail />
-                </I>{' '}
-                Email
-              </label>
-              <Field
-                placeholder="Enter your email address"
-                name="email"
-                type="email"
-              />
-              <FormErrors touched={touched.email} message={errors.email} />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="Password">
-                <I>
-                  <MdLock />
-                </I>{' '}
-                Password
-              </label>
-              <Field
-                placeholder="Type your password"
-                name="password"
-                type="password"
-              />
-              <FormErrors
-                touched={touched.password}
-                message={errors.password}
-              />
-            </div>
-            <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Submit
-              </button>
-              <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
-            </div>
-            <FormFooterContainer>
-              <FormFooter>Don&apos;t have an account?</FormFooter>
-              <button type="button" onClick={() => toggleFlip()}>
-                Sign Up
-              </button>
-            </FormFooterContainer>
-          </Form>
-        </>
+      {({ errors, touched, isSubmitting, values }) => (
+        <section className="main-wrapper">
+          <div className="form-wrapper">
+            <h2>Login</h2>
+            <Form className="form-element" data-testid="form-element">
+              <div className="input-wrapper">
+                <label htmlFor="email">
+                  <I>
+                    <MdEmail />
+                  </I>{' '}
+                  Email
+                </label>
+                <Field
+                  placeholder="Enter your email address"
+                  name="email"
+                  type="email"
+                  value={values.email}
+                />
+                <FormErrors touched={touched.email} message={errors.email} />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="Password">
+                  <I>
+                    <MdLock />
+                  </I>{' '}
+                  Password
+                </label>
+                <Field
+                  placeholder="Type your password"
+                  name="password"
+                  type="password"
+                  value={values.password}
+                />
+                <FormErrors
+                  touched={touched.password}
+                  message={errors.password}
+                />
+              </div>
+              <div className="submit-btn-wrapper">
+                <button
+                  className="btn btn-animated"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Submit
+                </button>
+                <Link to="/iamareallyforgetfulperson">
+                  Forgot your password?
+                </Link>
+              </div>
+              <FormFooterContainer>
+                <FormFooter>Don&apos;t have an account?</FormFooter>
+                <button
+                  type="button"
+                  className="flip"
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign Up
+                </button>
+              </FormFooterContainer>
+            </Form>
+          </div>
+        </section>
       )}
     </Formik>
   );
