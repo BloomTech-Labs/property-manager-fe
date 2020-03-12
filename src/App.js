@@ -46,7 +46,7 @@ const App = () => {
         <Router>
           <LandingPage path="/">
             <Home path="/" />
-            <Features path="features" />
+            <Features path="/features" />
           </LandingPage>
           <Contact path="/contact" />
           <Login path="/login" />
@@ -57,8 +57,8 @@ const App = () => {
             userType={userType}
           />
         </Router>
-        <Toast />
         <Footer />
+        <Toast />
       </div>
     </BreakpointProvider>
   );

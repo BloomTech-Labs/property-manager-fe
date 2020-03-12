@@ -47,68 +47,64 @@ export default function LoginForm() {
       onSubmit={values => loginFn(values)}
     >
       {({ errors, touched, isSubmitting, values }) => (
-        <section className="main-wrapper">
-          <div className="form-wrapper">
-            <h2>Login</h2>
-            <Form className="form-element" data-testid="form-element">
-              <div className="input-wrapper">
-                <label htmlFor="email">
-                  <I>
-                    <MdEmail />
-                  </I>{' '}
-                  Email
-                </label>
-                <Field
-                  placeholder="Enter your email address"
-                  name="email"
-                  type="email"
-                  value={values.email}
-                />
-                <FormErrors touched={touched.email} message={errors.email} />
-              </div>
-              <div className="input-wrapper">
-                <label htmlFor="Password">
-                  <I>
-                    <MdLock />
-                  </I>{' '}
-                  Password
-                </label>
-                <Field
-                  placeholder="Type your password"
-                  name="password"
-                  type="password"
-                  value={values.password}
-                />
-                <FormErrors
-                  touched={touched.password}
-                  message={errors.password}
-                />
-              </div>
-              <div className="submit-btn-wrapper">
-                <button
-                  className="btn btn-animated"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </button>
-                <Link to="/iamareallyforgetfulperson">
-                  Forgot your password?
-                </Link>
-              </div>
-              <FormFooterContainer>
-                <FormFooter>Don&apos;t have an account?</FormFooter>
-                <button
-                  type="button"
-                  className="flip"
-                  onClick={() => navigate('/signup')}
-                >
-                  Sign Up
-                </button>
-              </FormFooterContainer>
-            </Form>
-          </div>
-        </section>
+        <div className="form-wrapper">
+          <h2>Login</h2>
+          <Form className="form-element" data-testid="form-element">
+            <div className="input-wrapper">
+              <label htmlFor="email">
+                <I>
+                  <MdEmail />
+                </I>{' '}
+                Email
+              </label>
+              <Field
+                placeholder="Enter your email address"
+                name="email"
+                type="email"
+                value={values.email}
+              />
+              <FormErrors touched={touched.email} message={errors.email} />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="Password">
+                <I>
+                  <MdLock />
+                </I>{' '}
+                Password
+              </label>
+              <Field
+                placeholder="Type your password"
+                name="password"
+                type="password"
+                value={values.password}
+              />
+              <FormErrors
+                touched={touched.password}
+                message={errors.password}
+              />
+            </div>
+            <div className="submit-btn-wrapper">
+              <button
+                className="btn btn-animated"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Submit
+              </button>
+              <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
+            </div>
+            <FormFooterContainer>
+              <FormFooter>Don&apos;t have an account?</FormFooter>
+              <button
+                type="button"
+                className="flip"
+                onClick={() => navigate('/signup')}
+              >
+                Sign Up
+              </button>
+            </FormFooterContainer>
+          </Form>
+        </div>
       )}
     </Formik>
   );
