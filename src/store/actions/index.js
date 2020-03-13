@@ -7,7 +7,7 @@ import { showSuccessToast, showErrorToast } from './toastActions';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
 const baseUrl =
-  process.env.REACT_APP_URL || 'https://labspt-propman.herokuapp.com/api/';
+  process.env.REACT_APP_URL || 'https://labspt-propman.herokuapp.com/api';
 // ------------------------------------------------|
 // AUTH TYPES =====================================|
 // ================================================|
