@@ -59,6 +59,7 @@
   margin: 0 auto 150px;
   color: #2E3C50;
   font-family: Lato;
+  justify-content: center;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -70,7 +71,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    width: 100%;
+    min-width: 100%;
 
     .featureTiersWrapper {
       display: flex;
@@ -113,8 +114,14 @@
         line-height: 30px;
         
         .featureName {
+          font-size: .8rem;
           text-align: right;
+          padding-right: 1vw;
         }
+      }
+
+      .tableRow:nth-of-type(odd) {
+        background-color: #eeedff;
       }
     }
   }

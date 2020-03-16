@@ -1,6 +1,6 @@
-# PropMan
+# Freehold
 
-You can find the deployed project at [PropMan](https://propman.netlify.com).
+You can find the deployed project at [https://www.freehold.dev](https://www.freehold.dev).
 
 ## Contributors
 
@@ -12,7 +12,7 @@ You can find the deployed project at [PropMan](https://propman.netlify.com).
 |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/techturnip)                             |                    [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/IXLives)                    |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ElvisJG/)                            |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Teddyzenebe)                           |                     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/anthonyvigz)                     |
 |       [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-turnipseed/)        | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ian-bryant) |          [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/elvisjg/)           |              [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.teddyzenebe.com/)               | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/anthonyvigliotta) |
 
-### WEBPT8
+### LAMBDA WEBPT8
 
 |                                       [Nick Durbin](https://github.com/nickdurbin)                                        |                                      [Ian Carreras](https://github.com/IanCarreras)                                       |                                      [Cole Gonzalez](https://github.com/gcolegonzales)                                      |                                       [Danny Town](https://github.com/dannyotown)                                        |
 | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: |
