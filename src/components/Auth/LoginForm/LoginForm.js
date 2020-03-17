@@ -84,11 +84,7 @@ export default function LoginForm() {
               />
             </div>
             <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <button className="btn" type="submit" disabled={isSubmitting}>
                 Submit
               </button>
               <Link to="/iamareallyforgetfulperson">Forgot your password?</Link>
