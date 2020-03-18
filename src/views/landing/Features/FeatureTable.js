@@ -1,5 +1,7 @@
 import React from 'react';
 import features from './FeatureList';
+import FeatureButtons from './FeatureButtons';
+import './features.scss';
 
 const FeatureTable = () => {
   return (
@@ -22,6 +24,7 @@ const FeatureTable = () => {
               <td>{premium === true ? '✔' : ''}</td>
             </tr>
           ))}
+          <FeatureButtons />
         </tbody>
       </table>
     </div>
