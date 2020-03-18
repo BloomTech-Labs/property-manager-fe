@@ -3,6 +3,7 @@ import { Divider, Grid, Container } from '@material-ui/core';
 import ProfileCard from './ProfileCard';
 import PropTable from './PropTable';
 import ProfileImg from '../../../assets/svg/ProfileImg';
+import './profile.scss';
 
 export default function Profile() {
   return (
