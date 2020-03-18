@@ -7,7 +7,3 @@
 .btn {
   @include button;
 }
-
-.btn-animated {
-  @include animated-shadow;
-}
