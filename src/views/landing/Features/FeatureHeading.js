@@ -1,6 +1,5 @@
 import React from 'react';
 import FeatureImage from '../../../assets/svg/features-image.svg';
-import './features.scss';
 
 const FeatureHeading = () => {
   return (

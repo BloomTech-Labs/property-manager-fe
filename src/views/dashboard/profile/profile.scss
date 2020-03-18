@@ -1,0 +1,25 @@
+.profile {
+  width: 100%;
+  min-height: 95vh;
+}
+
+.profile-btn {
+  width: 200px;
+  height: 50px;
+  font-family: Lato;
+  font-size: 1.2rem;
+  font-weight: 500;
+  box-shadow: -10px 4px 28px rgba(0, 0, 0, 0.25);
+  border: 1px solid #6c63ff;
+  border-radius: 6px;
+  background: #6C63FF;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #ffffff;
+    color: #6C63FF;
+  }
+}
