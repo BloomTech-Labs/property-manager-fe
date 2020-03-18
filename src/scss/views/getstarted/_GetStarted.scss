@@ -45,13 +45,23 @@
         }
     }
 
-    button {
-        background-color: rgba(0, 0, 0, 0.582);
-        padding: 10px 35px;
-        border-radius: 3px;
+    .btn {
+        background-color: rgb(249, 168, 38);
+        height: 50px;
+        width: 100%;
+        font-size: 1.2rem;
         color: white;
-        font-family: $primary-font;
-        letter-spacing: 2px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        margin-top: 2.5rem;
+        box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.25);
+        transition: all .3s ease;
+
+        &:hover {
+          background: #fff;
+          color: rgb(249, 168, 38);
+          border: 1px solid rgb(249, 168, 38);
+        }
         
     }
 }
