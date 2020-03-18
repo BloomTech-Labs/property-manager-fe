@@ -1,6 +1,5 @@
 import React from 'react';
 import features from './FeatureList';
-import './features.scss';
 
 const FeatureTable = () => {
   return (
