@@ -120,11 +120,11 @@ function SideNav() {
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
+          [classes.drawerOpen]: open
         })}
         classes={{
           paper: clsx({
-            [classes.drawerOpen]: open,
+            [classes.drawerOpen]: open
           })
         }}
       >
