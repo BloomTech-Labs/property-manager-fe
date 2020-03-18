@@ -29,28 +29,4 @@ export const HorNav = () => {
   );
 };
 
-export const VertNav = () => {
-  return (
-    <nav className="nav-side">
-      <ul>
-        <li>
-          <Link className="profile" to="profile">
-            {/* <Avi width={75} height={75} name="avatar" /> */}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" to="/dashboard">
-            Overview
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" to="properties">
-            Properties
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
-
 export default HorNav;
