@@ -3,9 +3,9 @@ import Routes from './components/Auth/Routes/Routes';
 
 const App = () => {
   return (
-    <div className="App">
+    <>
       <Routes />
-    </div>
+    </>
   );
 };
 
