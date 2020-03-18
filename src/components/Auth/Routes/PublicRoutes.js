@@ -1,23 +1,23 @@
 import React from 'react';
 import { Router } from '@reach/router';
-
+import { HorNav } from '../../Navigation/navigation';
+import Footer from '../../../views/landing/Footer/Footer';
 import LandingPage from '../../../views/landing/LandingPage';
-import Landlord from '../../../views/landing/Landlord';
-import Tenant from '../../../views/landing/Tenant';
-import Features from '../../../views/landing/Features';
 import Contact from '../../../views/landing/Contact';
-import FrontPage from '../../../views/landing/FrontPage';
+import Login from '../../../views/onBoarding/login';
+import SignUp from '../../../views/onBoarding/signup';
 
 const PublicRoutes = () => (
-  <Router>
-    <LandingPage path="/">
-      <FrontPage path="/" />
-      <Landlord path="/landlord" />
-      <Tenant path="/tenant" />
-      <Features path="/features" />
-      <Contact path="/contact" />
-    </LandingPage>
-  </Router>
+  <>
+    <HorNav />
+    <Router>
+      <LandingPage path="/" />
+      <Contact exact path="/contact" />
+      <Login path="/login" />
+      <SignUp path="/signup" />
+    </Router>
+    <Footer />
+  </>
 );
 
 export default PublicRoutes;
