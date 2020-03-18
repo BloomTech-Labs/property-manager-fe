@@ -4,6 +4,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
+import fb from '../../fb';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
 const baseUrl =
@@ -86,19 +87,51 @@ export const auth = url => (email, password, type) => async dispatch => {
   dispatch({ type: AUTH_REQUEST_START });
 
   try {
-    const res = await axios.post(`${baseUrl}${url}`, {
-      email,
-      password,
-      type
-    });
+    if (type) {
+      const { user } = await fb
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
 
-    localStorage.setItem('token', res.data.token);
-    localStorage.setItem('userType', res.data.user.type);
+      const userWithType = {
+        email,
+        uid: user.uid,
+        type
+      };
 
-    // show success toast
-    dispatch(showSuccessToast(`Success! Welcome to PropMan!`));
+      const res = await axios.post(`${baseUrl}${url}`, userWithType);
 
-    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
+      const refreshTheToken = await fb.auth().currentUser.getIdToken(true);
+
+      localStorage.setItem('token', refreshTheToken);
+      localStorage.setItem('userType', res.data.user.type);
+      // show success toast
+      dispatch(showSuccessToast(`Success! Welcome to PropMan!`));
+
+      dispatch({
+        type: AUTH_REQUEST_SUCCESS,
+        payload: { user: res.data.user }
+      });
+    } else {
+      const { user } = await fb
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+
+      const res = await axios.post(`${baseUrl}${url}`, {
+        email,
+        uid: user.uid,
+        token: user._lat
+      });
+
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userType', res.data.type);
+
+      dispatch(showSuccessToast(`Success! Welcome to PropMan!`));
+
+      dispatch({
+        type: AUTH_REQUEST_SUCCESS,
+        payload: { user: res.data.user }
+      });
+    }
   } catch (err) {
     // pull out error message
     console.log(err);
