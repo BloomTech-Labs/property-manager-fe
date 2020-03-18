@@ -131,3 +131,36 @@ td, th {
   width: 100%;
   text-align: center;
 }
+
+.buy-btn-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 40px auto 0;
+
+  .empty {
+    width: 20%;
+  }
+
+  .buy-btn {
+    width: 20%;
+    height: 50px;
+    margin-left: 40px;
+    font-family: Lato;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: 1px solid #6C63FF;
+    border-radius: 6px;
+    background: #6C63FF;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    
+    &:hover {
+      background: #FFFFFF;
+      color: #6C63FF;
+    }
+  }
+}
