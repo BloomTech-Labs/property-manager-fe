@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style & classnames
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // MUI Components
 import Drawer from '@material-ui/core/Drawer';
@@ -87,7 +87,6 @@ const useStyles = makeStyles(theme => ({
 
 function SideNav() {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const dispatch = useDispatch();
 
