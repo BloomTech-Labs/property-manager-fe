@@ -15,7 +15,7 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import { navigate } from '@reach/router';
 import { modalStyles } from '../../helpers/utils';
 // SVG
-import LocationSVG from '../../components/SVG/LocationSVG';
+import LocationSVG from '../../assets/svg/LocationSVG.svg';
 // Components
 import WorkOrderTable from '../../components/WorkOrders/WorkOrderTable';
 

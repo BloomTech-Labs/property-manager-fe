@@ -157,7 +157,11 @@ export default function ContactForm() {
           <DialogTitle disableTypography id="alert-dialog-slide-title">
             <h5 className="contactModalHeader">Form Submitted!</h5>
           </DialogTitle>
-          <img className="contactFormImg" src={MailSent} alt="Thank you for message" />
+          <img
+            className="contactFormImg"
+            src={MailSent}
+            alt="Thank you for message"
+          />
           <DialogContent>
             <Typography align="center">Thank you for your feedback!</Typography>
           </DialogContent>

@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 // Components
 import PropertyCard from '../../../components/Properties/PropertyCard';
 import AddPropertyCard from '../../../components/Properties/AddPropertyCard';
-import LocationSVG from '../../../components/SVG/LocationSVG';
+import LocationSVG from '../../../assets/svg/LocationSVG.svg';
 import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
 
 export default function PropertyList() {
