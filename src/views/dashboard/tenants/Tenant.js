@@ -16,7 +16,7 @@ import PhoneIcon from '@material-ui/icons/PhoneAndroid';
 // Components
 import { navigate } from '@reach/router';
 import { Button, Grid, CardMedia } from '@material-ui/core';
-import LocationSVG from '../../../components/SVG/LocationSVG';
+import LocationSVG from '../../../assets/svg/LocationSVG.svg';
 import { getTenantById } from '../../../store/actions';
 
 // Define styling for modal

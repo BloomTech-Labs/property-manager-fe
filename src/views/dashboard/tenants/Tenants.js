@@ -3,7 +3,7 @@ import { Divider, Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 import TenantCard from '../../../components/Tenants/TenantCard';
-import ProfileSVG from '../../../components/SVG/ProfileSVG';
+import ProfileSVG from '../../../assets/svg/ProfileSVG.svg';
 import PropertyList from '../properties/Properties';
 import AddTenantCard from '../../../components/Tenants/AddTenantCard';
 import TenantDetailsModal from '../../../components/Tenants/TenantDetailsModal';

@@ -7,8 +7,8 @@ import ErrorIcon from '@material-ui/icons/Error';
 // Components
 import TenantCard from './TenantCard';
 // SVGs
-import ErrorSVG from '../SVG/ErrorSVG';
-import AddHouse from '../SVG/AddHouseSVG';
+import Error from '../../assets/svg/error.svg';
+import AddHouse from '../../assets/svg/add-house.svg';
 
 const AddTenantCard = ({ isLoading, tenantNum, error }) => {
   const addTenantPath = '/dashboard/tenants/add';
@@ -18,7 +18,7 @@ const AddTenantCard = ({ isLoading, tenantNum, error }) => {
       <TenantCard
         title="Uh oh! There was an error."
         icon={<ErrorIcon style={{ color: '#EC5E7B' }} />}
-        svg={<ErrorSVG />}
+        svg={<Error />}
       />
     );
   }
