@@ -25,7 +25,7 @@ import HomeIcon from '@material-ui/icons/Home';
 
 // SVG
 import { Grid } from '@material-ui/core';
-import ProfileSVG from '../SVG/ProfileSVG';
+import ProfileSVG from '../../assets/svg/ProfileSVG.svg';
 
 // Components
 import MuiModal from '../UI/MuiModal';
