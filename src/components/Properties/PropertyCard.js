@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '& svg': {
+    '& img': {
       height: 140
     }
   },
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
 export default function PropertyCard(props) {
   const classes = useStyles();
 
-  const { icon, title, svg, handleOpen, property, upperPath, iconPath } = props;
+  const { icon, title, img, handleOpen, property, upperPath, iconPath } = props;
 
   // event handler for clicking on the upper CardActionArea
   const handleClick = () => {
@@ -92,7 +92,7 @@ export default function PropertyCard(props) {
           }}
         >
           <CardMedia className={classes.media}>
-            {svg || <Skeleton variant="rect" height={140} width="100%" />}
+            {img || <Skeleton variant="rect" height={140} width="100%" />}
           </CardMedia>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
