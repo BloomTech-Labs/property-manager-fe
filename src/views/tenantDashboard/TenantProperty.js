@@ -35,7 +35,7 @@ export default function TenantProperty() {
               title={<h2 className={classes.title}>{property.name || null}</h2>}
             />
             <CardMedia className={classes.media}>
-              <LocationSVG />
+              <img src={LocationSVG} alt="Map to show location" />
             </CardMedia>
             <Divider />
             <Grid justify="center" container>

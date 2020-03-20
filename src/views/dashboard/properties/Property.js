@@ -54,7 +54,7 @@ export default function Property({ id }) {
       <Card className={classes.card}>
         <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
         <CardMedia className={classes.media}>
-          <LocationSVG />
+          <img src={LocationSVG} alt="Location of property" />
         </CardMedia>
         <Divider />
         <Grid justify="center" container>

@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '& svg': {
+    '& img': {
       height: 140
     }
   },
@@ -92,7 +92,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
         />
         <Divider />
         <CardMedia className={classes.media}>
-          <LocationSVG />
+          <img src={LocationSVG} alt="Map to show location" />
         </CardMedia>
         <Divider />
         <CardContent className={classes.address}>
