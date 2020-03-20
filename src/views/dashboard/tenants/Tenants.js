@@ -63,7 +63,7 @@ const Tenants = () => {
               tenant={tenant || {}}
               iconPath={`/dashboard/tenants/edit/${id}`}
               key={id}
-              svg={<ProfileSVG />}
+              img={<img src={ProfileSVG} alt="Profile svg of the person." />}
               icon={<EditIcon />}
               title={`${firstName} ${lastName}`}
               property={property[0]}
