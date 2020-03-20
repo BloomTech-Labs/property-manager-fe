@@ -70,7 +70,7 @@ export default function PropertyList() {
               handleOpen={handleOpen}
               iconPath={`/dashboard/properties/edit/${id}`}
               key={id}
-              svg={<LocationSVG />}
+              img={<img src={LocationSVG} alt="location of the property" />}
               title={name}
               icon={<FaPen />}
             />
