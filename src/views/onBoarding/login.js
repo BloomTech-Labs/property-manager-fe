@@ -4,7 +4,7 @@ import '../../scss/components/_onboardingForms.scss';
 
 const Login = () => {
   return (
-    <div className="main-wrapper">
+    <div className="main-form-page-wrapper">
       <LogInForm />
     </div>
   );

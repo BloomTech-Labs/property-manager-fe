@@ -38,124 +38,126 @@ const SignUpForm = () => {
   );
 
   return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: '',
-        passwordConfirmation: '',
-        userType: ''
-      }}
-      validationSchema={validationSchema}
-      onSubmit={values => signupFn(values)}
-    >
-      {({ touched, errors, values }) => (
-        <div className="form-wrapper">
-          <h2>Sign Up</h2>
-          <Form className="form-element" data-testid="form-element">
-            <div className="input-wrapper">
-              <label htmlFor="email">
-                <I>
-                  <MdEmail />
-                </I>{' '}
-                Email
-              </label>
-              <Field
-                type="email"
-                name="email"
-                placeholder="Enter your email address"
-                value={values.email}
-              />
-              {touched.email && errors.email && (
-                <FormError>
+    <div className="SignupForm">
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+          passwordConfirmation: '',
+          userType: ''
+        }}
+        validationSchema={validationSchema}
+        onSubmit={values => signupFn(values)}
+      >
+        {({ touched, errors, values }) => (
+          <div className="form-wrapper">
+            <h2>Sign Up</h2>
+            <Form className="form-element" data-testid="form-element">
+              <div className="input-wrapper">
+                <label htmlFor="email">
                   <I>
-                    <MdError />
+                    <MdEmail />
                   </I>{' '}
-                  {errors.email}
-                </FormError>
-              )}
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="email">
-                <I>
-                  <MdLock />
-                </I>{' '}
-                Password
-              </label>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={values.password}
-              />
-              {touched.password && errors.password && (
-                <FormError>
+                  Email
+                </label>
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  value={values.email}
+                />
+                {touched.email && errors.email && (
+                  <FormError>
+                    <I>
+                      <MdError />
+                    </I>{' '}
+                    {errors.email}
+                  </FormError>
+                )}
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="email">
                   <I>
-                    <MdError />
+                    <MdLock />
                   </I>{' '}
-                  {errors.password}
-                </FormError>
-              )}
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="email">
-                <I>
-                  <MdLock />
-                </I>{' '}
-                Confirm Password
-              </label>
-              <Field
-                type="password"
-                name="passwordConfirmation"
-                placeholder="Re-enter your password"
-                value={values.passwordConfirmation}
-              />
-              {touched.passwordConfirmation && errors.passwordConfirmation && (
-                <FormError>
+                  Password
+                </label>
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  value={values.password}
+                />
+                {touched.password && errors.password && (
+                  <FormError>
+                    <I>
+                      <MdError />
+                    </I>{' '}
+                    {errors.password}
+                  </FormError>
+                )}
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="email">
                   <I>
-                    <MdError />
+                    <MdLock />
                   </I>{' '}
-                  {errors.passwordConfirmation}
-                </FormError>
-              )}
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="type">
-                <I>
-                  <MdSupervisorAccount />
-                </I>{' '}
-                User Type
-              </label>
-              <Field name="userType" label="Type" as={TextField} select>
-                <MenuItem value="landlord">Landlord</MenuItem>
-                <MenuItem value="tenant">Tenant</MenuItem>
-              </Field>
-              {touched.userType && errors.userType && (
-                <FormError>
+                  Confirm Password
+                </label>
+                <Field
+                  type="password"
+                  name="passwordConfirmation"
+                  placeholder="Re-enter your password"
+                  value={values.passwordConfirmation}
+                />
+                {touched.passwordConfirmation && errors.passwordConfirmation && (
+                  <FormError>
+                    <I>
+                      <MdError />
+                    </I>{' '}
+                    {errors.passwordConfirmation}
+                  </FormError>
+                )}
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="type">
                   <I>
-                    <MdError />
+                    <MdSupervisorAccount />
                   </I>{' '}
-                  {errors.type}
-                </FormError>
-              )}
-            </div>
-            <div className="submit-btn-wrapper">
-              <button className="btn" type="submit">
-                Submit
-              </button>
-            </div>
-            <FormFooterContainer>
-              <button
-                type="button"
-                className="flip"
-                onClick={() => navigate('/login')}
-              >
-                Have an Account?
-              </button>
-            </FormFooterContainer>
-          </Form>
-        </div>
-      )}
-    </Formik>
+                  User Type
+                </label>
+                <Field name="userType" label="Type" as={TextField} select>
+                  <MenuItem value="landlord">Landlord</MenuItem>
+                  <MenuItem value="tenant">Tenant</MenuItem>
+                </Field>
+                {touched.userType && errors.userType && (
+                  <FormError>
+                    <I>
+                      <MdError />
+                    </I>{' '}
+                    {errors.type}
+                  </FormError>
+                )}
+              </div>
+              <div className="submit-btn-wrapper">
+                <button className="btn" type="submit">
+                  Submit
+                </button>
+              </div>
+              <FormFooterContainer>
+                <button
+                  type="button"
+                  className="flip"
+                  onClick={() => navigate('/login')}
+                >
+                  Have an Account?
+                </button>
+              </FormFooterContainer>
+            </Form>
+          </div>
+        )}
+      </Formik>
+    </div>
   );
 };
 
