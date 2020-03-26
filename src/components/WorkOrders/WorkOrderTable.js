@@ -1,14 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from '@material-ui/core';
+import WorkOrderModal from './WorkOrderModal';
+import '../../scss/components/_workOrderTable.scss';
 
 const useStyles = makeStyles({
   table: {
@@ -62,19 +65,33 @@ export default function WorkOrderTable({ workOrderList }) {
               const tenant = tenants.filter(tenant => tenant.id === createdBy);
 
               const formatDate = date => date && new Date(date).toDateString();
+
+              const displayModal = workOrder => {
+                const { id } = workOrder;
+                const modal = document.getElementById(id);
+                modal.style.display = 'flex';
+              };
+
               return (
-                <TableRow key={id}>
-                  <TableCell component="th" scope="row">
-                    {title}
-                  </TableCell>
-                  <TableCell align="right">{description}</TableCell>
-                  <TableCell align="right">{type}</TableCell>
-                  <TableCell align="right">{formatDate(startDate)}</TableCell>
-                  <TableCell align="right">{property[0].name}</TableCell>
-                  <TableCell align="right">
-                    {tenant.length ? tenant[0].type : 'landlord'}
-                  </TableCell>
-                </TableRow>
+                <>
+                  <WorkOrderModal item={workOrder} id={workOrder.id} />
+                  <TableRow
+                    className="table-row"
+                    key={id}
+                    onClick={() => displayModal(workOrder)}
+                  >
+                    <TableCell component="th" scope="row">
+                      {title}
+                    </TableCell>
+                    <TableCell align="right">{description}</TableCell>
+                    <TableCell align="right">{type}</TableCell>
+                    <TableCell align="right">{formatDate(startDate)}</TableCell>
+                    <TableCell align="right">{property[0].name}</TableCell>
+                    <TableCell align="right">
+                      {tenant.length ? tenant[0].type : 'landlord'}
+                    </TableCell>
+                  </TableRow>
+                </>
               );
             })}
           </TableBody>
@@ -99,7 +116,3 @@ export default function WorkOrderTable({ workOrderList }) {
     </TableContainer>
   );
 }
-
-WorkOrderTable.propTypes = {
-  workOrderList: PropTypes.arrayOf(PropTypes.any).isRequired
-};
