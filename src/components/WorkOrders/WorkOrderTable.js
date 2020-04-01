@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from '@reach/router';
 import {
   Table,
   TableBody,
@@ -10,9 +11,9 @@ import {
   TableRow,
   Paper
 } from '@material-ui/core';
-import WorkOrderModal from './WorkOrderModal';
 import '../../scss/components/_workOrderTable.scss';
 
+// This allows us to have some infile styling at our finger tips.
 const useStyles = makeStyles({
   table: {
     minWidth: 650
@@ -28,13 +29,17 @@ export default function WorkOrderTable({ workOrderList }) {
 
   const tenants = useSelector(state => state.propReducer.tenants);
 
+  // This allows us to access our infile style objects using classes.{whatever}
   const classes = useStyles();
+  // If there are any workOrders returned, we render this chart.
+  // This goes all the way until TableContainer closes!!! Scroll wayy down!
   if (workOrderList.length) {
     return (
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>Actions</TableCell>
               <TableCell>Work&nbsp;Order</TableCell>
               <TableCell align="right">Description</TableCell>
               <TableCell align="right">Type</TableCell>
@@ -44,6 +49,8 @@ export default function WorkOrderTable({ workOrderList }) {
             </TableRow>
           </TableHead>
           <TableBody>
+            {/* Here we are getting all the tools we will 
+            need to compare against to populate our chart */}
             {workOrderList.map(workOrder => {
               const {
                 id,
@@ -64,22 +71,18 @@ export default function WorkOrderTable({ workOrderList }) {
               // Filter to select whether tenant or landlord created work order
               const tenant = tenants.filter(tenant => tenant.id === createdBy);
 
+              // This function gets called later to format a given date
               const formatDate = date => date && new Date(date).toDateString();
 
-              const displayModal = workOrder => {
-                const { id } = workOrder;
-                const modal = document.getElementById(id);
-                modal.style.display = 'flex';
-              };
-
+              // Once all of our information is ready
+              // we can start filling out the table!
+              // All above code is just declaring variables FOR THIS TABLE
               return (
                 <>
-                  <WorkOrderModal item={workOrder} id={workOrder.id} />
-                  <TableRow
-                    className="table-row"
-                    key={id}
-                    onClick={() => displayModal(workOrder)}
-                  >
+                  <TableRow className="table-row" key={id}>
+                    <TableCell>
+                      <Link to={`/dashboard/workorders/${id}`}>Update</Link>
+                    </TableCell>
                     <TableCell component="th" scope="row">
                       {title}
                     </TableCell>
@@ -100,6 +103,9 @@ export default function WorkOrderTable({ workOrderList }) {
     );
   }
 
+  // This is basically saying ELSE do this
+  // This is a conditional render back from allll the way up top where it checks to see if there
+  // are any items in workOrders
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
