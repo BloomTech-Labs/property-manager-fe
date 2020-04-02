@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 // Reach Router
@@ -21,6 +20,7 @@ import WorkOrderForm from '../../WorkOrderForm/WorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import TenantProperty from '../../../views/tenantDashboard/TenantProperty';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
+import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
 
 function ProtectedRoutes({ token, userType }) {
   // Landlord Routing
@@ -43,6 +43,7 @@ function ProtectedRoutes({ token, userType }) {
 
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
+          <WorkOrderEditForm path="workorders/:workOrderId" />
         </Dashboard>
       </Router>
     );
@@ -58,6 +59,7 @@ function ProtectedRoutes({ token, userType }) {
           <TenantProperty path="property" />
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
+          <WorkOrderEditForm path="workorders/:workOrderId" />
         </TenantDashboard>
       </Router>
     );

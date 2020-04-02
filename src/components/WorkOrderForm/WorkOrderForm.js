@@ -36,7 +36,7 @@ const validationSchemaTenant = Yup.object().shape({
   type: Yup.string().required('Work order type is required')
 });
 
-const WorkOrderForm = () => {
+const WorkOrderForm = ({ workOrderId }) => {
   const classes = formStyles();
   const dispatch = useDispatch();
 
