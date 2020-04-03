@@ -440,7 +440,7 @@ export const addWorkOrder = workOrder => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
+    const res = await axiosAuth().put(`${baseUrl}/workorders/:workOrderId`, workOrder);
 
     // show success toast
     dispatch(showSuccessToast('Work Order updated!'));
