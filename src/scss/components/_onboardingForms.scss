@@ -1,13 +1,19 @@
-.main-wrapper {
-    padding-top: 5vh;
+.main-form-page-wrapper {
+    margin-top: 10vh;
+    background: url('../../assets/svg/small_town.svg');
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     height: 94vh;
-    background: url('../../assets/svg/small_town.svg');
-    background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    margin-bottom: 25vh;
 }
+
+.main-wrapper {
+    padding-top: 5vh;
+}
+
 .form-wrapper {
     background-color: rgba(255,255,255,.95);
     margin: auto 20px;
@@ -29,4 +35,5 @@
         min-height: 11vh;
         font-size: 2.3rem;
     }
+
 }

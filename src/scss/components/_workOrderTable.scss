@@ -1,0 +1,37 @@
+.table-row {
+    transition: .3s ease-in-out;
+}
+
+.table-row:hover {
+    background-color: #e7e6ff;
+    transform: scale(1.01);
+}
+
+.table-row:active {
+    transition: .1s ease-in;
+    min-height: 50vh;
+    background-color: #b5b3ff;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0px;
+    left: 10vw;
+    min-height: 100vh;
+    min-width: 90vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+        position: relative;
+        left: 5vw;
+        height: 50vh;
+        width: 65vw;
+        background-color: #eeedfd;
+        border-radius: .3rem;
+        box-shadow: 0 0 10px #000;
+        padding: 1rem;
+    }
+}

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '& svg': {
+    '& img': {
       height: 140
     }
   },
@@ -56,7 +56,7 @@ const TenantCard = ({
   iconPath,
   title,
   icon,
-  svg,
+  img,
   property,
   handleOpen,
   tenant
@@ -91,7 +91,7 @@ const TenantCard = ({
           }}
         >
           <CardMedia className={classes.media}>
-            {svg || <Skeleton variant="rect" height={140} width="100%" />}
+            {img || <Skeleton variant="rect" height={140} width="100%" />}
           </CardMedia>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">

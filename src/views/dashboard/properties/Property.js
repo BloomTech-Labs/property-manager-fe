@@ -21,7 +21,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import { navigate } from '@reach/router';
 import { modalStyles } from '../../../helpers/utils';
 // SVG
-import LocationSVG from '../../../components/SVG/LocationSVG';
+import LocationSVG from '../../../assets/svg/LocationSVG.svg';
 // Components
 import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 // Actions
@@ -54,7 +54,7 @@ export default function Property({ id }) {
       <Card className={classes.card}>
         <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
         <CardMedia className={classes.media}>
-          <LocationSVG />
+          <img src={LocationSVG} alt="Location of property" />
         </CardMedia>
         <Divider />
         <Grid justify="center" container>

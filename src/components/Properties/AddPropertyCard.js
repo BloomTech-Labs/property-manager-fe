@@ -2,8 +2,8 @@
 import React from 'react';
 import { FaPlus, FaExclamationCircle } from 'react-icons/fa';
 import PropertyCard from './PropertyCard';
-import AddHouseSVG from '../SVG/AddHouseSVG';
-import ErrorSVG from '../SVG/ErrorSVG';
+import AddHouse from '../../assets/svg/add-house.svg';
+import ErrorSVG from '../../assets/svg/error.svg';
 
 export default function AddPropertyCard(props) {
   const { propertyNum, isLoading, error } = props;
@@ -15,7 +15,7 @@ export default function AddPropertyCard(props) {
       <PropertyCard
         icon={<FaExclamationCircle style={{ color: '#EC5E7B' }} />}
         title="Uh oh! There was an error."
-        svg={<ErrorSVG />}
+        img={<img src={ErrorSVG} alt="Error with your request." />}
       />
     );
   }
@@ -27,7 +27,7 @@ export default function AddPropertyCard(props) {
         iconPath={addPropertyPath}
         icon={<FaPlus />}
         title="No properties, add one?"
-        svg={<AddHouseSVG />}
+        img={<img src={AddHouse} alt="Add house." />}
       />
     );
   }
@@ -40,7 +40,7 @@ export default function AddPropertyCard(props) {
       iconPath={addPropertyPath}
       icon={<FaPlus />}
       title="Add a New Property?"
-      svg={<AddHouseSVG />}
+      img={<img src={AddHouse} alt="Add house." />}
     />
   );
 }

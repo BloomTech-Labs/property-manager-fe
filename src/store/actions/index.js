@@ -4,6 +4,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import axiosAuth from '../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from './toastActions';
+import fb from '../../vendors/fb';
 // ------------------------------------------------|
 // BASE URL ---------------------------------------|
 const baseUrl =
@@ -86,34 +87,66 @@ export const auth = url => (email, password, type) => async dispatch => {
   dispatch({ type: AUTH_REQUEST_START });
 
   try {
-    const res = await axios.post(`${baseUrl}${url}`, {
-      email,
-      password,
-      type
-    });
+    // this is executed on when a new user is signing up
+    const successAlert = showSuccessToast(`Success! Welcome to Freehold!`);
 
-    localStorage.setItem('token', res.data.token);
-    localStorage.setItem('userType', res.data.user.type);
+    if (type) {
+      const { user } = await fb
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      // create new object with user's uid
+      const userWithType = {
+        email,
+        uid: user.uid,
+        type
+      };
+      // send userWithType to node server, set custom firebase claim {landlord: true}
+      const res = await axios.post(`${baseUrl}${url}`, userWithType);
+      // refresh the token with the new claim
+      const refreshTheToken = await fb.auth().currentUser.getIdToken(true);
 
-    // show success toast
-    dispatch(showSuccessToast(`Success! Welcome to PropMan!`));
+      // set to userType & token in local storage
+      localStorage.setItem('token', refreshTheToken);
+      localStorage.setItem('userType', res.data.user.type);
+      // show success toast
+      dispatch(successAlert);
+      dispatch({
+        type: AUTH_REQUEST_SUCCESS,
+        payload: { user: res.data.user }
+      });
+    } else {
+      // this is executed when a existing user is logging in
+      const { user } = await fb
+        .auth()
+        .signInWithEmailAndPassword(email, password);
 
-    dispatch({ type: AUTH_REQUEST_SUCCESS, payload: { user: res.data.user } });
+      const token = await fb.auth().currentUser.getIdToken();
+
+      const res = await axios.post(`${baseUrl}${url}`, {
+        email,
+        uid: user.uid,
+        token
+      });
+
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userType', res.data.type);
+
+      dispatch(successAlert);
+
+      dispatch({
+        type: AUTH_REQUEST_SUCCESS,
+        payload: { user: res.data.user }
+      });
+    }
   } catch (err) {
     // pull out error message
-    console.log(err);
-
     // show error toast
-    // if (errMsg !== undefined) {
-    //   dispatch(showErrorToast(`Error: ${errMsg}`));
-    // } else {
-    //   dispatch(showErrorToast('Uh oh! Something went wrong.'));
-    // }
-
-    // dispatch({
-    //   type: AUTH_REQUEST_FAIL,
-    //   payload: errMsg !== undefined ? errMsg : err
-    // });
+    console.log(err);
+    dispatch(showErrorToast(`${err}`));
+    dispatch({
+      type: AUTH_REQUEST_FAIL,
+      payload: err
+    });
   }
 };
 
@@ -407,7 +440,10 @@ export const addWorkOrder = workOrder => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = await axiosAuth().put(`${baseUrl}/api/workorders`, workOrder);
+    const res = await axiosAuth().put(
+      `${baseUrl}/workorders/${workOrder.id}`,
+      workOrder
+    );
 
     // show success toast
     dispatch(showSuccessToast('Work Order updated!'));

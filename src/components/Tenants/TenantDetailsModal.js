@@ -25,7 +25,7 @@ import HomeIcon from '@material-ui/icons/Home';
 
 // SVG
 import { Grid } from '@material-ui/core';
-import ProfileSVG from '../SVG/ProfileSVG';
+import ProfileSVG from '../../assets/svg/ProfileSVG.svg';
 
 // Components
 import MuiModal from '../UI/MuiModal';
@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   media: {
     padding: theme.spacing(2),
     display: 'flex',
-    '& svg': {
+    '& img': {
       height: 140
     }
   },
@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
       '& div': {
         display: 'flex',
         marginTop: theme.spacing(1),
-        '& svg': {
+        '& img': {
           marginRight: theme.spacing(2)
         }
       }
@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
   },
   propertyDetails: {
     marginTop: theme.spacing(1),
-    '& svg': {
+    '& img': {
       fontSize: '3rem',
       marginRight: theme.spacing(2)
     }
@@ -110,7 +110,7 @@ const TenantDetailsModal = ({ open, close, tenant, property }) => {
         />
         <Divider />
         <CardMedia className={classes.media}>
-          <ProfileSVG />
+          <img src={ProfileSVG} alt="Profile page" />
         </CardMedia>
         <Divider />
         <CardContent className={classes.contactInfo}>

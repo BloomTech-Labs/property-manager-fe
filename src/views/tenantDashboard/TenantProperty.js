@@ -15,7 +15,7 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import { navigate } from '@reach/router';
 import { modalStyles } from '../../helpers/utils';
 // SVG
-import LocationSVG from '../../components/SVG/LocationSVG';
+import LocationSVG from '../../assets/svg/LocationSVG.svg';
 // Components
 import WorkOrderTable from '../../components/WorkOrders/WorkOrderTable';
 
@@ -35,7 +35,7 @@ export default function TenantProperty() {
               title={<h2 className={classes.title}>{property.name || null}</h2>}
             />
             <CardMedia className={classes.media}>
-              <LocationSVG />
+              <img src={LocationSVG} alt="Map to show location" />
             </CardMedia>
             <Divider />
             <Grid justify="center" container>

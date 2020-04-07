@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
 import { I } from '../UI';
-import ThankYou from '../../assets/svg/ThankYou';
+import MailSent from '../../assets/svg/mail-sent.svg';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -155,9 +155,13 @@ export default function ContactForm() {
       >
         <Container>
           <DialogTitle disableTypography id="alert-dialog-slide-title">
-            <h5>Form Submitted!</h5>
+            <h5 className="contactModalHeader">Form Submitted!</h5>
           </DialogTitle>
-          <ThankYou viewBox="0 0 1035 627" width={500} />
+          <img
+            className="contactFormImg"
+            src={MailSent}
+            alt="Thank you for message"
+          />
           <DialogContent>
             <Typography align="center">Thank you for your feedback!</Typography>
           </DialogContent>

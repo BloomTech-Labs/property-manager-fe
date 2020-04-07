@@ -20,7 +20,7 @@ import { formStyles } from '../../helpers/utils';
 // Icons
 
 // Redux Actions
-import { addWorkOrder, getWorkOrders } from '../../store/actions/index';
+import { getWorkOrders, updateWorkOrder } from '../../store/actions/index';
 
 // YUP Validation schema
 const validationSchemaLandlord = Yup.object().shape({
@@ -36,15 +36,21 @@ const validationSchemaTenant = Yup.object().shape({
   type: Yup.string().required('Work order type is required')
 });
 
-const WorkOrderForm = ({ workOrderId }) => {
+const WorkOrderForm = ({ workOrderId }, props) => {
   const classes = formStyles();
   const dispatch = useDispatch();
 
+  // Fetch work orders on page load, this way if a user deep routes directly to the page, it will
+  // still have the data
   const currentDate = new Date();
+
+  const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
+  const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
+  const { title, propertyId, description, type, startDate, id } = workOrder;
 
   // Submit Fn
   const submit = values => {
-    dispatch(addWorkOrder(values)).then(() =>
+    dispatch(updateWorkOrder(values)).then(() =>
       dispatch(getWorkOrders()).then(() => navigate('/dashboard/workorders'))
     );
   };
@@ -53,22 +59,25 @@ const WorkOrderForm = ({ workOrderId }) => {
   const user = useSelector(state => state.getUserReducer.user);
   const userType = user.type;
 
+  // Get work order information
+
   // Bring in property list for the landlord form
   const propertyList = useSelector(state => state.propReducer.properties);
 
   if (user && userType === 'landlord') {
     return (
       <Paper className={classes.formCard}>
-        <h2 className={classes.formTitle}>Create a Work Order</h2>
+        <h2 className={classes.formTitle}>Update Work Order</h2>
         <Formik
           enableReinitialize
           validationSchema={validationSchemaLandlord}
           initialValues={{
-            title: '',
-            propertyId: '',
-            description: '',
-            type: '',
-            startDate: currentDate
+            title,
+            propertyId,
+            description,
+            type,
+            startDate,
+            id
           }}
           resetForm
           onSubmit={values => {

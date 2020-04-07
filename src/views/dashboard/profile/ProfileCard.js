@@ -23,8 +23,8 @@ export default function ProfileCard() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const defaultUser = {
-    firstName: 'Update Your',
-    lastName: 'Profile, Friend.',
+    firstName: 'Please Update',
+    lastName: 'Your Profile.',
     type: ''
   };
   const currentUser = useSelector(state => state.getUserReducer.user);
@@ -52,9 +52,9 @@ export default function ProfileCard() {
           <CardContent>{defaultUser.type}</CardContent>
         </CardActionArea>
         <CardActions>
-          <Button variant="contained" size="small" onClick={handleOpen}>
+          <button className="profile-btn" onClick={handleOpen}>
             Update Profile ✏
-          </Button>
+          </button>
         </CardActions>
         <ProfileForm
           open={handleOpen}

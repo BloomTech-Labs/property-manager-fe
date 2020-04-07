@@ -3,7 +3,7 @@ import { Divider, Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 import TenantCard from '../../../components/Tenants/TenantCard';
-import ProfileSVG from '../../../components/SVG/ProfileSVG';
+import ProfileSVG from '../../../assets/svg/ProfileSVG.svg';
 import PropertyList from '../properties/Properties';
 import AddTenantCard from '../../../components/Tenants/AddTenantCard';
 import TenantDetailsModal from '../../../components/Tenants/TenantDetailsModal';
@@ -63,7 +63,7 @@ const Tenants = () => {
               tenant={tenant || {}}
               iconPath={`/dashboard/tenants/edit/${id}`}
               key={id}
-              svg={<ProfileSVG />}
+              img={<img src={ProfileSVG} alt="Profile svg of the person." />}
               icon={<EditIcon />}
               title={`${firstName} ${lastName}`}
               property={property[0]}
