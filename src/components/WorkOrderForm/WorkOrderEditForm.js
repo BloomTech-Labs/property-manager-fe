@@ -46,7 +46,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
-  const { title, propertyId, description, type, startDate } = workOrder;
+  const { title, propertyId, description, type, startDate, id } = workOrder;
 
   // Submit Fn
   const submit = values => {
@@ -76,7 +76,8 @@ const WorkOrderForm = ({ workOrderId }, props) => {
             propertyId,
             description,
             type,
-            startDate
+            startDate,
+            id
           }}
           resetForm
           onSubmit={values => {
