@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import TenantForm from '../../../components/Tenants/TenantForm';
 import { addTenant as action, getTenants } from '../../../store/actions';
 
-const addTenant = action('http://localhost:1234/api/tenants');
+const prodURL =
+  `${process.env.REACT_APP_URL}/tenants` ||
+  'https://labspt-propman.herokuapp.com/api/tenants';
+const addTenant = action(prodURL);
 
 export default function CreateTenant() {
   const dispatch = useDispatch();
