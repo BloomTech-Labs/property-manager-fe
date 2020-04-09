@@ -9,7 +9,7 @@ import { showSuccessToast, showErrorToast } from '../toastActions';
 import fb from '../../../vendors/fb';
 
 export const auth = url => (email, password, type) => {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch({ type: AUTH_REQUEST_START });
     try {
       // this is executed on when a new user is signing up
@@ -37,8 +37,7 @@ export const auth = url => (email, password, type) => {
           type: AUTH_REQUEST_SUCCESS,
           payload: { user: res.data.user }
         });
-      }
-      else {
+      } else {
         // this is executed when a existing user is logging in
         const { user } = await fb
           .auth()
@@ -57,8 +56,7 @@ export const auth = url => (email, password, type) => {
           payload: { user: res.data.user }
         });
       }
-    }
-    catch (err) {
+    } catch (err) {
       // pull out error message
       // show error toast
       dispatch(showErrorToast(`${err}`));
