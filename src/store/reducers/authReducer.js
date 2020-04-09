@@ -2,7 +2,7 @@ import {
   AUTH_REQUEST_FAIL,
   AUTH_REQUEST_START,
   AUTH_REQUEST_SUCCESS
-} from '../actions';
+} from '../actions/auth/authTypes';
 
 const initialState = {
   isLoading: true,
