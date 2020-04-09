@@ -27,7 +27,7 @@ export const getWorkOrders = () => async dispatch => {
     dispatch({ type: GET_WORK_ORDERS_FAIL, payload: { errMsg: err } });
   }
 };
-// ------------------------------------------------|
+
 // eslint-disable-next-line no-unused-vars
 export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
@@ -50,7 +50,7 @@ export const addWorkOrder = workOrder => async dispatch => {
     dispatch({ type: ADD_WORK_ORDER_FAIL, payload: { errMsg: err } });
   }
 };
-// ------------------------------------------------|
+
 // eslint-disable-next-line no-unused-vars
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
