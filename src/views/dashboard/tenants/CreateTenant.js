@@ -1,11 +1,14 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
+import { navigate } from '@reach/router';
 import TenantForm from '../../../components/Tenants/TenantForm';
 import { addTenant as action, getTenants } from '../../../store/actions';
 
-const prodURL = 'https://labspt-propman.herokuapp.com/api/tenants';
-const addTenant = action(prodURL);
+const url =
+  `${process.env.REACT_APP_URL}/tenants` ||
+  'https://labspt-propman.herokuapp.com/api/tenants';
+const addTenant = action(url);
 
 export default function CreateTenant() {
   const dispatch = useDispatch();
@@ -23,6 +26,7 @@ export default function CreateTenant() {
 
   const handleSubmit = tenant => {
     dispatch(addTenant(tenant)).then(() => dispatch(getTenants()));
+    navigate('/dashboard/tenants');
   };
 
   return (
