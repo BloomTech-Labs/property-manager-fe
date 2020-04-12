@@ -1,7 +1,6 @@
 import React from 'react';
 import { Divider, Grid, Container } from '@material-ui/core';
 import ProfileCard from './ProfileCard';
-import PropTable from './PropTable';
 import ProfileImage from '../../../assets/svg/shared-workspace.svg';
 import './profile.scss';
 
@@ -17,10 +16,11 @@ export default function Profile() {
             <ProfileCard />
           </Grid>
           <Grid item md={6} align="right">
-            <img className="profile-svg" src={ProfileImage} alt="Shared workspace" />
-          </Grid>
-          <Grid item lg={12}>
-            <PropTable />
+            <img
+              className="profile-svg"
+              src={ProfileImage}
+              alt="Shared workspace"
+            />
           </Grid>
         </Grid>
       </Container>

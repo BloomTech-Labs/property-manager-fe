@@ -12,9 +12,7 @@ const addTenant = action(url);
 
 export default function CreateTenant() {
   const dispatch = useDispatch();
-
   const properties = useSelector(state => state.propReducer.properties);
-
   // define initialValues passed into the form
   const initialValues = {
     firstName: '',
