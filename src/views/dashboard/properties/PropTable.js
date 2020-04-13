@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow
 } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   table: {
@@ -19,6 +20,7 @@ export default function PropTable() {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
+
   const propertyList = useSelector(state => state.propReducer.properties);
 
   return (
@@ -38,6 +40,9 @@ export default function PropTable() {
             </TableCell>
             <TableCell align="right">{street}</TableCell>
             <TableCell align="right">{status}</TableCell>
+            <TableCell align="right">
+              <DeleteIcon />
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -6,9 +6,7 @@ import { useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
 // eslint-disable-next-line no-unused-vars
-import { VertNav } from '../../components/Navigation/navigation';
 import SideNav from '../../components/Navigation/SideNav/SideNav';
-import FloatingActions from '../../components/UI/FloatingActions';
 import PropmanTheme from '../../theme/PropmanTheme';
 import { getProperties, getWorkOrders } from '../../store/actions';
 
@@ -40,7 +38,6 @@ function TenantDashboard(props) {
         <main className={classes.content}>
           <Container className="dashboard-content">{props.children}</Container>
         </main>
-        <FloatingActions userType={props.userType} />
       </div>
     </PropmanTheme>
   );

@@ -11,6 +11,7 @@ import {
   TableRow,
   Paper
 } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
 import '../../scss/components/_workOrderTable.scss';
 
 // This allows us to have some infile styling at our finger tips.
@@ -39,13 +40,14 @@ export default function WorkOrderTable({ workOrderList }) {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell align="left">Work&nbsp;Order</TableCell>
+              <TableCell align="left">Description</TableCell>
+              <TableCell align="left">Type</TableCell>
+              <TableCell align="left">Start&nbsp;Date</TableCell>
+              <TableCell align="left">Property</TableCell>
+              <TableCell align="left">Created&nbsp;By</TableCell>
+              <TableCell align="left">Status</TableCell>
               <TableCell>Actions</TableCell>
-              <TableCell>Work&nbsp;Order</TableCell>
-              <TableCell align="right">Description</TableCell>
-              <TableCell align="right">Type</TableCell>
-              <TableCell align="right">Start&nbsp;Date</TableCell>
-              <TableCell align="right">Property</TableCell>
-              <TableCell align="right">Created&nbsp;By</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -80,18 +82,24 @@ export default function WorkOrderTable({ workOrderList }) {
               return (
                 <>
                   <TableRow className="table-row" key={id}>
-                    <TableCell>
-                      <Link to={`/dashboard/workorders/${id}`}>Update</Link>
-                    </TableCell>
                     <TableCell component="th" scope="row">
                       {title}
                     </TableCell>
-                    <TableCell align="right">{description}</TableCell>
-                    <TableCell align="right">{type}</TableCell>
-                    <TableCell align="right">{formatDate(startDate)}</TableCell>
-                    <TableCell align="right">{property[0].name}</TableCell>
-                    <TableCell align="right">
+                    <TableCell align="left">{description}</TableCell>
+                    <TableCell align="left">{type}</TableCell>
+                    <TableCell align="left">{formatDate(startDate)}</TableCell>
+                    <TableCell align="left">{property[0].name}</TableCell>
+                    <TableCell align="left">
                       {tenant.length ? tenant[0].type : 'landlord'}
+                    </TableCell>
+                    <TableCell align="left">
+                      {/* Placeholder for now */}
+                      In Progress
+                    </TableCell>
+                    <TableCell align="right">
+                      <Link to={`/dashboard/workorders/${id}`}>
+                        <CreateIcon />
+                      </Link>
                     </TableCell>
                   </TableRow>
                 </>

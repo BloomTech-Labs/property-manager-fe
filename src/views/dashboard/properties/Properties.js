@@ -5,8 +5,9 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-// Edit Icon
+// Icons
 import { FaPen } from 'react-icons/fa';
+import AddIcon from '@material-ui/icons/Add';
 
 // Redux
 import { useSelector } from 'react-redux';
@@ -16,6 +17,8 @@ import PropertyCard from '../../../components/Properties/PropertyCard';
 import AddPropertyCard from '../../../components/Properties/AddPropertyCard';
 import LocationSVG from '../../../assets/svg/LocationSVG.svg';
 import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
+import PropTable from './PropTable';
+import AddButton from '../../../components/UI/IconButton';
 
 export default function PropertyList() {
   // open/close state for modal
@@ -53,10 +56,15 @@ export default function PropertyList() {
 
   return (
     <div className="properties">
-      <h1>List of Properties</h1>
+      <h1>Properties</h1>
       <Divider />
       <br />
-
+      <AddButton
+        url="/dashboard/properties/add"
+        icon={<AddIcon />}
+        text="Add New"
+      />
+      <PropTable />
       <Grid container spacing={3}>
         {propertyList.map(property => {
           // map over propertyList from state and render PropertyCards
@@ -76,27 +84,6 @@ export default function PropertyList() {
             />
           );
         })}
-
-        {(() => {
-          // IIFE for multi-condition rendering
-          if (propertyList.length > 0) {
-            // there are properties - don't display placeholders
-            return null;
-          }
-          if (propertyList.length === 0 && loading === false) {
-            // no properties yet - don't display placeholders
-            return null;
-          }
-          return (
-            // loading is still true display placeholders
-            <>
-              <PropertyCard />
-              <PropertyCard />
-              <PropertyCard />
-              <PropertyCard />
-            </>
-          );
-        })()}
         <AddPropertyCard
           propertyNum={propertyList.length}
           isLoading={loading}
