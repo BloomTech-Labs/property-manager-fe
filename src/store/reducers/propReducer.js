@@ -10,7 +10,9 @@ import {
   GET_PROPERTY_FAIL,
   EDIT_PROPERTY_START,
   EDIT_PROPERTY_SUCCESS,
-  EDIT_PROPERTY_FAIL,
+  EDIT_PROPERTY_FAIL
+} from '../actions/properties/propertyTypes';
+import {
   ADD_TENANT_START,
   ADD_TENANT_SUCCESS,
   ADD_TENANT_FAIL,
@@ -26,7 +28,7 @@ import {
   EDIT_TENANT_START,
   EDIT_TENANT_SUCCESS,
   EDIT_TENANT_FAIL
-} from '../actions/index';
+} from '../actions/tenants/tenantTypes';
 
 const initialState = {
   properties: [],

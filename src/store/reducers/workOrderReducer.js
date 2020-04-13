@@ -8,7 +8,7 @@ import {
   UPDATE_WORK_ORDER_START,
   UPDATE_WORK_ORDER_FAIL,
   UPDATE_WORK_ORDER_SUCCESS
-} from '../actions/index';
+} from '../actions/workorders/workorderTypes';
 
 const initialState = {
   workOrders: [],
