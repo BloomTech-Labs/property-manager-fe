@@ -37,6 +37,9 @@ const WorkOrderForm = () => {
     );
   };
 
+  // Subscribe to user state
+  const user = useSelector(state => state.getUserReducer.user);
+
   // Bring in property list for the landlord form
   const propertyList = useSelector(state => state.propReducer.properties);
 
@@ -47,11 +50,15 @@ const WorkOrderForm = () => {
         enableReinitialize
         validationSchema={validationSchema}
         initialValues={{
-          title: '',
-          propertyId: '',
+          name: '',
+          unit_id: '',
           description: '',
           type: '',
-          startDate: currentDate
+          start_date: currentDate,
+          end_date: '',
+          status: 'In Progress',
+          user_id: user,
+          comment: ''
         }}
         resetForm
         onSubmit={values => {
@@ -72,13 +79,13 @@ const WorkOrderForm = () => {
                   size="small"
                   margin="normal"
                   variant="outlined"
-                  name="title"
+                  name="name"
                   type="text"
-                  label="Title"
+                  label="Name"
                   as={TextField}
                 />
                 <Field
-                  name="propertyId"
+                  name="unit_id"
                   label="Property"
                   as={TextField}
                   select
