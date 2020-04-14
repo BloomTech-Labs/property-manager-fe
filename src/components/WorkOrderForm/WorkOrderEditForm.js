@@ -35,7 +35,8 @@ const validationSchemaTenant = Yup.object().shape({
   description: Yup.string().required('Add some details about your work order'),
   type: Yup.string().required('Work order type is required')
 });
-
+// FIXME: these props are undefined
+// eslint-disable-next-line
 const WorkOrderForm = ({ workOrderId }, props) => {
   const classes = formStyles();
   const dispatch = useDispatch();
