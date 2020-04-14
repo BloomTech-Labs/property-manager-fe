@@ -85,8 +85,12 @@ const WorkOrderForm = () => {
                   as={TextField}
                 />
                 <Field
+                  className={classes.textField}
                   name="unit_id"
                   label="Property"
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
                   as={TextField}
                   select
                   helperText={
@@ -119,8 +123,12 @@ const WorkOrderForm = () => {
                   error={errors.description && true}
                 />
                 <Field
+                  className={classes.textField}
                   name="type"
                   label="Order Type"
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
                   as={TextField}
                   select
                   helperText={
