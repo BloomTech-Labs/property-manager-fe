@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  makeStyles,
   Table,
   TableBody,
   TableCell,
@@ -10,13 +9,8 @@ import {
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { navigate } from '@reach/router';
+import useStyles from './propTableStyles';
 import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650
-  }
-});
 
 export default function PropTable() {
   const classes = useStyles();
@@ -66,6 +60,7 @@ export default function PropTable() {
           {propertyList.map(prop => (
             <TableRow
               key={prop.id}
+              className={classes.row}
               onClick={() => {
                 navigate(`/dashboard/properties/${prop.id}`);
                 handleOpen(prop);
