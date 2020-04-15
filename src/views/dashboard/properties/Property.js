@@ -7,7 +7,6 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -17,13 +16,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 // Icons
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import PersonIcon from '@material-ui/icons/Person';
+import AddIcon from '@material-ui/icons/Add';
 // Router
 import { navigate } from '@reach/router';
 import { modalStyles } from '../../../helpers/utils';
-// SVG
-import LocationSVG from '../../../assets/svg/LocationSVG.svg';
+// Sample Photo
+import sampleHome from '../../../assets/img/sample_home.jpg';
 // Components
 import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
+import IconButton from '../../../components/UI/IconButton';
 // Actions
 import { getProperty, getTenantsByResidence } from '../../../store/actions';
 
@@ -54,7 +55,7 @@ export default function Property({ id }) {
       <Card className={classes.card}>
         <CardHeader title={<h2 className={classes.title}>{name || null}</h2>} />
         <CardMedia className={classes.media}>
-          <img src={LocationSVG} alt="Location of property" />
+          <img src={sampleHome} alt="Location of property" />
         </CardMedia>
         <Divider />
         <Grid justify="center" container>
@@ -97,27 +98,21 @@ export default function Property({ id }) {
               })}
             </List>
           </div>
-          <Button
-            className={classes.btn}
-            color="primary"
-            variant="contained"
-            onClick={() => navigate('/dashboard/tenants/add')}
-          >
-            Add Tenant
-          </Button>
+          <IconButton
+            url="/dashboard/tenants/add"
+            icon={<AddIcon />}
+            text="Add Tenant"
+          />
         </CardContent>
         <Divider />
         <CardContent className={classes.cardContent}>
           <h3 style={{ textAlign: 'center' }}>Work Orders:</h3>
           <WorkOrderTable workOrderList={filterWorkOrders} />
-          <Button
-            className={classes.btn}
-            color="primary"
-            variant="contained"
-            onClick={() => navigate('/dashboard/workorders/add')}
-          >
-            Add Work Order
-          </Button>
+          <IconButton
+            url="/dashboard/workorders/add"
+            icon={<AddIcon />}
+            text="Add Work Order"
+          />
         </CardContent>
       </Card>
     );
