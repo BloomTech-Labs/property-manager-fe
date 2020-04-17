@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
 export default function Overview() {
-  const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
+  const workOrderList = [];
   const propertyList = useSelector(state => state.propReducer.properties);
-  const workOrderTyeps = [];
+  const workOrderTypes = [];
   const wotypesNoArray = [];
   const propertyStatus = [];
   const proStausNoArray = [];
@@ -14,11 +14,11 @@ export default function Overview() {
   if (workOrderList.length > 0) {
     // eslint-disable-next-line array-callback-return
     workOrderList.map(order => {
-      workOrderTyeps.push(order.type);
+      workOrderTypes.push(order.type);
     });
 
-    if (workOrderTyeps.includes('electrical')) {
-      const orderTypeTotal = workOrderTyeps.filter(
+    if (workOrderTypes.includes('electrical')) {
+      const orderTypeTotal = workOrderTypes.filter(
         data => data === 'electrical'
       ).length;
       wotypesNoArray.push(orderTypeTotal);
@@ -26,31 +26,31 @@ export default function Overview() {
       wotypesNoArray.push(0);
     }
 
-    if (workOrderTyeps.includes('plumbing')) {
-      const orderTypeTotal = workOrderTyeps.filter(data => data === 'plumbing')
+    if (workOrderTypes.includes('plumbing')) {
+      const orderTypeTotal = workOrderTypes.filter(data => data === 'plumbing')
         .length;
       wotypesNoArray.push(orderTypeTotal);
     } else {
       wotypesNoArray.push(0);
     }
-    if (workOrderTyeps.includes('pest control')) {
-      const orderTypeTotal = workOrderTyeps.filter(
+    if (workOrderTypes.includes('pest control')) {
+      const orderTypeTotal = workOrderTypes.filter(
         data => data === 'pest control'
       ).length;
       wotypesNoArray.push(orderTypeTotal);
     } else {
       wotypesNoArray.push(0);
     }
-    if (workOrderTyeps.includes('appliances')) {
-      const orderTypeTotal = workOrderTyeps.filter(
+    if (workOrderTypes.includes('appliances')) {
+      const orderTypeTotal = workOrderTypes.filter(
         data => data === 'appliances'
       ).length;
       wotypesNoArray.push(orderTypeTotal);
     } else {
       wotypesNoArray.push(0);
     }
-    if (workOrderTyeps.includes('HVAC')) {
-      const orderTypeTotal = workOrderTyeps.filter(data => data === 'HVAC')
+    if (workOrderTypes.includes('HVAC')) {
+      const orderTypeTotal = workOrderTypes.filter(data => data === 'HVAC')
         .length;
       wotypesNoArray.push(orderTypeTotal);
     } else {
