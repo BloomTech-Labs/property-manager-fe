@@ -1,0 +1,11 @@
+.notFoundWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 95vh;
+
+  .notFound {
+    width: 50%;
+  }
+}
