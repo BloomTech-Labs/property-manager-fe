@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Router } from '@reach/router';
 import { getUserInfo } from '../../../store/actions/index';
 import PublicRoutes from './PublicRoutes';
@@ -20,7 +20,6 @@ const Routes = () => {
 
   const token = getToken();
 
-  // const userType = useSelector(state => state.getUserReducer.user.type);
   const userType = localStorage.getItem('userType');
 
   const dispatch = useDispatch();
