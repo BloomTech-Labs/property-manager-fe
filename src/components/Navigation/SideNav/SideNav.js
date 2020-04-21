@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Style & classnames
 import clsx from 'clsx';
@@ -91,7 +91,7 @@ function SideNav() {
   const dispatch = useDispatch();
 
   // Subscribe to user state
-  const userType = useSelector(state => state.getUserReducer.user.type);
+  const userType = localStorage.getItem('userType');
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
