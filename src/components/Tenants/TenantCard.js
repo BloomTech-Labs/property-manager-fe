@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
+// eslint-disable-next-line
 import { navigate } from '@reach/router';
 import IconButton from '../UI/IconButton';
 import { getTenants, getProperty } from '../../store/actions';

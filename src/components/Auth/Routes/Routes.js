@@ -20,7 +20,8 @@ const Routes = () => {
 
   const token = getToken();
 
-  const userType = useSelector(state => state.getUserReducer.user.type);
+  // const userType = useSelector(state => state.getUserReducer.user.type);
+  const userType = localStorage.getItem('userType');
 
   const dispatch = useDispatch();
   useEffect(() => {
