@@ -1,10 +1,11 @@
-import axios from 'axios';
+/* eslint-disable import/prefer-default-export */
 import {
   AUTH_REQUEST_START,
   AUTH_REQUEST_SUCCESS,
   AUTH_REQUEST_FAIL
 } from './authTypes';
 import { baseUrl } from '../../../helpers/baseUrl';
+import axiosAuth from '../../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from '../toastActions';
 import fb from '../../../vendors/fb';
 
@@ -25,7 +26,10 @@ export const auth = url => (email, password, type) => {
           type
         };
         // send userWithType to node server, set custom firebase claim {landlord: true}
-        const res = await axios.post(`${baseUrl}${url}`, userWithType);
+        const res = await axiosAuth(user.xa).post(
+          `${baseUrl}${url}`,
+          userWithType
+        );
         // refresh the token with the new claim
         const refreshTheToken = await fb.auth().currentUser.getIdToken(true);
         // set to userType & token in local storage
@@ -43,7 +47,7 @@ export const auth = url => (email, password, type) => {
           .auth()
           .signInWithEmailAndPassword(email, password);
         const token = await fb.auth().currentUser.getIdToken();
-        const res = await axios.post(`${baseUrl}${url}`, {
+        const res = await axiosAuth(token).post(`${baseUrl}${url}`, {
           email,
           uid: user.uid,
           token

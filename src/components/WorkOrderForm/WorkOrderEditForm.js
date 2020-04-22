@@ -40,7 +40,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
-  const { title, propertyId, description, type, startDate, id } = workOrder;
+  const { name, unit_id, description, type, startDate, id } = workOrder;
 
   // Submit Fn
   const submit = values => {
@@ -59,8 +59,8 @@ const WorkOrderForm = ({ workOrderId }, props) => {
         enableReinitialize
         validationSchema={validationSchema}
         initialValues={{
-          title,
-          propertyId,
+          name,
+          unit_id,
           description,
           type,
           startDate,
@@ -85,9 +85,9 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   size="small"
                   margin="normal"
                   variant="outlined"
-                  name="title"
+                  name="name"
                   type="text"
-                  label="Title"
+                  label="Name"
                   as={TextField}
                 />
                 <Field
@@ -95,7 +95,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   margin="normal"
                   variant="outlined"
                   className={classes.textField}
-                  name="propertyId"
+                  name="unit_id"
                   label="Property"
                   as={TextField}
                   select

@@ -21,7 +21,7 @@ const Tenants = () => {
 
   const errMsg = useSelector(state => state.propReducer.errMsg);
 
-  const tenantList = useSelector(state => state.propReducer.tenants);
+  const tenantList = [];
   const propertyList = useSelector(state => state.propReducer.properties);
 
   // handle open/close, takes in property & tenant
