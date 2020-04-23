@@ -23,10 +23,12 @@ const useStyles = makeStyles(theme => ({
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .max(255, 'Name entered was too long')
-    .required('Must enter a Property Name'),
-
-  street: Yup.string()
+    .max(30, 'Name entered must be 30 characters or less')
+    .required('Must enter a name for the property'),
+  rent: Yup.number()
+    .positive()
+    .required('Must enter rent amount'),
+  street_address: Yup.string()
     .max(255, 'Address entered was too long')
     .required('Must enter a street address'),
   city: Yup.string()
@@ -39,7 +41,9 @@ const validationSchema = Yup.object().shape({
   state: Yup.string()
     .max(50, 'State entered was too long')
     .required('Must enter the state'),
-  status: Yup.string().required('Property Status is required!')
+  occupied: Yup.number()
+    .positive()
+    .required('Property Status is required!')
 });
 
 export default function PropertyForm({
@@ -49,17 +53,6 @@ export default function PropertyForm({
   isSubmitting
 }) {
   const classes = useStyles();
-
-  // passing in object that contains initial values for the
-  // form with empty string defaults if prop isn't passed
-  const {
-    name = '',
-    street = '',
-    city = '',
-    state = '',
-    zip = '',
-    status = ''
-  } = initialValues;
 
   if (loading || isSubmitting) {
     return (
@@ -94,12 +87,12 @@ export default function PropertyForm({
         enableReinitialize
         validationSchema={validationSchema}
         initialValues={{
-          name,
-          street,
-          city,
-          state,
-          zip,
-          status
+          rent: initialValues.rent,
+          street_address: initialValues.street_address,
+          city: initialValues.city,
+          state: initialValues.state,
+          zip: initialValues.zip,
+          occupied: initialValues.occupied
         }}
         onSubmit={values => {
           submit(values);
@@ -108,19 +101,35 @@ export default function PropertyForm({
         {({ errors, touched, isSubmitting }) => (
           <Form data-testid="form-element">
             <div className="input-wrapper">
-              <label htmlFor="name">Property Name</label>
+              <label htmlFor="name">Name</label>
               <Field
-                placeholder="Enter a name for your Property"
+                placeholder="Enter the name for your Property"
                 name="name"
                 type="text"
               />
               <FormErrors touched={touched.name} message={errors.name} />
             </div>
+            <div className="input-wrapper">
+              <label htmlFor="rent">Rent</label>
+              <Field
+                placeholder="Enter the rent for your Property"
+                name="rent"
+                type="number"
+              />
+              <FormErrors touched={touched.rent} message={errors.rent} />
+            </div>
 
             <div className="input-wrapper">
               <label htmlFor="street">Street Address</label>
-              <Field placeholder="Street address" name="street" type="text" />
-              <FormErrors touched={touched.street} message={errors.street} />
+              <Field
+                placeholder="Street address"
+                name="street_address"
+                type="text"
+              />
+              <FormErrors
+                touched={touched.street_address}
+                message={errors.street_address}
+              />
             </div>
 
             <div className="input-wrapper">
@@ -146,21 +155,18 @@ export default function PropertyForm({
               <FormErrors touched={touched.state} message={errors.state} />
             </div>
 
-            <FormControl className={classes.formControl}>
-              <InputLabel>Property Status</InputLabel>
+            <div className="input-wrapper">
+              <label htmlFor="occupied">Number of Current Tenants</label>
               <Field
-                name="status"
-                as={Select}
-                defaultValue="vacant"
-                SelectDisplayProps={{
-                  'data-testid': 'status-select'
-                }}
-              >
-                <MenuItem value="vacant">Vacant</MenuItem>
-                <MenuItem value="occupied">Occupied</MenuItem>
-              </Field>
-              <FormErrors touched={touched.status} message={errors.status} />
-            </FormControl>
+                placeholder="Number of Tenants"
+                name="occupied"
+                type="number"
+              />
+              <FormErrors
+                touched={touched.occupied}
+                message={errors.occupied}
+              />
+            </div>
 
             <div className="submit-btn-wrapper">
               <button
