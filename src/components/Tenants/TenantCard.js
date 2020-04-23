@@ -57,8 +57,7 @@ const TenantCard = () => {
         <div className={classes.empty}>
           <h3>No tenants have been added, yet...</h3>
         </div>
-      ) : 
-      (
+      ) : (
         <Paper>
           <Table>
             <TableHead>
@@ -73,15 +72,16 @@ const TenantCard = () => {
             <TableBody>
               {tenants.map((
                 tenant // Create a row for each tenant
-              ) =>
-              (
-                <TableRow onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}>
+              ) => (
+                <TableRow
+                  onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
+                >
                   <TableCell>{tenant.firstName}</TableCell>
                   <TableCell>Blah</TableCell>
                   <TableCell>{tenant.firstName}</TableCell>
                   <TableCell>moveInDate</TableCell>
                 </TableRow>
-                ))}
+              ))}
             </TableBody>
           </Table>
         </Paper>
