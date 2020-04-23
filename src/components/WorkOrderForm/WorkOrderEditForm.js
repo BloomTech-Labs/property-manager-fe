@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { navigate } from '@reach/router';
 // Redux
@@ -24,10 +25,12 @@ import { getWorkOrders, updateWorkOrder } from '../../store/actions/index';
 
 // YUP Validation schema
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required('Add a short description for your work order'),
-  propertyId: Yup.string().required('Select a property'),
+  name: Yup.string().required('Add a short description for your work order'),
+  unit_id: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required')
+  comment: Yup.string(),
+  type: Yup.string().required('Workorder type is required'),
+  status: Yup.string().required('Update the status of the workorder.')
 });
 
 const WorkOrderForm = ({ workOrderId }, props) => {
@@ -40,7 +43,18 @@ const WorkOrderForm = ({ workOrderId }, props) => {
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
-  const { name, unit_id, description, type, startDate, id } = workOrder;
+  const {
+    name,
+    unit_id,
+    status,
+    user_id,
+    comment,
+    update_date,
+    description,
+    type,
+    start_date,
+    id
+  } = workOrder;
 
   // Submit Fn
   const submit = values => {
@@ -63,8 +77,12 @@ const WorkOrderForm = ({ workOrderId }, props) => {
           unit_id,
           description,
           type,
-          startDate,
-          id
+          start_date,
+          id,
+          user_id,
+          update_date: currentDate,
+          status,
+          comment: ''
         }}
         resetForm
         onSubmit={values => {
@@ -129,6 +147,22 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   error={errors.description && true}
                 />
                 <Field
+                  className={classes.textField}
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
+                  name="comment"
+                  type="text"
+                  label="Additional Comments"
+                  as={TextField}
+                  helperText={
+                    errors.comment
+                      ? errors.comment
+                      : 'Please enter any additional comments about the current status of the repair.'
+                  }
+                  error={errors.comment && true}
+                />
+                <Field
                   size="small"
                   margin="normal"
                   variant="outlined"
@@ -138,17 +172,36 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   as={TextField}
                   select
                   helperText={
-                    errors.orderType
-                      ? errors.orderType
+                    errors.type
+                      ? errors.type
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.orderType && true}
+                  error={errors.type && true}
                 >
                   <MenuItem value="plumbing">Plumbing</MenuItem>
                   <MenuItem value="electrical">Electrical</MenuItem>
                   <MenuItem value="pest control">Pest Control</MenuItem>
                   <MenuItem value="appliances">Appliances</MenuItem>
                   <MenuItem value="HVAC">HVAC</MenuItem>
+                </Field>
+                <Field
+                  size="small"
+                  margin="normal"
+                  variant="outlined"
+                  className={classes.textField}
+                  name="status"
+                  label="Status Update"
+                  as={TextField}
+                  select
+                  helperText={
+                    errors.status
+                      ? errors.status
+                      : 'Please select a status update.'
+                  }
+                  error={errors.status && true}
+                >
+                  <MenuItem value="working">Still Working</MenuItem>
+                  <MenuItem value="completed">Completed</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button
