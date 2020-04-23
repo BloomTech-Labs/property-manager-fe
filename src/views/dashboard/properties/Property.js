@@ -38,11 +38,11 @@ export default function Property({ id }) {
     state => state.propReducer.currentPropertyTenants
   );
 
-  // const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
+  const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
-  // const filterWorkOrders = workOrderList.filter(
-  //   workOrder => workOrder.propertyId === property.id
-  // );
+  const filterWorkOrders = workOrderList.filter(
+    workOrder => workOrder.unit_id === property.id
+  );
   const { name, street_address, city, state, zip, occupied } = property;
 
   React.useEffect(() => {
@@ -108,7 +108,7 @@ export default function Property({ id }) {
         <Divider />
         <CardContent className={classes.cardContent}>
           <h3 style={{ textAlign: 'center' }}>Work Orders:</h3>
-          {/* <WorkOrderTable workOrderList={filterWorkOrders} /> */}
+          <WorkOrderTable workOrderList={filterWorkOrders} />
           <IconButton
             url="/dashboard/workorders/add"
             icon={<AddIcon />}
