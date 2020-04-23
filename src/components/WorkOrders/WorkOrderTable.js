@@ -56,22 +56,26 @@ export default function WorkOrderTable({ workOrderList }) {
             {workOrderList.map(workOrder => {
               const {
                 id,
-                title,
+                name,
                 description,
                 type,
-                startDate,
-                propertyId,
-                createdBy
+                start_date,
+                unit_id,
+                comment,
+                status,
+                end_date,
+                in_house,
+                user_id
               } = workOrder;
 
               // Filter to select the property associated
               // with the work order
               const property = properties.filter(
-                property => property.id === propertyId
+                property => property.id === unit_id
               );
 
               // Filter to select whether tenant or landlord created work order
-              const tenant = tenants.filter(tenant => tenant.id === createdBy);
+              // const tenant = tenants.filter(tenant => tenant.id === user_id);
 
               // This function gets called later to format a given date
               const formatDate = date => date && new Date(date).toDateString();
@@ -83,19 +87,14 @@ export default function WorkOrderTable({ workOrderList }) {
                 <>
                   <TableRow className="table-row" key={id}>
                     <TableCell component="th" scope="row">
-                      {title}
+                      {name}
                     </TableCell>
                     <TableCell align="left">{description}</TableCell>
                     <TableCell align="left">{type}</TableCell>
-                    <TableCell align="left">{formatDate(startDate)}</TableCell>
-                    <TableCell align="left">{property[0].name}</TableCell>
-                    <TableCell align="left">
-                      {tenant.length ? tenant[0].type : 'landlord'}
-                    </TableCell>
-                    <TableCell align="left">
-                      {/* Placeholder for now */}
-                      In Progress
-                    </TableCell>
+                    <TableCell align="left">{formatDate(start_date)}</TableCell>
+                    <TableCell align="left">{property[0].unit_id}</TableCell>
+                    <TableCell align="left">{user_id}</TableCell>
+                    <TableCell align="left">{status}</TableCell>
                     <TableCell align="right">
                       <Link to={`/dashboard/workorders/${id}`}>
                         <CreateIcon />
