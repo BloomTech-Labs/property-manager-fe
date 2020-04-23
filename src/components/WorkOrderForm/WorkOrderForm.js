@@ -19,8 +19,8 @@ import { addWorkOrder, getWorkOrders } from '../../store/actions/index';
 
 // YUP Validation schema
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required('Add a short description for your work order'),
-  propertyId: Yup.string().required('Select a property'),
+  name: Yup.string().required('Add a short description for your work order'),
+  unit_id: Yup.string().required('Select a property'),
   description: Yup.string().required('Add some details about your work order'),
   type: Yup.string().required('Work order type is required')
 });
@@ -57,7 +57,7 @@ const WorkOrderForm = () => {
           start_date: currentDate,
           end_date: '',
           status: 'In Progress',
-          user_id: user,
+          user_id: user.id,
           comment: ''
         }}
         resetForm
@@ -94,11 +94,9 @@ const WorkOrderForm = () => {
                   as={TextField}
                   select
                   helperText={
-                    errors.property
-                      ? errors.property
-                      : 'Please select a property'
+                    errors.unit_id ? errors.unit_id : 'Please select a property'
                   }
-                  error={errors.property && true}
+                  error={errors.unit_id && true}
                 >
                   {propertyList.map(property => (
                     <MenuItem key={property.id} value={property.id}>
@@ -132,11 +130,11 @@ const WorkOrderForm = () => {
                   as={TextField}
                   select
                   helperText={
-                    errors.orderType
-                      ? errors.orderType
+                    errors.type
+                      ? errors.type
                       : 'Please select the type of problem you have'
                   }
-                  error={errors.orderType && true}
+                  error={errors.type && true}
                 >
                   <MenuItem value="plumbing">Plumbing</MenuItem>
                   <MenuItem value="electrical">Electrical</MenuItem>
