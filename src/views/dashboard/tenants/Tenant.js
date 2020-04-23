@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { getTenantById } from '../../../store/actions';
 import { Paper, Card } from '@material-ui/core';
+import { getTenantById } from '../../../store/actions';
 
 // eslint-disable-next-line react/prop-types
 export default function Tenant({ id }) {
@@ -27,23 +27,17 @@ export default function Tenant({ id }) {
     body: {
       minWidth: '80%'
     }
-  })
+  });
   console.log(`Current Tenant!!`, currentTenant);
 
   const classes = useStyles();
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    type
-  } = currentTenant;
+  const { firstName, lastName, email, phone, type } = currentTenant;
 
   return (
     <Paper className={classes.container}>
-      <Card className={classes.card} variant='outlined'>
+      <Card className={classes.card} variant="outlined">
         <section className={classes.header}>
-        {firstName} {lastName} ({type})
+          {firstName} {lastName} ({type})
         </section>
 
         <section className={classes.body}>
