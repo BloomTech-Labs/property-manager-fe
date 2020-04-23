@@ -50,11 +50,12 @@ const WorkOrderForm = ({ workOrderId }, props) => {
     status,
     user_id,
     comment,
-    update_date,
+    end_date,
     description,
     type,
     start_date,
-    id
+    id,
+    in_house
   } = workOrder;
 
   // Submit Fn
@@ -81,9 +82,10 @@ const WorkOrderForm = ({ workOrderId }, props) => {
           start_date,
           id,
           user_id,
-          update_date: currentDate,
+          end_date: currentDate,
           status,
-          comment: ''
+          comment: '',
+          in_house
         }}
         resetForm
         onSubmit={values => {
@@ -201,8 +203,9 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   }
                   error={errors.status && true}
                 >
-                  <MenuItem value="working">Still Working</MenuItem>
-                  <MenuItem value="completed">Completed</MenuItem>
+                  <MenuItem value="In Progress">In Progress</MenuItem>
+                  <MenuItem value="Still Working">Still Working</MenuItem>
+                  <MenuItem value="Completed">Completed</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
                   <Button
