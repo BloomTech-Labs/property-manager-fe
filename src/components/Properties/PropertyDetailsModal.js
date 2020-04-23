@@ -67,7 +67,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
 
   // Pull out data from the property object passed
   // in from Properties.js component
-  const { id, city, name, state, status, street, zip } = property;
+  const { id, city, name, state, occupied, street_address, zip } = property;
   // TODO: add in functionality to handle the image
   // from the property object and allow SVG default
 
@@ -98,7 +98,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
         <CardContent className={classes.address}>
           <h4>Address:</h4>
           <div>
-            <Typography variant="subtitle1">{street}</Typography>
+            <Typography variant="subtitle1">{street_address}</Typography>
             <Typography variant="body1">
               {city}, {state}, {zip}
             </Typography>
@@ -106,7 +106,7 @@ export default function PropertyDetailsModal({ property, open, close }) {
         </CardContent>
         <Divider />
         <CardContent className={classes.tenantInfo}>
-          <h6 style={{ textAlign: 'center' }}>Status: {status}</h6>
+          <h6 style={{ textAlign: 'center' }}>No. Tenants: {occupied}</h6>
           <Button
             color="primary"
             variant="contained"

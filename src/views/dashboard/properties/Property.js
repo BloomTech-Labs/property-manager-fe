@@ -38,12 +38,12 @@ export default function Property({ id }) {
     state => state.propReducer.currentPropertyTenants
   );
 
-  const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
+  // const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
-  const filterWorkOrders = workOrderList.filter(
-    workOrder => workOrder.propertyId === property.id
-  );
-  const { name, street, city, state, zip } = property;
+  // const filterWorkOrders = workOrderList.filter(
+  //   workOrder => workOrder.propertyId === property.id
+  // );
+  const { name, street_address, city, state, zip, occupied } = property;
 
   React.useEffect(() => {
     dispatch(getProperty(id));
@@ -62,7 +62,7 @@ export default function Property({ id }) {
           <CardContent className={classes.address}>
             <PinDropIcon />
             <div>
-              <Typography variant="body1">{street}</Typography>
+              <Typography variant="body1">{street_address}</Typography>
               <Typography variant="body1">
                 {city}, {state}, {zip}
               </Typography>
@@ -75,27 +75,28 @@ export default function Property({ id }) {
           <div>
             {tenants.length === 0 && <h5>No tenants for this property.</h5>}
             <List className={classes.list}>
-              {tenants.map(tenant => {
-                return (
-                  <React.Fragment key={tenant.id}>
-                    <Divider />
-                    <ListItem
-                      button
-                      className={classes.listItem}
-                      onClick={() =>
-                        navigate(`/dashboard/tenants/${tenant.id}`)
-                      }
-                    >
-                      <ListItemIcon>
-                        <PersonIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={`${tenant.firstName} ${tenant.lastName}`}
-                      />
-                    </ListItem>
-                  </React.Fragment>
-                );
-              })}
+              {/* {tenants &&
+                tenants.map(tenant => {
+                  return (
+                    <React.Fragment key={tenant.id}>
+                      <Divider />
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={() =>
+                          navigate(`/dashboard/tenants/${tenant.id}`)
+                        }
+                      >
+                        <ListItemIcon>
+                          <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={`${tenant.firstName} ${tenant.lastName}`}
+                        />
+                      </ListItem>
+                    </React.Fragment>
+                  );
+                })} */}
             </List>
           </div>
           <IconButton
@@ -107,7 +108,7 @@ export default function Property({ id }) {
         <Divider />
         <CardContent className={classes.cardContent}>
           <h3 style={{ textAlign: 'center' }}>Work Orders:</h3>
-          <WorkOrderTable workOrderList={filterWorkOrders} />
+          {/* <WorkOrderTable workOrderList={filterWorkOrders} /> */}
           <IconButton
             url="/dashboard/workorders/add"
             icon={<AddIcon />}

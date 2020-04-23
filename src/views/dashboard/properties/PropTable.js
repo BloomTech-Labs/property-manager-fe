@@ -14,8 +14,6 @@ import PropertyDetailsModal from '../../../components/Properties/PropertyDetails
 
 export default function PropTable() {
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(true);
 
   const propertyList = useSelector(state => state.propReducer.properties);
 
@@ -52,7 +50,7 @@ export default function PropTable() {
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Street</TableCell>
             <TableCell align="right">State</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">No. Tenants</TableCell>
             <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
@@ -68,9 +66,9 @@ export default function PropTable() {
             >
               <TableCell>{prop.id}</TableCell>
               <TableCell align="right">{prop.name}</TableCell>
-              <TableCell align="right">{prop.street}</TableCell>
+              <TableCell align="right">{prop.street_address}</TableCell>
               <TableCell align="right">{prop.state}</TableCell>
-              <TableCell align="right">{prop.status}</TableCell>
+              <TableCell align="right">{prop.occupied}</TableCell>
               <TableCell align="right">
                 <EditIcon
                   style={{ cursor: 'pointer' }}
