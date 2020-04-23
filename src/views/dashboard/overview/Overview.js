@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
 export default function Overview() {
-  const workOrderList = []
+  const workOrderList = [];
   const propertyList = useSelector(state => state.propReducer.properties);
   const workOrderTypes = [];
   const wotypesNoArray = [];

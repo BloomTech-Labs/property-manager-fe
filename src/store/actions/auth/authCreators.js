@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+// import axios from 'axios';
 import {
   AUTH_REQUEST_START,
   AUTH_REQUEST_SUCCESS,
@@ -19,6 +20,7 @@ export const auth = url => (email, password, type) => {
         const { user } = await fb
           .auth()
           .createUserWithEmailAndPassword(email, password);
+
         // create new object with user's uid
         const userWithType = {
           email,
@@ -52,6 +54,7 @@ export const auth = url => (email, password, type) => {
           uid: user.uid,
           token
         });
+        console.log(res.data);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('userType', res.data.type);
         dispatch(successAlert);

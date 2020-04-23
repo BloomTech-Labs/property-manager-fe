@@ -32,7 +32,8 @@ const validationSchema = Yup.object().shape({
   type: Yup.string().required('Workorder type is required'),
   status: Yup.string().required('Update the status of the workorder.')
 });
-
+// FIXME: these props are undefined
+// eslint-disable-next-line
 const WorkOrderForm = ({ workOrderId }, props) => {
   const classes = formStyles();
   const dispatch = useDispatch();

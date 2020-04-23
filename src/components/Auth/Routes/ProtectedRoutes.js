@@ -21,6 +21,7 @@ import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import TenantProperty from '../../../views/tenantDashboard/TenantProperty';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
+import NotFound from '../../../views/notfound/NotFound';
 
 function ProtectedRoutes({ token, userType }) {
   // Landlord Routing
@@ -44,6 +45,7 @@ function ProtectedRoutes({ token, userType }) {
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
           <WorkOrderEditForm path="workorders/:workOrderId" />
+          <NotFound default />
         </Dashboard>
       </Router>
     );
@@ -60,6 +62,7 @@ function ProtectedRoutes({ token, userType }) {
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
           <WorkOrderEditForm path="workorders/:workOrderId" />
+          <NotFound default />
         </TenantDashboard>
       </Router>
     );
