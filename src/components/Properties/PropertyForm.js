@@ -5,7 +5,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
-import PropertyLoading from './PropertyLoading';
+import Loading from '../UI/Loading';
 import propertyValues from './PropertyFormValues';
 
 const validationSchema = Yup.object().shape({
@@ -36,7 +36,7 @@ export default function PropertyForm({
   isSubmitting
 }) {
   if (loading || isSubmitting) {
-    return <PropertyLoading />;
+    return <Loading />;
   }
 
   return (
