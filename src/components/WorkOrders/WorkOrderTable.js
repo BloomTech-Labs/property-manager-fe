@@ -74,8 +74,6 @@ export default function WorkOrderTable({ workOrderList }) {
                 property => property.id === unit_id
               );
 
-              console.log(property, "Property in WorkOrder Table")
-
               // Filter to select whether tenant or landlord created work order
               // const tenant = tenants.filter(tenant => tenant.id === user_id);
 
