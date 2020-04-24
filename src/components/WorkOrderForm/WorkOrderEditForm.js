@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React from 'react';
 import { navigate } from '@reach/router';
@@ -17,8 +18,6 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { MdSend } from 'react-icons/md';
 import { formStyles } from '../../helpers/utils';
-
-// Icons
 
 // Redux Actions
 import { getWorkOrders, updateWorkOrder } from '../../store/actions/index';
