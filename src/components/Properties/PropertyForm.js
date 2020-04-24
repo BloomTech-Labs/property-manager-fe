@@ -21,9 +21,7 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .max(30, 'Name entered must be 30 characters or less')
     .required('Must enter a name for the property'),
-  rent: Yup.number()
-    .positive()
-    .required('Must enter rent amount'),
+  rent: Yup.number().required('Must enter rent amount'),
   street_address: Yup.string()
     .max(255, 'Address entered was too long')
     .required('Must enter a street address'),
@@ -37,9 +35,7 @@ const validationSchema = Yup.object().shape({
   state: Yup.string()
     .max(50, 'State entered was too long')
     .required('Must enter the state'),
-  occupied: Yup.number()
-    .positive()
-    .required('Property Status is required!')
+  occupied: Yup.number().required('Property Status is required!')
 });
 
 export default function PropertyForm({
@@ -83,6 +79,7 @@ export default function PropertyForm({
         enableReinitialize
         validationSchema={validationSchema}
         initialValues={{
+          name: initialValues.name,
           rent: initialValues.rent,
           street_address: initialValues.street_address,
           city: initialValues.city,
