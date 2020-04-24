@@ -1,10 +1,68 @@
 .overview {
-    height: 100vh;
-    .work-order-chart {
-        width: 50%;
-        margin: 3%;
+  height: 100vh;
+  .property-status-row {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    .property-status-card {
+      padding: 2%;
+      width: 48%;
+      border: $light 1.1px solid;
+      box-shadow: 0px 1px 3px 0px;
+      margin-top: 2%;
+      .property-status-chart {
+        margin: 0 auto;
+        .property-status-label {
+          text-align: center;
+          padding: 0.5%;
+          margin-bottom: 2%;
+          font-size: 2rem;
+        }
+      }
+    }
+    .property-status-card-info {
+      padding: 2%;
+      width: 100%;
+      border: $light 1.1px solid;
+      box-shadow: 0px 1px 3px 0px;
+      margin-top: 2%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      span {
+        height: 98%;
+        width: 1px;
+        background-color: $light;
+      }
+      .property-status-label {
+        font-size: 2rem;
         text-align: center;
-     }
- }
-
-  
+        .property-status-value {
+          text-align: center;
+          font-size: 3.5rem;
+        }
+      }
+    }
+  }
+  .work-order-card {
+    padding: 2%;
+    border: $light 1.1px solid;
+    box-shadow: 0px 1px 3px 0px;
+    .work-order-chart {
+      width: 50%;
+      margin: 0 auto;
+      .work-order-label {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+  h5 {
+    text-align: center;
+  }
+  img {
+    margin: 0 auto;
+  }
+}
