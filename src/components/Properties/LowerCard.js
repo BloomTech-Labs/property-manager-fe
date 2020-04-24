@@ -9,7 +9,11 @@ function LowerCard({ props }) {
 
   return (
     <>
-      <CardActionArea onClick={() => {navigate(iconPath);}}>
+      <CardActionArea
+        onClick={() => {
+          navigate(iconPath);
+        }}
+      >
         <CardActions className="property-card-action">
           {icon || <Skeleton variant="circle" width={28} height={28} />}
         </CardActions>
