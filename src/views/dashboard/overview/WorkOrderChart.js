@@ -1,5 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import legendOptions from './legendOptions';
 
 export default function WorkOrderChart({ workOrderTotalArray }) {
   const workOrderdata = {
@@ -8,27 +9,21 @@ export default function WorkOrderChart({ workOrderTotalArray }) {
       {
         data: workOrderTotalArray,
         backgroundColor: [
-          '#ff3333',
-          '#0066ff',
-          '#ffff1a',
-          '#4dff88',
-          '#ff751a'
+          '#FEE440',
+          '#595457',
+          '#710627',
+          '#00F5D4',
+          '#DE0D92'
         ],
         hoverBackgroundColor: [
-          '#ffb3b3',
-          '#80b3ff',
-          '#ffff99',
-          '#ccffdd',
-          '#ffd1b3'
+          '#fff2a3',
+          '#a1979d',
+          '#a84c68',
+          '#91faeb',
+          '#fa75ca'
         ]
       }
     ]
   };
-  const legendOpt = {
-    display: true,
-    position: 'bottom',
-    fullWidth: false,
-    reverse: false
-  };
-  return <Doughnut data={workOrderdata} legend={legendOpt} />;
+  return <Doughnut data={workOrderdata} legend={legendOptions} />;
 }

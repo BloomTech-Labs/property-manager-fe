@@ -12,9 +12,7 @@ export default function WorkOrderCard({ workOrderTotalArray }) {
           </div>
         </div>
       ) : (
-        <h1 style={{ marginTop: '5%', textAlign: 'center' }}>
-          No Work Orders Submitted
-        </h1>
+        <h2>No Work Orders Submitted</h2>
       )}
     </>
   );

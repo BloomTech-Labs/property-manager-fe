@@ -2,6 +2,7 @@ function mapWorkOrdersToArray(arrayFromSelector) {
   const workOrderTypes = [];
   const workOrderTotalArray = [];
   if (arrayFromSelector.length > 0) {
+    // eslint-disable-next-line
     arrayFromSelector.map(order => {
       workOrderTypes.push(order.type);
     });

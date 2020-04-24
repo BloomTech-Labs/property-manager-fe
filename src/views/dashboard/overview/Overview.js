@@ -27,8 +27,10 @@ export default function Overview() {
         </>
       ) : (
         <>
-          <h5>No Work Orders Or Properties </h5>
-          <img src={dashboardman} alt="Man Holding Box" />
+          <div className="dashboard-no-info">
+            <img src={dashboardman} alt="Man Holding Box" />
+            <h3>No Work Orders Or Properties Listed </h3>
+          </div>
         </>
       )}
     </div>

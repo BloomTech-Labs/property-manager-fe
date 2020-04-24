@@ -59,10 +59,22 @@
       }
     }
   }
-  h5 {
-    text-align: center;
+  .dashboard-no-info {
+    margin-top: 3%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    h3 {
+      text-align: center;
+    }
+    img {
+      width: 65%;
+      height: auto;
+      margin: 0 auto;
+    }
   }
-  img {
-    margin: 0 auto;
+  h2 {
+    margin-top: 5%;
+    text-align: center;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import legendOptions from './legendOptions';
 
 export default function PropertyStatusChart({ propertyTotalArray }) {
   const propertyStatusInfo = {
@@ -12,19 +13,13 @@ export default function PropertyStatusChart({ propertyTotalArray }) {
       }
     ]
   };
-  const propertyStatusLegend = {
-    display: true,
-    position: 'bottom',
-    fullWidth: false,
-    reverse: false
-  };
   return (
     <div className="property-status-card">
       <div className="property-status-chart">
         <h4 className="property-status-label">Property Status</h4>
         <Doughnut
           data={propertyStatusInfo}
-          legend={propertyStatusLegend}
+          legend={legendOptions}
           options={{ rotation: 1 * Math.PI, circumference: 1 * Math.PI }}
         />
       </div>
