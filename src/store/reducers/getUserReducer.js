@@ -5,7 +5,7 @@ import {
   EDIT_USER_START,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAIL
-} from '../actions/index';
+} from '../actions/users/userTypes';
 
 const initialState = {
   user: {

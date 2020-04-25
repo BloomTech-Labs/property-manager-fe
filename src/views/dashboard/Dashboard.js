@@ -8,7 +8,6 @@ import { makeStyles } from '@material-ui/core';
 
 // eslint-disable-next-line no-unused-vars
 import SideNav from '../../components/Navigation/SideNav/SideNav';
-import FloatingActions from '../../components/UI/FloatingActions';
 import PropmanTheme from '../../theme/PropmanTheme';
 import {
   getProperties,
@@ -49,7 +48,6 @@ function Dashboard(props) {
         <main className={classes.content}>
           <Container className="dashboard-content">{props.children}</Container>
         </main>
-        <FloatingActions />
       </div>
     </PropmanTheme>
   );

@@ -8,7 +8,7 @@ import {
   UPDATE_WORK_ORDER_START,
   UPDATE_WORK_ORDER_FAIL,
   UPDATE_WORK_ORDER_SUCCESS
-} from '../actions/index';
+} from '../actions/workorders/workorderTypes';
 
 const initialState = {
   workOrders: [],
@@ -85,7 +85,7 @@ export default function workOrderReducer(
       return {
         ...state,
         isLoading: false,
-        workOrders: [...state.workOrders, action.payload.workOrders.data]
+        workOrders: [...state.workOrders, action.payload.workOrders]
       };
     }
     // -------------------------------------|
