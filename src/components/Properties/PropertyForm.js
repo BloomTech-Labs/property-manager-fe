@@ -58,15 +58,17 @@ export default function PropertyForm({
           submit(values);
         }}
       >
-        {({ errors, touched, isSubmitting }) => (
+        {({ errors, isSubmitting, touched }) => (
           <Form data-testid="form-element">
-            {console.log(errors, touched)}
             {propertyValues.map(
               ({ className, htmlFor, html, placeholder, name, type }) => (
                 <div className={className}>
                   <label htmlFor={htmlFor}>{html}</label>
                   <Field placeholder={placeholder} name={name} type={type} />
-                  <FormErrors touched={touched.name} message={errors.name} />
+                  <FormErrors
+                    touched={touched && touched[name]}
+                    message={errors && errors[name]}
+                  />
                 </div>
               )
             )}
