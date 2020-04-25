@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,13 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CardMedia from '@material-ui/core/CardMedia';
 // Icons
 import PinDropIcon from '@material-ui/icons/PinDrop';
-import PersonIcon from '@material-ui/icons/Person';
 import AddIcon from '@material-ui/icons/Add';
 // Router
 import { navigate } from '@reach/router';
@@ -43,6 +40,7 @@ export default function Property({ id }) {
   const filterWorkOrders = workOrderList.filter(
     workOrder => workOrder.unit_id === property.id
   );
+  // eslint-disable-next-line no-unused-vars
   const { name, street_address, city, state, zip, occupied } = property;
 
   React.useEffect(() => {

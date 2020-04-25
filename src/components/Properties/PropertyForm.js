@@ -4,18 +4,9 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    width: '100%',
-    maxWidth: '600px'
-  }
-}));
+import Loading from '../UI/Loading';
+import propertyValues from './PropertyFormValues';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -44,32 +35,8 @@ export default function PropertyForm({
   loading,
   isSubmitting
 }) {
-  const classes = useStyles();
-
   if (loading || isSubmitting) {
-    return (
-      <div
-        className="form-card"
-        style={{ height: '500px', position: 'relative' }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
-          }}
-        >
-          <CircularProgress
-            style={{
-              height: '100px',
-              width: '100px'
-            }}
-            color="secondary"
-          />
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -91,76 +58,20 @@ export default function PropertyForm({
           submit(values);
         }}
       >
-        {({ errors, touched, isSubmitting }) => (
+        {({ errors, isSubmitting, touched }) => (
           <Form data-testid="form-element">
-            <div className="input-wrapper">
-              <label htmlFor="name">Name</label>
-              <Field
-                placeholder="Enter the name for your Property"
-                name="name"
-                type="text"
-              />
-              <FormErrors touched={touched.name} message={errors.name} />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="rent">Rent</label>
-              <Field
-                placeholder="Enter the rent for your Property"
-                name="rent"
-                type="number"
-              />
-              <FormErrors touched={touched.rent} message={errors.rent} />
-            </div>
-
-            <div className="input-wrapper">
-              <label htmlFor="street">Street Address</label>
-              <Field
-                placeholder="Street address"
-                name="street_address"
-                type="text"
-              />
-              <FormErrors
-                touched={touched.street_address}
-                message={errors.street_address}
-              />
-            </div>
-
-            <div className="input-wrapper">
-              <label htmlFor="city">City</label>
-              <Field placeholder="City" name="city" type="text" />
-              <FormErrors touched={touched.city} message={errors.city} />
-            </div>
-
-            <div className="input-wrapper">
-              <label htmlFor="zip">Zip Code</label>
-              <Field
-                placeholder="Enter a 5-digit Zip Code"
-                name="zip"
-                type="number"
-              />
-
-              <FormErrors touched={touched.zip} message={errors.zip} />
-            </div>
-
-            <div className="input-wrapper">
-              <label htmlFor="state">State</label>
-              <Field placeholder="State" name="state" type="text" />
-              <FormErrors touched={touched.state} message={errors.state} />
-            </div>
-
-            <div className="input-wrapper">
-              <label htmlFor="occupied">Number of Current Tenants</label>
-              <Field
-                placeholder="Number of Tenants"
-                name="occupied"
-                type="number"
-              />
-              <FormErrors
-                touched={touched.occupied}
-                message={errors.occupied}
-              />
-            </div>
-
+            {propertyValues.map(
+              ({ className, htmlFor, html, placeholder, name, type }) => (
+                <div className={className}>
+                  <label htmlFor={htmlFor}>{html}</label>
+                  <Field placeholder={placeholder} name={name} type={type} />
+                  <FormErrors
+                    touched={touched && touched[name]}
+                    message={errors && errors[name]}
+                  />
+                </div>
+              )
+            )}
             <div className="submit-btn-wrapper">
               <button
                 className="btn btn-animated"

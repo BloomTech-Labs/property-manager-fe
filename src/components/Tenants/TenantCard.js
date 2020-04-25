@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line
 import { navigate } from '@reach/router';
 import IconButton from '../UI/IconButton';
-import { getTenants, getProperty } from '../../store/actions';
+import { getTenants } from '../../store/actions';
 
 // Component Styling
 const useStyles = makeStyles({
@@ -36,7 +36,6 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  console.log('TENANTS', tenants);
   // const handleClick = () => {
   //   if (handleOpen) {
   //     // We call the handleOpen() func passed as prop
