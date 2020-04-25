@@ -10,12 +10,18 @@ function UpperCard({ handleClick, props }) {
 
   return (
     <>
-      <CardActionArea onClick={e => { e.stopPropagation(); navigate(upperPath); handleClick();}}>
+      <CardActionArea
+        onClick={e => {
+          e.stopPropagation();
+          navigate(upperPath);
+          handleClick();
+        }}
+      >
         <CardMedia className="property-card-media">
-          { img || <Skeleton variant="rect" height={140} width="100%" /> }
+          {img || <Skeleton variant="rect" height={140} width="100%" />}
         </CardMedia>
         <CardContent>
-          <h5>{ title || <Skeleton /> }</h5>
+          <h5>{title || <Skeleton />}</h5>
         </CardContent>
       </CardActionArea>
     </>
