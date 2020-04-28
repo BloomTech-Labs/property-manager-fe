@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,13 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CardMedia from '@material-ui/core/CardMedia';
 // Icons
 import PinDropIcon from '@material-ui/icons/PinDrop';
-import PersonIcon from '@material-ui/icons/Person';
 import AddIcon from '@material-ui/icons/Add';
 // Router
 import { navigate } from '@reach/router';
@@ -41,9 +38,10 @@ export default function Property({ id }) {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
   const filterWorkOrders = workOrderList.filter(
-    workOrder => workOrder.propertyId === property.id
+    workOrder => workOrder.unit_id === property.id
   );
-  const { name, street, city, state, zip } = property;
+  // eslint-disable-next-line no-unused-vars
+  const { name, street_address, city, state, zip, occupied } = property;
 
   React.useEffect(() => {
     dispatch(getProperty(id));
@@ -62,7 +60,7 @@ export default function Property({ id }) {
           <CardContent className={classes.address}>
             <PinDropIcon />
             <div>
-              <Typography variant="body1">{street}</Typography>
+              <Typography variant="body1">{street_address}</Typography>
               <Typography variant="body1">
                 {city}, {state}, {zip}
               </Typography>
@@ -75,27 +73,28 @@ export default function Property({ id }) {
           <div>
             {tenants.length === 0 && <h5>No tenants for this property.</h5>}
             <List className={classes.list}>
-              {tenants.map(tenant => {
-                return (
-                  <React.Fragment key={tenant.id}>
-                    <Divider />
-                    <ListItem
-                      button
-                      className={classes.listItem}
-                      onClick={() =>
-                        navigate(`/dashboard/tenants/${tenant.id}`)
-                      }
-                    >
-                      <ListItemIcon>
-                        <PersonIcon />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={`${tenant.firstName} ${tenant.lastName}`}
-                      />
-                    </ListItem>
-                  </React.Fragment>
-                );
-              })}
+              {/* {tenants &&
+                tenants.map(tenant => {
+                  return (
+                    <React.Fragment key={tenant.id}>
+                      <Divider />
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={() =>
+                          navigate(`/dashboard/tenants/${tenant.id}`)
+                        }
+                      >
+                        <ListItemIcon>
+                          <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={`${tenant.firstName} ${tenant.lastName}`}
+                        />
+                      </ListItem>
+                    </React.Fragment>
+                  );
+                })} */}
             </List>
           </div>
           <IconButton

@@ -62,7 +62,7 @@ export const updateWorkOrder = workOrder => async dispatch => {
     dispatch({
       type: UPDATE_WORK_ORDER_SUCCESS,
       payload: {
-        workOrders: res
+        workOrders: res.data
       }
     });
   } catch (err) {

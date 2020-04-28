@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line
 import { navigate } from '@reach/router';
 import IconButton from '../UI/IconButton';
-import { getTenants, getProperty } from '../../store/actions';
+import { getTenants } from '../../store/actions';
 
 // Component Styling
 const useStyles = makeStyles({
@@ -36,7 +36,6 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  console.log('TENANTS', tenants);
   // const handleClick = () => {
   //   if (handleOpen) {
   //     // We call the handleOpen() func passed as prop
@@ -57,8 +56,7 @@ const TenantCard = () => {
         <div className={classes.empty}>
           <h3>No tenants have been added, yet...</h3>
         </div>
-      ) : 
-      (
+      ) : (
         <Paper>
           <Table>
             <TableHead>
@@ -73,15 +71,16 @@ const TenantCard = () => {
             <TableBody>
               {tenants.map((
                 tenant // Create a row for each tenant
-              ) =>
-              (
-                <TableRow onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}>
+              ) => (
+                <TableRow
+                  onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
+                >
                   <TableCell>{tenant.firstName}</TableCell>
                   <TableCell>Blah</TableCell>
                   <TableCell>{tenant.firstName}</TableCell>
                   <TableCell>moveInDate</TableCell>
                 </TableRow>
-                ))}
+              ))}
             </TableBody>
           </Table>
         </Paper>

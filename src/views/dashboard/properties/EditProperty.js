@@ -37,11 +37,12 @@ export default function EditProperty({ id }) {
   // initialValues for the edit form
   const propertyFields = {
     name: property.name,
-    street: property.street,
+    street_address: property.street_address,
+    rent: property.rent,
     city: property.city,
     state: property.state,
     zip: property.zip,
-    status: property.status
+    occupied: property.occupied
   };
 
   // get the property by id when component mounts

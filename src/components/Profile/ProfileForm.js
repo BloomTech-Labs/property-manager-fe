@@ -4,18 +4,9 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
-import { makeStyles, CircularProgress } from '@material-ui/core';
 import FormErrors from '../../helpers/FormErrors';
 import MuiModal from '../UI/MuiModal';
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    width: '100%',
-    maxWidth: '600px'
-  }
-}));
+import Loading from '../UI/Loading';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -31,39 +22,13 @@ export default function ProfileForm({
   submit,
   loading,
   isSubmitting,
-  open,
   opened,
   close
 }) {
-  // eslint-disable-next-line no-unused-vars
-  const classes = useStyles();
-
   const initialValues = { firstName: '', lastName: '', phone: '' };
 
   if (loading || isSubmitting) {
-    return (
-      <div
-        className="form-card"
-        style={{ height: '500px', position: 'relative' }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
-          }}
-        >
-          <CircularProgress
-            style={{
-              height: '100px',
-              width: '100px'
-            }}
-            color="secondary"
-          />
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

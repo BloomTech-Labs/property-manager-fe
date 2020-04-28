@@ -19,11 +19,12 @@ export default function CreateProperty() {
 
   const defaultValues = {
     name: '',
-    street: '',
+    rent: '',
+    street_address: '',
     city: '',
     state: '',
     zip: '',
-    status: ''
+    occupied: 0
   };
 
   return (
