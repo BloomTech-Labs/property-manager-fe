@@ -33,6 +33,7 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo.png';
+import firebase from '../../../vendors/fb';
 // eslint-disable-next-line no-unused-vars
 import ListLandlord from './ListLandlord';
 // eslint-disable-next-line no-unused-vars
@@ -94,8 +95,8 @@ function SideNav() {
   const userType = localStorage.getItem('userType');
 
   const handleLogout = () => {
+    firebase.auth().signOut();
     dispatch({ type: 'LOGOUT' });
-    window.localStorage.clear();
     navigate('/');
   };
 
