@@ -1,5 +1,5 @@
 import axios from 'axios';
-import fb from '../vendors/fb';
+import firebase from '../vendors/fb';
 
 const axiosAuth = axios.create({
   baseURL:
@@ -10,7 +10,7 @@ const axiosAuth = axios.create({
 });
 
 axiosAuth.interceptors.request.use(async config => {
-  config.headers.authorization = await fb.auth().currentUser.getIdToken();
+  config.headers.authorization = await firebase.auth().currentUser.getIdToken();
   return config;
 });
 
