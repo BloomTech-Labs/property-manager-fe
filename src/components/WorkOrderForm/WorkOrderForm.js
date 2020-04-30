@@ -2,7 +2,6 @@ import React from 'react';
 import { navigate } from '@reach/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
 
 // MUI Components
 import TextField from '@material-ui/core/TextField';
@@ -16,14 +15,7 @@ import { formStyles } from '../../helpers/utils';
 
 // Redux Actions
 import { addWorkOrder, getWorkOrders } from '../../store/actions/index';
-
-// YUP Validation schema
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Add a short description for your work order'),
-  unit_id: Yup.string().required('Select a property'),
-  description: Yup.string().required('Add some details about your work order'),
-  type: Yup.string().required('Work order type is required')
-});
+import { workOrderValidation } from './WorkOrderValidation';
 
 const WorkOrderForm = () => {
   const classes = formStyles();
@@ -48,7 +40,7 @@ const WorkOrderForm = () => {
       <h2 className={classes.formTitle}>Create a Work Order</h2>
       <Formik
         enableReinitialize
-        validationSchema={validationSchema}
+        validationSchema={workOrderValidation}
         initialValues={{
           name: '',
           unit_id: '',
