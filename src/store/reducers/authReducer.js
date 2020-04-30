@@ -27,7 +27,7 @@ export default function authReducer(
         ...state,
         isLoading: false,
         isLoggedIn: true,
-        user: action.payload.user
+        user: action.payload
       };
     }
     case AUTH_REQUEST_FAIL: {
