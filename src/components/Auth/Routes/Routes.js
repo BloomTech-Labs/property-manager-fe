@@ -4,6 +4,7 @@ import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 import Toast from '../../UI/Toast';
 import firebase from '../../../vendors/fb';
+import { useSelector } from 'react-redux';
 
 const Routes = () => {
   const [user, setUser] = useState(null);
@@ -18,15 +19,14 @@ const Routes = () => {
     });
     return user;
   }, [user]);
-
-  const userType = localStorage.getItem('userType');
-
+  const userInfo = useSelector(state => state.authReducer.user);
+  const landlord = (userInfo.userType = 'landlord' ? true : false);
   return (
     <>
       <Router>
         <PublicRoutes path="/*" user={user} />
 
-        <ProtectedRoutes path="dashboard/*" user={user} userType={userType} />
+        <ProtectedRoutes path="dashboard/*" user={user} landlord={landlord} />
       </Router>
       <Toast />
     </>
