@@ -9,13 +9,14 @@ import {
   UPDATE_WORK_ORDER_FAIL,
   UPDATE_WORK_ORDER_SUCCESS
 } from './workorderTypes';
+import { baseUrl } from '../../../helpers/baseUrl';
 import axiosAuth from '../../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from '../toastActions';
 
 export const getWorkOrders = () => async dispatch => {
   dispatch({ type: GET_WORK_ORDERS_START });
   try {
-    const res = await axiosAuth.get(`/workorders`);
+    const res = await axiosAuth().get(`${baseUrl}/workorders`);
     dispatch({
       type: GET_WORK_ORDERS_SUCCESS,
       payload: {
@@ -31,7 +32,7 @@ export const getWorkOrders = () => async dispatch => {
 export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
   try {
-    const res = await axiosAuth.post(`/workorders`, workOrder);
+    const res = await axiosAuth().post(`${baseUrl}/workorders`, workOrder);
 
     // show success toast
     dispatch(showSuccessToast('Work Order created!'));
@@ -54,7 +55,10 @@ export const addWorkOrder = workOrder => async dispatch => {
 export const updateWorkOrder = workOrder => async dispatch => {
   dispatch({ type: UPDATE_WORK_ORDER_START });
   try {
-    const res = await axiosAuth.put(`/workorders/${workOrder.id}`, workOrder);
+    const res = await axiosAuth().put(
+      `${baseUrl}/workorders/${workOrder.id}`,
+      workOrder
+    );
 
     // show success toast
     dispatch(showSuccessToast('Work Order updated!'));

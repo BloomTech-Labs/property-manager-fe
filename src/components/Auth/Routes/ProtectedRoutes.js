@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Reach Router
 import { Router, Redirect } from '@reach/router';
@@ -22,9 +23,9 @@ import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
 import NotFound from '../../../views/notfound/NotFound';
 
-function ProtectedRoutes({ user, userType }) {
+function ProtectedRoutes({ token, userType }) {
   // Landlord Routing
-  if (user && userType === 'landlord') {
+  if (token && userType === 'landlord') {
     return (
       <Router>
         <Dashboard path="/">
@@ -51,7 +52,7 @@ function ProtectedRoutes({ user, userType }) {
   }
 
   // Tenant Routing
-  if (user && userType === 'tenant') {
+  if (token && userType === 'tenant') {
     return (
       <Router>
         <TenantDashboard path="/" userType={userType}>
@@ -67,11 +68,16 @@ function ProtectedRoutes({ user, userType }) {
     );
   }
 
-  if (!user) {
+  if (!token) {
     return <Redirect to="/" noThrow />;
   }
 
   return null;
 }
+
+ProtectedRoutes.propTypes = {
+  token: PropTypes.string.isRequired,
+  userType: PropTypes.string.isRequired
+};
 
 export default ProtectedRoutes;

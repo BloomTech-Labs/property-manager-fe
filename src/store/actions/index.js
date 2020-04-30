@@ -1,5 +1,4 @@
-import { authSignIn } from './auth/authSignIn';
-import { authSignUp } from './auth/authSignUp';
+import { auth } from './auth/authCreators';
 import {
   createProperty,
   getProperties,
@@ -23,8 +22,7 @@ import {
 export {
   addTenant,
   addWorkOrder,
-  authSignIn,
-  authSignUp,
+  auth,
   createProperty,
   editProperty,
   editTenant,
