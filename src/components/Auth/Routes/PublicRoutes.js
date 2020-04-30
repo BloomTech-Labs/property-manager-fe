@@ -8,11 +8,11 @@ import Login from '../../../views/onBoarding/login';
 import SignUp from '../../../views/onBoarding/signup';
 import NotFound from '../../../views/notfound/NotFound';
 
-const PublicRoutes = ({ user }) => (
+const PublicRoutes = () => (
   <>
     <HorNav />
     <Router>
-      <LandingPage path="/" user={user} />
+      <LandingPage path="/" />
       <Contact exact path="/contact" />
       <Login path="/login" />
       <SignUp path="/signup" />

@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
 import { FormError, I, FormFooterContainer } from '../../UI';
-import { authSignUp, getUserInfo } from '../../../store/actions';
+import { auth, getUserInfo } from '../../../store/actions';
 import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
   userType: Yup.string().required('Please select a user type')
 });
 
-const signup = authSignUp('/auth/register');
+const signup = auth('/auth/register');
 
 const SignUpForm = () => {
   const dispatch = useDispatch();

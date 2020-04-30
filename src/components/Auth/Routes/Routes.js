@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Router } from '@reach/router';
+import { getUserInfo } from '../../../store/actions/index';
 import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 import Toast from '../../UI/Toast';
-import firebase from '../../../vendors/fb';
 
 const Routes = () => {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const user = firebase.auth().onAuthStateChanged(fbUser => {
-      if (fbUser) {
-        setUser(fbUser);
-      } else {
-        setUser(null);
-      }
-      return () => user();
-    });
-    return user;
-  }, [user]);
+  function getToken() {
+    try {
+      const token = localStorage.getItem('token');
+      return token;
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err);
+      return null;
+    }
+  }
+
+  const token = getToken();
 
   const userType = localStorage.getItem('userType');
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   return (
     <>
       <Router>
-        <PublicRoutes path="/*" user={user} />
+        <PublicRoutes path="/*" />
 
-        <ProtectedRoutes path="dashboard/*" user={user} userType={userType} />
+        <ProtectedRoutes path="dashboard/*" token={token} userType={userType} />
       </Router>
       <Toast />
     </>
