@@ -4,11 +4,12 @@ import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 import Toast from '../../UI/Toast';
 import firebase from '../../../vendors/fb';
+import { useSelector } from 'react-redux';
 
 const Routes = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    const user = firebase.auth().onAuthStateChanged(fbUser => {
+    const user = firebase.auth().onAuthStateChanged(async fbUser => {
       if (fbUser) {
         setUser(fbUser);
       } else {
@@ -18,8 +19,8 @@ const Routes = () => {
     });
     return user;
   }, [user]);
-
-  const userType = localStorage.getItem('userType');
+  const userInfo = useSelector(state => state.authReducer.user);
+  const userType = (userInfo.userType = 'landlord' ? true : false);
 
   return (
     <>

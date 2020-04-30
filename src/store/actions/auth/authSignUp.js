@@ -29,8 +29,7 @@ export const authSignUp = url => (emailFromForm, password, type) => {
       const res = await axiosAuth.post(`${url}`, userWithType);
       // refresh the token with to get the new claim
       await firebase.auth().currentUser.getIdToken(true);
-      // set userType local storage
-      localStorage.setItem('userType', res.data.user.type);
+
       // show success toast
       dispatch(showSuccessToast(`Success! Welcome to Freehold!`));
       // grab user key values and dispatch them

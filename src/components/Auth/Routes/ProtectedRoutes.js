@@ -23,8 +23,7 @@ import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
 import NotFound from '../../../views/notfound/NotFound';
 
 function ProtectedRoutes({ user, userType }) {
-  // Landlord Routing
-  if (user && userType === 'landlord') {
+  if (user && userType === true) {
     return (
       <Router>
         <Dashboard path="/">
@@ -51,7 +50,7 @@ function ProtectedRoutes({ user, userType }) {
   }
 
   // Tenant Routing
-  if (user && userType === 'tenant') {
+  if (user && userType === false) {
     return (
       <Router>
         <TenantDashboard path="/" userType={userType}>
