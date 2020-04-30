@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const Routes = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    const user = firebase.auth().onAuthStateChanged(async fbUser => {
+    const user = firebase.auth().onAuthStateChanged(fbUser => {
       if (fbUser) {
         setUser(fbUser);
       } else {
@@ -20,14 +20,13 @@ const Routes = () => {
     return user;
   }, [user]);
   const userInfo = useSelector(state => state.authReducer.user);
-  const userType = (userInfo.userType = 'landlord' ? true : false);
-
+  const landlord = (userInfo.userType = 'landlord' ? true : false);
   return (
     <>
       <Router>
         <PublicRoutes path="/*" user={user} />
 
-        <ProtectedRoutes path="dashboard/*" user={user} userType={userType} />
+        <ProtectedRoutes path="dashboard/*" user={user} landlord={landlord} />
       </Router>
       <Toast />
     </>
