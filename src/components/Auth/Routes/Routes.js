@@ -20,7 +20,7 @@ const Routes = () => {
     return user;
   }, [user]);
   const userInfo = useSelector(state => state.authReducer.user);
-  const landlord = (userInfo.userType = 'landlord' ? true : false);
+  const landlord = (userInfo.userType = !!'landlord');
   return (
     <>
       <Router>
