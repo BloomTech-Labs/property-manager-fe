@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Router } from '@reach/router';
+import { useSelector } from 'react-redux';
 import PublicRoutes from './PublicRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 import Toast from '../../UI/Toast';
 import firebase from '../../../vendors/fb';
-import { useSelector } from 'react-redux';
 
 const Routes = () => {
   const [user, setUser] = useState(null);
