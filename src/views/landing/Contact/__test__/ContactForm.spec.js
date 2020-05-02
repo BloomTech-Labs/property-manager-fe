@@ -5,7 +5,4 @@ import ContactForm from '../ContactForm';
 
 afterEach(rtl.cleanup);
 
-test('Checks submit button event and navigate to home', async () => {
-  
-  
-});
+test('Checks submit button event and navigate to home', async () => {});
