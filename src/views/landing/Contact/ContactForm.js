@@ -2,38 +2,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
+import { Slide } from '@material-ui/core';
 import { MdEmail, MdMessage, MdPerson } from 'react-icons/md';
-import {
-  Button,
-  Slide,
-  Dialog,
-  DialogTitle,
-  Typography,
-  DialogContent,
-  DialogActions,
-  Container
-} from '@material-ui/core';
 import FormErrors from '../../../helpers/FormErrors';
 import { I } from '../../../components/UI';
-import MailSent from '../../../assets/svg/mail-sent.svg';
+import ContactFormMessage from './ContactFormMessage';
+import { contactValidation } from './ContactValidation';
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2)
-    .max(100)
-    .required('Must enter a Name'),
-  email: Yup.string()
-    .email('Must be a valid email address')
-    .max(255, 'Email entered was too long')
-    .required('Must enter an Email Address'),
-  message: Yup.string()
-    .min(8, 'Message must be at least 8 characters')
-    .max(255, 'Message is too long')
-    .required('Must enter a Message')
-});
-
-// modal animation
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -64,7 +39,7 @@ export default function ContactForm() {
     <div className="contact-form-card">
       <h2 className="desktop-form">Contact Us</h2>
       <Formik
-        validationSchema={validationSchema}
+        validationSchema={contactValidation}
         initialValues={{
           name: '',
           email: '',
@@ -135,6 +110,7 @@ export default function ContactForm() {
             </div>
             <div className="submit-btn-wrapper">
               <button
+                data-testid="contactBtn"
                 className="btn button"
                 type="submit"
                 disabled={isSubmitting}
@@ -145,33 +121,11 @@ export default function ContactForm() {
           </Form>
         )}
       </Formik>
-      <Dialog
+      <ContactFormMessage
         open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <Container>
-          <DialogTitle disableTypography id="alert-dialog-slide-title">
-            <h5 className="contactModalHeader">Form Submitted!</h5>
-          </DialogTitle>
-          <img
-            className="contactFormImg"
-            src={MailSent}
-            alt="Thank you for message"
-          />
-          <DialogContent>
-            <Typography align="center">Thank you for your feedback!</Typography>
-          </DialogContent>
-          <DialogActions>
-            <Button autoFocus onClick={handleClose} color="primary">
-              Close
-            </Button>
-          </DialogActions>
-        </Container>
-      </Dialog>
+        handleClose={handleClose}
+        Transition={Transition}
+      />
     </div>
   );
 }
