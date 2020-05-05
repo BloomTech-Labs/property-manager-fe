@@ -25,8 +25,8 @@ const FeatureTable = () => {
             </tr>
           ))}
         </tbody>
-        <FeatureButtons />
       </table>
+      <FeatureButtons />
     </div>
   );
 };
