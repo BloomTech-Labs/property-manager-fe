@@ -5,7 +5,12 @@ import Contact from '../Contact';
 
 afterEach(rtl.cleanup);
 
-test('Checks the submit button functionality', async () => {
+test('Checks the document for the word Freehold', async () => {
   const wrapper = rtl.render(<Contact />);
   expect(await wrapper.queryAllByText(/freehold/i));
+});
+
+test('snapshot', () => {
+  const { container } = rtl.render(<Contact />);
+  expect(container.firstChild).toMatchSnapshot();
 });
