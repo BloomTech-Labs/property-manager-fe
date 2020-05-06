@@ -5,7 +5,7 @@ import Features from '../Features';
 
 afterEach(rtl.cleanup);
 
-test('Makes sure the word Freehold exists on LP', async () => {
+test('Professional dashboard exists on the Features component', async () => {
   const wrapper = rtl.render(<Features />);
   expect(await wrapper.queryAllByText(/professional dashboard/i));
 });
