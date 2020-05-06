@@ -12,7 +12,6 @@ import {
   GET_PROPERTY_FAIL,
   GET_PROPERTY_SUCCESS
 } from './propertyTypes';
-import { baseUrl } from '../../../helpers/baseUrl';
 import axiosAuth from '../../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from '../toastActions';
 
@@ -21,7 +20,7 @@ export const createProperty = property => {
     dispatch({ type: ADD_PROPERTY_START });
 
     try {
-      const res = await axiosAuth().post(`${baseUrl}/properties`, property);
+      const res = await axiosAuth.post(`/properties`, property);
 
       // show success toast
       dispatch(showSuccessToast(`Property created!`));
@@ -45,7 +44,7 @@ export const getProperties = () => async dispatch => {
   dispatch({ type: GET_PROPERTIES_START });
 
   try {
-    const res = await axiosAuth().get(`${baseUrl}/properties`);
+    const res = await axiosAuth.get(`/properties`);
 
     const localProperties = JSON.stringify(res.data);
 
@@ -68,7 +67,7 @@ export const getProperty = id => async dispatch => {
   dispatch({ type: GET_PROPERTY_START });
 
   try {
-    const res = await axiosAuth().get(`${baseUrl}/properties/${id}`);
+    const res = await axiosAuth.get(`/properties/${id}`);
 
     dispatch({
       type: GET_PROPERTY_SUCCESS,
@@ -86,7 +85,7 @@ export const editProperty = (id, property) => {
     dispatch({ type: EDIT_PROPERTY_START });
 
     try {
-      await axiosAuth().put(`${baseUrl}/properties/${id}`, property);
+      await axiosAuth.put(`/properties/${id}`, property);
 
       // show success toast
       dispatch(showSuccessToast(`Property updated!`));

@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
-import { auth, getUserInfo } from '../../../store/actions';
+import { authSignIn, getUserInfo } from '../../../store/actions';
 import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-const login = auth('/auth/login');
+const login = authSignIn('/auth/login');
 
 export default function LoginForm() {
   const dispatch = useDispatch();

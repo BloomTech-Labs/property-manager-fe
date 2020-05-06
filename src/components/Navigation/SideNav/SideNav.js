@@ -27,12 +27,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
 import BuildIcon from '@material-ui/icons/Build';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useSelector } from 'react-redux';
 
 // Reach Router
 import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo.png';
+import firebase from '../../../vendors/fb';
 // eslint-disable-next-line no-unused-vars
 import ListLandlord from './ListLandlord';
 // eslint-disable-next-line no-unused-vars
@@ -91,11 +93,12 @@ function SideNav() {
   const dispatch = useDispatch();
 
   // Subscribe to user state
-  const userType = localStorage.getItem('userType');
+  const userInfo = useSelector(state => state.authReducer.user);
+  const landlord = (userInfo.userType = 'landlord' ? true : false);
 
   const handleLogout = () => {
+    firebase.auth().signOut();
     dispatch({ type: 'LOGOUT' });
-    window.localStorage.clear();
     navigate('/');
   };
 
@@ -148,7 +151,7 @@ function SideNav() {
             <ListItemText primary="Profile" />
           </ListItem>
 
-          {userType === 'landlord' ? (
+          {landlord === true ? (
             <ListItem button onClick={() => navigate('/dashboard/properties')}>
               <ListItemIcon>
                 <HomeWorkIcon />
@@ -157,7 +160,7 @@ function SideNav() {
             </ListItem>
           ) : null}
 
-          {userType === 'tenant' ? (
+          {landlord === false ? (
             <ListItem button onClick={() => navigate('/dashboard/property')}>
               <ListItemIcon>
                 <HomeWorkIcon />
@@ -166,7 +169,7 @@ function SideNav() {
             </ListItem>
           ) : null}
 
-          {userType === 'landlord' ? (
+          {landlord === true ? (
             <ListItem button onClick={() => navigate('/dashboard/tenants')}>
               <ListItemIcon>
                 <PeopleIcon />

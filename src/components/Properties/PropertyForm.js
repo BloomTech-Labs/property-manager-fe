@@ -2,32 +2,12 @@
 /* eslint-disable react/prop-types */
 /** @jsx jsx */
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
 import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
 import Loading from '../UI/Loading';
 import propertyValues from './PropertyFormValues';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .max(30, 'Name entered must be 30 characters or less')
-    .required('Must enter a name for the property'),
-  rent: Yup.number().required('Must enter rent amount'),
-  street_address: Yup.string()
-    .max(255, 'Address entered was too long')
-    .required('Must enter a street address'),
-  city: Yup.string()
-    .max(50, 'City entered was too long')
-    .required('Must enter a city'),
-  zip: Yup.string()
-    .min(5, 'Must enter 5-digit zip code')
-    .max(5, 'Must enter 5-digit zip code')
-    .required('Must enter a 5-digit zip code'),
-  state: Yup.string()
-    .max(50, 'State entered was too long')
-    .required('Must enter the state'),
-  occupied: Yup.number().required('Property Status is required!')
-});
+import { propertyValidation } from './PropertyValidation';
+import SubmitButton from '../Buttons/SubmitButton';
 
 export default function PropertyForm({
   submit,
@@ -44,7 +24,7 @@ export default function PropertyForm({
       <h2>{initialValues.name !== '' ? 'Edit Property' : 'Add Property'}</h2>
       <Formik
         enableReinitialize
-        validationSchema={validationSchema}
+        validationSchema={propertyValidation}
         initialValues={{
           name: initialValues.name,
           rent: initialValues.rent,
@@ -62,7 +42,7 @@ export default function PropertyForm({
           <Form data-testid="form-element">
             {propertyValues.map(
               ({ className, htmlFor, html, placeholder, name, type }) => (
-                <div className={className}>
+                <div className={className} key={name}>
                   <label htmlFor={htmlFor}>{html}</label>
                   <Field placeholder={placeholder} name={name} type={type} />
                   <FormErrors
@@ -72,15 +52,7 @@ export default function PropertyForm({
                 </div>
               )
             )}
-            <div className="submit-btn-wrapper">
-              <button
-                className="btn btn-animated"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Submit
-              </button>
-            </div>
+            <SubmitButton disabled={isSubmitting} />
           </Form>
         )}
       </Formik>
