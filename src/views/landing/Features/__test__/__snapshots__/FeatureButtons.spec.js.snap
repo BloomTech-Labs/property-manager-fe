@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="buy-btn-wrapper"
+>
+  <div
+    class="empty"
+  />
+  <button
+    class="buy-btn"
+    type="submit"
+  >
+    Buy
+  </button>
+  <button
+    class="buy-btn"
+    type="submit"
+  >
+    Buy
+  </button>
+  <button
+    class="buy-btn"
+    type="submit"
+  >
+    Buy
+  </button>
+</div>
+`;
