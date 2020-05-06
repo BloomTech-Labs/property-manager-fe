@@ -9,3 +9,8 @@ test('Makes sure the word Freehold exists on LP', async () => {
   const wrapper = rtl.render(<FeatureTable />);
   expect(await wrapper.queryAllByText(/free/i));
 });
+
+test('snapshot', () => {
+  const { container } = rtl.render(<FeatureTable />);
+  expect(container.firstChild).toMatchSnapshot();
+});
