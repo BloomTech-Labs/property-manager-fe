@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="featureHeadingWrapper"
+>
+  <img
+    alt="Orange computer and phone"
+    class="featureImage"
+    src="features-image.svg"
+  />
+  <h1
+    class="featureHeading"
+  >
+    Which Freehold is right for me?
+  </h1>
+</div>
+`;
