@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import {
   AUTH_REQUEST_START,
   AUTH_REQUEST_SUCCESS,
