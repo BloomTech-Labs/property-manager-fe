@@ -24,3 +24,8 @@ test('Makes sure the word Freehold exists on LP', async () => {
   const wrapper = rtl.render(<LandingPage />);
   expect(await wrapper.queryAllByText(/freehold/i));
 });
+
+test('snapshot', () => {
+  const { container } = rtl.render(<LandingPage />);
+  expect(container.firstChild).toMatchSnapshot();
+});
