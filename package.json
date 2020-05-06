@@ -91,6 +91,7 @@
       "lcov"
     ],
     "collectCoverageFrom": [
+      "!**/coverage/**",
       "**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**",

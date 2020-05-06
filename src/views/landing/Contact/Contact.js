@@ -4,7 +4,7 @@ import React from 'react';
 // icons import
 import { FaInstagram, FaTwitter, FaFacebookSquare } from 'react-icons/fa';
 import { Container } from '@material-ui/core';
-import ContactForm from '../../components/ContactForm/ContactForm';
+import ContactForm from './ContactForm';
 
 export default function Contact() {
   return (
