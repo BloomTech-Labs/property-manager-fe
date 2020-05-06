@@ -1,5 +1,7 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from '../../store';
 import LoginForm from '../../components/Auth/LoginForm/LoginForm';
 
 test('should submit the login form', async () => {
@@ -16,7 +18,9 @@ test('should submit the login form', async () => {
 
   // Get your selectors and render the component you wish to test, pass in any fake functions or props
   const { getByPlaceholderText, getByTestId } = render(
-    <LoginForm submit={handleSubmit} />
+    <Provider store={store}>
+      <LoginForm submit={handleSubmit} />
+    </Provider>
   );
 
   // Use your selectors to select the field nodes needed to fill out the form

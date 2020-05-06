@@ -3,24 +3,24 @@ import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import store from '../../../../store';
-import PropTable from '../PropTable';
+import CreateProperty from '../CreateProperty';
 
 afterEach(rtl.cleanup);
 
-test('snapshot', () => {
-  const { container } = rtl.render(
+test('snapshot CreateProperty', () => {
+  const { wrapper } = rtl.render(
     <Provider store={store}>
-      <PropTable />
+      <CreateProperty />
     </Provider>
   );
-  expect(container.firstChild).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
-test('Renders with name column', () => {
-  const wrapper = rtl.render(
+test('Renders', () => {
+  const { wrapper } = rtl.render(
     <Provider store={store}>
-      <PropTable />
+      <CreateProperty />
     </Provider>
   );
-  expect(wrapper.getByText(/name/i)).not.toBeNull();
+  expect(wrapper).not.toBeNull();
 });
