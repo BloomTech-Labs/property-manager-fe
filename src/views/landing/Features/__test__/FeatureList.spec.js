@@ -5,7 +5,7 @@ import FeatureList from '../FeatureList';
 
 afterEach(rtl.cleanup);
 
-test('Makes sure the word Freehold exists on LP', async () => {
+test('Checking for the word emailing service', async () => {
   const wrapper = rtl.render(<FeatureList />);
   expect(await wrapper.queryAllByText(/emailing service/i));
 });

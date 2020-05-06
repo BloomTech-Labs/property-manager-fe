@@ -5,7 +5,12 @@ import SpotlightHeading from '../SpotlightCard';
 
 afterEach(rtl.cleanup);
 
-test('Makes sure the word Freehold exists on LP', async () => {
+test('Looking for manage your properties on Heading', async () => {
   const wrapper = rtl.render(<SpotlightHeading />);
   expect(await wrapper.queryAllByText(/manage your properties/i));
+});
+
+test('snapshot', () => {
+  const { container } = rtl.render(<SpotlightHeading />);
+  expect(container.firstChild).toMatchSnapshot();
 });

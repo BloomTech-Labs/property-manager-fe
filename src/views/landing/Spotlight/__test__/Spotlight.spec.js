@@ -5,7 +5,12 @@ import Spotlight from '../Spotlight';
 
 afterEach(rtl.cleanup);
 
-test('Makes sure the word Freehold exists on LP', async () => {
+test('Makes sure the word manage exists on SL', async () => {
   const wrapper = rtl.render(<Spotlight />);
   expect(await wrapper.queryAllByText(/manage/i));
+});
+
+test('snapshot', () => {
+  const { container } = rtl.render(<Spotlight />);
+  expect(container.firstChild).toMatchSnapshot();
 });
