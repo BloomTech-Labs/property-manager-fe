@@ -6,7 +6,7 @@ import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
 import Loading from '../UI/Loading';
 import propertyValues from './PropertyFormValues';
-import {propertyValidation} from './PropertyValidation.js';
+import { propertyValidation } from './PropertyValidation';
 import SubmitButton from '../Buttons/SubmitButton';
 
 export default function PropertyForm({
@@ -42,7 +42,7 @@ export default function PropertyForm({
           <Form data-testid="form-element">
             {propertyValues.map(
               ({ className, htmlFor, html, placeholder, name, type }) => (
-                <div className={className}>
+                <div className={className} key={name}>
                   <label htmlFor={htmlFor}>{html}</label>
                   <Field placeholder={placeholder} name={name} type={type} />
                   <FormErrors
