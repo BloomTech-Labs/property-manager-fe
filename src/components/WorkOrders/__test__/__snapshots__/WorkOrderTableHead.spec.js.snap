@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<thead
+  class="MuiTableHead-root"
+>
+  <tr
+    class="MuiTableRow-root MuiTableRow-head"
+  >
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Work Order
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Description
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Type
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Start Date
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Property
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Created By
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Status
+    </th>
+    <th
+      class="MuiTableCell-root MuiTableCell-head"
+      scope="col"
+    >
+      Actions
+    </th>
+  </tr>
+</thead>
+`;

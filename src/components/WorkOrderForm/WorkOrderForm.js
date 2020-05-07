@@ -65,7 +65,7 @@ const WorkOrderForm = () => {
       >
         {({ errors, isSubmitting }) => {
           return (
-            <Form>
+            <Form data-testid="wo-form">
               <Grid container justify="space-evenly">
                 <Field
                   className={classes.textField}
