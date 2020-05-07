@@ -126,7 +126,13 @@ const SignUpForm = () => {
                   </I>{' '}
                   User Type
                 </label>
-                <Field name="userType" label="Type" as={TextField} select>
+                <Field
+                  name="userType"
+                  data-testid="userType"
+                  label="Type"
+                  as={TextField}
+                  select
+                >
                   <MenuItem value="landlord">Landlord</MenuItem>
                   <MenuItem value="tenant">Tenant</MenuItem>
                 </Field>
@@ -140,7 +146,7 @@ const SignUpForm = () => {
                 )}
               </div>
               <div className="submit-btn-wrapper">
-                <button className="btn" type="submit">
+                <button className="btn" data-testid="submit-btn" type="submit">
                   Submit
                 </button>
               </div>

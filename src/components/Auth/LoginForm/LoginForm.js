@@ -85,7 +85,12 @@ export default function LoginForm() {
                 />
               </div>
               <div className="submit-btn-wrapper">
-                <button className="btn" type="submit" disabled={isSubmitting}>
+                <button
+                  className="btn"
+                  type="submit"
+                  data-testid="submit-btn"
+                  disabled={isSubmitting}
+                >
                   Submit
                 </button>
                 <Link to="/iamareallyforgetfulperson">
