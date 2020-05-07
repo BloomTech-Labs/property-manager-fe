@@ -85,7 +85,7 @@ export default function workOrderReducer(
       return {
         ...state,
         isLoading: false,
-        workOrders: [...state.workOrders, action.payload.workOrders.data]
+        workOrders: [...state.workOrders, action.payload.workOrders]
       };
     }
     // -------------------------------------|

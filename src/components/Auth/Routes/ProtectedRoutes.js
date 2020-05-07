@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Reach Router
 import { Router, Redirect } from '@reach/router';
@@ -21,10 +20,10 @@ import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import TenantProperty from '../../../views/tenantDashboard/TenantProperty';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
 import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
+import NotFound from '../../../views/notfound/NotFound';
 
-function ProtectedRoutes({ token, userType }) {
-  // Landlord Routing
-  if (token && userType === 'landlord') {
+function ProtectedRoutes({ user, landlord }) {
+  if (user && landlord === true) {
     return (
       <Router>
         <Dashboard path="/">
@@ -44,37 +43,34 @@ function ProtectedRoutes({ token, userType }) {
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
           <WorkOrderEditForm path="workorders/:workOrderId" />
+          <NotFound default />
         </Dashboard>
       </Router>
     );
   }
 
   // Tenant Routing
-  if (token && userType === 'tenant') {
+  if (user && landlord === false) {
     return (
       <Router>
-        <TenantDashboard path="/" userType={userType}>
+        <TenantDashboard path="/">
           <Overview path="/" />
           <Profile path="profile" />
           <TenantProperty path="property" />
           <WorkOrders path="workorders" />
           <WorkOrderForm path="workorders/add" />
           <WorkOrderEditForm path="workorders/:workOrderId" />
+          <NotFound default />
         </TenantDashboard>
       </Router>
     );
   }
 
-  if (!token) {
+  if (!user) {
     return <Redirect to="/" noThrow />;
   }
 
   return null;
 }
-
-ProtectedRoutes.propTypes = {
-  token: PropTypes.string.isRequired,
-  userType: PropTypes.string.isRequired
-};
 
 export default ProtectedRoutes;

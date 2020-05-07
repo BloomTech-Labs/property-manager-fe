@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 // UI Components
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
-// eslint-disable-next-line no-unused-vars
 import SideNav from '../../components/Navigation/SideNav/SideNav';
 import PropmanTheme from '../../theme/PropmanTheme';
 import { getProperties, getWorkOrders } from '../../store/actions';

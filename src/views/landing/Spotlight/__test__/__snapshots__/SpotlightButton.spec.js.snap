@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="btnWrapper"
+>
+  <button
+    class="spotBtn"
+    type="submit"
+  >
+    Sign up
+  </button>
+</div>
+`;

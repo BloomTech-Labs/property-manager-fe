@@ -1,0 +1,31 @@
+.property-card {
+  max-width: 345px;
+}
+  
+.property-card-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 140px;
+  }
+}
+  
+.card-property-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:svg {
+    font-size: 2rem;
+    color: #76e276;
+    transition: 0.3s
+  }
+
+  &:hover {
+    &:svg {
+      color: #2d3b4f;
+    }
+  }
+}

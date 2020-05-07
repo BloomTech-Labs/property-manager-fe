@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
 import { FormError, I, FormFooterContainer } from '../../UI';
-import { auth, getUserInfo } from '../../../store/actions';
+import { authSignUp, getUserInfo } from '../../../store/actions';
 import '../../../scss/components/_onboardingForms.scss';
 
 const validationSchema = Yup.object().shape({
@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
   userType: Yup.string().required('Please select a user type')
 });
 
-const signup = auth('/auth/register');
+const signup = authSignUp('/auth/register');
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -126,7 +126,13 @@ const SignUpForm = () => {
                   </I>{' '}
                   User Type
                 </label>
-                <Field name="userType" label="Type" as={TextField} select>
+                <Field
+                  name="userType"
+                  data-testid="userType"
+                  label="Type"
+                  as={TextField}
+                  select
+                >
                   <MenuItem value="landlord">Landlord</MenuItem>
                   <MenuItem value="tenant">Tenant</MenuItem>
                 </Field>
@@ -140,7 +146,7 @@ const SignUpForm = () => {
                 )}
               </div>
               <div className="submit-btn-wrapper">
-                <button className="btn" type="submit">
+                <button className="btn" data-testid="submit-btn" type="submit">
                   Submit
                 </button>
               </div>

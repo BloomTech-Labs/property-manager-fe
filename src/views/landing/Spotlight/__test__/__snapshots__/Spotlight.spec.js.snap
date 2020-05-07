@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="spotlightWrapper"
+  id="spotlight"
+>
+  <div
+    class="spotHeadingWrapper"
+  >
+    <img
+      alt="Orange computer and phone"
+      class="spotHeaderImage"
+      src="landing-3homes-middle.svg"
+    />
+    <h1
+      class="spotHeading"
+    >
+      Manage your properties, don’t let them manage you!
+    </h1>
+  </div>
+  <div
+    class="spotlightCards"
+  >
+    <div
+      class="spotlightCard"
+    >
+      <img
+        alt="Spotlight card with documents."
+        class="spotCardImages"
+        src="landing-docu-card.svg"
+      />
+      <hr
+        class="spotDivider"
+      />
+      <h5
+        class="spotCardContent"
+      >
+        Communicate and share documents with you tenants directly in the app.
+      </h5>
+    </div>
+    <div
+      class="spotlightCard"
+    >
+      <img
+        alt="Spotlight card highlghting Stripe."
+        class="spotCardImages"
+        src="landing-stripe.svg"
+      />
+      <hr
+        class="spotDivider"
+      />
+      <h5
+        class="spotCardContent"
+      >
+        Accept payments with confidence through Stripe’s secure API.
+      </h5>
+    </div>
+    <div
+      class="spotlightCard"
+    >
+      <img
+        alt="Spotlight card highlighting work orders."
+        class="spotCardImages"
+        src="landing-workorder.svg"
+      />
+      <hr
+        class="spotDivider"
+      />
+      <h5
+        class="spotCardContent"
+      >
+        Organize and review repair requests from creation to completion.
+      </h5>
+    </div>
+    <div
+      class="spotlightCard"
+    >
+      <img
+        alt="Spotlight card highlighting statistics and charts."
+        class="spotCardImages"
+        src="landing-chart.svg"
+      />
+      <hr
+        class="spotDivider"
+      />
+      <h5
+        class="spotCardContent"
+      >
+        Keep track of your cash flow month-to-month so you know exactly where your finances are.
+      </h5>
+    </div>
+  </div>
+  <div
+    class="btnWrapper"
+  >
+    <button
+      class="spotBtn"
+      type="submit"
+    >
+      Sign up
+    </button>
+  </div>
+</div>
+`;

@@ -7,7 +7,6 @@ import {
   EDIT_USER_FAIL,
   EDIT_USER_SUCCESS
 } from './userTypes';
-import { baseUrl } from '../../../helpers/baseUrl';
 import axiosAuth from '../../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from '../toastActions';
 
@@ -15,7 +14,7 @@ export const getUserInfo = () => async dispatch => {
   dispatch({ type: GET_USER_START });
 
   try {
-    const res = await axiosAuth().get(`${baseUrl}/users/me`);
+    const res = await axiosAuth.get(`/users/me`);
     dispatch({
       type: GET_USER_SUCCESS,
       payload: {
@@ -32,7 +31,7 @@ export const editUserInfo = user => async dispatch => {
   dispatch({ type: EDIT_USER_START });
 
   try {
-    const res = await axiosAuth().put(`${baseUrl}/users/me`, user);
+    const res = await axiosAuth.put(`/users/me`, user);
 
     // show success toast
     dispatch(showSuccessToast('Profile updated!'));
