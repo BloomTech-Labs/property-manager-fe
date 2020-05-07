@@ -7,7 +7,12 @@ export const HorNav = () => {
     <>
       <nav className="nav-top">
         <Link className="logo-link" to="/">
-          <img className="nav-logo" src={logo} alt="Freehold logo, link home" />
+          <img
+            className="nav-logo"
+            src={logo}
+            alt="Freehold logo, link home"
+            data-testid="nav-logo"
+          />
         </Link>
         <ul>
           <li>
