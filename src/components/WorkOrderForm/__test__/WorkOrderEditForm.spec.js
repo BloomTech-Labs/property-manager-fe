@@ -2,51 +2,72 @@
 import React from 'react';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom';
-// import { Provider } from 'react-redux';
-// import store from '../../../store';
-import WorkOrderForm from '../WorkOrderForm';
+import { Provider } from 'react-redux';
+import store from '../../../store';
+import WorkOrderEditForm from '../WorkOrderEditForm';
 
 afterEach(rtl.cleanup);
 
 test('Checks submit button event for modal', async () => {
-  const { container, getByTestId } = await rtl.render(<WorkOrderForm />);
+  const { container, getByTestId } = await rtl.render(
+    <Provider store={store}>
+      <WorkOrderEditForm />
+    </Provider>
+  );
 
   const appContainer = container;
   expect(await appContainer.innerHTML).toMatch(/work order/i);
-  rtl.fireEvent.submit(getByTestId(/form-element/i));
+  rtl.fireEvent.submit(getByTestId(/wo-form/i));
 });
 
-// test('calls onSubmit with the fakeUser contact info when submitted', async () => {
-//   const fakeUser = {
-//     firstName: 'George',
-//     lastName: 'Stanza',
-//     phone: '123-456-7890'
-//   };
-//   const handleSubmit = jest.fn();
-//   const { getByPlaceholderText, getByTestId } = await rtl.render(
-//     <Provider store={store}>
-//       <WorkOrderForm onSubmit={handleSubmit} />
-//     </Provider>
-//   );
+test.skip('calls onSubmit with fakeData when submitted', async () => {
+  const fakeData = {
+    name: 'Durling Commons',
+    unit_id: '4',
+    description: 'Water issue',
+    type: 'Plumbing',
+    status: 'In Progress',
+    comment: 'This is a test'
+  };
+  const handleSubmit = jest.fn();
+  const { getByLabelText, getByTestId } = await rtl.render(
+    <Provider store={store}>
+      <WorkOrderEditForm onSubmit={handleSubmit} />
+    </Provider>
+  );
 
-//   const nameNode = getByPlaceholderText(/Update your first name */i);
-//   const emailNode = getByPlaceholderText(/Update your last name */i);
-//   const messageNode = getByPlaceholderText(/Update your phone number */i);
-//   const formNode = getByTestId('form-element');
+  const nameNode = getByLabelText(/name/i);
+  const unitNode = getByLabelText(/property/i);
+  const desNode = getByLabelText(/description/i);
+  const typeNode = getByLabelText(/order type/i);
+  const statusNode = getByLabelText(/status update/i);
+  const commentNode = getByLabelText(/additional comments/i);
+  const formNode = getByTestId('wo-form');
 
-//   // Act
-//   rtl.fireEvent.change(nameNode, { target: { value: fakeUser.firstName } });
-//   rtl.fireEvent.change(emailNode, { target: { value: fakeUser.lastName } });
-//   rtl.fireEvent.change(messageNode, { target: { value: fakeUser.phone } });
-//   await rtl.fireEvent.submit(formNode);
+  // Act
+  rtl.fireEvent.change(nameNode, { target: { value: fakeData.name } });
+  rtl.fireEvent.change(unitNode, { target: { value: fakeData.unit_id } });
+  rtl.fireEvent.change(desNode, { target: { value: fakeData.description } });
+  rtl.fireEvent.change(typeNode, { target: { value: fakeData.type } });
+  rtl.fireEvent.change(startNode, { target: { value: fakeData.start_date } });
+  rtl.fireEvent.change(endNode, { target: { value: fakeData.end_date } });
+  rtl.fireEvent.change(statusNode, { target: { value: fakeData.status } });
+  rtl.fireEvent.change(userNode, { target: { value: fakeData.user_id } });
+  rtl.fireEvent.change(commentNode, { target: { value: fakeData.comment } });
+  rtl.fireEvent.change(houseNode, { target: { value: fakeData.in_house } });
+  await rtl.fireEvent.submit(formNode);
 
-//   // Assert
-//   await rtl.wait(() => {
-//     expect(handleSubmit).toHaveBeenCalledTimes(0);
-//   });
-// });
+  // Assert
+  await rtl.wait(() => {
+    expect(handleSubmit).toHaveBeenCalledTimes(0);
+  });
+});
 
 test('snapshot', () => {
-  const { container } = rtl.render(<WorkOrderForm />);
+  const { container } = rtl.render(
+    <Provider store={store}>
+      <WorkOrderEditForm />
+    </Provider>
+  );
   expect(container.firstChild).toMatchSnapshot();
 });
