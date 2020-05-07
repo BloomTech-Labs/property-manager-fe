@@ -5,7 +5,7 @@ import FeatureTable from '../FeatureTable';
 
 afterEach(rtl.cleanup);
 
-test('Makes sure the word Freehold exists on LP', async () => {
+test('Makes sure the word free exists on LP', async () => {
   const wrapper = rtl.render(<FeatureTable />);
   expect(await wrapper.queryAllByText(/free/i));
 });
