@@ -16,6 +16,7 @@ exports[`snapshot 1`] = `
       <img
         alt="Freehold logo, link home"
         class="nav-logo"
+        data-testid="nav-logo"
         src="logo.png"
       />
     </a>
