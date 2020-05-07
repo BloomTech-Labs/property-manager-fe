@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="footerWrapper"
+>
+  <div
+    class="footerCopyWrapper"
+  >
+    <div
+      class="footerLogo"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="Freehold logo"
+          src="footerLogo.png"
+        />
+      </a>
+      <h3
+        class="footerCopyright"
+      >
+        © Copyright Freehold 
+        2020
+      </h3>
+    </div>
+  </div>
+  <a
+    aria-current="page"
+    class="footerLink"
+    href="/contact"
+  >
+    Contact Us
+  </a>
+</div>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <h4
+    class="noWorkOrders"
+  >
+    You don't have any active Work Orders yet!
+  </h4>
+</div>
+`;

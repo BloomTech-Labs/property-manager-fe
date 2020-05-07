@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<table
+  aria-label="Property Table"
+  class="MuiTable-root makeStyles-table-1"
+>
+  <thead
+    class="MuiTableHead-root"
+  >
+    <tr
+      class="MuiTableRow-root MuiTableRow-head"
+    >
+      <th
+        class="MuiTableCell-root MuiTableCell-head"
+        scope="col"
+      >
+        Id
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+        scope="col"
+      >
+        Name
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+        scope="col"
+      >
+        Street
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+        scope="col"
+      >
+        State
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+        scope="col"
+      >
+        No. Tenants
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+        scope="col"
+      >
+        Edit
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class="MuiTableBody-root"
+  />
+</table>
+`;
