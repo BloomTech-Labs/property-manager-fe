@@ -6,7 +6,7 @@ import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
 import Loading from '../UI/Loading';
 import propertyValues from './PropertyFormValues';
-import {propertyValidation} from './PropertyValidation.js';
+import {propertyValidation} from './PropertyValidation';
 import SubmitButton from '../Buttons/SubmitButton';
 
 export default function PropertyForm({

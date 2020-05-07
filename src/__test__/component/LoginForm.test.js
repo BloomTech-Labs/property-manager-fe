@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import LoginForm from '../../components/Auth/LoginForm/LoginForm';
 
-test('should submit the login form', async () => {
+test.skip('should submit the login form', async () => {
   // Arrange
 
   // Set up a fake handle submit function to replace the real handle submit function
