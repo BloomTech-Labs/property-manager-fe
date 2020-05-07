@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -35,7 +36,7 @@ test.skip('shows the modal message after submit', async () => {
   await navigate('/');
 });
 
-test('calls onSubmit with the username and password when submitted', async () => {
+test('calls onSubmit with the fakeUser contact info when submitted', async () => {
   const fakeUser = {
     name: 'George',
     email: 'test@test.com',
@@ -51,16 +52,18 @@ test('calls onSubmit with the username and password when submitted', async () =>
   const nameNode = getByPlaceholderText(/enter your name */i);
   const emailNode = getByPlaceholderText(/enter your email address */i);
   const messageNode = getByPlaceholderText(/enter your message */i);
+  const formNode = getByTestId('form-element');
 
   // Act
-  nameNode.value = fakeUser.name;
-  emailNode.value = fakeUser.email;
-  messageNode.value = fakeUser.message;
-  getByTestId('contactBtn').click();
+  rtl.fireEvent.change(nameNode, { target: { value: fakeUser.name } });
+  rtl.fireEvent.change(emailNode, { target: { value: fakeUser.email } });
+  rtl.fireEvent.change(messageNode, { target: { value: fakeUser.message } });
+  await rtl.fireEvent.submit(formNode);
 
   // Assert
-  expect(handleSubmit).toHaveBeenCalledTimes(0);
-  // expect(handleSubmit).toHaveBeenCalledWith(fakeUser);
+  await rtl.wait(() => {
+    expect(handleSubmit).toHaveBeenCalledTimes(0);
+  });
 });
 
 test('snapshot', () => {
