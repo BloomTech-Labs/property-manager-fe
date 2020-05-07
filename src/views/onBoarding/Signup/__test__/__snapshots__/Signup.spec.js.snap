@@ -159,7 +159,7 @@ exports[`SignUp Form tests... snapshot 1`] = `
             >
               <div
                 aria-haspopup="listbox"
-                aria-labelledby="mui-component-select-userType"
+                aria-labelledby=" mui-component-select-userType"
                 class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                 id="mui-component-select-userType"
                 role="button"
@@ -178,6 +178,7 @@ exports[`SignUp Form tests... snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSelect-icon"
                 focusable="false"
+                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
