@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import React, { useCallback } from 'react';
+import React from 'react';
 import { navigate, Link } from '@reach/router';
-import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock } from 'react-icons/md';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
-import { authSignIn, getUserInfo } from '../../../store/actions';
 import '../../../scss/components/_onboardingForms.scss';
+import firebase from 'firebase/app';
+import { useDispatch } from 'react-redux';
+import { showErrorToast } from '../../../store/actions/toastActions';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,23 +23,17 @@ const validationSchema = Yup.object().shape({
     .required('Must enter a Password')
 });
 
-const login = authSignIn('/auth/login');
-
 export default function LoginForm() {
   const dispatch = useDispatch();
-
-  const loginFn = useCallback(
-    ({ email, password }) =>
-      dispatch(login(email, password))
-        .then(() => {
-          dispatch(getUserInfo()).then(() => {
-            navigate('/dashboard');
-          });
-        })
-        // eslint-disable-next-line no-console
-        .catch(err => console.error(err)),
-    [dispatch]
-  );
+  const loginFn = ({ email, password }) => {
+    firebase
+      .login({
+        email,
+        password
+      })
+      .then(() => navigate('/dashboard'))
+      .catch(err => dispatch(showErrorToast(`${err}`)));
+  };
 
   return (
     <div className="LoginForm">
