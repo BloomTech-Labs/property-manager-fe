@@ -5,8 +5,8 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
-import { FormError, I, FormFooterContainer } from '../../UI';
 import firebase from 'firebase/app';
+import { FormError, I, FormFooterContainer } from '../../UI';
 import '../../../scss/components/_onboardingForms.scss';
 import { showErrorToast } from '../../../store/actions/toastActions';
 

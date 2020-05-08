@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
+import { firebaseReducer } from 'react-redux-firebase';
 import propReducer from './propReducer';
 import getUserReducer from './getUserReducer';
 import workOrderReducer from './workOrderReducer';
 import uiReducer from './uiReducer';
-import { firebaseReducer } from 'react-redux-firebase';
 
 export default combineReducers({
   propReducer,
