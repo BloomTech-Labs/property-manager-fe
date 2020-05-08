@@ -52,7 +52,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=true",
+    "test": "react-scripts test --coverage --watchAll=false",
     "local:test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
