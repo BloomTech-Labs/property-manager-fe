@@ -90,15 +90,13 @@ const useStyles = makeStyles(theme => ({
 function SideNav() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const dispatch = useDispatch();
 
   // Subscribe to user state
-  const userInfo = useSelector(state => state.authReducer.user);
-  const landlord = (userInfo.userType = 'landlord' ? true : false);
+  const profile = useSelector(state => state.firebase.profile.token);
+  const landlord = profile ? profile.claims.landlord : null;
 
   const handleLogout = () => {
     firebase.auth().signOut();
-    dispatch({ type: 'LOGOUT' });
     navigate('/');
   };
 

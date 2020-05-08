@@ -1,4 +1,3 @@
-import { navigate } from '@reach/router';
 import {
   GET_USER_START,
   GET_USER_FAIL,
@@ -22,7 +21,6 @@ export const getUserInfo = () => async dispatch => {
       }
     });
   } catch (err) {
-    navigate('/');
     dispatch({ type: GET_USER_FAIL, payload: { errMsg: err } });
   }
 };

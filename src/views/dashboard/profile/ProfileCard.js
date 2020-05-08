@@ -4,6 +4,7 @@ import { Card } from '@material-ui/core';
 import ProfileForm from '../../../components/Profile/ProfileForm';
 import { editUserInfo } from '../../../store/actions/index';
 import UserCard from './UserCard';
+import firebase from 'firebase/app';
 
 export default function ProfileCard() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function ProfileCard() {
     }
   }, [currentUser]);
 
-  const submit = values => dispatch(editUserInfo(values));
+  const submit = values => console.log(values);
 
   return (
     <Card className="profileCard">
