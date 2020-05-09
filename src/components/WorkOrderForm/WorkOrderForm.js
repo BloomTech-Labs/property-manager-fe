@@ -20,7 +20,7 @@ import { workOrderValidation } from './WorkOrderValidation';
 const WorkOrderForm = () => {
   const classes = formStyles();
   const dispatch = useDispatch();
-  const currentDate = new Date();
+  const currentDate = Date.now();
 
   // Submit Fn
   const submit = values => {
