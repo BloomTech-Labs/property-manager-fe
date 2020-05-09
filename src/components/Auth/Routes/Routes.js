@@ -7,8 +7,8 @@ import Toast from '../../UI/Toast';
 
 const Routes = () => {
   const user = useSelector(state => state.firebase.auth);
-  const profile = useSelector(state => state.firebase.profile.token);
-  const landlord = profile ? profile.claims.landlord : null;
+  const token = useSelector(state => state.firebase.profile.token);
+  const landlord = token ? token.claims.landlord : null;
   return (
     <>
       <Router>

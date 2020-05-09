@@ -11,7 +11,6 @@ import {
   addTenant,
   getTenantsByResidence
 } from './tenants/tenantCreators';
-import { getUserInfo, editUserInfo } from './users/userCreators';
 import {
   getWorkOrders,
   addWorkOrder,
@@ -24,13 +23,11 @@ export {
   createProperty,
   editProperty,
   editTenant,
-  editUserInfo,
   getProperty,
   getProperties,
   getTenantById,
   getTenantsByResidence,
   getTenants,
-  getUserInfo,
   getWorkOrders,
   updateWorkOrder
 };

@@ -11,7 +11,6 @@ import { formStyles } from '../../helpers/utils';
 
 function NewForm() {
   const classes = formStyles();
-  const user = useSelector(state => state.getUserReducer.user);
   const currentDate = new Date();
   const dispatch = useDispatch();
   const isEditing = false;
