@@ -1,6 +1,4 @@
-import firebase from 'firebase/app';
-
-const config = {
+export const config = {
   apiKey: process.env.REACT_APP_APIKEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
   databaseURL: process.env.REACT_APP_DATABASEURL,
@@ -11,6 +9,10 @@ const config = {
   measurementId: process.env.REACT_APP_MEASUREMENTID
 };
 
-firebase.initializeApp(config);
+export const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  enableClaims: true
+};
 
-export default firebase;
+export default { config, rrfConfig };

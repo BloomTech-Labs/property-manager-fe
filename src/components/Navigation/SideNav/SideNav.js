@@ -1,9 +1,6 @@
 // React
 import React from 'react';
 
-// Redux
-import { useDispatch } from 'react-redux';
-
 // Style & classnames
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,7 +31,7 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo.png';
-import firebase from '../../../vendors/fb';
+import firebase from 'firebase/app';
 // eslint-disable-next-line no-unused-vars
 import ListLandlord from './ListLandlord';
 // eslint-disable-next-line no-unused-vars
@@ -95,8 +92,8 @@ function SideNav() {
   const profile = useSelector(state => state.firebase.profile.token);
   const landlord = profile ? profile.claims.landlord : null;
 
-  const handleLogout = () => {
-    firebase.auth().signOut();
+  const handleLogout = async () => {
+    await firebase.auth().signOut();
     navigate('/');
   };
 

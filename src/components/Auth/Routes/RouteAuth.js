@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import LandingPage from '../../../views/landing/LandingPage';
-import firebase from '../../../vendors/fb';
+import firebase from 'firebase/app';
 
 // eslint-disable-next-line react/prop-types
 export default function RouteAuth({

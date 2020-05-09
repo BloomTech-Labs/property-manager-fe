@@ -9,12 +9,9 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import { rrfConfig, config } from '../src/vendors/fb';
 
-const rrfConfig = {
-  userProfile: 'users',
-  useFirestoreForProfile: true,
-  enableClaims: true
-};
+firebase.initializeApp(config);
 
 const rrfProps = {
   firebase,
