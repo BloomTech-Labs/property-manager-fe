@@ -5,11 +5,12 @@ import { navigate, Link } from '@reach/router';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock } from 'react-icons/md';
+import { useFirebase } from 'react-redux-firebase';
+import { useDispatch } from 'react-redux';
+import firebase from 'firebase/app';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
 import '../../../scss/components/_onboardingForms.scss';
-import firebase from 'firebase/app';
-import { useDispatch } from 'react-redux';
 import { showErrorToast } from '../../../store/actions/toastActions';
 
 const validationSchema = Yup.object().shape({
@@ -25,12 +26,11 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const firebase = useFirebase();
   const loginFn = ({ email, password }) => {
     firebase
-      .login({
-        email,
-        password
-      })
+      .auth()
+      .signInWithEmailAndPassword(email, password)
       .then(() => navigate('/dashboard'))
       .catch(err => dispatch(showErrorToast(`${err}`)));
   };

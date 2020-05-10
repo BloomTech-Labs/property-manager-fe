@@ -5,10 +5,11 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
-import firebase from 'firebase/app';
+import { useFirebase } from 'react-redux-firebase';
 import { FormError, I, FormFooterContainer } from '../../UI';
 import '../../../scss/components/_onboardingForms.scss';
 import { showErrorToast } from '../../../store/actions/toastActions';
+import axiosAuth from '../../../helpers/axiosAuth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -26,12 +27,24 @@ const validationSchema = Yup.object().shape({
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-
-  const signupFn = ({ email, password, userType: type }) => {
-    firebase
-      .createUser({ email, password, username: email })
-      .then(() => navigate('/dashboard'))
-      .catch(err => dispatch(showErrorToast(`${err}`)));
+  const firebase = useFirebase();
+  const signupFn = async values => {
+    try {
+      const res = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(values.email, values.password);
+      if (res.user.uid) {
+        await axiosAuth.post('/auth/register', {
+          email: values.email,
+          type: values.userType,
+          uid: res.user.uid
+        });
+        await firebase.auth().currentUser.getIdToken(true);
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      dispatch(showErrorToast(`${err}`));
+    }
   };
 
   return (
