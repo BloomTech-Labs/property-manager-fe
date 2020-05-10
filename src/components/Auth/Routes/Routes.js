@@ -12,7 +12,7 @@ const Routes = () => {
   return (
     <>
       <Router>
-        <PublicRoutes path="/*" />
+        <PublicRoutes path="/*" user={user} />
 
         <ProtectedRoutes path="dashboard/*" user={user} landlord={landlord} />
       </Router>

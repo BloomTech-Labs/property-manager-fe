@@ -12,7 +12,6 @@ import { formStyles } from '../../helpers/utils';
 function NewForm() {
   const classes = formStyles();
   const user = useSelector(state => state.firebase.auth);
-  console.log(user, 'user');
   const currentDate = new Date();
   const dispatch = useDispatch();
   const isEditing = false;
@@ -24,7 +23,7 @@ function NewForm() {
     start_date: currentDate,
     end_date: currentDate,
     status: 'In Progress',
-    user_id: user.id,
+    user_id: user.uid,
     comment: '',
     in_house: true
   });
