@@ -30,6 +30,9 @@ const SignUpForm = () => {
   const firebase = useFirebase();
   const signupFn = async values => {
     try {
+      await firebase
+        .auth()
+        .setPersistence(firebase.auth.Auth.Persistence.SESSION);
       const res = await firebase
         .auth()
         .createUserWithEmailAndPassword(values.email, values.password);

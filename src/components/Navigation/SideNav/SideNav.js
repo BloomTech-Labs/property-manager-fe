@@ -31,7 +31,7 @@ import { navigate } from '@reach/router';
 
 // Logo
 import logo from '../../../assets/img/logo.png';
-import firebase from 'firebase/app';
+import { useFirebase } from 'react-redux-firebase';
 // eslint-disable-next-line no-unused-vars
 import ListLandlord from './ListLandlord';
 // eslint-disable-next-line no-unused-vars
@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 function SideNav() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-
+  const firebase = useFirebase();
   // Subscribe to user state
   const profile = useSelector(state => state.firebase.profile.token);
   const landlord = profile ? profile.claims.landlord : null;

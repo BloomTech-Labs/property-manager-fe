@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { useFirebase } from 'react-redux-firebase';
 import { useDispatch } from 'react-redux';
-import firebase from 'firebase/app';
 import FormErrors from '../../../helpers/FormErrors';
 import { I, FormFooterContainer, FormFooter } from '../../UI';
 import '../../../scss/components/_onboardingForms.scss';
@@ -27,12 +26,16 @@ const validationSchema = Yup.object().shape({
 export default function LoginForm() {
   const dispatch = useDispatch();
   const firebase = useFirebase();
-  const loginFn = ({ email, password }) => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => navigate('/dashboard'))
-      .catch(err => dispatch(showErrorToast(`${err}`)));
+  const loginFn = async ({ email, password }) => {
+    try {
+      await firebase
+        .auth()
+        .setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      navigate('/dashboard');
+    } catch (err) {
+      dispatch(showErrorToast(`${err}`));
+    }
   };
 
   return (
