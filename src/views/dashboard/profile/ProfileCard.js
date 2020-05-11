@@ -4,21 +4,27 @@ import { Card } from '@material-ui/core';
 import { useFirebase } from 'react-redux-firebase';
 import ProfileForm from '../../../components/Profile/ProfileForm';
 import UserCard from './UserCard';
+import { showErrorToast } from '../../../store/actions/toastActions';
 import 'firebase/firestore';
 
 export default function ProfileCard() {
   const [open, setOpen] = useState(false);
   const currentUser = useSelector(state => state.firebase.profile);
   const firebase = useFirebase();
-  const submit = values => {
-    firebase
-      .updateProfile({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        phoneNumber: values.phone
-      })
-      .then(() => setOpen(false))
-      .catch(err => console.log(err));
+  const submit = async ({ firstName, lastName, phone }) => {
+    try {
+      firebase.updateAuth({
+        displayName: `${firstName} ${lastName}`
+      });
+      firebase.updateProfile({
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phone
+      });
+      setOpen(false);
+    } catch (err) {
+      showErrorToast(`${err}`);
+    }
   };
 
   return (
