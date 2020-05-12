@@ -30,7 +30,7 @@ const WorkOrderForm = () => {
   };
 
   // Subscribe to user state
-  const user = useSelector(state => state.getUserReducer.user);
+  const user = useSelector(state => state.firebase.auth);
 
   // Bring in property list for the landlord form
   const propertyList = useSelector(state => state.propReducer.properties);
@@ -49,7 +49,7 @@ const WorkOrderForm = () => {
           start_date: currentDate,
           end_date: currentDate,
           status: 'In Progress',
-          user_id: user.id,
+          user_id: user.uid,
           comment: '',
           in_house: true
         }}

@@ -1,9 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { getFirebase } from 'react-redux-firebase';
 import reducer from './reducers';
 
-const middleware = process.ENV === 'production' ? [thunk] : [thunk, logger];
+const middleware =
+  process.ENV === 'production'
+    ? [thunk.withExtraArgument(getFirebase)]
+    : [thunk.withExtraArgument(getFirebase), logger];
 
 export const makeStore = state =>
   createStore(

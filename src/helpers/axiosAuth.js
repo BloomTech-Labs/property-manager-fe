@@ -1,5 +1,5 @@
 import axios from 'axios';
-import firebase from '../vendors/fb';
+import firebase from 'firebase/app';
 
 const axiosAuth = axios.create({
   baseURL:

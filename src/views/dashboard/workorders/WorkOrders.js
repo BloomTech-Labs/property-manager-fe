@@ -7,7 +7,6 @@ import IconButton from '../../../components/UI/IconButton';
 
 export default function WorkOrders() {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
-  console.log(workOrderList, 'In workOrder.js');
 
   return (
     <div className="work-orders">

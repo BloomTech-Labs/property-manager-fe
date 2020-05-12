@@ -7,15 +7,11 @@ import Features from './Features/Features';
 import Header from './Header/Header';
 
 function LandingPage({ user }) {
-  const checkForUser = user => {
-    if (user) {
+  useEffect(() => {
+    if (!user.isEmpty) {
       navigate('/dashboard');
     }
-  };
-  useEffect(() => {
-    checkForUser(user);
   }, [user]);
-
   return (
     <div className="landing-container">
       <div className="landing-content">
