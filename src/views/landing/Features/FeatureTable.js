@@ -24,9 +24,9 @@ const FeatureTable = () => {
               <td>{premium === true ? '✔' : ''}</td>
             </tr>
           ))}
-          <FeatureButtons />
         </tbody>
       </table>
+      <FeatureButtons />
     </div>
   );
 };

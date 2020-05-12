@@ -39,7 +39,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
 
   // Fetch work orders on page load, this way if a user deep routes directly to the page, it will
   // still have the data
-  const currentDate = new Date();
+  const currentDate = Date.now();
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
@@ -98,7 +98,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
       >
         {({ errors, isSubmitting }) => {
           return (
-            <Form>
+            <Form data-testid="wo-form">
               <Grid container justify="space-evenly">
                 <Field
                   className={classes.textField}

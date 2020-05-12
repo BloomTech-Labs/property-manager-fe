@@ -20,7 +20,7 @@ import { workOrderValidation } from './WorkOrderValidation';
 const WorkOrderForm = () => {
   const classes = formStyles();
   const dispatch = useDispatch();
-  const currentDate = new Date();
+  const currentDate = Date.now();
 
   // Submit Fn
   const submit = values => {
@@ -65,7 +65,7 @@ const WorkOrderForm = () => {
       >
         {({ errors, isSubmitting }) => {
           return (
-            <Form>
+            <Form data-testid="wo-form">
               <Grid container justify="space-evenly">
                 <Field
                   className={classes.textField}
