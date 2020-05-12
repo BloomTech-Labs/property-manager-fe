@@ -66,7 +66,7 @@ function ProtectedRoutes({ user, landlord }) {
     );
   }
 
-  if (!user) {
+  if (user.isEmpty) {
     return <Redirect to="/" noThrow />;
   }
 

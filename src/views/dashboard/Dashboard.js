@@ -9,12 +9,7 @@ import { makeStyles } from '@material-ui/core';
 // eslint-disable-next-line no-unused-vars
 import SideNav from '../../components/Navigation/SideNav/SideNav';
 import PropmanTheme from '../../theme/PropmanTheme';
-import {
-  getProperties,
-  getTenants,
-  getUserInfo,
-  getWorkOrders
-} from '../../store/actions';
+import { getProperties, getTenants, getWorkOrders } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,7 +32,6 @@ function Dashboard(props) {
     // dispatch the getProperties action
     dispatch(getProperties());
     dispatch(getTenants());
-    dispatch(getUserInfo());
     dispatch(getWorkOrders());
   }, [dispatch]);
 

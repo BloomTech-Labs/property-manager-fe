@@ -1,13 +1,15 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { navigate } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { MdEmail, MdLock, MdError, MdSupervisorAccount } from 'react-icons/md';
 import { MenuItem, TextField } from '@material-ui/core';
+import { useFirebase } from 'react-redux-firebase';
 import { FormError, I, FormFooterContainer } from '../../UI';
-import { authSignUp, getUserInfo } from '../../../store/actions';
 import '../../../scss/components/_onboardingForms.scss';
+import { showErrorToast } from '../../../store/actions/toastActions';
+import axiosAuth from '../../../helpers/axiosAuth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,19 +25,40 @@ const validationSchema = Yup.object().shape({
   userType: Yup.string().required('Please select a user type')
 });
 
-const signup = authSignUp('/auth/register');
-
 const SignUpForm = () => {
   const dispatch = useDispatch();
-
-  const signupFn = useCallback(
-    ({ email, password, userType: type }) =>
-      dispatch(signup(email, password, type))
-        .then(() => dispatch(getUserInfo()).then(() => navigate('/dashboard')))
-        // eslint-disable-next-line no-console
-        .catch(err => console.error(err)),
-    [dispatch]
-  );
+  const firebase = useFirebase();
+  const signupFn = async values => {
+    try {
+      await firebase
+        .auth()
+        .setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      const res = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(values.email, values.password);
+      if (res.user.uid) {
+        axiosAuth
+          .post('/auth/register', {
+            email: values.email,
+            type: values.userType,
+            uid: res.user.uid
+          })
+          .then(() => {
+            firebase.auth().currentUser.getIdToken(true);
+          })
+          .then(() => {
+            firebase.updateProfile({
+              refreshProfile: true
+            });
+          })
+          .then(() => {
+            navigate('/dashboard');
+          });
+      }
+    } catch (err) {
+      dispatch(showErrorToast(`${err}`));
+    }
+  };
 
   return (
     <div className="SignupForm">

@@ -13,7 +13,7 @@ export default [
     html: 'Last Name',
     placeholder: 'Update your last name',
     name: 'lastName',
-    type: 'number'
+    type: 'text'
   },
   {
     className: 'input-wrapper',

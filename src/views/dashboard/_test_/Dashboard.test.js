@@ -15,8 +15,6 @@ import PropManTheme from '../../../theme/PropmanTheme';
 afterEach(cleanup);
 
 describe('With React Testing Library', () => {
-
-
   it('Shows "Hello world!"', () => {
     const { asFragment } = render(
       <Provider store={initialStore}>
@@ -57,7 +55,6 @@ describe('With React Testing Library', () => {
     );
   });
 
-
   it('renders navigation without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
@@ -68,9 +65,8 @@ describe('With React Testing Library', () => {
     );
   });
 
-
   it('renders "Dashboard Profile Properties Tenants Work Orders Logout" ', () => {
-    const container = document.createElement('div')
+    const container = document.createElement('div');
     ReactDOM.render(
       <Provider store={initialStore}>
         <Dashboard />
@@ -80,10 +76,10 @@ describe('With React Testing Library', () => {
     expect(container.textContent).toMatch(
       'DashboardProfilePropertiesTenantsWork OrdersLogout'
     );
-  })
+  });
 
   it('renders "No Work Orders Or Properties Listed " when no properties or work orders created ', () => {
-    const container = document.createElement('div')
+    const container = document.createElement('div');
     ReactDOM.render(
       <Provider store={initialStore}>
         <Overview />
@@ -96,10 +92,10 @@ describe('With React Testing Library', () => {
     expect(container.textContent).toMatch(
       'No Work Orders Or Properties Listed '
     );
-  })
+  });
 
   it('renders an image', () => {
-    const container = document.createElement('img')
+    const container = document.createElement('img');
     ReactDOM.render(
       <Provider store={initialStore}>
         <Overview />
@@ -118,6 +114,4 @@ describe('With React Testing Library', () => {
     );
     expect(getByText(button)).toBeTruthy();
   });
-
-
 });
