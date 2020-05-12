@@ -9,6 +9,7 @@ const Routes = () => {
   const user = useSelector(state => state.firebase.auth);
   const token = useSelector(state => state.firebase.profile.token);
   const landlord = token ? token.claims.landlord : null;
+
   return (
     <>
       <Router>

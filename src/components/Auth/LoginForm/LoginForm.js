@@ -32,6 +32,7 @@ export default function LoginForm() {
         .auth()
         .setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await firebase.auth().signInWithEmailAndPassword(email, password);
+
       navigate('/dashboard');
     } catch (err) {
       dispatch(showErrorToast(`${err}`));

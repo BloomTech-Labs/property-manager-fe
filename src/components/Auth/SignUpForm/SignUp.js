@@ -37,13 +37,23 @@ const SignUpForm = () => {
         .auth()
         .createUserWithEmailAndPassword(values.email, values.password);
       if (res.user.uid) {
-        await axiosAuth.post('/auth/register', {
-          email: values.email,
-          type: values.userType,
-          uid: res.user.uid
-        });
-        await firebase.auth().currentUser.getIdToken(true);
-        navigate('/dashboard');
+        axiosAuth
+          .post('/auth/register', {
+            email: values.email,
+            type: values.userType,
+            uid: res.user.uid
+          })
+          .then(() => {
+            firebase.auth().currentUser.getIdToken(true);
+          })
+          .then(() => {
+            firebase.updateProfile({
+              refreshProfile: true
+            });
+          })
+          .then(() => {
+            navigate('/dashboard');
+          });
       }
     } catch (err) {
       dispatch(showErrorToast(`${err}`));
