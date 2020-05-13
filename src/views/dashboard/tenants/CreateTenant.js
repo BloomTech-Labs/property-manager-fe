@@ -19,7 +19,8 @@ export default function CreateTenant() {
     lastName: '',
     phone: '',
     email: '',
-    residenceId: ''
+    password: '',
+    unit_id: ''
   };
 
   const handleSubmit = tenant => {

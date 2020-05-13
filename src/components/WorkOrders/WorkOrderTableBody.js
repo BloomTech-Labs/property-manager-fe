@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 
@@ -38,7 +38,11 @@ function WorkOrderTableBody({ workOrderList }) {
 
           return (
             <>
-              <TableRow className="table-row" key={id}>
+              <TableRow
+                className="table-row"
+                key={id}
+                onClick={() => navigate(`/dashboard/workorders/${id}`)}
+              >
                 <TableCell component="th" scope="row">
                   {name}
                 </TableCell>
@@ -49,7 +53,7 @@ function WorkOrderTableBody({ workOrderList }) {
                 <TableCell align="left">{user_id}</TableCell>
                 <TableCell align="left">{status}</TableCell>
                 <TableCell align="right">
-                  <Link to={`/dashboard/workorders/${id}`}>
+                  <Link to={`/dashboard/workordersedit/${id}`}>
                     <CreateIcon />
                   </Link>
                 </TableCell>

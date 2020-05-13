@@ -36,19 +36,6 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  // const handleClick = () => {
-  //   if (handleOpen) {
-  //     // We call the handleOpen() func passed as prop
-  //     // and give it the tenant & property that
-  //     // was passed as props
-  //     // This gives access to the obj data we can
-  //     // use in the individual tenant modal
-  //     return handleOpen(property, tenant);
-  //   }
-
-  //   return null;
-  // };
-
   return (
     <>
       <IconButton text="Add" icon={<AddIcon />} url="/dashboard/tenants/add" />

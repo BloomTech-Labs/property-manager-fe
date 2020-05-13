@@ -15,10 +15,11 @@ import EditTenant from '../../../views/dashboard/tenants/EditTenant';
 import CreateTenant from '../../../views/dashboard/tenants/CreateTenant';
 import Tenants from '../../../views/dashboard/tenants/Tenants';
 import Tenant from '../../../views/dashboard/tenants/Tenant';
-import WorkOrderForm from '../../WorkOrderForm/WorkOrderForm';
 import TenantDashboard from '../../../views/tenantDashboard/TenantDashboard';
 import TenantProperty from '../../../views/tenantDashboard/TenantProperty';
+import WorkOrder from '../../../views/dashboard/workorders/WorkOrder';
 import WorkOrders from '../../../views/dashboard/workorders/WorkOrders';
+import WorkOrderForm from '../../WorkOrderForm/WorkOrderForm';
 import WorkOrderEditForm from '../../WorkOrderForm/WorkOrderEditForm';
 import NotFound from '../../../views/notfound/NotFound';
 
@@ -41,8 +42,9 @@ function ProtectedRoutes({ user, landlord }) {
           <EditTenant path="tenants/edit/:id" />
 
           <WorkOrders path="workorders" />
+          <WorkOrder path="workorders/:id" />
           <WorkOrderForm path="workorders/add" />
-          <WorkOrderEditForm path="workorders/:workOrderId" />
+          <WorkOrderEditForm path="workordersedit/:workOrderId" />
           <NotFound default />
         </Dashboard>
       </Router>
@@ -58,8 +60,9 @@ function ProtectedRoutes({ user, landlord }) {
           <Profile path="profile" />
           <TenantProperty path="property" />
           <WorkOrders path="workorders" />
+          <WorkOrder path="workorders/:id" />
           <WorkOrderForm path="workorders/add" />
-          <WorkOrderEditForm path="workorders/:workOrderId" />
+          <WorkOrderEditForm path="workordersedit/:workOrderId" />
           <NotFound default />
         </TenantDashboard>
       </Router>

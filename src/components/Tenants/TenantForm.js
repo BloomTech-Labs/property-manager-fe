@@ -22,7 +22,8 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid Email')
     .max(50, 'Email entered was too long'),
-  residenceId: Yup.string().required('Must include a property!')
+  password: Yup.string(),
+  unit_id: Yup.string().required('Must include a property!')
 });
 
 export default function TenantForm({ initialValues, submit, properties }) {
@@ -35,7 +36,8 @@ export default function TenantForm({ initialValues, submit, properties }) {
     lastName = '',
     phone = '',
     email = '',
-    residenceId = ''
+    password = '',
+    user_id = ''
   } = initialValues;
 
   return (
@@ -51,18 +53,20 @@ export default function TenantForm({ initialValues, submit, properties }) {
           lastName,
           phone,
           email,
-          residenceId
+          password,
+          user_id
         }}
         resetForm
         onSubmit={values => {
           // pull out id
-          const { residenceId } = values;
+          // eslint-disable-next-line camelcase
+          const { unit_id } = values;
 
           // format it to number to avoid
           // Formik/Yup's number quirks
           const formatValues = {
             ...values,
-            residenceId: Number(residenceId)
+            unit_id: Number(unit_id)
           };
 
           return new Promise(resolve => {
@@ -139,16 +143,32 @@ export default function TenantForm({ initialValues, submit, properties }) {
                 size="small"
                 margin="normal"
                 variant="outlined"
+                name="password"
+                type="password"
+                label="Password"
+                as={TextField}
+                helperText={
+                  errors.password
+                    ? errors.password
+                    : `Enter tenant's temporary password`
+                }
+                error={errors.password && true}
+              />
+              <Field
+                className={classes.textField}
+                size="small"
+                margin="normal"
+                variant="outlined"
                 as={TextField}
                 select
-                name="residenceId"
+                name="unit_id"
                 label="Property"
                 helperText={
-                  touched.residenceId && errors.residenceId
-                    ? errors.residenceId
+                  touched.unit_id && errors.unit_id
+                    ? errors.unit_id
                     : `Select the tenant's property`
                 }
-                error={touched.residenceId && errors.residenceId && true}
+                error={touched.unit_id && errors.unit_id && true}
                 required
               >
                 {properties.map(property => (

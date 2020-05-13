@@ -24,7 +24,7 @@ export const getTenants = () => {
     dispatch({ type: GET_TENANTS_START });
 
     try {
-      const res = await axiosAuth.get(`/tenants`);
+      const res = await axiosAuth.get(`/tenants/bylandlord`);
 
       dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
     } catch (err) {
@@ -99,7 +99,7 @@ export const getTenantsByResidence = residenceId => {
     dispatch({ type: GET_TENANTS_RESIDENCE_START });
 
     try {
-      const res = await axiosAuth.get(`/properties/${residenceId}/tenants`);
+      const res = await axiosAuth.get(`/tenants/byunit/${residenceId}`);
       dispatch({
         type: GET_TENANTS_RESIDENCE_SUCCESS,
         payload: res.data

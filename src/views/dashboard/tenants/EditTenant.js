@@ -36,7 +36,8 @@ export default function EditTenant({ id }) {
     lastName: tenant.lastName,
     phone: tenant.phone,
     email: tenant.email,
-    residence: tenant.residenceId
+    password: tenant.password,
+    unit_id: tenant.unit_id
   };
 
   // get the tenant by id when component mounts
