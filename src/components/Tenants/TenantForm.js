@@ -1,4 +1,6 @@
 import React from 'react';
+import { navigate } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 // Redux
 // Formik
@@ -14,6 +16,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // Styling
 import { MdSend } from 'react-icons/md';
 import { formStyles } from '../../helpers/utils';
+import { addTenant } from '../../store/actions/index';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().max(50, 'First Name entered was too long'),
@@ -29,6 +32,7 @@ const validationSchema = Yup.object().shape({
 export default function TenantForm({ initialValues, submit, properties }) {
   // bring in custom styling
   const classes = formStyles();
+  const dispatch = useDispatch();
 
   // bring in initialValues and set defaults
   const {
@@ -71,7 +75,9 @@ export default function TenantForm({ initialValues, submit, properties }) {
 
           return new Promise(resolve => {
             setTimeout(() => {
-              submit(formatValues);
+              dispatch(addTenant(formatValues)).then(() =>
+                navigate('/dashboard/tenants')
+              );
               resolve();
             }, 2000);
           });
