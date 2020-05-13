@@ -60,6 +60,7 @@ const TenantCard = () => {
                 tenant // Create a row for each tenant
               ) => (
                 <TableRow
+                  key={tenant.id}
                   onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
                 >
                   <TableCell>{tenant.firstName}</TableCell>

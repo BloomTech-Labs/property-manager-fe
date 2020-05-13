@@ -10,6 +10,8 @@ import CreateIcon from '@material-ui/icons/Create';
 function WorkOrderTableBody({ workOrderList }) {
   const properties = useSelector(state => state.propReducer.properties);
 
+  console.log(workOrderList);
+
   return (
     <>
       <TableBody>
@@ -40,7 +42,6 @@ function WorkOrderTableBody({ workOrderList }) {
             <>
               <TableRow
                 className="table-row"
-                key={id}
                 onClick={() => navigate(`/dashboard/workorders/${id}`)}
               >
                 <TableCell component="th" scope="row">
