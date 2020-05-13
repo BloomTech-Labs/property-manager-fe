@@ -10,6 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import CardMedia from '@material-ui/core/CardMedia';
 // Icons
 import PinDropIcon from '@material-ui/icons/PinDrop';
@@ -19,13 +22,14 @@ import { navigate } from '@reach/router';
 import { modalStyles } from '../../../helpers/utils';
 // Sample Photo
 import sampleHome from '../../../assets/img/sample_home.jpg';
+import PersonIcon from '../../../assets/img/person-icon-1675.png';
 // Components
 import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 import IconButton from '../../../components/UI/IconButton';
 // Actions
 import { getProperty, getTenantsByResidence } from '../../../store/actions';
 
-export default function Property({ id }) {
+export default function Property({ id }, user) {
   const classes = modalStyles();
 
   const dispatch = useDispatch();
@@ -34,6 +38,10 @@ export default function Property({ id }) {
   const tenants = useSelector(
     state => state.propReducer.currentPropertyTenants
   );
+
+  console.log(tenants);
+  console.log(id);
+  console.log(user);
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
 
@@ -73,7 +81,7 @@ export default function Property({ id }) {
           <div>
             {tenants.length === 0 && <h5>No tenants for this property.</h5>}
             <List className={classes.list}>
-              {/* {tenants &&
+              {tenants &&
                 tenants.map(tenant => {
                   return (
                     <React.Fragment key={tenant.id}>
@@ -94,7 +102,7 @@ export default function Property({ id }) {
                       </ListItem>
                     </React.Fragment>
                   );
-                })} */}
+                })}
             </List>
           </div>
           <IconButton
