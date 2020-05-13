@@ -9,7 +9,7 @@ import './scss/index.scss';
 import store from './store';
 import 'firebase/auth';
 import 'firebase/database';
-import { rrfConfig, config } from '../src/vendors/fb';
+import { rrfConfig, config } from './vendors/fb';
 
 firebase.initializeApp(config);
 
