@@ -2,20 +2,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigate } from '@reach/router';
 import Divider from '@material-ui/core/Divider';
 import { getWorkOrderById } from '../../../store/actions';
 import WorkOrderCard from './WorkOrderCard';
+import WorkOrderButtons from './WorkOrderButtons';
 import './workorder.scss';
 
 function WorkOrder({ id }) {
   const dispatch = useDispatch();
   const workOrders = useSelector(state => state.workOrderReducer.workOrders[0]);
-  const properties = useSelector(state => state.propReducer.properties);
-
-  const property = properties.filter(
-    property => property.id === workOrders.unit_id
-  );
 
   const formatDate = date => date && new Date(date).toDateString();
 
@@ -84,17 +79,7 @@ function WorkOrder({ id }) {
           </div>
         </div>
       </div>
-      <div className="wo-buttons-wrapper">
-        <button className="wo-btn" onClick={() => navigate('/upload')}>
-          Add Media
-        </button>
-        <button
-          className="wo-btn"
-          onClick={() => navigate(`/dashboard/workordersedit/${id}`)}
-        >
-          Update
-        </button>
-      </div>
+      <WorkOrderButtons id={id} />
     </div>
   );
 }
