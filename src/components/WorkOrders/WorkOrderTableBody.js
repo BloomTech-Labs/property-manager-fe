@@ -10,8 +10,6 @@ import CreateIcon from '@material-ui/icons/Create';
 function WorkOrderTableBody({ workOrderList }) {
   const properties = useSelector(state => state.propReducer.properties);
 
-  console.log(workOrderList);
-
   return (
     <>
       <TableBody>
