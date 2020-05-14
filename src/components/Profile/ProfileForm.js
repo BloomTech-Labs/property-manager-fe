@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 /** @jsx jsx */
 import { Formik, Field, Form } from 'formik';
+import { navigate } from '@reach/router';
 import { jsx } from '@emotion/core';
 import FormErrors from '../../helpers/FormErrors';
 import MuiModal from '../UI/MuiModal';
@@ -22,6 +24,11 @@ export default function ProfileForm({
   if (loading || isSubmitting) {
     return <Loading />;
   }
+
+  const handleKeyPress = e => {
+    e.preventDefault();
+    navigate('/updatepassword');
+  };
 
   return (
     <MuiModal open={opened} close={close}>
@@ -50,6 +57,17 @@ export default function ProfileForm({
                 )
               )}
               <SubmitButton disabled={isSubmitting} />
+              <p>
+                Want to update your password? Click
+                <span
+                  className="updatepw-span"
+                  onClick={() => navigate('/updatepassword')}
+                  onKeyPress={handleKeyPress}
+                >
+                  {' '}
+                  here!
+                </span>
+              </p>
             </Form>
           )}
         </Formik>

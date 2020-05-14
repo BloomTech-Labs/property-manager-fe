@@ -1,0 +1,20 @@
+.update-btn {
+  width: 20%;
+  height: 50px;
+  margin: 2% 0 2% 80%;
+  font-family: Lato;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 1px solid #6C63FF;
+  border-radius: 6px;
+  background: #6C63FF;
+  color: #FFFFFF;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s ease;
+  
+  &:hover {
+    background: #FFFFFF;
+    color: #6C63FF;
+  }
+}
