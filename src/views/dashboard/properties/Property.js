@@ -134,6 +134,52 @@ export default function Property({ id }, user) {
           </CardContent>
         </Card>
       </>
+        </Grid>
+        <Divider />
+        <CardContent className={classes.cardContent}>
+          <h3 style={{ textAlign: 'center' }}>Tenants:</h3>
+          <div>
+            {tenants.length === 0 && <h5>No tenants for this property.</h5>}
+            <List className={classes.list}>
+              {tenants &&
+                tenants.map(tenant => {
+                  return (
+                    <React.Fragment key={tenant.id}>
+                      <Divider />
+                      <ListItem
+                        button
+                        className={classes.listItem}
+                        onClick={() =>
+                          navigate(`/dashboard/tenants/${tenant.id}`)
+                        }
+                      >
+                        <ListItemIcon>
+                          <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={`${tenant.displayName}`} />
+                      </ListItem>
+                    </React.Fragment>
+                  );
+                })}
+            </List>
+          </div>
+          <IconButton
+            url="/dashboard/tenants/add"
+            icon={<AddIcon />}
+            text="Add Tenant"
+          />
+        </CardContent>
+        <Divider />
+        <CardContent className={classes.cardContent}>
+          <h3 style={{ textAlign: 'center' }}>Work Orders:</h3>
+          <WorkOrderTable workOrderList={filterWorkOrders} />
+          <IconButton
+            url="/dashboard/workorders/add"
+            icon={<AddIcon />}
+            text="Add Work Order"
+          />
+        </CardContent>
+      </Card>
     );
   }
 
