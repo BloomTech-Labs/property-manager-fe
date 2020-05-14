@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

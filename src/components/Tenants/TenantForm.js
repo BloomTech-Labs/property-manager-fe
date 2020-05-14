@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React from 'react';
