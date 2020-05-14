@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import PropertyStatusChart from './PropertyStatusChart';
 import dashboardman from '../../../assets/svg/dashboard-whatsinthebox.svg';
-// import mapWorkOrdersToArray from './helpers/workOrderHelper';
+import mapWorkOrdersToArray from './helpers/workOrderHelper';
 import PropertyStatusCards from './PropertyStatusCards';
 import WorkOrderCard from './WorkOrderCard';
 import propertyListHelper from './helpers/propertyListHelper';
@@ -10,7 +10,7 @@ import propertyListHelper from './helpers/propertyListHelper';
 export default function Overview() {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const propertyList = useSelector(state => state.propReducer.properties);
-  const workOrderTotalArray = [];
+  const workOrderTotalArray = mapWorkOrdersToArray(workOrderList);
   const propertyTotalArray = propertyListHelper(propertyList);
   return (
     <div className="overview">
