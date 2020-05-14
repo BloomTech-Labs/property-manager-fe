@@ -36,7 +36,7 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  console.log(tenants)
+  console.log(tenants);
 
   return (
     <>
@@ -52,8 +52,8 @@ const TenantCard = () => {
               <TableRow>
                 <TableCell className={classes.tenantCell}>Tenant</TableCell>
                 <TableCell className={classes.cell}>Property</TableCell>
-                <TableCell className={classes.cell}>Unit</TableCell>
-                <TableCell className={classes.cell}>Move In Date</TableCell>
+                <TableCell className={classes.cell}>Lease Start</TableCell>
+                <TableCell className={classes.cell}>Lease End</TableCell>
               </TableRow>
             </TableHead>
             {/* Here we separate the table, above are the headings, below are the actual data sects. */}
@@ -65,10 +65,10 @@ const TenantCard = () => {
                   key={tenant.id}
                   onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
                 >
-                  <TableCell>{tenant.firstName}</TableCell>
-                  <TableCell>Blah</TableCell>
-                  <TableCell>{tenant.firstName}</TableCell>
-                  <TableCell>moveInDate</TableCell>
+                  <TableCell>{tenant.displayName}</TableCell>
+                  <TableCell>{tenant.unit_name}</TableCell>
+                  <TableCell>{tenant.lease_start}</TableCell>
+                  <TableCell>{tenant.lease_end}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
