@@ -20,7 +20,7 @@ import { workOrderValidation } from './WorkOrderValidation';
 const WorkOrderForm = () => {
   const classes = formStyles();
   const dispatch = useDispatch();
-  const currentDate = new Date().toUTCString();
+  const currentDate = Date.now();
 
   // Submit Fn
   const submit = values => {
@@ -47,8 +47,8 @@ const WorkOrderForm = () => {
           description: '',
           type: '',
           start_date: currentDate,
-          update_date: currentDate,
-          status: '',
+          end_date: currentDate,
+          status: 'In Progress',
           user_id: user.uid,
           comment: '',
           in_house: true
