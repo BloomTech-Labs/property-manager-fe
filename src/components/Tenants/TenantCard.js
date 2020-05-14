@@ -36,6 +36,8 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
+  console.log(tenants)
+
   return (
     <>
       <IconButton text="Add" icon={<AddIcon />} url="/dashboard/tenants/add" />

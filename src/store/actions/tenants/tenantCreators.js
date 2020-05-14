@@ -19,12 +19,12 @@ import { getProperties } from '../properties/propertyCreators';
 import axiosAuth from '../../../helpers/axiosAuth';
 import { showSuccessToast, showErrorToast } from '../toastActions';
 
-export const getTenants = id => {
+export const getTenants = () => {
   return async dispatch => {
     dispatch({ type: GET_TENANTS_START });
 
     try {
-      const res = await axiosAuth.get(`/tenant/bylandlord`, id);
+      const res = await axiosAuth.get(`/tenant/bylandlord`);
 
       dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
     } catch (err) {

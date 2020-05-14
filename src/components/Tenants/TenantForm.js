@@ -21,15 +21,15 @@ import { addTenant } from '../../store/actions/index';
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().max(50, 'First Name entered was too long'),
   lastName: Yup.string().max(50, 'Last Name entered was too long'),
-  phone: Yup.string().min(10, 'Must enter at least a 10 digit phone number'),
+  phone: Yup.string().min(11, 'Must enter at least a 10 digit phone number'),
   email: Yup.string()
     .email('Invalid Email')
     .max(50, 'Email entered was too long'),
   password: Yup.string(),
-  unit_id: Yup.string().required('Must include a property!')
+  unit_id: Yup.number().required('Must include a property!')
 });
 
-export default function TenantForm({ initialValues, submit, properties }) {
+export default function TenantForm({ initialValues, properties }) {
   // bring in custom styling
   const classes = formStyles();
   const dispatch = useDispatch();
@@ -41,7 +41,8 @@ export default function TenantForm({ initialValues, submit, properties }) {
     phone = '',
     email = '',
     password = '',
-    user_id = ''
+    user_id = '',
+    unit_id = ''
   } = initialValues;
 
   return (
@@ -58,29 +59,14 @@ export default function TenantForm({ initialValues, submit, properties }) {
           phone,
           email,
           password,
-          user_id
+          user_id,
+          unit_id
         }}
         resetForm
         onSubmit={values => {
-          // pull out id
-          // eslint-disable-next-line camelcase
-          const { unit_id } = values;
-
-          // format it to number to avoid
-          // Formik/Yup's number quirks
-          const formatValues = {
-            ...values,
-            unit_id: Number(unit_id)
-          };
-
-          return new Promise(resolve => {
-            setTimeout(() => {
-              dispatch(addTenant(formatValues)).then(() =>
-                navigate('/dashboard/tenants')
-              );
-              resolve();
-            }, 2000);
-          });
+          dispatch(addTenant(values)).then(() =>
+            navigate('/dashboard/tenants')
+          );
         }}
       >
         {({ errors, touched, isSubmitting }) => (
@@ -222,7 +208,7 @@ TenantForm.propTypes = {
     lastName: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    residenceId: PropTypes.string.isRequired
+    unit_id: PropTypes.number.isRequired
   }).isRequired,
   submit: PropTypes.func.isRequired,
   properties: PropTypes.arrayOf(PropTypes.object).isRequired

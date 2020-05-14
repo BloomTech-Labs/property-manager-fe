@@ -92,9 +92,7 @@ export default function LoginForm() {
                 >
                   Submit
                 </button>
-                <Link to="/iamareallyforgetfulperson">
-                  Forgot your password?
-                </Link>
+                <Link to="/updatepassword">Forgot your password?</Link>
               </div>
               <FormFooterContainer>
                 <FormFooter>Don&apos;t have an account?</FormFooter>

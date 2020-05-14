@@ -22,7 +22,7 @@ import { navigate } from '@reach/router';
 import { modalStyles } from '../../../helpers/utils';
 // Sample Photo
 import sampleHome from '../../../assets/img/sample_home.jpg';
-import PersonIcon from '../../../assets/img/person-icon-1675.png';
+import PersonIcon from '@material-ui/icons/Person';
 // Components
 import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 import IconButton from '../../../components/UI/IconButton';
