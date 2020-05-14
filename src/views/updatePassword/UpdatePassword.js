@@ -1,22 +1,29 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { navigate } from '@reach/router';
 import SubmitButton from '../../components/Buttons/SubmitButton';
 import './updatepassword.scss';
 
 function UpdatePassword() {
-  const [formValues, setFormValues ] = useState({
+  const [formValues, setFormValues] = useState({
     updatePassword: '',
     checkPassword: ''
   });
 
-  const handleSubmit = values => {
-
-  }
+  const handleSubmit = () => {
+    navigate('/login');
+  };
 
   const handleChange = e => {
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleKeyPress = e => {
+    e.preventDefault();
+    navigate('/login');
   };
 
   return (
@@ -43,6 +50,17 @@ function UpdatePassword() {
           required
         />
         <SubmitButton />
+        <p>
+          Remember your password? Click
+          <span
+            className="updatepw-span"
+            onClick={() => navigate('/login')}
+            onKeyPress={handleKeyPress}
+          >
+            {' '}
+            here!
+          </span>
+        </p>
       </form>
     </div>
   );
