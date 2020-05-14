@@ -47,7 +47,11 @@ const TenantCard = () => {
 
   return (
     <>
-      <IconButton text="Add" icon={<AddIcon />} url="/dashboard/tenants/add" />
+      <IconButton
+        text="Add New"
+        icon={<AddIcon />}
+        url="/dashboard/tenants/add"
+      />
       {tenants.length === 0 ? (
         <div className={classes.empty}>
           <h3>No tenants have been added, yet...</h3>
