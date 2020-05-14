@@ -6,6 +6,7 @@ import './updatepassword.scss';
 
 function UpdatePassword() {
   const [formValues, setFormValues] = useState({
+    email: '',
     updatePassword: '',
     checkPassword: ''
   });
@@ -31,6 +32,15 @@ function UpdatePassword() {
       <form className="updatepw-form" onSubmit={handleSubmit}>
         <h1 className="updatepw-title">Reset Password</h1>
         <hr className="line" />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formValues.email}
+          onChange={handleChange}
+          className="updatepw-input"
+          required
+        />
         <input
           type="password"
           name="updatePassword"
