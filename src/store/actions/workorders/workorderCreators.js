@@ -27,6 +27,21 @@ export const getWorkOrders = () => async dispatch => {
   }
 };
 
+export const getWorkOrderById = id => async dispatch => {
+  dispatch({ type: GET_WORK_ORDERS_START });
+  try {
+    const res = await axiosAuth.get(`/workorders/${id}`);
+    dispatch({
+      type: GET_WORK_ORDERS_SUCCESS,
+      payload: {
+        workOrders: res.data
+      }
+    });
+  } catch (err) {
+    dispatch({ type: GET_WORK_ORDERS_FAIL, payload: { errMsg: err } });
+  }
+};
+
 // eslint-disable-next-line no-unused-vars
 export const addWorkOrder = workOrder => async dispatch => {
   dispatch({ type: ADD_WORK_ORDER_START });
