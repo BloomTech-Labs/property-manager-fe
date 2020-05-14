@@ -31,7 +31,7 @@ import IconButton from '../../../components/UI/IconButton';
 import { getProperty, getTenantsByResidence } from '../../../store/actions';
 import './property.scss';
 
-export default function Property({ id }, user) {
+export default function Property({ id }) {
   const classes = modalStyles();
 
   const dispatch = useDispatch();
