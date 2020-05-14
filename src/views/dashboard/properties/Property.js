@@ -96,9 +96,7 @@ export default function Property({ id }, user) {
                         <ListItemIcon>
                           <PersonIcon />
                         </ListItemIcon>
-                        <ListItemText
-                          primary={`${tenant.firstName} ${tenant.lastName}`}
-                        />
+                        <ListItemText primary={`${tenant.displayName}`} />
                       </ListItem>
                     </React.Fragment>
                   );

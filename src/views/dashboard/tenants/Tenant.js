@@ -28,7 +28,6 @@ export default function Tenant({ id }) {
       minWidth: '80%'
     }
   });
-  console.log(`Current Tenant!!`, currentTenant);
 
   const classes = useStyles();
   const { firstName, lastName, email, phone, type } = currentTenant;
