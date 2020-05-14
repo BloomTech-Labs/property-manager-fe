@@ -47,7 +47,7 @@ export default function LoginForm() {
         onSubmit={values => loginFn(values)}
       >
         {({ errors, touched, isSubmitting, values }) => (
-          <div className="form-wrapper">
+          <div className="form-wrapper login">
             <h2>Login</h2>
             <Form className="form-element" data-testid="form-element">
               <div className="input-wrapper">
@@ -92,9 +92,7 @@ export default function LoginForm() {
                 >
                   Submit
                 </button>
-                <Link to="/iamareallyforgetfulperson">
-                  Forgot your password?
-                </Link>
+                <Link to="/updatepassword">Forgot your password?</Link>
               </div>
               <FormFooterContainer>
                 <FormFooter>Don&apos;t have an account?</FormFooter>

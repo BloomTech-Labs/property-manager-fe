@@ -6,6 +6,7 @@ import LandingPage from '../../../views/landing/LandingPage';
 import Contact from '../../../views/landing/Contact/Contact';
 import Login from '../../../views/onBoarding/Login/Login';
 import Signup from '../../../views/onBoarding/Signup/Signup';
+import UpdatePassword from '../../../views/updatePassword/UpdatePassword';
 import NotFound from '../../../views/notfound/NotFound';
 
 const PublicRoutes = ({ user }) => (
@@ -16,6 +17,7 @@ const PublicRoutes = ({ user }) => (
       <Contact exact path="/contact" />
       <Login path="/login" />
       <Signup path="/signup" />
+      <UpdatePassword path="/updatepassword" />
       <NotFound default />
     </Router>
     <Footer />

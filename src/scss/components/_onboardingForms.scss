@@ -1,13 +1,12 @@
 .main-form-page-wrapper {
-    margin-top: 20vh;
+    margin: 14% auto;
     background: url('../../assets/svg/small_town.svg');
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    height: 94vh;
+    min-height: 90vh;
     background-position: center;
     background-size: contain;
-    margin-bottom: 15vh;
 }
 
 .main-wrapper {
@@ -19,7 +18,7 @@
     margin: auto 20px;
     padding: 20px;
     min-width: 33vw;
-    min-height: 67vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,4 +35,8 @@
         font-size: 2.3rem;
     }
 
+}
+
+.login {
+    padding-top: 10%;
 }

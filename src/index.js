@@ -1,15 +1,16 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import firebase from 'firebase/app';
 import { Provider } from 'react-redux';
 import * as Sentry from '@sentry/browser';
 import App from './App';
 import './scss/index.scss';
 import store from './store';
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import { rrfConfig, config } from '../src/vendors/fb';
+import { rrfConfig, config } from './vendors/fb';
 
 firebase.initializeApp(config);
 

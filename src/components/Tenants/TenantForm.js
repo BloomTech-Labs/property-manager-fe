@@ -1,4 +1,6 @@
 import React from 'react';
+import { navigate } from '@reach/router';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 // Redux
 // Formik
@@ -14,20 +16,23 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // Styling
 import { MdSend } from 'react-icons/md';
 import { formStyles } from '../../helpers/utils';
+import { addTenant } from '../../store/actions/index';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().max(50, 'First Name entered was too long'),
   lastName: Yup.string().max(50, 'Last Name entered was too long'),
-  phone: Yup.string().min(10, 'Must enter at least a 10 digit phone number'),
+  phone: Yup.string().min(11, 'Must enter at least a 10 digit phone number'),
   email: Yup.string()
     .email('Invalid Email')
     .max(50, 'Email entered was too long'),
-  residenceId: Yup.string().required('Must include a property!')
+  password: Yup.string(),
+  unit_id: Yup.number().required('Must include a property!')
 });
 
-export default function TenantForm({ initialValues, submit, properties }) {
+export default function TenantForm({ initialValues, properties }) {
   // bring in custom styling
   const classes = formStyles();
+  const dispatch = useDispatch();
 
   // bring in initialValues and set defaults
   const {
@@ -35,7 +40,9 @@ export default function TenantForm({ initialValues, submit, properties }) {
     lastName = '',
     phone = '',
     email = '',
-    residenceId = ''
+    password = '',
+    user_id = '',
+    unit_id = ''
   } = initialValues;
 
   return (
@@ -51,26 +58,15 @@ export default function TenantForm({ initialValues, submit, properties }) {
           lastName,
           phone,
           email,
-          residenceId
+          password,
+          user_id,
+          unit_id
         }}
         resetForm
         onSubmit={values => {
-          // pull out id
-          const { residenceId } = values;
-
-          // format it to number to avoid
-          // Formik/Yup's number quirks
-          const formatValues = {
-            ...values,
-            residenceId: Number(residenceId)
-          };
-
-          return new Promise(resolve => {
-            setTimeout(() => {
-              submit(formatValues);
-              resolve();
-            }, 2000);
-          });
+          dispatch(addTenant(values)).then(() =>
+            navigate('/dashboard/tenants')
+          );
         }}
       >
         {({ errors, touched, isSubmitting }) => (
@@ -139,16 +135,32 @@ export default function TenantForm({ initialValues, submit, properties }) {
                 size="small"
                 margin="normal"
                 variant="outlined"
+                name="password"
+                type="password"
+                label="Password"
+                as={TextField}
+                helperText={
+                  errors.password
+                    ? errors.password
+                    : `Enter tenant's temporary password`
+                }
+                error={errors.password && true}
+              />
+              <Field
+                className={classes.textField}
+                size="small"
+                margin="normal"
+                variant="outlined"
                 as={TextField}
                 select
-                name="residenceId"
+                name="unit_id"
                 label="Property"
                 helperText={
-                  touched.residenceId && errors.residenceId
-                    ? errors.residenceId
+                  touched.unit_id && errors.unit_id
+                    ? errors.unit_id
                     : `Select the tenant's property`
                 }
-                error={touched.residenceId && errors.residenceId && true}
+                error={touched.unit_id && errors.unit_id && true}
                 required
               >
                 {properties.map(property => (
@@ -196,7 +208,7 @@ TenantForm.propTypes = {
     lastName: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    residenceId: PropTypes.string.isRequired
+    unit_id: PropTypes.number.isRequired
   }).isRequired,
   submit: PropTypes.func.isRequired,
   properties: PropTypes.arrayOf(PropTypes.object).isRequired

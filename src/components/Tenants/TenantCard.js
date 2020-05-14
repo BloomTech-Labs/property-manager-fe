@@ -36,18 +36,7 @@ const TenantCard = () => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  // const handleClick = () => {
-  //   if (handleOpen) {
-  //     // We call the handleOpen() func passed as prop
-  //     // and give it the tenant & property that
-  //     // was passed as props
-  //     // This gives access to the obj data we can
-  //     // use in the individual tenant modal
-  //     return handleOpen(property, tenant);
-  //   }
-
-  //   return null;
-  // };
+  console.log(tenants)
 
   return (
     <>
@@ -73,6 +62,7 @@ const TenantCard = () => {
                 tenant // Create a row for each tenant
               ) => (
                 <TableRow
+                  key={tenant.id}
                   onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
                 >
                   <TableCell>{tenant.firstName}</TableCell>

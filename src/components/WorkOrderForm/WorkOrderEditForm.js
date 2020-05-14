@@ -33,13 +33,13 @@ const validationSchema = Yup.object().shape({
 });
 // FIXME: these props are undefined
 // eslint-disable-next-line
-const WorkOrderForm = ({ workOrderId }, props) => {
+const WorkOrderEditForm = ({ workOrderId }, props) => {
   const classes = formStyles();
   const dispatch = useDispatch();
 
   // Fetch work orders on page load, this way if a user deep routes directly to the page, it will
   // still have the data
-  const currentDate = Date.now();
+  const currentDate = new Date().toUTCString();
 
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const workOrder = workOrderList.find(item => `${item.id}` === workOrderId);
@@ -49,7 +49,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
     status,
     user_id,
     comment,
-    end_date,
+    update_date,
     description,
     type,
     start_date,
@@ -81,7 +81,7 @@ const WorkOrderForm = ({ workOrderId }, props) => {
           start_date,
           id,
           user_id,
-          end_date: currentDate,
+          update_date: currentDate,
           status,
           comment: '',
           in_house
@@ -202,8 +202,8 @@ const WorkOrderForm = ({ workOrderId }, props) => {
                   }
                   error={errors.status && true}
                 >
+                  <MenuItem value="Submitted">Submitted</MenuItem>
                   <MenuItem value="In Progress">In Progress</MenuItem>
-                  <MenuItem value="Still Working">Still Working</MenuItem>
                   <MenuItem value="Completed">Completed</MenuItem>
                 </Field>
                 <div className={classes.submitWrapper}>
@@ -240,4 +240,4 @@ const WorkOrderForm = ({ workOrderId }, props) => {
   );
 };
 
-export default WorkOrderForm;
+export default WorkOrderEditForm;

@@ -24,7 +24,7 @@ export const getTenants = () => {
     dispatch({ type: GET_TENANTS_START });
 
     try {
-      const res = await axiosAuth.get(`/tenants`);
+      const res = await axiosAuth.get(`/tenant/bylandlord`);
 
       dispatch({ type: GET_TENANTS_SUCCESS, payload: res.data });
     } catch (err) {
@@ -37,7 +37,7 @@ export const getTenantById = id => async dispatch => {
   dispatch({ type: GET_TENANT_ID_START });
 
   try {
-    const res = await axiosAuth.get(`/tenants/${id}`);
+    const res = await axiosAuth.get(`/tenant/${id}`);
     dispatch({
       type: GET_TENANT_ID_SUCCESS,
       payload: res.data
@@ -52,7 +52,7 @@ export const editTenant = (id, tenant) => {
     dispatch({ type: EDIT_TENANT_START });
 
     try {
-      await axiosAuth.put(`/tenants/${id}`, tenant);
+      await axiosAuth.put(`/tenant/${id}`, tenant);
 
       // show success toast
       dispatch(showSuccessToast('Tenant updated!'));
@@ -69,11 +69,11 @@ export const editTenant = (id, tenant) => {
   };
 };
 
-export const addTenant = url => tenant => async dispatch => {
+export const addTenant = tenant => async dispatch => {
   dispatch({ type: ADD_TENANT_START });
 
   try {
-    const res = await axiosAuth.post(url, tenant);
+    const res = await axiosAuth.post('/tenant', tenant);
 
     // show success toast
     dispatch(showSuccessToast('Tenant added to property!'));
@@ -99,7 +99,7 @@ export const getTenantsByResidence = residenceId => {
     dispatch({ type: GET_TENANTS_RESIDENCE_START });
 
     try {
-      const res = await axiosAuth.get(`/properties/${residenceId}/tenants`);
+      const res = await axiosAuth.get(`/tenant/byunit/${residenceId}`);
       dispatch({
         type: GET_TENANTS_RESIDENCE_SUCCESS,
         payload: res.data
