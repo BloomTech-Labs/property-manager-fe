@@ -48,10 +48,8 @@ const WorkOrderForm = () => {
           type: '',
           start_date: currentDate,
           update_date: currentDate,
-          status: '',
           user_id: user.uid,
-          comment: '',
-          in_house: true
+          comment: ''
         }}
         resetForm
         onSubmit={values => {
