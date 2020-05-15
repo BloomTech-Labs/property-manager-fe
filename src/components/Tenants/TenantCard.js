@@ -18,11 +18,19 @@ import { getTenants } from '../../store/actions';
 
 // Component Styling
 const useStyles = makeStyles({
-  tenantCell: {
-    minWidth: '20vw'
-  },
   cell: {
-    minWidth: '15vw'
+    minWidth: '12vw'
+  },
+  row: {
+    cursor: 'pointer',
+    transition: 'all .2s ease',
+    '&:hover': {
+      background: '#f9a826',
+      borderRadius: '50px',
+      '& > *': {
+        color: '#fff'
+      }
+    }
   }
 });
 
@@ -31,16 +39,19 @@ const TenantCard = () => {
   const classes = useStyles();
 
   const tenants = useSelector(state => state.propReducer.tenants);
+  const formatDate = date => date && new Date(date).toDateString();
 
   useEffect(() => {
     dispatch(getTenants());
   }, [dispatch]);
 
-  console.log(tenants)
-
   return (
     <>
-      <IconButton text="Add" icon={<AddIcon />} url="/dashboard/tenants/add" />
+      <IconButton
+        text="Add New"
+        icon={<AddIcon />}
+        url="/dashboard/tenants/add"
+      />
       {tenants.length === 0 ? (
         <div className={classes.empty}>
           <h3>No tenants have been added, yet...</h3>
@@ -50,10 +61,11 @@ const TenantCard = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell className={classes.tenantCell}>Tenant</TableCell>
+                <TableCell className={classes.cell}>Tenant</TableCell>
                 <TableCell className={classes.cell}>Property</TableCell>
-                <TableCell className={classes.cell}>Unit</TableCell>
-                <TableCell className={classes.cell}>Move In Date</TableCell>
+                <TableCell className={classes.cell}>Phone</TableCell>
+                <TableCell className={classes.cell}>Email</TableCell>
+                <TableCell className={classes.cell}>Lease End</TableCell>
               </TableRow>
             </TableHead>
             {/* Here we separate the table, above are the headings, below are the actual data sects. */}
@@ -62,13 +74,15 @@ const TenantCard = () => {
                 tenant // Create a row for each tenant
               ) => (
                 <TableRow
+                  className={classes.row}
                   key={tenant.id}
                   onClick={() => navigate(`/dashboard/tenants/${tenant.id}`)}
                 >
-                  <TableCell>{tenant.firstName}</TableCell>
-                  <TableCell>Blah</TableCell>
-                  <TableCell>{tenant.firstName}</TableCell>
-                  <TableCell>moveInDate</TableCell>
+                  <TableCell>{tenant.displayName}</TableCell>
+                  <TableCell>{tenant.unit_name}</TableCell>
+                  <TableCell>{tenant.phoneNumber}</TableCell>
+                  <TableCell>{tenant.email}</TableCell>
+                  <TableCell>{formatDate(tenant.lease_end)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

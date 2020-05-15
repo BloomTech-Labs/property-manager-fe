@@ -13,6 +13,7 @@ import {
 } from './tenants/tenantCreators';
 import {
   getWorkOrders,
+  getWorkOrderById,
   addWorkOrder,
   updateWorkOrder
 } from './workorders/workorderCreators';
@@ -29,5 +30,6 @@ export {
   getTenantsByResidence,
   getTenants,
   getWorkOrders,
+  getWorkOrderById,
   updateWorkOrder
 };

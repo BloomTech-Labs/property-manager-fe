@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { navigate } from '@reach/router';
 import { useDispatch } from 'react-redux';
@@ -26,7 +29,9 @@ const validationSchema = Yup.object().shape({
     .email('Invalid Email')
     .max(50, 'Email entered was too long'),
   password: Yup.string(),
-  unit_id: Yup.number().required('Must include a property!')
+  unit_id: Yup.number().required('Must include a property!'),
+  lease_start: Yup.date(),
+  lease_end: Yup.date()
 });
 
 export default function TenantForm({ initialValues, properties }) {
@@ -42,7 +47,9 @@ export default function TenantForm({ initialValues, properties }) {
     email = '',
     password = '',
     user_id = '',
-    unit_id = ''
+    unit_id = '',
+    lease_start = '',
+    lease_end = ''
   } = initialValues;
 
   return (
@@ -60,7 +67,9 @@ export default function TenantForm({ initialValues, properties }) {
           email,
           password,
           user_id,
-          unit_id
+          unit_id,
+          lease_start,
+          lease_end
         }}
         resetForm
         onSubmit={values => {
@@ -169,6 +178,34 @@ export default function TenantForm({ initialValues, properties }) {
                   </MenuItem>
                 ))}
               </Field>
+              <Field
+                className={classes.textField}
+                size="small"
+                margin="normal"
+                variant="outlined"
+                name="lease_start"
+                type="date"
+                as={TextField}
+                helperText={
+                  errors.lease_start
+                    ? errors.lease_start
+                    : `Enter lease start date`
+                }
+                error={errors.lease_start && true}
+              />
+              <Field
+                className={classes.textField}
+                size="small"
+                margin="normal"
+                variant="outlined"
+                name="lease_end"
+                type="date"
+                as={TextField}
+                helperText={
+                  errors.lease_end ? errors.lease_end : `Enter lease end date`
+                }
+                error={errors.lease_end && true}
+              />
               <div className={classes.submitWrapper}>
                 <Button
                   size="large"
@@ -208,7 +245,9 @@ TenantForm.propTypes = {
     lastName: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    unit_id: PropTypes.number.isRequired
+    unit_id: PropTypes.number.isRequired,
+    lease_start: PropTypes.number.isRequired,
+    lease_end: PropTypes.number.isRequired
   }).isRequired,
   submit: PropTypes.func.isRequired,
   properties: PropTypes.arrayOf(PropTypes.object).isRequired
