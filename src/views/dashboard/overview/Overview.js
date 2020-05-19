@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Divider from '@material-ui/core/Divider';
 import PropertyStatusChart from './PropertyStatusChart';
 import dashboardman from '../../../assets/svg/dashboard-whatsinthebox.svg';
 import mapWorkOrdersToArray from './helpers/workOrderHelper';
@@ -14,6 +15,8 @@ export default function Overview() {
   const propertyTotalArray = propertyListHelper(propertyList);
   return (
     <div className="overview">
+      <h1>Welcome, </h1>
+      <Divider />
       {propertyList.length > 0 ? (
         <>
           <div className="property-status-row">
