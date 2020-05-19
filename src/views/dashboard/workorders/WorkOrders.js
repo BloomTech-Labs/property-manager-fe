@@ -5,6 +5,7 @@ import { Divider } from '@material-ui/core';
 import WorkOrderTable from '../../../components/WorkOrders/WorkOrderTable';
 import IconButton from '../../../components/UI/IconButton';
 import { getWorkOrders } from '../../../store/actions';
+import Searchbar from '../../../components/Searchbar/Searchbar';
 
 export default function WorkOrders() {
   const dispatch = useDispatch();
@@ -16,7 +17,10 @@ export default function WorkOrders() {
 
   return (
     <div className="work-orders">
-      <h1>Work Orders</h1>
+      <div className="dashboardHeader">
+        <h1>Work Orders</h1>
+        <Searchbar />
+      </div>
       <Divider />
       <IconButton
         url="/dashboard/workorders/add"

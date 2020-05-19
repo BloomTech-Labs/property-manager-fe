@@ -7,11 +7,15 @@ import AddIcon from '@material-ui/icons/Add';
 // Components
 import PropTable from './PropTable';
 import IconButton from '../../../components/UI/IconButton';
+import Searchbar from '../../../components/Searchbar/Searchbar';
 
 export default function PropertyList() {
   return (
     <div className="properties">
-      <h1>Properties</h1>
+      <div className="dashboardHeader">
+        <h1>Properties</h1>
+        <Searchbar />
+      </div>
       <Divider />
       <br />
       <IconButton
