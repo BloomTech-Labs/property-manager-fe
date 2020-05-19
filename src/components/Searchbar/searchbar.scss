@@ -1,0 +1,36 @@
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+.searchBar {
+  width: 60%;
+  height: 60px;
+  padding: 4%;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  font-size: 1.4rem;
+  background-color: #dbdaff;
+
+  &:focus{
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgb(175, 175, 175);
+  }
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: 60px;
+  border: none;
+  background-color: #dbdaff; 
+  border-radius: 0px 20px 20px 0;
+  font-size: 1.4rem;
+}
