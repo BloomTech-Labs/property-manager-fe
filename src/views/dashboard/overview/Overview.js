@@ -11,11 +11,18 @@ import propertyListHelper from './helpers/propertyListHelper';
 export default function Overview() {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const propertyList = useSelector(state => state.propReducer.properties);
+  const currentUser = useSelector(state => state.firebase.profile);
   const workOrderTotalArray = mapWorkOrdersToArray(workOrderList);
   const propertyTotalArray = propertyListHelper(propertyList);
+
   return (
     <div className="overview">
-      <h1>Welcome, </h1>
+      <h1>
+        {!currentUser
+          ? 'Dashboard of Freehold'
+          : `Welcome to your dashboard, ${currentUser.firstName}`}{' '}
+        {currentUser.lastName}
+      </h1>
       <Divider />
       {propertyList.length > 0 ? (
         <>
