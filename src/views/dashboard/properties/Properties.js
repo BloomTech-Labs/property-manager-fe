@@ -32,7 +32,8 @@ export default function PropertyList() {
       );
       setSearchResults([...results]);
     }
-  }, [search, properties, searchResults]);
+    /* eslint-disable-next-line */
+  }, [search, properties]);
 
   return (
     <div className="properties">

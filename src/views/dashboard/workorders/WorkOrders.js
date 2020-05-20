@@ -27,7 +27,8 @@ export default function WorkOrders() {
       );
       setSearchResults([...results]);
     }
-  }, [search, searchResults, workOrderList]);
+    /* eslint-disable-next-line */
+  }, [search, workOrderList]);
 
   return (
     <div className="work-orders">

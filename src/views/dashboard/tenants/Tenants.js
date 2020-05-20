@@ -26,7 +26,8 @@ const Tenants = () => {
       );
       setSearchResults([...results]);
     }
-  }, [search, searchResults, tenants]);
+    /* eslint-disable-next-line */
+  }, [search, tenants]);
 
   return (
     <div className="tenants">
