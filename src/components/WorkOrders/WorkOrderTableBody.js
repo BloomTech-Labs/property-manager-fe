@@ -1,19 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, navigate } from '@reach/router';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 
-function WorkOrderTableBody({ workOrderList }) {
+function WorkOrderTableBody({ workOrderList, searchResults }) {
   const properties = useSelector(state => state.propReducer.properties);
+  const [array, setArray] = useState([]);
+
+  useEffect(() => {
+    if (searchResults.length !== 0) {
+      setArray(searchResults);
+    } else {
+      setArray(workOrderList);
+    }
+  }, [searchResults, workOrderList]);
 
   return (
     <>
       <TableBody>
-        {workOrderList.map(workOrder => {
+        {array.map(workOrder => {
           const {
             id,
             name,

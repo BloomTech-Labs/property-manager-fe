@@ -1,19 +1,26 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import './searchbar.scss';
 
-function Searchbar() {
+function Searchbar({ search, setSearch }) {
+  const handleChange = e => {
+    setSearch(e.target.value);
+  };
+
   return (
-    <div className="searchWrapper">
+    <form className="searchWrapper">
       <input
         className="searchBar"
         type="text"
         placeholder="Type your search here..."
+        value={search}
+        onChange={handleChange}
       />
       <button className="search-btn" type="submit">
         <SearchIcon />
       </button>
-    </div>
+    </form>
   );
 }
 

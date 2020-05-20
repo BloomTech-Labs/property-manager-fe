@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -10,36 +10,18 @@ import {
 import EditIcon from '@material-ui/icons/Edit';
 import { navigate } from '@reach/router';
 import useStyles from './propTableStyles';
-import PropertyDetailsModal from '../../../components/Properties/PropertyDetailsModal';
 
-export default function PropTable() {
+export default function PropTable({ properties, searchResults }) {
   const classes = useStyles();
+  const [array, setArray] = useState([]);
 
-  const propertyList = useSelector(state => state.propReducer.properties);
-
-  // open/close state for modal
-  const [openDetails, setOpenDetails] = useState(false);
-
-  // store individual property from map function in local state
-  const [currentProperty, setCurrentProperty] = useState({});
-
-  // handle open/close, takes in the individual property
-  // passed up from property card to gain access from the modal
-  const handleOpen = property => {
-    // sets the currentProperty state to the property object passed in
-    setCurrentProperty(property);
-
-    // this sets the open state for the PropertyDetailsModal
-    setOpenDetails(true);
-  };
-
-  const handleClose = () => {
-    // sets currentProperty to empty obj when modal is closed
-    setCurrentProperty({});
-
-    // sets the open state to false to close PropertyDetailsModal
-    setOpenDetails(false);
-  };
+  useEffect(() => {
+    if (searchResults.length !== 0) {
+      setArray(searchResults);
+    } else {
+      setArray(properties);
+    }
+  }, [searchResults, properties]);
 
   return (
     <>
@@ -49,24 +31,25 @@ export default function PropTable() {
             <TableCell>Id</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Street</TableCell>
+            <TableCell align="right">City</TableCell>
             <TableCell align="right">State</TableCell>
             <TableCell align="right">No. Tenants</TableCell>
             <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {propertyList.map(prop => (
+          {array.map(prop => (
             <TableRow
               key={prop.id}
               className={classes.row}
               onClick={() => {
                 navigate(`/dashboard/properties/${prop.id}`);
-                handleOpen(prop);
               }}
             >
               <TableCell>{prop.id}</TableCell>
               <TableCell align="right">{prop.name}</TableCell>
               <TableCell align="right">{prop.street_address}</TableCell>
+              <TableCell align="right">{prop.city}</TableCell>
               <TableCell align="right">{prop.state}</TableCell>
               <TableCell align="right">{prop.occupied}</TableCell>
               <TableCell align="right">
@@ -82,11 +65,6 @@ export default function PropTable() {
           ))}
         </TableBody>
       </Table>
-      <PropertyDetailsModal
-        property={currentProperty}
-        open={openDetails}
-        close={handleClose}
-      />
     </>
   );
 }
