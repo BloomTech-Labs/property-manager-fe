@@ -6,14 +6,17 @@ import WorkOrderTableBody from './WorkOrderTableBody';
 import NoWorkOrder from './NoWorkOrder';
 import '../../scss/components/_workOrderTable.scss';
 
-export default function WorkOrderTable({ workOrderList }) {
+export default function WorkOrderTable({ workOrderList, searchResults }) {
   // If there are any workOrders returned, we render this chart.
   if (workOrderList.length) {
     return (
       <TableContainer component={Paper}>
         <Table className="table" aria-label="simple table">
           <WorkOrderTableHead />
-          <WorkOrderTableBody workOrderList={workOrderList} />
+          <WorkOrderTableBody
+            workOrderList={workOrderList}
+            searchResults={searchResults}
+          />
         </Table>
       </TableContainer>
     );

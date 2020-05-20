@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -14,7 +13,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // eslint-disable-next-line
 import { navigate } from '@reach/router';
 import IconButton from '../UI/IconButton';
-import { getTenants } from '../../store/actions';
 
 // Component Styling
 const useStyles = makeStyles({
@@ -34,16 +32,18 @@ const useStyles = makeStyles({
   }
 });
 
-const TenantCard = () => {
-  const dispatch = useDispatch();
+const TenantCard = ({ tenants, searchResults }) => {
   const classes = useStyles();
-
-  const tenants = useSelector(state => state.propReducer.tenants);
   const formatDate = date => date && new Date(date).toDateString();
+  const [array, setArray] = useState([]);
 
   useEffect(() => {
-    dispatch(getTenants());
-  }, [dispatch]);
+    if (searchResults.length !== 0) {
+      setArray(searchResults);
+    } else {
+      setArray(tenants);
+    }
+  }, [searchResults, tenants]);
 
   return (
     <>
@@ -52,7 +52,7 @@ const TenantCard = () => {
         icon={<AddIcon />}
         url="/dashboard/tenants/add"
       />
-      {tenants.length === 0 ? (
+      {array.length === 0 ? (
         <div className={classes.empty}>
           <h3>No tenants have been added, yet...</h3>
         </div>
@@ -70,7 +70,7 @@ const TenantCard = () => {
             </TableHead>
             {/* Here we separate the table, above are the headings, below are the actual data sects. */}
             <TableBody>
-              {tenants.map((
+              {array.map((
                 tenant // Create a row for each tenant
               ) => (
                 <TableRow

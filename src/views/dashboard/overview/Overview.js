@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Divider from '@material-ui/core/Divider';
 import PropertyStatusChart from './PropertyStatusChart';
 import dashboardman from '../../../assets/svg/dashboard-whatsinthebox.svg';
 import mapWorkOrdersToArray from './helpers/workOrderHelper';
@@ -10,10 +11,19 @@ import propertyListHelper from './helpers/propertyListHelper';
 export default function Overview() {
   const workOrderList = useSelector(state => state.workOrderReducer.workOrders);
   const propertyList = useSelector(state => state.propReducer.properties);
+  const currentUser = useSelector(state => state.firebase.profile);
   const workOrderTotalArray = mapWorkOrdersToArray(workOrderList);
   const propertyTotalArray = propertyListHelper(propertyList);
+
   return (
     <div className="overview">
+      <h1>
+        {currentUser.firstName === undefined
+          ? 'Dashboard of Freehold'
+          : `Welcome to your dashboard, ${currentUser.firstName}`}{' '}
+        {currentUser.lastName}
+      </h1>
+      <Divider />
       {propertyList.length > 0 ? (
         <>
           <div className="property-status-row">
