@@ -18,7 +18,7 @@ export default function Overview() {
   return (
     <div className="overview">
       <h1>
-        {!currentUser
+        {currentUser.firstName === undefined
           ? 'Dashboard of Freehold'
           : `Welcome to your dashboard, ${currentUser.firstName}`}{' '}
         {currentUser.lastName}
