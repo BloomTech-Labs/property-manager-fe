@@ -21,7 +21,7 @@
     "firebase": "^7.14.2",
     "formik": "^2.0.3",
     "material-table": "^1.57.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "reach-router": "0.0.0",
